@@ -1,0 +1,100 @@
+{
+  "component": "Button Floating",
+  "figmaFrameName": "Button/floating",
+  "figmaNodeId": "5180:273",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Square wrapper with equal width and height. Uses rounded-full border-radius, rendering as a perfect circle. Carries a white neutral surface background and a drop shadow that creates the floating appearance.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "description": "A single centered icon. 24×24px confirmed for md. Communicates the action without a visible label.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "note": "No type variants. Button Floating has a single visual style: white surface with elevation shadow."
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "md",
+      "width": 44,
+      "height": 44,
+      "iconSizePx": 24,
+      "paddingX": 12,
+      "note": "Default size. Use in standard map/content surfaces."
+    },
+    {
+      "name": "lg",
+      "width": 54,
+      "height": 54,
+      "iconSizePx": "TODO",
+      "paddingX": "TODO",
+      "note": "Larger size. Use for more prominent or hero-level floating actions. Note: 54px, not 56px."
+    }
+  ],
+
+  "states": [
+    { "name": "Default",  "trigger": "Resting state, no interaction." },
+    { "name": "Pressed",  "trigger": "Button is actively tapped." },
+    { "name": "Disabled", "trigger": "Action is unavailable. Non-interactive." },
+    { "name": "Focus",    "trigger": "Button receives keyboard focus." }
+  ],
+
+  "stateNote": "No hover state. This component is designed primarily for touch/mobile contexts.",
+
+  "shape": {
+    "borderRadius": "var(--rounded-full, 120px)",
+    "borderWidth": "var(--width-1, 1px)",
+    "borderColor": "var(--button/secondary/border-active, rgba(29,29,35,0))",
+    "note": "Border is transparent at rest. Square container + rounded-full = perfect circle."
+  },
+
+  "elevation": {
+    "token": "elevation/light/01",
+    "value": "0px 2px 4px 0px rgba(0, 0, 0, 0.1)",
+    "description": "Drop shadow that lifts the button visually above the surface beneath it."
+  },
+
+  "background": {
+    "token": "--surface/neutral/sunken",
+    "value": "white",
+    "description": "White neutral surface. Not a button fill token — the floating button sits on top of content."
+  },
+
+  "spacing": {
+    "paddingX_md": "var(--spacing-12, 12px)",
+    "gap": "var(--spacing-8, 0px)"
+  },
+
+  "accessibilityRequirements": {
+    "ariaLabel": "Required on every instance. No visible label.",
+    "tooltip": "TODO: Confirm whether a tooltip is required or recommended.",
+    "ariaHidden": "The icon element should be aria-hidden when the button carries an aria-label."
+  },
+
+  "usageContext": [
+    "Floats over a map, image, or content surface.",
+    "Used for a single, contextual action related to the surface below (e.g., re-center map, GPS lock).",
+    "Typically positioned at a fixed corner of the content area."
+  ],
+
+  "notes": [
+    "No type variants — single visual style only.",
+    "No hover state in Figma — designed for touch/mobile-first contexts.",
+    "lg size is 54×54px (not 56px as in the standard Button and Button Icon).",
+    "TODO: Confirm icon size for lg.",
+    "TODO: Confirm padding values for lg.",
+    "TODO: Confirm exact positioning rules (e.g., fixed bottom-right, bottom-left).",
+    "TODO: Confirm whether multiple floating buttons can appear simultaneously on one surface.",
+    "TODO: Extract token values for pressed, disabled, and focus states."
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "component": "Button Timer",
+  "figmaFrameName": "Button/Timer",
+  "figmaNodeId": "5223:3789",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Dark pill-shaped button (303×56px, border-radius 120px). Background: --button/default/bg-default (#1d1d23). Acts as the base surface for the countdown visualization.",
+      "required": true
+    },
+    {
+      "part": "fillOverlay",
+      "description": "Absolutely positioned dark layer over the container. Grows from left to right as the countdown progresses. Uses mix-blend-multiply to progressively darken the button surface. Width represents elapsed time (0px at start, 303px at expiry).",
+      "required": true
+    },
+    {
+      "part": "label",
+      "description": "Text label centered over the button. 'Accept' in the Driver App context. Uses mix-blend-difference to remain readable over both the unfilled and filled areas at all animation positions.",
+      "required": true
+    }
+  ],
+
+  "states": [
+    {
+      "name": "full",
+      "figmaNodeId": "5223:3788",
+      "description": "Timer just started. Fill overlay width: 0px. Button appears at normal dark background. Full time remaining.",
+      "fillOverlayWidth": 0
+    },
+    {
+      "name": "middle",
+      "figmaNodeId": "5223:3793",
+      "description": "Timer approximately halfway through. Fill overlay width: ~147px (~48.5% of button width). Left half of button is darkened.",
+      "fillOverlayWidth": 147
+    },
+    {
+      "name": "state3",
+      "figmaNodeId": "5223:3801",
+      "description": "Timer nearly expired. Fill overlay width: 303px (full button width). Entire button is darkened by the overlay.",
+      "fillOverlayWidth": 303
+    }
+  ],
+
+  "stateNote": "Three visual states defined in Figma, representing snapshots of a continuous countdown animation. No hover, pressed, disabled, or focus states defined.",
+
+  "variants": [],
+  "variantNote": "No type variants. Single visual style.",
+
+  "sizes": [],
+  "sizeNote": "Single size only. No size variants.",
+
+  "dimensions": {
+    "container": {
+      "width": 303,
+      "height": 56,
+      "borderRadius": "120px"
+    }
+  },
+
+  "fillOverlay": {
+    "direction": "left-to-right",
+    "blendMode": "mix-blend-multiply",
+    "widthAtFull": 0,
+    "widthAtMiddle": 147,
+    "widthAtState3": 303,
+    "colorToken": "TODO: Confirm design token for fill overlay background color."
+  },
+
+  "typography": {
+    "fontFamily": "var(--font-family/headings, 'Google Sans Flex', sans-serif)",
+    "fontWeight": "400 (Regular)",
+    "fontSize": "var(--size/lg, 16px)",
+    "lineHeight": 1,
+    "letterSpacing": "0 (default)",
+    "color": "var(--text/invert, #f1f2f4)",
+    "blendMode": "mix-blend-difference",
+    "whitespace": "nowrap",
+    "note": "Uses Google Sans Flex Regular (not SemiBold). mix-blend-difference ensures readability over both unfilled and filled button areas."
+  },
+
+  "usageContext": [
+    "Timed action prompts where the user must act within a limited countdown window.",
+    "Confirmed from Driver App: 'Finding a trip → New trip flow' (node 2007:8976). Shown when a new trip is offered to the driver.",
+    "Single instance per screen — not for repeated or parallel use."
+  ],
+
+  "notes": [
+    "No type variants — single visual style.",
+    "Three states in Figma: full (0% fill), middle (~48.5% fill), state3 (100% fill). These are animation snapshots, not discrete interactive states.",
+    "The fill overlay uses mix-blend-multiply. The label uses mix-blend-difference. Both are confirmed and load-bearing.",
+    "Font weight is Regular (400), not SemiBold. Confirmed from Figma.",
+    "TODO: Confirm the design token for the fill overlay background color.",
+    "TODO: Confirm animation spec: duration, easing, and frame rate for the fill transition.",
+    "TODO: Confirm disabled state appearance when the countdown expires without user action.",
+    "TODO: Confirm whether the button remains tappable at all fill levels.",
+    "TODO: Confirm ARIA approach for communicating countdown progress to screen readers.",
+    "TODO: Confirm keyboard accessibility — Enter or Space as activation equivalent."
+  ]
+}

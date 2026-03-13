@@ -1,0 +1,199 @@
+---
+title: "Toast"
+description: "A non-blocking, transient notification that confirms something happened or delivers a brief informational update without interrupting the user's flow."
+---
+
+# Toast
+
+## Overview
+
+Toast is a non-blocking, transient notification used to confirm that something happened or to deliver a brief informational update. It appears temporarily, then auto-dismisses. It does not stop the user, trap focus, or require a response.
+
+Use Toast for routine, low-urgency feedback — success confirmations, neutral system updates, and background events. For situations that require a decision or immediate correction, use Alert Dialog or Snackbar instead.
+
+## Anatomy
+
+Toast is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Rounded card with a drop shadow. Carries the background fill and layout. Fixed height of 80px, width of 374px. |
+| **Context icon** | Yes | 24×24px utility icon inside a 40×40px pill-shaped container. Color communicates semantic type. |
+| **Content** | Yes | Vertical stack of title and description text. |
+| **Title** | Yes | Short summary of what happened. Single line, truncates on overflow. |
+| **Description** | No | Up to 2 lines of supporting detail. Optional. |
+| **Close button** | No | 32×32px icon button (×). Recommended when the message could distract or when toasts may stack. |
+| **Counter** | Yes | A thin progress bar at the bottom of the card that represents the auto-dismiss timer. |
+
+{/* TODO: Add anatomy.png from Figma once annotation frame is available. */}
+{/* ![Toast anatomy](./anatomy.png) */}
+
+## Variants
+
+Toast supports five semantic types. Each changes the context icon; the card layout and dimensions remain the same across all types.
+
+| Type | Icon | When to use |
+|---|---|---|
+| `info` | Info circle | Neutral informational updates that don't require action. |
+| `success` | TODO: Confirm icon | Success confirmations after a completed action. |
+| `warning` | TODO: Confirm icon | Non-blocking warnings the user should be aware of but doesn't need to act on immediately. |
+| `error` | TODO: Confirm icon | Lightweight error feedback for recoverable issues. Do not use for blocking errors — use Alert Dialog. |
+| `trip` | TODO: Confirm icon | Background trip-related events specific to the driver product context (e.g. "New trip available"). |
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Toast variants](./variants.png) */}
+
+## States
+
+Toast has no interactive variant states. The component has two lifecycle states: visible and dismissed.
+
+| State | Description |
+|---|---|
+| `Visible` | Toast is mounted and displayed. Auto-dismiss timer is running (reflected by the Counter). |
+| `Dismissed` | Toast is unmounted or hidden. Triggered by auto-dismiss timeout or manual close. |
+
+The close button (`Button/only icon`) follows the Button component state spec (default, hover, pressed, focus).
+
+{/* ![Toast states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `info`
+- `success`
+- `warning`
+- `error`
+- `trip`
+
+### Supported sizes
+
+Single size. Fixed dimensions: 374×80px.
+
+### Supported states
+
+- `Visible`
+- `Dismissed`
+
+### Token reference
+
+| Part | Token | Value |
+|---|---|---|
+| **Container** | | |
+| Background | `--surface/neutral/sunken` | `white` |
+| Border radius | `--rounded-16` | `16px` |
+| Padding X | `--spacing-16` | `16px` |
+| Padding Y | `--spacing-8` | `8px` |
+| Gap (icon → content → close) | `--spacing-16` | `16px` |
+| Drop shadow | `elevation/dark/01` | `0px 2px 4px 0px rgba(0,0,0,0.24)` |
+| Width | — | `374px` |
+| Height | — | `80px` |
+| **Context icon container** | | |
+| Background | `--button/secondary/bg-default` | `rgba(29,29,35,0.05)` |
+| Border radius | `--spacing-120` | `120px` |
+| Padding | `--spacing-8` | `8px` |
+| Icon size | — | `24×24px` |
+| **Title** | | |
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/semibold` | `600` |
+| Font size | `--size/xl` | `18px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+| Color | `--text/primary` | `#1d1d23` |
+| Overflow | — | Truncates (single line, `whitespace-nowrap`) |
+| **Description** | | |
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/medium` | `500` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Color | `--text/placeholder` | `#636377` |
+| **Content gap** | `--spacing-4` | `4px` |
+| **Close button** | | |
+| Size | — | `32×32px` |
+| Background | `--button/outlined/bg-active` | `rgba(29,29,35,0)` |
+| Border radius | `--rounded-full` | `120px` |
+| Icon size | — | `16×16px` |
+
+> TODO: Extract icon and icon container color values per semantic type (`info`, `success`, `warning`, `error`, `trip`). See Figma nodes 5247:369–5247:358.
+
+## Usage guidelines
+
+### When to use Toast
+
+- **Success confirmations** — a completed action with a clear outcome: "Saved", "Added to plan", "Payment method updated", "Passkey name changed".
+- **Neutral informational updates** — system-generated messages that don't require action.
+- **Background events** — something that happened in the background that the user should know about but doesn't need to act on: "New trip available".
+
+### When NOT to use Toast
+
+| Situation | Use instead |
+|---|---|
+| Error requiring immediate correction | Alert Dialog or inline validation |
+| High-risk or irreversible action requiring a decision | [Alert Dialog](/components/core/messaging/alert-dialog/index) |
+| Lightweight recoverable issue with a quick action (Undo / Retry) | Snackbar |
+| Task requiring multiple inputs or a form | [Standard Dialog](/components/core/messaging/standard-dialog/index) |
+| Multi-step guidance or explanations | Standard Dialog |
+| Anything requiring the user to make a decision | Alert Dialog |
+
+### Behavior
+
+- Toast appears temporarily and auto-dismisses. The Counter at the bottom reflects the remaining time.
+- Toast must not steal focus or interrupt the user's active input.
+- Include the close button when the message could distract, when the content is important enough that the user might want to re-read it, or when multiple toasts may stack.
+- Do not show more than 2–3 toasts simultaneously. Stack with controlled spacing.
+
+### Placement
+
+- Display at the top of the screen for system-message feel (confirmed in Driver App usage).
+- Do not cover primary actions or navigation controls when possible.
+- TODO: Confirm auto-dismiss duration used in the product.
+
+### Content rules
+
+- **Title:** short and factual — what happened. Max one line. Examples: "Passkey name changed", "Saved", "New trip available".
+- **Description:** optional. Up to 2 lines. One clear, specific statement. Examples: "Your Passkey name has been updated successfully!"
+- Do not use paragraphs, multi-link content, or instructions.
+- Use Utility color accents consistently across semantic types — do not repurpose type colors.
+
+## Accessibility
+
+- Toast must not trap focus. The user's current focus position must not change when a Toast appears.
+- Use `role="status"` for informational and success toasts so screen readers announce the message without interrupting the user.
+- Use `role="alert"` for error and warning toasts that carry more urgency.
+- `aria-live="polite"` for `info`, `success`, and `trip` types. `aria-live="assertive"` for `error` and `warning` types.
+- The close button must have an accessible label (e.g. `aria-label="Dismiss notification"`).
+- Auto-dismiss must respect the user's reduced-motion and accessibility settings. Provide a manual dismiss path.
+- TODO: Confirm auto-dismiss duration and whether it is extended for accessibility settings.
+
+## Do / Don't
+
+**Do:**
+- Use for success confirmations and neutral informational updates.
+- Keep the title short and factual — what happened, in one line.
+- Include the close button when toasts may stack or when the content is important enough to re-read.
+- Use semantic type consistently: `success` for completed actions, `error` only for recoverable issues, `info` for neutral updates.
+- Position at the top of the screen, clear of primary actions.
+
+**Don't:**
+- Don't use Toast for errors that require immediate correction — use Alert Dialog or inline validation.
+- Don't use Toast for anything that requires a user decision.
+- Don't use Toast as a replacement for form validation.
+- Don't write long descriptions or multi-link content.
+- Don't show more than 2–3 toasts simultaneously.
+- Don't steal or shift focus when a Toast appears.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Toast do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Toast](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5247-192)
+- Code: `./toast.tsx`
+- Specs: `./toast.specs.json`
+- Tokens: `./toast.tokens.json`
+
+### Related components
+
+- [Alert Dialog](/components/core/messaging/alert-dialog/index) — for high-risk, irreversible, or blocking interruptions that require a decision
+- [Standard Dialog](/components/core/messaging/standard-dialog/index) — for forms, multi-input tasks, and reversible flows
+- Snackbar — for lightweight, recoverable issues with quick actions such as Undo or Retry (TODO: link when documented)

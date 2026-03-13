@@ -1,0 +1,168 @@
+{
+  "component": "Month Year Picker",
+  "figmaFrameName": "Month_Year_Picker",
+  "figmaNodeId": "5129:1279",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "relatedComponents": [
+    {
+      "name": "Time Date Picker",
+      "path": "components/time-date-picker",
+      "relationship": "Shares the identical scroll depth visual system (same font sizes, opacities, tokens, dimensions)."
+    },
+    {
+      "name": "Calendar Plan Page",
+      "path": "components/calendar-plan-page",
+      "relationship": "This picker sets the month and year displayed by Calendar Plan Page."
+    }
+  ],
+
+  "subComponents": [],
+  "subComponentsNote": "No dedicated sub-components. Self-contained composite of two scroll columns.",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer surface. 375px wide, 212px tall. Background: --surface/neutral/default. No border, no border-radius.",
+      "required": true
+    },
+    {
+      "part": "selectionIndicator",
+      "description": "Horizontal stripe centred vertically, spanning the full width. 31px tall. Marks the active selection row. Image asset in Figma.",
+      "required": true,
+      "accessibility": "aria-hidden=true (decorative)"
+    },
+    {
+      "part": "columnGroup",
+      "description": "Flex row containing both columns. Centred horizontally and vertically. Gap between columns: 27px. Font: Manrope Regular.",
+      "required": true
+    },
+    {
+      "part": "monthColumn",
+      "description": "Left column (right-aligned text). Displays full month names. Always 7 fully visible items.",
+      "required": true
+    },
+    {
+      "part": "yearColumn",
+      "description": "Right column (left-aligned text). Displays 4-digit years. In type=end, positions 5–7 use opacity-0.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "end",
+      "figmaValue": "type=end",
+      "figmaNodeId": "5129:1083",
+      "description": "The most recent available year is selected. No future years are visible — year column positions 5, 6, 7 use opacity-0.",
+      "exampleYear": 2026,
+      "yearColumnPositions": {
+        "pos1": { "value": "2023", "opacity": 0.4, "fontSize": 12, "color": "--text/placeholder" },
+        "pos2": { "value": "2024", "opacity": 0.7, "fontSize": 14, "color": "--text/placeholder" },
+        "pos3": { "value": "2025", "opacity": 1.0, "fontSize": 18, "color": "--text/placeholder" },
+        "pos4": { "value": "2026", "opacity": 1.0, "fontSize": 23, "color": "--text/primary", "selected": true },
+        "pos5": { "value": null, "opacity": 0 },
+        "pos6": { "value": null, "opacity": 0 },
+        "pos7": { "value": null, "opacity": 0 }
+      }
+    },
+    {
+      "name": "middle",
+      "figmaValue": "type=middle",
+      "figmaNodeId": "5129:1280",
+      "description": "A year in the middle of the range is selected. All 7 year column positions are populated and visible.",
+      "exampleYear": 2023,
+      "yearColumnPositions": {
+        "pos1": { "value": "2020", "opacity": 0.4, "fontSize": 12, "color": "--text/placeholder" },
+        "pos2": { "value": "2021", "opacity": 0.7, "fontSize": 14, "color": "--text/placeholder" },
+        "pos3": { "value": "2022", "opacity": 1.0, "fontSize": 18, "color": "--text/placeholder" },
+        "pos4": { "value": "2023", "opacity": 1.0, "fontSize": 23, "color": "--text/primary", "selected": true },
+        "pos5": { "value": "2024", "opacity": 1.0, "fontSize": 18, "color": "--text/placeholder" },
+        "pos6": { "value": "2025", "opacity": 0.7, "fontSize": 14, "color": "--text/placeholder" },
+        "pos7": { "value": "2026", "opacity": 0.4, "fontSize": 12, "color": "--text/placeholder" }
+      }
+    }
+  ],
+
+  "scrollDepthSystem": {
+    "description": "Identical to Time Date Picker. Each column shows 7 items. The selected item is always at position 4 (centre). Size and opacity decrease symmetrically toward the edges.",
+    "sharedWith": "time-date-picker",
+    "positions": [
+      { "position": 1, "role": "furthest-above", "fontSize": 12, "opacity": 0.4, "color": "--text/placeholder" },
+      { "position": 2, "role": "near-above",     "fontSize": 14, "opacity": 0.7, "color": "--text/placeholder" },
+      { "position": 3, "role": "close-above",    "fontSize": 18, "opacity": 1.0, "color": "--text/placeholder" },
+      { "position": 4, "role": "selected",       "fontSize": 23, "opacity": 1.0, "color": "--text/primary" },
+      { "position": 5, "role": "close-below",    "fontSize": 18, "opacity": 1.0, "color": "--text/placeholder" },
+      { "position": 6, "role": "near-below",     "fontSize": 14, "opacity": 0.7, "color": "--text/placeholder" },
+      { "position": 7, "role": "furthest-below", "fontSize": 12, "opacity": 0.4, "color": "--text/placeholder" }
+    ]
+  },
+
+  "dimensions": {
+    "container": {
+      "width": 375,
+      "height": 212
+    },
+    "selectionIndicator": {
+      "height": 31,
+      "width": "100%",
+      "verticalPosition": "centred"
+    },
+    "columnGroup": {
+      "gap": 27,
+      "alignment": "centre"
+    },
+    "itemGap": 5
+  },
+
+  "columns": {
+    "month": {
+      "alignment": "right",
+      "format": "Full English month name (January … December)",
+      "itemCount": 7,
+      "exampleValues": ["September", "November", "December", "January", "February", "March", "April"]
+    },
+    "year": {
+      "alignment": "left",
+      "format": "4-digit year",
+      "itemCount": 7,
+      "boundaryBehaviour": {
+        "end": "Positions 5–7 use opacity-0 to hide future years when the most recent year is selected.",
+        "middle": "All 7 positions visible."
+      },
+      "note": "TODO: Confirm available year range and scroll boundary behaviour."
+    }
+  },
+
+  "typography": {
+    "fontFamily": "Manrope",
+    "fontWeight": "400 (Regular)",
+    "note": "Identical to Time Date Picker. All items use Regular weight regardless of selection state."
+  },
+
+  "popupContext": {
+    "containerNode": "1498:25477",
+    "triggerComponent": "Plan page Header — month/year label with dropdown chevron",
+    "headerTitle": "Month and Year",
+    "headerAction": "Close (×) button — dismisses without applying",
+    "confirmAction": "\"Confirm Date\" primary button — applies the selection",
+    "overlayBackground": "--surface/neutral/bg-overlay (rgba(0,0,0,0.6))"
+  },
+
+  "usageContext": [
+    "Placed inside the 'Month and Year' bottom-sheet popup on the Plan page.",
+    "Triggered by tapping the month/year label in the Plan page Header.",
+    "Confirms selection and updates the Calendar Plan Page to the chosen month and year.",
+    "Confirmed in Dojo Customer App: node 1498:25479."
+  ],
+
+  "notes": [
+    "The scroll depth visual system is identical to Time Date Picker — both must be updated together if the system changes.",
+    "The selection indicator is an image asset in Figma — implementation should use a CSS equivalent.",
+    "Month column is always fully visible in both variants.",
+    "Year column uses opacity-0 (not removed from DOM) for hidden boundary slots.",
+    "TODO: Confirm year range extent.",
+    "TODO: Confirm whether a type=start variant (no past years visible) is needed.",
+    "TODO: Confirm scroll boundary: hard stop vs opacity masking."
+  ]
+}

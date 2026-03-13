@@ -1,0 +1,101 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Design System",
+  "theme": "mint",
+  "colors": {
+    "primary": "#0066FF"
+  },
+  "navigation": [
+    {
+      "group": "Foundations",
+      "pages": [
+        "foundations/color",
+        "foundations/spacing",
+        "foundations/typography",
+        "foundations/radius",
+        "foundations/elevation",
+        "foundations/motion"
+      ]
+    },
+    {
+      "group": "Components",
+      "pages": [
+        {
+          "group": "Core",
+          "pages": [
+            {
+              "group": "Actions",
+              "pages": [
+                "components/core/actions/button/index",
+                "components/core/actions/button-icon/index",
+                "components/core/actions/button-floating/index",
+                "components/core/actions/button-vertical/index",
+                "components/core/actions/button-slider/index",
+                "components/core/actions/button-timer/index"
+              ]
+            },
+            {
+              "group": "Pickers",
+              "pages": [
+                "components/core/pickers/age-range-picker/index",
+                "components/core/pickers/number-picker/index",
+                "components/core/pickers/time-picker/index",
+                "components/core/pickers/time-date-picker/index",
+                "components/core/pickers/month-year-picker/index",
+                "components/core/pickers/calendar-simple/index",
+                "components/core/pickers/calendar-range/index",
+                "components/core/pickers/calendar-plan-page/index"
+              ]
+            },
+            {
+              "group": "Navigation",
+              "pages": [
+                "components/core/navigation/action-menu/index",
+                "components/core/navigation/action-menu-item/index",
+                "components/core/navigation/tabs/index"
+              ]
+            },
+            {
+              "group": "Inputs",
+              "pages": [
+                "components/core/inputs/dropdown-input/index",
+                "components/core/inputs/select-boolean/index",
+                "components/core/inputs/radio-select/index",
+                "components/core/inputs/checkbox/index",
+                "components/core/inputs/switch-toggle/index",
+                "components/core/inputs/text-input/index",
+                "components/core/inputs/text-area/index",
+                "components/core/inputs/segmented-control/index",
+                "components/core/inputs/chat-input/index"
+              ]
+            },
+            {
+              "group": "Messaging",
+              "pages": [
+                "components/core/messaging/alert-dialog/index",
+                "components/core/messaging/standard-dialog/index",
+                "components/core/messaging/toast/index",
+                "components/core/messaging/snackbar/index",
+                "components/core/messaging/tooltip/index"
+              ]
+            },
+            {
+              "group": "Indicators and States",
+              "pages": [
+                "components/core/indicators-and-states/badge/index"
+              ]
+            },
+            {
+              "group": "Content Display",
+              "pages": [
+                "components/core/content-display/avatar/index",
+                "components/core/content-display/car-image/index"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footerSocials": {}
+}

@@ -1,0 +1,142 @@
+---
+title: "Select Boolean"
+description: "A binary choice input that presents two equal-width pill buttons under a question label. Exactly one option is always selected."
+---
+
+# Select Boolean
+
+## Overview
+
+Select Boolean is a binary choice input that presents a question label and two mutually exclusive pill-shaped option buttons laid out side by side. It is used in forms where the user must answer a yes/no or equivalent two-option question. Exactly one option is always active — selecting one automatically deselects the other.
+
+It uses the same button styling tokens as the core Button component: the selected option uses the Default (filled) button style, and the unselected option uses the Secondary (transparent) button style.
+
+## Anatomy
+
+The component has two parts stacked vertically:
+
+1. **Question Label** — a short text question above the option group. Uses the same label style as other input components in this library.
+2. **Option Group** — a horizontal row of two equal-width pill buttons:
+   - **Option A** (left) — the first choice
+   - **Option B** (right) — the second choice
+
+Each option button displays:
+- **Label text** — the option name (e.g. "Yes", "No")
+- **Fill** — dark filled when selected, transparent when unselected
+
+{/* ![Select Boolean anatomy](./anatomy.png) */}
+
+## Variants
+
+No visual variants confirmed. The component has one layout and one size.
+
+The option labels are configurable — they are not fixed to "Yes / No". Any two mutually exclusive text options can be used (e.g. "Yes / No", "With / Without", "One-way / Return").
+
+TODO: Confirm whether a variant exists where the question label is hidden.
+
+{/* ![Select Boolean variants](./variants.png) */}
+
+## States
+
+The selected state alternates between the two options. There is no unselected/empty state — one option is always active.
+
+| State | Option A | Option B |
+|-------|----------|----------|
+| **Option A selected** | Filled — `--button/default/bg-default` | Transparent — `--button/secondary/bg-default` |
+| **Option B selected** | Transparent — `--button/secondary/bg-default` | Filled — `--button/default/bg-default` |
+
+TODO: Confirm whether a disabled state exists for the whole component or individual options.
+
+{/* ![Select Boolean states](./states.png) */}
+
+## Tokens & specs
+
+All values confirmed from the Figma component and Customer App usage context.
+
+### Supported variants
+
+- Single layout (question label + two-option group)
+
+### Supported sizes
+
+- **Default** — option button height is fixed at `44px`. No size variants confirmed.
+
+### Supported states
+
+- Option A selected
+- Option B selected
+
+### Token reference
+
+| Part | Token | Value |
+|------|-------|-------|
+| Question label color | `--text/body` | `#34353f` |
+| Question label font | `--font-family/body` | Manrope Medium |
+| Question label weight | `--weight/medium` | 500 |
+| Question label size | `--size/base` | 14px |
+| Question label line height | — | 1.4 |
+| Option group gap | — | `4px` |
+| Layout gap (label to group) | `--spacing-4` | `4px` |
+| **Selected button** | | |
+| Background | `--button/default/bg-default` | `#1d1d23` |
+| Border | `--button/default/border-active` | `rgba(29,29,35,0.12)` |
+| Text color | `--button/default/text-default` | `#f1f2f4` |
+| **Unselected button** | | |
+| Background | `--button/secondary/bg-default` | `rgba(29,29,35,0.05)` |
+| Border | `--button/secondary/border-active` | `rgba(29,29,35,0)` (transparent) |
+| Text color | `--button/secondary/text-default` | `#1d1d23` |
+| **Both buttons** | | |
+| Height | — | `44px` |
+| Border radius | `--rounded-full` | `120px` |
+| Border width | `--stroke-1` | `1px` |
+| Padding (horizontal) | `--spacing-12` | `12px` |
+| Min width per button | — | `120px` |
+| Width | — | `flex: 1` (equal, fills container) |
+| Option text font | `--font-family/body` | Manrope SemiBold |
+| Option text weight | `--weight/semibold` | 600 |
+| Option text size | `--size/base` | 14px |
+| Option text line height | — | 1.4 |
+
+## Usage guidelines
+
+- Use Select Boolean when the user must answer a binary question — two options, one required answer.
+- Always include the question label. It must clearly state what is being decided.
+- Do not use Select Boolean for more than two options — use a segmented control or radio group instead.
+- Do not use Select Boolean for open-ended choices where neither option should be pre-selected. If a no-default state is needed, use a different input pattern.
+- The two options must be mutually exclusive and collectively exhaustive — they must cover all valid answers to the question.
+- Keep option labels short: one or two words at most. The question label carries the context.
+- Use sentence-style capitalisation for the question label. Use title case for option labels.
+
+## Accessibility
+
+- The option group should be implemented as a `radiogroup` with each button as a `radio` input, or as a pair of toggle buttons with `aria-pressed`.
+- The question label must be associated with the group via `aria-labelledby` or `fieldset`/`legend`.
+- The currently selected option must be communicated to assistive technology (e.g. `aria-checked="true"` or `aria-pressed="true"`).
+- Both options must be reachable and operable via keyboard.
+
+TODO: Confirm the exact ARIA pattern used in the implementation.
+
+## Do / Don't
+
+**Do:**
+- Write the question label as a direct question: "Do you have accommodation?" not "Accommodation"
+- Keep option labels to 1–2 words each
+- Always pre-select the most common or safe default
+
+**Don't:**
+- Use Select Boolean for more than two options
+- Use generic option labels like "Option 1 / Option 2" — always use meaningful labels
+- Stack multiple Select Boolean components without clear visual separation between questions
+
+{/* ![Select Boolean do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — input components](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5131-1394)
+- Code: TODO
+- Specs: `./select-boolean.specs.json`
+- Tokens: `./select-boolean.tokens.json`
+
+### Related components
+
+- [Dropdown Input](/components/core/inputs/dropdown-input) — sibling input component used in the same form contexts

@@ -1,0 +1,174 @@
+---
+title: "Time Date Picker"
+description: "A drum-style scroll picker for simultaneous date and time selection. Displays four vertical columns — Date, Hour, Minute, and AM/PM — with a depth effect that emphasises the selected value."
+---
+
+# Time Date Picker
+
+## Overview
+
+Time Date Picker is a drum-style (slot-machine/iOS-style) scroll picker that allows users to select a date and time in a single interaction. It displays four vertical scroll columns — Date, Hour, Minute, and AM/PM — arranged horizontally. The selected value in each column is centred, displayed at the largest size, and uses the primary text colour. Items progressively decrease in size and opacity as they move away from the selection centre, creating a depth-of-field illusion.
+
+It is used in the Dojo Customer App on the "Choose a time" screen, where users set a pickup or drop-off time for their ride.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Time Date Picker anatomy](./anatomy.png) */}
+
+## Anatomy
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | 375×212px surface. Background: `--surface/neutral/default`. No border-radius. |
+| **Selection indicator** | Yes | 31px-tall horizontal stripe centred vertically, spanning the full width. Marks the active selection row. Decorative — `aria-hidden`. |
+| **Column group** | Yes | Flex row of four columns. Horizontally and vertically centred. Gap between columns: `27px`. |
+| **Date column** | Yes | Right-aligned. Shows abbreviated date labels (e.g., "Sat Feb 12", "Today"). |
+| **Hour column** | Yes | Centre-aligned. Shows hours 1–12. |
+| **Minute column** | Yes | Centre-aligned. Shows minutes 00–59. |
+| **AM/PM column** | Yes | Centre-aligned. Shows AM and PM only; unused slots are `opacity-0`. |
+
+### Scroll depth visual system
+
+Each column shows 7 items. The selected value is always at position 4 (centre). Font size and opacity decrease symmetrically toward the edges of each column.
+
+| Position | Role | Font size | Opacity | Text token |
+|---|---|---|---|---|
+| 1 — top | Furthest above | 12px | 40% | `--text/placeholder` |
+| 2 | Near above | 14px | 70% | `--text/placeholder` |
+| 3 | Close above | 18px | 100% | `--text/placeholder` |
+| **4 — centre** | **Selected** | **23px** | **100%** | **`--text/primary`** |
+| 5 | Close below | 18px | 100% | `--text/placeholder` |
+| 6 | Near below | 14px | 70% | `--text/placeholder` |
+| 7 — bottom | Furthest below | 12px | 40% | `--text/placeholder` |
+
+> The AM/PM column only populates 2 of the 7 slots. All other positions use `opacity: 0` to maintain consistent column height.
+
+## Variants
+
+Two variants based on the selected AM/PM period:
+
+| Variant | Figma prop value | Description |
+|---|---|---|
+| AM selected | `AM or PM=Yes` | AM at centre (pos 4). PM visible one step below (pos 5). |
+| PM selected | `AM or PM=AM or PM2` | PM at centre (pos 4). AM visible one step above (pos 3). |
+
+> The Figma prop naming (`"Yes"` / `"AM or PM2"`) is non-semantic. In implementation, use a `period` prop with `"AM"` / `"PM"` values, or drive the full picker state with a single controlled `value`.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Time Date Picker variants](./variants.png) */}
+
+## States
+
+No explicit state variants at the composite level. The visual state is entirely driven by the scroll position of each column — whichever item is at position 4 is the active selection.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Time Date Picker states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- AM selected
+- PM selected
+
+### Supported sizes
+
+Single size — no size variants.
+
+| Property | Value |
+|---|---|
+| Container width | 375px |
+| Container height | 212px |
+| Column gap | 27px |
+| Item gap (within column) | 5px |
+| Selection indicator height | 31px |
+
+### Supported states
+
+No discrete states — scroll position drives all visual changes.
+
+### Token reference
+
+**Text colors:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--text/primary` | `#1d1d23` | Selected item (position 4) |
+| `--text/placeholder` | `#636377` | All non-selected items |
+
+**Surface:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background (DS Core light theme) |
+
+**Typography:**
+
+| Property | Value |
+|---|---|
+| Font family | `--font-family/body` (Manrope) |
+| Font weight | `--weight/regular` (400) — all items |
+| Selected font size | 23px |
+| Close-neighbor font size | 18px |
+| Far-neighbor font size | 14px |
+| Furthest-neighbor font size | 12px |
+
+> All items use Regular weight. Selection is communicated by size and colour only — not by font weight.
+
+> TODO: Confirm the CSS implementation of the selection indicator stripe (border lines, background overlay, or SVG).
+
+## Usage guidelines
+
+- Use Time Date Picker when the user must select both a date and a time in a single step.
+- Always display all four columns together (Date, Hour, Minute, AM/PM). Do not present a subset.
+- In the Dojo Customer App, Time Date Picker appears below a Segmented Control that switches between "Pickup at" and "Drop-off by" modes. The picker responds to the active mode.
+- Display a text summary of the selected value directly below the picker (e.g., "4:45 pm CDT dropoff time" and estimated travel time).
+- Pair with a primary action button ("Next") below the summary to confirm the selection.
+- Use the label "Today" in the Date column for the current day instead of the full date string.
+
+## Page composition
+
+Confirmed structure from Dojo Customer App (Figma node `651:2564`, "Choose a time" screen):
+
+| Layer | Component | Responsibility |
+|---|---|---|
+| 1 | System bar | Status bar |
+| 2 | Header | Back navigation · "Choose a time" title |
+| 3 | Segmented Control | Switches between "Pickup at" and "Drop-off by" |
+| 4 | **Time Date Picker** | Date and time selection |
+| 5 | Time summary | Selected time label + estimated ride duration |
+| 6 | Terms notice | Estimated time disclaimer + "See terms" link |
+| 7 | Action button | "Next" — confirms the selection |
+
+## Accessibility
+
+- Each column should be a scrollable region with an accessible role (e.g., `role="listbox"` with each item as `role="option"`).
+- The selected item in each column must be identified (e.g., `aria-selected="true"`).
+- Provide an accessible label for each column: `aria-label="Date"`, `aria-label="Hour"`, `aria-label="Minute"`, `aria-label="AM or PM"`.
+- The selection indicator stripe is decorative — mark it `aria-hidden="true"`.
+- TODO: Confirm keyboard interaction (Up/Down arrows to scroll columns, Tab to move between columns).
+- TODO: Confirm whether a native `<input type="time">` or `<input type="datetime-local">` should be provided as an accessible fallback.
+
+## Do / Don't
+
+**Do:**
+- Use this component when both date and time selection are required in one step.
+- Show "Today" in the Date column for the current date.
+- Display a readable summary of the selected value beneath the picker.
+- Always show the AM/PM column when using the 12-hour time format.
+
+**Don't:**
+- Don't use this component for date-only or time-only inputs.
+- Don't remove the AM/PM column unless a confirmed 24-hour clock variant is available.
+- Don't present this component without a confirmation action (button) nearby.
+- Don't allow free-text input to supplement or replace the scroll columns.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Time Date Picker do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Time Date Picker component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5121-1330)
+- Figma usage — Dojo Customer App: [Choose a time screen](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=651-2564)
+- Code: `./time-date-picker.tsx`
+- Specs: `./time-date-picker.specs.json`
+- Tokens: `./time-date-picker.tokens.json`

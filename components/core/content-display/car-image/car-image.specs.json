@@ -1,0 +1,94 @@
+{
+  "component": "Car Image",
+  "figmaNodeId": "5106:639",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "description": "A vehicle illustration component. Pure asset container — no tokens, no interactive states, no sub-components.",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Fixed-size wrapper. No background, no border, no shadow. Dimensions depend on context.",
+      "required": true
+    },
+    {
+      "part": "vehicleIllustration",
+      "description": "Static image asset rendered with object-cover. Asset name and aspect ratio depend on type and context.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "type": "default",
+      "context": "UI",
+      "figmaNodeId": "5106:635",
+      "dimensions": { "width": 51.65, "height": 33 },
+      "imageAsset": "taxi-v_diagonal 1",
+      "imageNodeId": "7449:5029",
+      "aspectRatio": "232:152",
+      "description": "Standard car, diagonal view. Use in ride selection list rows."
+    },
+    {
+      "type": "default",
+      "context": "Map",
+      "figmaNodeId": "7449:5038",
+      "dimensions": { "width": 40, "height": 41 },
+      "imageAsset": "taxi-v_top 1",
+      "imageNodeId": "7449:5044",
+      "aspectRatio": "112:176",
+      "description": "Standard car, top-down view. Use as a map vehicle marker."
+    },
+    {
+      "type": "van",
+      "context": "UI",
+      "figmaNodeId": "5106:638",
+      "dimensions": { "width": 51.65, "height": 33 },
+      "imageAsset": "black_van-v_diagonal 1",
+      "imageNodeId": "7449:5032",
+      "aspectRatio": "268:212",
+      "description": "Van, diagonal view. Use in ride selection list rows."
+    },
+    {
+      "type": "van",
+      "context": "Map",
+      "figmaNodeId": "7449:5040",
+      "dimensions": { "width": 40, "height": 41 },
+      "imageAsset": "black_van-v_top 1",
+      "imageNodeId": "7449:5042",
+      "aspectRatio": "116:216",
+      "description": "Van, top-down view. Use as a map vehicle marker."
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Static",
+      "description": "Single rendering state. No hover, pressed, focus, or disabled states."
+    }
+  ],
+
+  "tokens": "none",
+
+  "contextUsage": {
+    "UI": "In-app lists, ride selection rows, option cards. Paired with vehicle type name, capacity, ETA, and price.",
+    "Map": "Live map overlays. Represents vehicle position and orientation."
+  },
+
+  "accessibility": {
+    "altTextWithLabel": "Set alt=\"\" (decorative) when a visible vehicle type label is present.",
+    "altTextWithoutLabel": "Set descriptive alt, e.g. \"Standard car\" or \"Van\".",
+    "note": "TODO: Confirm product-standard alt text convention for vehicle images."
+  },
+
+  "relatedComponents": [],
+
+  "notes": [
+    "No design tokens. Pure image container.",
+    "Confirmed real-world usage: Type=default, Context=UI in ride option rows on Customer App home screen (node 3073:7464).",
+    "Customer App has a local variant (node 3094:10467) with a different/colourful image asset. Relationship to DS Core asset unclear.",
+    "TODO: Confirm whether additional vehicle types beyond 'default' and 'van' are planned.",
+    "TODO: Confirm production image format (SVG, PNG, WebP).",
+    "TODO: Confirm alt text convention for map context."
+  ]
+}

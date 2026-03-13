@@ -1,0 +1,216 @@
+---
+title: "Tooltip"
+description: "A contextual, non-blocking overlay that surfaces a short explanatory message near a UI element. Supports five arrow positions and a no-arrow variant with a title."
+---
+
+# Tooltip
+
+## Overview
+
+Tooltip is a small, dark-background overlay used to surface a brief contextual message near a specific UI element. It is non-blocking, does not require user interaction to appear, and includes an optional directional arrow that points toward the element it describes.
+
+Tooltips are passive — they inform without interrupting. They are not used for decisions, errors, or confirmations. For those situations, use Alert Dialog, Snackbar, or Toast.
+
+## Anatomy
+
+Tooltip has two structural sub-types depending on the `arrow_position` value:
+
+### Arrow variants (`right`, `left`, `top`, `bottom`)
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Dark rounded pill. Carries the background, padding, and border-radius. |
+| **Message text** | Yes | Single body text. 14px Manrope Medium, line-height 1.4. Max-width 240px. |
+| **Close icon** | Yes | 24×24px `Customer-Icon/x-close-delete`. Allows the user to dismiss the tooltip. |
+| **Arrow** | Yes | 24×12px directional triangle (Polygon). Rotated to point in the configured direction. |
+
+### No-arrow variant (`no_arrow`)
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Dark rounded pill. Same background and border-radius as arrow variants. |
+| **Title** | Yes | 14px Manrope Bold, line-height 1.2. |
+| **Body text** | Yes | 14px Manrope Regular, line-height 1.2. |
+
+The `no_arrow` variant has no close icon and no arrow. It uses a two-level text structure (title + body) instead of a single message string.
+
+{/* TODO: Add anatomy.png from Figma once annotation frame is available. */}
+{/* ![Tooltip anatomy](./anatomy.png) */}
+
+## Variants
+
+Tooltip has a single variant dimension: `arrow_position`. This controls both the visual direction of the arrow and the layout direction of the component.
+
+| Variant | Arrow direction | Layout | Container width | Container height |
+|---|---|---|---|---|
+| `right` | Points right → | Row (container + arrow to the right) | 316px total | 56px |
+| `left` | Points left ← | Row (arrow to the left + container) | 316px total | 56px |
+| `bottom` | Points down ↓ | Column (container above + arrow below) | 305px | 68px total |
+| `top` | Points up ↑ | Column (arrow above + container below) | 305px | 68px total |
+| `no_arrow` | None | Column (title + body, no arrow) | 304px | 69px |
+
+The arrow is a 24×12px polygon rotated to match the direction:
+- `right`: 90° rotation
+- `bottom`: 180° rotation
+- `left`: 270° rotation
+- `top`: 0° (no rotation)
+
+{/* ![Tooltip variants](./variants.png) */}
+
+## States
+
+Tooltip has no interactive states on its container or text. It renders in a single visible state. The close icon follows the Button/only icon state spec (default, hover, pressed, focus) where applicable.
+
+| State | Description |
+|---|---|
+| `Visible` | Tooltip is mounted and shown near its target element. |
+| `Dismissed` | Tooltip is unmounted or hidden. Triggered by close icon press or programmatic control. |
+
+{/* ![Tooltip states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `arrow_position=right`
+- `arrow_position=left`
+- `arrow_position=bottom`
+- `arrow_position=top`
+- `arrow_position=no_arrow`
+
+### Supported sizes
+
+Fixed dimensions per variant — see Variants table above. No size scale.
+
+### Supported states
+
+- `Visible`
+- `Dismissed`
+
+### Token reference
+
+| Part | Token | Value |
+|---|---|---|
+| **Container** | | |
+| Background | `--surface/neutral/invert` | `#1d1d23` |
+| Border radius | `--rounded-16` | `16px` |
+| Padding X | `--spacing-12` | `12px` |
+| Padding Y | `--spacing-8` | `8px` |
+| Gap (text → close icon) | `--spacing-16` | `16px` |
+| Gap (title → body, `no_arrow`) | `--spacing-2` | `2px` |
+| **Message text (arrow variants)** | | |
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/medium` | `500` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.4` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+| Color | `--text/invert` | `#f1f2f4` |
+| Max-width | — | `240px` |
+| **Title (`no_arrow`)** | | |
+| Font weight | `--weight/bold` | `700` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Color | `--text/invert` | `#f1f2f4` |
+| **Body text (`no_arrow`)** | | |
+| Font weight | `--weight/regular` | `400` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Color | `--text/invert` | `#f1f2f4` |
+| **Arrow** | | |
+| Width | — | `24px` |
+| Height | — | `12px` |
+| Color | — | `#1d1d23` (matches container background) |
+| **Close icon** | | |
+| Size | — | `24×24px` |
+| Icon | `Customer-Icon/x-close-delete` | — |
+
+## Usage guidelines
+
+### When to use Tooltip
+
+- **Contextual explanation** — brief clarification of what a UI element does or why something is happening, surfaced near that element.
+- **Passive in-context guidance** — informing the user of a background system state (e.g. "Sharing live location with your driver to help them find you").
+- **Non-blocking education** — short guidance that does not require the user to stop or respond.
+
+### When NOT to use Tooltip
+
+| Situation | Use instead |
+|---|---|
+| Requires a decision from the user | [Alert Dialog](/components/core/messaging/alert-dialog/index) |
+| Confirms something happened | [Toast](/components/core/messaging/toast/index) |
+| Recoverable issue with a quick action | [Snackbar](/components/core/messaging/snackbar/index) |
+| Long explanation or multi-line guidance | Inline text or [Standard Dialog](/components/core/messaging/standard-dialog/index) |
+| Persistent informational label | Inline label or annotation |
+
+### Choosing arrow position
+
+- Use `right` when the tooltip appears to the left of its target element and the arrow points toward it on the right.
+- Use `left` when the tooltip appears to the right of its target and the arrow points left.
+- Use `bottom` when the tooltip appears above its target and the arrow points downward.
+- Use `top` when the tooltip appears below its target and the arrow points upward.
+- Use `no_arrow` when the tooltip is not anchored to a specific element or when positional context is provided by placement alone.
+
+The arrow must always point toward the element the tooltip is describing.
+
+### Placement
+
+- Position the tooltip so the arrow points directly at the triggering element.
+- Do not cover the element the tooltip is explaining.
+- Do not place tooltips where they overlap primary actions or block critical content.
+- TODO: Confirm whether tooltip positioning is managed by a placement library (e.g. Floating UI, Popper) in the product.
+
+### Dismiss behavior
+
+- Arrow variants include a close icon. The user can dismiss by tapping it.
+- The `no_arrow` variant has no close icon. Dismiss behavior is programmatic (timeout or trigger deactivation).
+- TODO: Confirm whether tooltips auto-dismiss after a timeout in the product implementation.
+
+### Content rules
+
+- **Arrow variants:** one message string. Keep it to 1–2 lines. No titles, no headings.
+- **`no_arrow`:** short bold title + brief body. Both are required.
+- Do not use inline links, bullet lists, or multi-paragraph content.
+- Keep messages factual and specific to the element being described.
+
+## Accessibility
+
+- Tooltip content must be accessible to screen readers. Use `role="tooltip"` on the container.
+- The triggering element must reference the tooltip via `aria-describedby` pointing to the tooltip's `id`.
+- The close button must have an accessible label: `aria-label="Dismiss"` or equivalent.
+- Tooltip must not be the only means of conveying critical information — it is supplementary.
+- Tooltip must be dismissible without requiring a pointer (keyboard or touch).
+- TODO: Confirm keyboard trigger and dismiss behavior (e.g. Escape to close, focus-triggered appearance).
+- TODO: Confirm whether tooltips are shown on hover only, on tap, or programmatically in the mobile product.
+
+## Do / Don't
+
+**Do:**
+- Use for brief contextual explanation near a specific UI element.
+- Choose arrow position so the arrow points directly at the element being described.
+- Keep message text to 1–2 lines.
+- Use `no_arrow` when the tooltip is not anchored to a specific point.
+- Always provide a dismiss path (close icon for arrow variants).
+
+**Don't:**
+- Don't use for decisions, errors, or confirmations — use Alert Dialog, Snackbar, or Toast.
+- Don't write multi-line explanations or instructions — keep it short.
+- Don't cover the element the tooltip is describing.
+- Don't use inline links or actions inside the tooltip text.
+- Don't show multiple tooltips simultaneously.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Tooltip do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Tooltip](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5276-108)
+- Code: `./tooltip.tsx`
+- Specs: `./tooltip.specs.json`
+- Tokens: `./tooltip.tokens.json`
+
+### Related components
+
+- [Alert Dialog](/components/core/messaging/alert-dialog/index) — for decisions and high-stakes interruptions
+- [Toast](/components/core/messaging/toast/index) — for passive success or informational confirmations
+- [Snackbar](/components/core/messaging/snackbar/index) — for recoverable issues with a quick action
+- [Standard Dialog](/components/core/messaging/standard-dialog/index) — for forms and multi-step flows

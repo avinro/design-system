@@ -1,0 +1,112 @@
+{
+  "component": "Standard Dialog",
+  "figmaNodeId": "7314:623",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "overlay",
+      "description": "Semi-transparent full-screen backdrop. Blocks interaction with content behind the dialog.",
+      "required": true
+    },
+    {
+      "part": "dialogPanel",
+      "description": "Rounded container that holds all dialog content. Anchored or centered depending on type.",
+      "required": true
+    },
+    {
+      "part": "header",
+      "description": "Contains the dialog title and an optional close icon.",
+      "required": true
+    },
+    {
+      "part": "contentArea",
+      "description": "Scrollable region for forms, fields, instructions, or structured content.",
+      "required": true
+    },
+    {
+      "part": "footer",
+      "description": "Action row at the bottom of the panel. Holds one or two buttons.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Compact",
+      "figmaNodeId": "7314:624",
+      "description": "Partial-screen panel. Use for short forms, single-field inputs, and tasks that fit in limited vertical space.",
+      "dimensions": { "width": 390, "height": 843 }
+    },
+    {
+      "name": "Full page",
+      "figmaNodeId": "7314:634",
+      "description": "Full or near-full-screen panel. Use for longer forms, multi-step flows, and tasks requiring more vertical space.",
+      "dimensions": { "width": 390, "height": 843 }
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "TODO",
+      "note": "TODO: Confirm whether fixed size values are defined per type, or whether dimensions are content-driven."
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Open",
+      "description": "Dialog panel and overlay are mounted and visible."
+    },
+    {
+      "name": "Closed",
+      "description": "Dialog panel and overlay are unmounted or hidden."
+    }
+  ],
+
+  "actions": {
+    "min": 1,
+    "max": 2,
+    "primaryAction": "Completes the task. Example: Save, Apply, Confirm.",
+    "secondaryAction": "Dismisses or cancels. Example: Cancel, Go back.",
+    "note": "Never add more than two actions. Always provide a way to dismiss."
+  },
+
+  "dismissBehavior": {
+    "closeIcon": "TODO: Confirm presence in header.",
+    "overlayTap": "TODO: Confirm whether tapping the overlay dismisses the dialog.",
+    "escapeKey": "TODO: Confirm Escape key behavior.",
+    "cancelButton": "Recommended. Always provide a dismiss path for reversible tasks."
+  },
+
+  "relatedComponents": [
+    {
+      "name": "Alert Dialog",
+      "path": "components/core/messaging/alert-dialog/index",
+      "when": "High-risk, irreversible, or blocking interruptions."
+    },
+    {
+      "name": "Button",
+      "path": "components/core/actions/button/index",
+      "when": "Action buttons in the dialog footer follow the Button component spec."
+    },
+    {
+      "name": "Toast",
+      "path": "TODO",
+      "when": "Routine, non-blocking success confirmations."
+    },
+    {
+      "name": "Snackbar",
+      "path": "TODO",
+      "when": "Lightweight recoverable issues with quick actions (Undo / Retry)."
+    }
+  ],
+
+  "notes": [
+    "Figma variants are named 'Type=Compact' and 'Type=Full page'.",
+    "TODO: Extract full token values from nodes 7314:624 and 7314:634.",
+    "TODO: Confirm whether the Compact type has a fixed height or is content-driven.",
+    "TODO: Confirm whether a scroll indicator is shown when content overflows.",
+    "TODO: Confirm whether the dialog footer uses Button component instances or local button styles."
+  ]
+}

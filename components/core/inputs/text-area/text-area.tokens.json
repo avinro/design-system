@@ -1,0 +1,136 @@
+{
+  "component": "TextArea",
+  "tokens": {
+    "field": {
+      "background": {
+        "default": {
+          "token": "var(--input/bg-default)",
+          "lightValue": "#e4e5ed",
+          "darkValue": "#34353f",
+          "description": "Field background in all interactive states except disabled"
+        },
+        "disabled": {
+          "token": "var(--input/bg-disabled)",
+          "lightValue": "#f1f2f4",
+          "description": "Field background in the blocked (disabled) state"
+        }
+      },
+      "border": {
+        "default": {
+          "token": "var(--input/border-default)",
+          "lightValue": "#cccdda",
+          "darkValue": "#4b4c5b",
+          "width": "1px"
+        },
+        "active": {
+          "token": "var(--input/border-active)",
+          "lightValue": "#1d1d23",
+          "width": "1.5px",
+          "description": "Border color in Focus state"
+        },
+        "error": {
+          "token": "var(--input/border-error)",
+          "lightValue": "#c22",
+          "width": "1.5px"
+        },
+        "success": {
+          "token": "var(--input/border-success)",
+          "lightValue": "#26a628",
+          "width": "1px"
+        }
+      },
+      "height": "flexible",
+      "borderRadius": {
+        "token": "var(--spacing-12)",
+        "value": "12px",
+        "description": "Rectangular corners — not pill shaped"
+      },
+      "paddingHorizontal": {
+        "token": "var(--spacing-12)",
+        "value": "12px"
+      },
+      "paddingVertical": {
+        "token": "var(--spacing-8)",
+        "value": "8px"
+      },
+      "internalGap": "8px"
+    },
+    "text": {
+      "placeholder": {
+        "token": "var(--input/text-placeholder)",
+        "lightValue": "#636377",
+        "darkValue": "#a3a3bc"
+      },
+      "inputValue": {
+        "token": "var(--input/text-input)",
+        "lightValue": "#1d1d23",
+        "description": "Text color when field has a value"
+      },
+      "disabled": {
+        "token": "var(--element/text-muted)",
+        "lightValue": "#929fb1",
+        "description": "Text color in blocked (disabled) state. Note: uses --element/text-muted, not --input/text-disabled."
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Regular",
+      "fontWeight": "var(--weight/regular)",
+      "fontWeightValue": "400",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "var(--letter-spacing/normal)"
+    },
+    "label": {
+      "textColor": {
+        "token": "var(--text/primary)",
+        "lightValue": "#1d1d23",
+        "darkValue": "#f1f2f4"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Medium",
+      "fontWeight": "var(--weight/medium)",
+      "fontWeightValue": "500",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.2",
+      "helpIconSize": "20px",
+      "helperLinkColor": {
+        "token": "var(--button/link/text-default)",
+        "value": "#1d1d23"
+      },
+      "descriptionColor": {
+        "token": "var(--text/placeholder)",
+        "lightValue": "#636377"
+      },
+      "internalGap": "4px"
+    },
+    "feedbackText": {
+      "info": {
+        "token": "var(--text/placeholder)",
+        "lightValue": "#636377"
+      },
+      "error": {
+        "token": "var(--notification/error-text)",
+        "lightValue": "#a43636"
+      },
+      "success": {
+        "token": "var(--notification/success-text)",
+        "lightValue": "#176719"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Medium",
+      "fontWeight": "var(--weight/medium)",
+      "fontWeightValue": "500",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.2"
+    },
+    "layout": {
+      "gapBetweenSubComponents": {
+        "token": "var(--spacing-4)",
+        "value": "4px",
+        "description": "Vertical gap between label, field, and feedback text (DS Core definition). Note: some app-level layouts may apply --spacing-8 (8px) at the container level."
+      }
+    }
+  }
+}

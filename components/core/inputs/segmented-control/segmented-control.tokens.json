@@ -1,0 +1,104 @@
+{
+  "_note": "Token values confirmed from Figma get_design_context on nodes 5001:2010 (Navs-2), 5001:2006 (Active item), 5001:2003 (Inactive item). Customer App usage context: node 3073:7545.",
+
+  "track": {
+    "--segmented-control/bg": {
+      "value_ds_core": "#1d1d23",
+      "value_customer_app": "rgba(29, 29, 35, 0.05)",
+      "description": "Track background color. DS Core uses a dark opaque fill; Customer App uses a light semi-transparent fill. Token name alignment needed."
+    },
+    "--rounded-full": {
+      "value": "120px",
+      "description": "Track border-radius"
+    },
+    "padding": {
+      "value": "2px",
+      "description": "Track inner padding (all sides)"
+    },
+    "gap": {
+      "value": "2px",
+      "description": "Gap between segmented items"
+    },
+    "width_ds_core": {
+      "value": "328px",
+      "description": "Fixed width in DS Core. Customer App renders the control at full container width."
+    },
+    "height": {
+      "value": "40px",
+      "description": "Track total height"
+    }
+  },
+
+  "itemActive": {
+    "--segmented-control/item/bg-active": {
+      "value": "#f1f2f4",
+      "description": "Active item background"
+    },
+    "--segmented-control/item/border-active": {
+      "value": "#f1f2f4",
+      "description": "Active item border color"
+    },
+    "borderWidth": {
+      "value": "1px",
+      "description": "Active item border width"
+    },
+    "shadow": {
+      "value": "0px 0px 2px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.08)",
+      "description": "Active item drop shadow (elevation ~4dp)"
+    },
+    "borderRadius": {
+      "value": "6px",
+      "description": "Active item border-radius"
+    },
+    "height": {
+      "value": "36px",
+      "description": "Active item height (track height minus 2×2px padding)"
+    },
+    "--segmented-control/item/text-active": {
+      "value": "#1d1d23",
+      "description": "Active item label text color"
+    }
+  },
+
+  "itemInactive": {
+    "background": {
+      "value": "none",
+      "description": "Inactive item has no background"
+    },
+    "border": {
+      "value": "none",
+      "description": "Inactive item has no border"
+    },
+    "shadow": {
+      "value": "none",
+      "description": "Inactive item has no shadow"
+    },
+    "--segmented-control/item/text-inactive": {
+      "value": "#4b4c5b",
+      "description": "Inactive item label text color"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "value": "'Inter', sans-serif",
+      "description": "Label font family. Note: Inter — distinct from Manrope used in other Core components."
+    },
+    "--weight/medium": {
+      "value": "500",
+      "description": "Label font weight"
+    },
+    "fontSize": {
+      "value": "15px",
+      "description": "Label font size"
+    },
+    "textAlign": {
+      "value": "center",
+      "description": "Label text alignment"
+    },
+    "whiteSpace": {
+      "value": "nowrap",
+      "description": "Labels do not wrap"
+    }
+  }
+}

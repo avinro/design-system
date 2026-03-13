@@ -1,0 +1,180 @@
+---
+title: "Number Picker"
+description: "A drum-style scroll picker for selecting a single numeric value. Displays one center-aligned column inside a bottom-sheet popup, allowing users to pick a quantity or capacity (e.g., number of passengers)."
+---
+
+# Number Picker
+
+## Overview
+
+Number Picker is a drum-style (slot-machine/iOS-style) scroll picker for selecting a single numeric value. It displays one vertically scrolling column — center-aligned — using the same scroll depth visual system as [Time Date Picker](/components/time-date-picker) and [Month Year Picker](/components/month-year-picker).
+
+It is used inside bottom-sheet popups when a user needs to pick a quantity or capacity (e.g., number of passengers). The popup is triggered by a select control in the host form. Confirming the selection applies the chosen value.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Number Picker anatomy](./anatomy.png) */}
+
+## Anatomy
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | 375×212px surface. Background: `--surface/neutral/default`. No border-radius. |
+| **Selection indicator** | Yes | 31px-tall horizontal stripe centred vertically, full width. Marks the active selection row. Decorative — `aria-hidden`. |
+| **Value column** | Yes | Single center-aligned column. 7 items always present. Start-of-range positions use transparent text in `type=end` and `type=travelers`. |
+
+### Scroll depth visual system
+
+Identical to [Time Date Picker](/components/time-date-picker) and [Month Year Picker](/components/month-year-picker). The column shows 7 items; the selected value is always at position 4 (centre).
+
+| Position | Role | Font size | Opacity | Text token |
+|---|---|---|---|---|
+| 1 — top | Furthest above | 12px | 40% | `--text/placeholder` |
+| 2 | Near above | 14px | 70% | `--text/placeholder` |
+| 3 | Close above | 18px | 100% | `--text/placeholder` |
+| **4 — centre** | **Selected** | **23px** | **100%** | **`--text/primary`** |
+| 5 | Close below | 18px | 100% | `--text/placeholder` |
+| 6 | Near below | 14px | 70% | `--text/placeholder` |
+| 7 — bottom | Furthest below | 12px | 40% | `--text/placeholder` |
+
+> In `type=end` and `type=travelers`, positions 1–3 use `text-[transparent]` to mask out-of-range slots at the start of the range. Values remain in the DOM but are invisible.
+
+## Variants
+
+Three variants defined by the `type` prop, representing the boundary condition of the value column:
+
+| Variant | Prop value | Description |
+|---|---|---|
+| End | `end` | The minimum available value is selected. Positions 1–3 (above the selection) use `text-[transparent]` to hide out-of-range slots. |
+| Middle | `middle` | A value mid-range is selected. All 7 column positions are populated and visible. |
+| Travelers | `travelers` | Like `end`, but the minimum value is displayed as `"Only me"` instead of a number. Positions 1–3 use `text-[transparent]`. |
+
+> Use `type=end` when the selected value is at the minimum boundary of the available range. Use `type=middle` for any value within range. Use `type=travelers` when the first selectable option is a non-numeric label (e.g., "Only me" for a solo traveler).
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Number Picker variants](./variants.png) */}
+
+## States
+
+No discrete states. Visual state is entirely driven by the scroll position of the column.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Number Picker states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `end` — minimum value selected; positions 1–3 masked with transparent text
+- `middle` — mid-range value selected; all positions visible
+- `travelers` — minimum is "Only me"; positions 1–3 masked
+
+### Supported sizes
+
+Single size — no size variants.
+
+| Property | Value |
+|---|---|
+| Container width | 375px |
+| Container height | 212px |
+| Item gap (within column) | 5px |
+| Selection indicator height | 31px |
+
+### Supported states
+
+No discrete states — scroll position drives all visual changes.
+
+### Token reference
+
+**Text colors:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--text/primary` | `#1d1d23` | Selected item (position 4) |
+| `--text/placeholder` | `#636377` | All non-selected items |
+
+**Surface:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background (DS Core light theme) |
+
+**Typography:**
+
+| Property | Value |
+|---|---|
+| Font family | `--font-family/body` (Manrope) |
+| Font weight | `--weight/regular` (400) — all items |
+| Selected font size | 23px |
+| Close-neighbor font size | 18px |
+| Far-neighbor font size | 14px |
+| Furthest-neighbor font size | 12px |
+
+> All items use Regular weight. Selection is communicated by size and colour only.
+
+> TODO: Confirm CSS implementation of the selection indicator stripe.
+
+## Usage guidelines
+
+- Use Number Picker only inside a bottom-sheet popup. Do not use it as a standalone picker or embed it directly in a page.
+- Always pair the picker with a confirm action button. The selection must not be applied until the user explicitly confirms.
+- Always include a **close button** (×) in the popup header to allow dismissal without applying changes.
+- Use `type=end` when the selected value is at the minimum of the available range.
+- Use `type=middle` when the selected value is within the middle of the range.
+- Use `type=travelers` when the minimum selectable option is a non-numeric label (e.g., "Only me").
+
+## Page composition
+
+Confirmed structure from Dojo Driver App (node `2899:9020`, "Select Passenger Capacity" popup):
+
+| Layer | Component | Responsibility |
+|---|---|---|
+| 1 | Overlay | Semi-transparent backdrop covering the host screen |
+| 2 | Popup container | Bottom-sheet panel, rounded top corners |
+| 3 | Popup Header | Close (×) icon · popup title (e.g., "Select Passenger Capacity") |
+| 4 | **Number Picker** | Quantity or capacity selection |
+| 5 | Action area | Confirm button (e.g., "Confirm Vehicle Type") — applies the selection |
+
+> The popup overlays the host screen. The underlying form remains visible beneath the overlay.
+
+## Accessibility
+
+- The column must have a scrollable region with `role="listbox"` and `role="option"` per item.
+- Provide an accessible label for the column matching the popup context (e.g., `aria-label="Passenger capacity"`).
+- The selected item must carry `aria-selected="true"`.
+- The selection indicator is decorative — mark it `aria-hidden="true"`.
+- The popup must have `role="dialog"` and `aria-labelledby` pointing to the popup heading.
+- The close button must have `aria-label="Close"` or equivalent.
+- TODO: Confirm keyboard interaction (Up/Down arrows to scroll the column, Tab to reach the confirm button).
+- TODO: Confirm focus management on popup open and close.
+
+## Do / Don't
+
+**Do:**
+- Use `type=end` or `type=travelers` when the selected value is at the minimum boundary.
+- Pair with a confirm action button — do not apply the selection on scroll stop alone.
+- Provide a close button to allow dismissal without changes.
+- Use `type=travelers` when the first option is a non-numeric label such as "Only me".
+
+**Don't:**
+- Don't use this component outside of a popup context.
+- Don't apply the selection automatically on scroll — wait for explicit confirmation.
+- Don't show values below the defined lower boundary.
+- Don't use `type=end` when the minimum is a non-numeric label — use `type=travelers` instead.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Number Picker do and don't](./do-dont.png) */}
+
+## Related components
+
+- **[Time Date Picker](/components/time-date-picker)** — shares the identical scroll depth visual system.
+- **[Month Year Picker](/components/month-year-picker)** — shares the identical scroll depth visual system.
+
+> Any changes to the shared scroll depth system must be applied to all three components.
+
+## Resources
+
+- Figma: [Number Picker component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5132-396)
+- Figma usage — Dojo Driver App: [Vehicle details screen with "Select Passenger Capacity" popup](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=2899-9020)
+- Code: `./number-picker.tsx`
+- Specs: `./number-picker.specs.json`
+- Tokens: `./number-picker.tokens.json`

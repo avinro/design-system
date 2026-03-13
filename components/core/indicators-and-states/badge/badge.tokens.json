@@ -1,0 +1,131 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 5050:816). Six types: error, info, Success, Warning, default, outlined.",
+
+  "types": {
+    "error": {
+      "background": {
+        "token": "--notification/error-bg",
+        "value": "#fcdcdc",
+        "description": "Background fill for the error type."
+      },
+      "text": {
+        "token": "--notification/error-text",
+        "value": "#a43636",
+        "description": "Text color for the error type."
+      }
+    },
+    "info": {
+      "background": {
+        "token": "--notification/info-bg",
+        "value": "#d4e3ff",
+        "description": "Background fill for the info type."
+      },
+      "text": {
+        "token": "--notification/info-text",
+        "value": "#1a4dac",
+        "description": "Text color for the info type."
+      }
+    },
+    "Success": {
+      "background": {
+        "token": "--notification/success-bg",
+        "value": "#d5f4d6",
+        "description": "Background fill for the Success type."
+      },
+      "text": {
+        "token": "--notification/success-text",
+        "value": "#176719",
+        "description": "Text color for the Success type."
+      }
+    },
+    "Warning": {
+      "background": {
+        "token": "--notification/warning--bg",
+        "value": "#f6e3a4",
+        "description": "Background fill for the Warning type. Note: token name uses a double dash (warning--bg) — this is the confirmed Figma token name."
+      },
+      "text": {
+        "token": "--notification/warning-text",
+        "value": "#775c01",
+        "description": "Text color for the Warning type."
+      }
+    },
+    "default": {
+      "background": {
+        "token": "--badge/default/bg",
+        "value": "#e4e5ed",
+        "description": "Background fill for the default (neutral) type."
+      },
+      "text": {
+        "token": "--badge/default/text",
+        "value": "#34353f",
+        "description": "Text color for the default type. Also used for the outlined type."
+      }
+    },
+    "outlined": {
+      "background": {
+        "value": "none",
+        "description": "No background fill for the outlined type."
+      },
+      "border": {
+        "token": "--badge/outlined/border",
+        "value": "#cccdda",
+        "description": "1px solid border for the outlined type."
+      },
+      "text": {
+        "token": "--badge/default/text",
+        "value": "#34353f",
+        "description": "Text color for the outlined type. Shares the default text token."
+      }
+    }
+  },
+
+  "container": {
+    "borderRadius": {
+      "value": "9999px",
+      "description": "Full pill shape. Applied to all types."
+    },
+    "paddingHorizontal": {
+      "token": "--spacing-8",
+      "value": "8px",
+      "description": "Left and right padding."
+    },
+    "paddingVertical": {
+      "token": "--spacing-4",
+      "value": "4px",
+      "description": "Top and bottom padding."
+    }
+  },
+
+  "label": {
+    "textStyle": "Body xs/SemiBold",
+    "fontFamily": {
+      "token": "--font-family/body",
+      "value": "'Manrope', sans-serif",
+      "description": "Label font family."
+    },
+    "fontWeight": {
+      "token": "--weight/semibold",
+      "value": "600",
+      "description": "Label font weight."
+    },
+    "fontSize": {
+      "token": "--size/xs",
+      "value": "12px",
+      "description": "Label font size."
+    },
+    "lineHeight": {
+      "value": "1.2",
+      "description": "Label line height."
+    },
+    "letterSpacing": {
+      "token": "--letter-spacing/normal",
+      "value": "0px",
+      "description": "Label letter spacing."
+    },
+    "whitespace": {
+      "value": "nowrap",
+      "description": "Label does not wrap. Keep text short."
+    }
+  }
+}

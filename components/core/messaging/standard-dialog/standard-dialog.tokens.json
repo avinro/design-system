@@ -1,0 +1,35 @@
+{
+  "_note": "Token values for Standard Dialog. To be extracted from Figma nodes 7314:624 (Compact) and 7314:634 (Full page). All values are TODO until confirmed.",
+
+  "overlay": {
+    "--surface/neutral/overlay": { "value": "TODO", "description": "Backdrop background color" }
+  },
+
+  "dialogPanel": {
+    "--dialog/bg": { "value": "TODO", "description": "Dialog panel background color" },
+    "--dialog/border-radius": { "value": "TODO", "description": "Panel corner radius" },
+    "--dialog/padding": { "value": "TODO", "description": "Internal panel padding" }
+  },
+
+  "header": {
+    "--font-family/headings": { "value": "TODO", "description": "Title font family" },
+    "--weight/semibold": { "value": "600", "description": "Title font weight" },
+    "--dialog/title-size": { "value": "TODO", "description": "Title font size" },
+    "--text/primary": { "value": "TODO", "description": "Title text color" }
+  },
+
+  "contentArea": {
+    "--dialog/content-gap": { "value": "TODO", "description": "Gap between content elements" },
+    "--dialog/content-padding": { "value": "TODO", "description": "Padding within the content area" }
+  },
+
+  "footer": {
+    "--dialog/footer-gap": { "value": "TODO", "description": "Gap between footer action buttons" },
+    "--dialog/footer-padding": { "value": "TODO", "description": "Footer padding" }
+  },
+
+  "sharedFromButton": {
+    "--button/default/bg-default": { "value": "TODO", "description": "Primary action button background. See Button component tokens." },
+    "--button/secondary/bg-default": { "value": "TODO", "description": "Secondary/cancel button background. See Button component tokens." }
+  }
+}

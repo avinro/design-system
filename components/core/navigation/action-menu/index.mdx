@@ -1,0 +1,175 @@
+---
+title: "Action Menu"
+description: "A list of contextual actions presented in a contained surface, available as a bottom sheet or a compact floating popover."
+---
+
+# Action Menu
+
+## Overview
+
+Action Menu is a list of contextual actions presented in a contained surface. Each item consists of an icon and a label. The component supports two presentation styles: a **Sheet** that slides up from the screen edge, and a **Popover** that floats near a trigger element.
+
+It is used in the Dojo Apps to surface contextual options relevant to the current screen or selected element.
+
+## Anatomy
+
+The Action Menu is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | The outer surface holding the menu items. Background: `--surface/neutral/default` (`#f1f2f4`). Shape and shadow differ by variant. |
+| **Handle** | Sheet only | A 32×4px drag handle pill at the top of the Sheet variant. Indicates the sheet can be dismissed by dragging. Background: `--handler/bg` (`#e4e5ed`). |
+| **Menu item** | Yes | A single action row (44px height). Contains an icon (20×20px) and a label. |
+
+### Menu item anatomy
+
+Each item shares the same layout across both variants:
+
+| Property | Value |
+|---|---|
+| Height | 44px |
+| Horizontal padding | 16px |
+| Vertical padding | 5px |
+| Icon size | 20×20px |
+| Gap (icon → label) | 16px |
+
+- Every item requires both an icon and a label. Neither can be omitted.
+- Icons are 20×20px. Use icons from the confirmed `Customer-Icon` set.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Action Menu anatomy](./anatomy.png) */}
+
+## Variants
+
+Action Menu has two variants, corresponding to different presentation contexts.
+
+### Sheet
+
+A full-width action surface with a drag handle at the top. Intended for bottom sheet presentation — it slides up from the bottom of the screen.
+
+| Property | Value |
+|---|---|
+| Width | 340px |
+| Border radius | 12px |
+| Shadow | None |
+| Handle | Yes — 32×4px pill, `--handler/bg` |
+
+Use for primary contextual action sets triggered from a bottom action area.
+
+### Popover
+
+A compact floating menu with a drop shadow. Anchored near the element that triggered it — typically a "more options" icon or overflow button.
+
+| Property | Value |
+|---|---|
+| Width | 180px |
+| Border radius | 8px |
+| Shadow | `elevation/dark/02` — `0px 8px 12px rgba(0,0,0,0.16)` |
+| Handle | None |
+
+Use for secondary or overflow actions triggered inline.
+
+> Note: The Figma variant name for Sheet is "Variant3". The Figma variant name for Popover is "Popover-view".
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Action Menu variants](./variants.png) */}
+
+## States
+
+No interactive states are defined in Figma at the container or item level.
+
+> TODO: Confirm item-level hover and pressed state appearance and tokens.
+> TODO: Confirm disabled item appearance and token values.
+> TODO: Confirm focus ring treatment for keyboard navigation.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Action Menu states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `Sheet` (Figma: "Variant3") — bottom sheet presentation
+- `Popover` (Figma: "Popover-view") — floating inline dropdown
+
+### Supported sizes
+
+| Size | Item count |
+|---|---|
+| `Menu-items-3` | 3 items |
+| `Menu-items-6` | 6 items |
+
+Both sizes are available for both variants.
+
+### Supported states
+
+No interactive states confirmed. Display state only.
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background (both variants) |
+| `--text/primary` | `#1d1d23` | Item label text color |
+| `--handler/bg` | `#e4e5ed` | Drag handle background (Sheet only) |
+| `elevation/dark/02` | `0px 8px 12px rgba(0,0,0,0.16)` | Shadow (Popover only) |
+
+> Note: Item labels use **Inter Medium, 16px** — the body font. Not the headings font (Google Sans Flex).
+
+> TODO: Confirm token values for item-level hover, pressed, focus, and disabled states.
+
+## Usage guidelines
+
+- Use Action Menu to surface a **focused set of contextual actions** — only actions directly relevant to the current state or selected element.
+- Choose the **Sheet** variant when the menu is triggered from a bottom action area or when the actions are the primary decision point on the screen.
+- Choose the **Popover** variant when the menu is triggered inline — for example, from a "more options" or overflow icon.
+- Use **3 items** for tightly scoped contexts. Use **6 items** when more options are genuinely needed — prefer fewer items where possible.
+- Write **short, action-oriented labels**: one verb + optional object (e.g., "Cancel ride", "Share location", "Report issue").
+- Do not use Action Menu for navigation or non-action items. It is for actions only.
+- Do not use Action Menu as a primary navigation surface.
+
+## Interaction
+
+- The **Sheet** variant is presented as a bottom sheet, sliding up from the screen edge with a scrim behind it.
+- The **Popover** variant floats above its trigger and dismisses on item selection or tap-outside.
+- TODO: Confirm dismiss behavior for the Sheet variant (drag to dismiss, tap scrim, or explicit close button).
+- TODO: Confirm whether items dismiss the menu on tap, or if the menu stays open.
+- TODO: Confirm animation and transition spec for both variants.
+- TODO: Confirm whether the drag handle enables swipe-to-dismiss gestures on the Sheet.
+
+## Accessibility
+
+- The menu container should use `role="menu"` and each item `role="menuitem"`.
+- Focus must move into the menu when it opens and return to the trigger element when it closes.
+- Each item's accessible label must match its visible text.
+- The popover trigger should use `aria-haspopup="menu"` and `aria-expanded` to communicate menu state.
+- TODO: Confirm keyboard navigation within the menu (Tab or Arrow keys).
+- TODO: Confirm whether the Sheet variant traps focus while open.
+- TODO: Confirm `aria-disabled` treatment for disabled items.
+
+## Do / Don't
+
+**Do:**
+- Use for a focused set of contextual actions (3–6 items).
+- Write short, action-oriented labels (verb + object).
+- Choose Sheet for bottom-triggered menus; Popover for inline overflow menus.
+- Include both an icon and a label on every item.
+
+**Don't:**
+- Don't surface more than 6 actions — reconsider the information architecture.
+- Don't use for navigation or non-action items.
+- Don't use the Sheet variant as an inline element; don't use the Popover as a full-screen overlay.
+- Don't omit the icon or label from any menu item.
+- Don't write vague labels like "More" or "Options" — always describe the specific action.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Action Menu do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Action Menu component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5009-2178)
+- Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1361-13772)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325)
+- Code: `./action-menu.tsx`
+- Specs: `./action-menu.specs.json`
+- Tokens: `./action-menu.tokens.json`

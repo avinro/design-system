@@ -1,0 +1,47 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (active state, both icon-form types). Pressed, Disabled, and Focus state values are TODO.",
+
+  "shared": {
+    "--surface/neutral/default":   { "value": "#f1f2f4", "description": "Container background fill (active state)" },
+    "--rounded-24":                { "value": "24px",    "description": "Container border-radius" },
+    "--spacing-8":                 { "value": "8px",     "description": "Container horizontal padding" },
+    "--spacing-12":                { "value": "12px",    "description": "Container vertical padding" },
+    "--spacing-2":                 { "value": "2px",     "description": "Gap between icon-wrapper and label" }
+  },
+
+  "typography": {
+    "--font-family/body":          { "value": "'Manrope', sans-serif", "description": "Label font family" },
+    "--weight/medium":             { "value": "500",                   "description": "Label font weight" },
+    "--size/lg":                   { "value": "16px",                  "description": "Label font size" },
+    "--letter-spacing/normal":     { "value": "0px",                   "description": "Label letter spacing" },
+    "--text/primary":              { "value": "#1d1d23",               "description": "Label text color (active state)" }
+  },
+
+  "iconForm": {
+    "diamond": {
+      "shapeSizePx": 54,
+      "iconSizePx": 32,
+      "_note": "Diamond shape color is set by the icon asset, not a component token."
+    },
+    "circle": {
+      "shapeSizePx": 48,
+      "iconSizePx": 32,
+      "_note": "Circle shape color is set by the icon asset, not a component token."
+    }
+  },
+
+  "states": {
+    "active": {
+      "_note": "Confirmed. See shared tokens above."
+    },
+    "pressed": {
+      "_note": "TODO: Extract from Figma nodes 5184:4484 (diamond) and 5184:4490 (circle)."
+    },
+    "disable": {
+      "_note": "TODO: Extract from Figma nodes 5184:4512 (diamond) and 5184:4518 (circle)."
+    },
+    "focus": {
+      "_note": "TODO: Extract from Figma nodes 5184:4568 (diamond) and 5184:4574 (circle)."
+    }
+  }
+}

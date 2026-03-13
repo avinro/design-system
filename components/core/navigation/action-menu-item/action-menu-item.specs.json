@@ -1,0 +1,137 @@
+{
+  "component": "Action Menu Item",
+  "figmaFrameName": "Action Menu Item",
+  "figmaNodeId": "5126:426",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer row surface. Background: --surface/neutral/default (#f1f2f4). Min-height: 56px. Padding: 8px (all sides). Width: 426px.",
+      "required": true
+    },
+    {
+      "part": "leftIcon",
+      "description": "24×24px icon at the leading edge. Optional — shown by default. Placeholder in Figma: Customer-Icon/phone-call.",
+      "required": false,
+      "default": "visible"
+    },
+    {
+      "part": "textContainer",
+      "description": "Holds title, and optionally subtitle and description. Max-width: 280px. Gap between lines: 4px (multi-line types).",
+      "required": true
+    },
+    {
+      "part": "subtitle",
+      "description": "Small label above the title. Manrope Regular, 12px, --text/placeholder (#636377). Shown in 'full' type only.",
+      "required": false,
+      "condition": "type === 'full'"
+    },
+    {
+      "part": "title",
+      "description": "Primary action label. Manrope SemiBold, 14px, --text/primary (#1d1d23). Required in all types.",
+      "required": true
+    },
+    {
+      "part": "description",
+      "description": "Supporting text below the title. Manrope Regular, 12px, --text/placeholder (#636377). Shown in 'title + description' and 'full' types.",
+      "required": false,
+      "condition": "type === 'title + description' || type === 'full'"
+    },
+    {
+      "part": "rightIcon",
+      "description": "22×22px icon at the trailing edge. Optional — shown by default as a chevron-right. Can be replaced with a custom element (toggle, checkbox, etc.).",
+      "required": false,
+      "default": "visible (chevron-right)"
+    }
+  ],
+
+  "types": [
+    {
+      "name": "only Title",
+      "figmaNodeId": "5086:602",
+      "description": "Minimal layout. Shows title only (plus optional left and right icons). Title is whitespace-nowrap.",
+      "textElements": ["title"]
+    },
+    {
+      "name": "title + description",
+      "figmaNodeId": "5126:427",
+      "description": "Title with a supporting description below it. Title is whitespace-nowrap. Description width is constrained.",
+      "textElements": ["title", "description"]
+    },
+    {
+      "name": "full",
+      "figmaNodeId": "5126:437",
+      "description": "Three lines of text: subtitle above the title, then description below. Subtitle and description share the same typographic style.",
+      "textElements": ["subtitle", "title", "description"]
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. Content type is the primary dimension (only Title, title + description, full).",
+
+  "sizes": [],
+  "sizeNote": "Single size only. Width: 426px. Min-height: 56px.",
+
+  "states": [],
+  "stateNote": "No interactive states defined in Figma. TODO: Confirm hover, pressed, focus, and disabled states.",
+
+  "dimensions": {
+    "width": 426,
+    "minHeight": 56,
+    "padding": "8px",
+    "gap": "12px",
+    "textContainerMaxWidth": 280,
+    "textLineGap": "4px",
+    "leftIconSize": 24,
+    "rightIconSize": 22
+  },
+
+  "typography": {
+    "title": {
+      "textStyle": "Body sm/120/SemiBold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/semibold, 600)",
+      "fontSize": "var(--size/base, 14px)",
+      "lineHeight": 1.2,
+      "letterSpacing": "var(--letter-spacing/normal, 0px)",
+      "color": "var(--text/primary, #1d1d23)"
+    },
+    "description": {
+      "textStyle": "Body xs/Regular",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/regular, 400)",
+      "fontSize": "var(--size/xs, 12px)",
+      "lineHeight": 1.2,
+      "letterSpacing": "var(--letter-spacing/normal, 0px)",
+      "color": "var(--text/placeholder, #636377)"
+    },
+    "subtitle": {
+      "textStyle": "Body xs/Regular",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/regular, 400)",
+      "fontSize": "var(--size/xs, 12px)",
+      "lineHeight": 1.2,
+      "letterSpacing": "var(--letter-spacing/normal, 0px)",
+      "color": "var(--text/placeholder, #636377)"
+    }
+  },
+
+  "usageContext": [
+    "Individual row unit placed inside the Action Menu container (Sheet or Popover).",
+    "May also appear in other list-like surfaces where the same row structure applies.",
+    "Confirmed in Dojo Customer App (node 1361:13772) and Dojo Driver App (node 2007:325)."
+  ],
+
+  "relatedComponents": ["action-menu"],
+
+  "notes": [
+    "Three content types: only Title (5086:602), title + description (5126:427), full (5126:437).",
+    "Left icon (24px) and right icon (22px) are both optional and shown by default.",
+    "Right icon can be replaced with a custom element via rightIconSelector prop.",
+    "The placeholder left icon in Figma is Customer-Icon/phone-call. Replace with the appropriate icon per action.",
+    "No interactive states defined. TODO: Confirm hover, pressed, focus, and disabled states.",
+    "TODO: Confirm whether items dismiss the parent menu on tap.",
+    "TODO: Confirm ARIA role (menuitem vs. listitem depending on container)."
+  ]
+}

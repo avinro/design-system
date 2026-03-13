@@ -1,0 +1,122 @@
+{
+  "component": "switch-toggle",
+  "variants": [
+    {
+      "name": "switch-basic",
+      "description": "Icon (optional) + label only + switch indicator on the right. Compact single-line layout.",
+      "layout": "horizontal",
+      "indicatorPosition": "right",
+      "parts": ["icon", "label", "switch-indicator"]
+    },
+    {
+      "name": "switch-description",
+      "description": "Icon (optional) + label + secondary description text + switch indicator on the right. No border container.",
+      "layout": "horizontal",
+      "indicatorPosition": "right",
+      "parts": ["icon", "label", "description", "switch-indicator"]
+    },
+    {
+      "name": "switch-boxed",
+      "description": "Icon (optional) + label + description + switch indicator on the right, enclosed in a bordered card container. Border changes to --text/placeholder color when disabled.",
+      "layout": "horizontal",
+      "indicatorPosition": "right",
+      "parts": ["icon", "label", "description", "switch-indicator", "card-container"]
+    }
+  ],
+  "states": [
+    {
+      "name": "default-off",
+      "description": "Interactive, unchecked. Track color: --selector/bg-enable. Dot at left. Label: --text/primary."
+    },
+    {
+      "name": "default-on",
+      "description": "Interactive, checked. Track color: --selector/bg-active. Dot at right. Label: --text/primary."
+    },
+    {
+      "name": "disabled-off",
+      "description": "Non-interactive, unchecked. Track color: --selector/bg-disabled. Dot at left. Label and description: --text/placeholder."
+    },
+    {
+      "name": "disabled-on",
+      "description": "Non-interactive, checked. Track color: --selector/bg-disabled. Dot at right. Label and description: --text/placeholder."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "switchTrack": "44×22px (rendered), 44×24px container",
+      "switchDot": "~18×18px",
+      "trackBorderRadius": "125px",
+      "icon": "24×24px",
+      "fontSize": "14px",
+      "note": "Single size only. No size variants confirmed."
+    }
+  ],
+  "anatomy": {
+    "icon": {
+      "description": "24×24px product icon on the far left of the row. Optional. Include or omit consistently within a group.",
+      "required": false,
+      "presentIn": ["switch-basic", "switch-description", "switch-boxed"]
+    },
+    "label": {
+      "description": "Primary setting label. SemiBold, 14px, --text/primary (default) or --text/placeholder (disabled).",
+      "required": true,
+      "presentIn": ["switch-basic", "switch-description", "switch-boxed"]
+    },
+    "description": {
+      "description": "Secondary clarifying text below the label. Regular, 14px, --text/placeholder.",
+      "required": false,
+      "presentIn": ["switch-description", "switch-boxed"]
+    },
+    "switch-indicator": {
+      "description": "44×24px pill toggle with a sliding white dot. Always right-aligned. Based on the _base-switch sub-component. Track color and dot position reflect the checked and disabled states.",
+      "required": true,
+      "presentIn": ["switch-basic", "switch-description", "switch-boxed"],
+      "position": "right"
+    },
+    "card-container": {
+      "description": "Bordered card wrapper with rounded corners and 12px padding. Border uses --layout/border (default) or --text/placeholder (disabled).",
+      "required": false,
+      "presentIn": ["switch-boxed"]
+    }
+  },
+  "baseComponents": [
+    {
+      "name": "_base-switch",
+      "description": "The pill-shaped toggle indicator. Exposes checked (boolean) and disabled (boolean) props. Track color is --selector/bg-active (on), --selector/bg-enable (off), or --selector/bg-disabled (disabled). Dot slides between left (off) and right (on) position.",
+      "figmaNodeId": "5010:1685"
+    },
+    {
+      "name": "_base-label-checkbox",
+      "description": "The text container. Supports basic (label only) and label+desc modes. Shared with the Radio Select and Checkbox components.",
+      "figmaNodeId": "5010:1692"
+    }
+  ],
+  "usageExamples": [
+    {
+      "app": "Customer App",
+      "context": "Account / Settings screen",
+      "instances": [
+        {
+          "variant": "switch-description",
+          "label": "Security Ride Code",
+          "description": "Verify you are the right rider with a code",
+          "icon": true,
+          "checked": true
+        },
+        {
+          "variant": "switch-basic",
+          "label": "Dark Mode",
+          "icon": true,
+          "checked": true
+        },
+        {
+          "variant": "switch-basic",
+          "label": "Notifications",
+          "icon": true,
+          "checked": true
+        }
+      ]
+    }
+  ]
+}

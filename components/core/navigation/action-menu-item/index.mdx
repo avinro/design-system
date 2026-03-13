@@ -1,0 +1,170 @@
+---
+title: "Action Menu Item"
+description: "A single interactive row for action menus and list surfaces. Supports a left icon, a right icon, and three content types: title only, title with description, or a full three-line layout."
+---
+
+# Action Menu Item
+
+## Overview
+
+Action Menu Item is a single interactive row used inside action menus and list surfaces. It supports a left icon, a right icon, and a text area that can display a title only, a title with a description, or a full three-line layout with subtitle, title, and description.
+
+It is the individual item unit placed inside the [Action Menu](/components/action-menu) container, and may also be used in other list contexts within the Dojo Apps.
+
+## Anatomy
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Outer row surface. Background: `--surface/neutral/default` (`#f1f2f4`). Min-height: 56px. Padding: 8px all sides. |
+| **Left icon** | Optional | 24×24px icon at the leading edge. Shown by default. |
+| **Text container** | Yes | Holds the text elements. Max-width: 280px. Gap between text lines: `--spacing-4` (4px). |
+| **Subtitle** | `full` type only | Small label above the title. Manrope Regular, 12px, `--text/placeholder`. |
+| **Title** | Yes | Primary action label. Manrope SemiBold, 14px, `--text/primary`. |
+| **Description** | `title + description` and `full` types | Supporting text below the title. Manrope Regular, 12px, `--text/placeholder`. |
+| **Right icon** | Optional | 22×22px icon at the trailing edge. Shown by default as a chevron-right. Replaceable. |
+
+- Every item requires at minimum a title. All other parts are conditional or optional.
+- The left icon is 24×24px. The right icon is 22×22px.
+- The text container has a max-width of 280px. Content is constrained to this area.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Action Menu Item anatomy](./anatomy.png) */}
+
+## Variants
+
+Action Menu Item has three content types, controlled by the `type` prop. All types share the same container dimensions and icon slots.
+
+### `only Title`
+
+The minimal layout. Displays a title and optional icons. Title is single-line (`whitespace-nowrap`).
+
+Use for straightforward actions where the label alone is sufficient.
+
+### `title + description`
+
+Displays a title and a short description below it.
+
+Use when two or more items have similar titles and the description provides meaningful differentiation.
+
+### `full`
+
+Displays three text lines: a subtitle above the title, followed by a description below.
+
+Use when a subtitle label adds necessary hierarchy — for example, a category or status shown above the primary action name.
+
+> Choose the simplest type that communicates the action clearly. Default to `only Title` unless additional context is genuinely needed.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Action Menu Item variants](./variants.png) */}
+
+## States
+
+No interactive states are defined in Figma.
+
+> TODO: Confirm hover and pressed state appearance and token values.
+> TODO: Confirm disabled state appearance and token values.
+> TODO: Confirm focus ring treatment for keyboard navigation.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Action Menu Item states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `only Title` — title + optional icons
+- `title + description` — title + description + optional icons
+- `full` — subtitle + title + description + optional icons
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Value |
+|---|---|
+| Width | 426px |
+| Min-height | 56px |
+| Padding | 8px (all sides) — `--spacing-8` |
+| Gap (icon → text) | 12px — `--spacing-12` |
+| Text container max-width | 280px |
+| Text line gap | 4px — `--spacing-4` |
+| Left icon size | 24×24px |
+| Right icon size | 22×22px |
+
+### Supported states
+
+No interactive states confirmed. Display state only.
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background |
+| `--text/primary` | `#1d1d23` | Title text color |
+| `--text/placeholder` | `#636377` | Description and subtitle text color |
+| `--font-family/body` | `'Manrope', sans-serif` | Font family for all text elements |
+| `--weight/semibold` | `600` | Title font weight |
+| `--weight/regular` | `400` | Description and subtitle font weight |
+| `--size/base` | `14px` | Title font size |
+| `--size/xs` | `12px` | Description and subtitle font size |
+| `--spacing-4` | `4px` | Gap between text lines (multi-line types) |
+| `--spacing-8` | `8px` | Container padding |
+| `--spacing-12` | `12px` | Gap between icon and text container |
+| `--letter-spacing/normal` | `0px` | Letter spacing for all text |
+
+> Note: All text elements use `--font-family/body` (Manrope). This component does not use the headings font.
+
+> TODO: Confirm token values for hover, pressed, focus, and disabled states.
+
+## Usage guidelines
+
+- Use Action Menu Item as the row unit inside an [Action Menu](/components/action-menu) container (Sheet or Popover).
+- It may also be used in other list-like surfaces where the same row structure applies.
+- Choose the **content type** based on how much context the action needs:
+  - Default to `only Title` — it is the most scannable.
+  - Use `title + description` when items need differentiation through supporting text.
+  - Use `full` only when a subtitle label adds meaningful hierarchy above the title.
+- Write **titles** as short action phrases: one verb + optional object (e.g., "Cancel ride", "Share location").
+- Write **descriptions** as a brief, distinct supporting phrase. Do not repeat the title text.
+- Write **subtitles** as a category or status label — not as a secondary action name.
+- Use the **right icon** to signal what happens on tap: chevron-right for navigation or drill-down; replace with a toggle, switch, or checkbox when the interaction differs. Hide the right icon when no trailing indicator is needed.
+- Use the **left icon** to aid scannability. Only hide it when the context makes it redundant.
+
+## Accessibility
+
+- The title is the primary accessible label for each item. It must clearly describe the action.
+- When both title and description are present, both should be available to screen readers as part of the accessible label.
+- The left and right icons are decorative — apply `aria-hidden="true"` to both.
+- Use `role="menuitem"` when the item is inside an Action Menu container.
+- Use the appropriate role (`role="option"`, `role="listitem"`) when the item appears in other list contexts.
+- TODO: Confirm keyboard navigation (Tab, Arrow keys) depending on the container role.
+- TODO: Confirm `aria-disabled` treatment for disabled items.
+- TODO: Confirm focus ring specification.
+
+## Do / Don't
+
+**Do:**
+- Default to `only Title` — it is the clearest and most compact type.
+- Write short, action-oriented titles (verb + object).
+- Use the right icon to communicate the tap action (navigate → chevron, toggle → switch).
+- Provide both a left icon and a label on every item for scannability.
+
+**Don't:**
+- Don't use `full` for simple actions — reserve it for items that genuinely need three text levels.
+- Don't write titles longer than ~30 characters.
+- Don't repeat title content in the description — descriptions must add distinct information.
+- Don't use the subtitle as an alternative action label — it signals hierarchy, not repetition.
+- Don't leave the right icon slot empty if the item navigates somewhere — use the chevron.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Action Menu Item do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Action Menu Item component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5126-426)
+- Related: [Action Menu](/components/action-menu)
+- Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1361-13772)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325)
+- Code: `./action-menu-item.tsx`
+- Specs: `./action-menu-item.specs.json`
+- Tokens: `./action-menu-item.tokens.json`

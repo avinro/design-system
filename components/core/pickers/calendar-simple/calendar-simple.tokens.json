@@ -1,0 +1,145 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 2034:5802). Composite component: CalendarSimple > CalendarTitle + DayItemSimpleCalendar.",
+
+  "container": {
+    "--surface/neutral/default": {
+      "value": "#f1f2f4",
+      "description": "Calendar card background fill."
+    },
+    "width": {
+      "value": "382px",
+      "description": "Fixed width of the calendar card."
+    },
+    "borderRadius": {
+      "token": "--spacing-16",
+      "value": "16px",
+      "description": "Corner radius of the calendar card."
+    },
+    "paddingHorizontal": {
+      "token": "--spacing-16",
+      "value": "16px",
+      "description": "Left and right padding inside the card."
+    },
+    "paddingVertical": {
+      "token": "--spacing-24",
+      "value": "24px",
+      "description": "Top and bottom padding inside the card."
+    },
+    "gap": {
+      "token": "--spacing-16",
+      "value": "16px",
+      "description": "Gap between the CalendarTitle header and the day grid."
+    },
+    "shadow": {
+      "token": "elevation/light/02",
+      "value": "0px 8px 12px 0px rgba(0, 0, 0, 0.05)",
+      "description": "Subtle card shadow."
+    }
+  },
+
+  "calendarTitle": {
+    "monthYearLabel": {
+      "textStyle": "Body sm/140/Bold",
+      "--font-family/body": {
+        "value": "'Manrope', sans-serif"
+      },
+      "--weight/bold": {
+        "value": "700"
+      },
+      "--size/base": {
+        "value": "14px"
+      },
+      "--text/body": {
+        "value": "#34353f",
+        "description": "Month/year text color."
+      },
+      "lineHeight": "1.4",
+      "letterSpacing": "0px"
+    },
+    "chevronSize": {
+      "value": "24px",
+      "description": "Width and height of left and right navigation icons."
+    }
+  },
+
+  "weekdayHeader": {
+    "cellHeight": {
+      "value": "40px",
+      "description": "Height of each weekday label cell."
+    },
+    "cellPadding": {
+      "value": "8px",
+      "description": "Padding inside each weekday label cell."
+    },
+    "label": {
+      "textStyle": "Body 2xs/Regular",
+      "--font-family/body": {
+        "value": "'Manrope', sans-serif"
+      },
+      "--weight/regular": {
+        "value": "400"
+      },
+      "--size/2xs": {
+        "value": "11px",
+        "description": "Weekday abbreviation font size."
+      },
+      "--text/placeholder": {
+        "value": "#636377",
+        "description": "Weekday label text color."
+      },
+      "lineHeight": "1.2",
+      "letterSpacing": "0px"
+    }
+  },
+
+  "dayItem": {
+    "size": {
+      "value": "40px",
+      "description": "Width and height of each day cell."
+    },
+    "borderRadius": {
+      "value": "24px",
+      "description": "Border radius applied to Disable and Planned day cells."
+    },
+    "selectedBackground": {
+      "size": "36px",
+      "description": "Filled circle behind the selected day number. 36×36px, centered within the 40px cell.",
+      "colorToken": "TODO: Confirm the design token for the selected day background color."
+    },
+    "indicator": {
+      "size": "6px",
+      "positionFromTop": "29px",
+      "description": "Small dot indicator shown on Planned days. Centered below the date number.",
+      "colorToken": "TODO: Confirm the design token for the planned day indicator dot color."
+    },
+    "text": {
+      "textStyle": "Body md/SemiBold",
+      "--font-family/body": {
+        "value": "'Manrope', sans-serif"
+      },
+      "--weight/semibold": {
+        "value": "600"
+      },
+      "--size/lg": {
+        "value": "16px",
+        "description": "Day number font size."
+      },
+      "lineHeight": "1.4",
+      "letterSpacing": "0px"
+    },
+    "textColors": {
+      "--day-item/text-default": {
+        "value": "#1d1d23",
+        "description": "Day number color for Available (No-plan and Planned) days."
+      },
+      "--day-item/text-disabled": {
+        "value": "#636377",
+        "description": "Day number color for Disable state (out-of-month days)."
+      },
+      "--day-item/text-selected": {
+        "value": "#f1f2f4",
+        "description": "Day number color for Selected state (inverted, on dark background)."
+      }
+    }
+  }
+}

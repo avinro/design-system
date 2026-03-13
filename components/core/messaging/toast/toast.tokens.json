@@ -1,0 +1,72 @@
+{
+  "_note": "Token values confirmed from Figma get_design_context on node 5247:369 (type=info). Icon color values per type are TODO until confirmed.",
+
+  "container": {
+    "--surface/neutral/sunken":   { "value": "white",                    "description": "Card background color" },
+    "--rounded-16":               { "value": "16px",                     "description": "Card border radius" },
+    "--spacing-16":               { "value": "16px",                     "description": "Horizontal padding and gap between anatomy parts" },
+    "--spacing-8":                { "value": "8px",                      "description": "Vertical padding" },
+    "elevation/dark/01":          { "value": "0px 2px 4px 0px rgba(0,0,0,0.24)", "description": "Drop shadow" },
+    "width":                      { "value": "374px",                    "description": "Fixed card width" },
+    "height":                     { "value": "80px",                     "description": "Fixed card height" }
+  },
+
+  "contextIconContainer": {
+    "--button/secondary/bg-default": { "value": "rgba(29,29,35,0.05)",   "description": "Icon container background (type=info confirmed; other types TODO)" },
+    "--spacing-120":                 { "value": "120px",                 "description": "Icon container border radius (pill)" },
+    "--spacing-8":                   { "value": "8px",                   "description": "Icon container padding" },
+    "iconSize":                      { "value": "24px",                  "description": "Context icon size" }
+  },
+
+  "title": {
+    "--font-family/body":          { "value": "'Manrope', sans-serif",   "description": "Title font family" },
+    "--weight/semibold":           { "value": "600",                     "description": "Title font weight" },
+    "--size/xl":                   { "value": "18px",                    "description": "Title font size" },
+    "lineHeight":                  { "value": "1.2",                     "description": "Title line height" },
+    "--letter-spacing/normal":     { "value": "0px",                     "description": "Title letter spacing" },
+    "--text/primary":              { "value": "#1d1d23",                 "description": "Title text color" },
+    "overflow":                    { "value": "truncate",                "description": "Single line, whitespace-nowrap, text-overflow: ellipsis" }
+  },
+
+  "description": {
+    "--font-family/body":          { "value": "'Manrope', sans-serif",   "description": "Description font family" },
+    "--weight/medium":             { "value": "500",                     "description": "Description font weight" },
+    "--size/base":                 { "value": "14px",                    "description": "Description font size" },
+    "lineHeight":                  { "value": "1.2",                     "description": "Description line height" },
+    "--text/placeholder":          { "value": "#636377",                 "description": "Description text color" }
+  },
+
+  "contentGap": {
+    "--spacing-4":                 { "value": "4px",                     "description": "Gap between title and description" }
+  },
+
+  "closeButton": {
+    "--button/outlined/bg-active": { "value": "rgba(29,29,35,0)",        "description": "Close button background (transparent)" },
+    "--rounded-full":              { "value": "120px",                   "description": "Close button border radius" },
+    "size":                        { "value": "32px",                    "description": "Close button width and height" },
+    "iconSize":                    { "value": "16px",                    "description": "Close icon size" }
+  },
+
+  "typeIconColors": {
+    "info": {
+      "iconContainerBg": { "value": "rgba(29,29,35,0.05)", "description": "Confirmed from type=info (node 5247:369)" },
+      "iconColor":        { "value": "TODO",               "description": "TODO: Extract from Figma" }
+    },
+    "success": {
+      "iconContainerBg": { "value": "TODO",                "description": "TODO: Extract from Figma node 5247:402" },
+      "iconColor":        { "value": "TODO",               "description": "TODO: Extract from Figma node 5247:402" }
+    },
+    "warning": {
+      "iconContainerBg": { "value": "TODO",                "description": "TODO: Extract from Figma node 5247:391" },
+      "iconColor":        { "value": "TODO",               "description": "TODO: Extract from Figma node 5247:391" }
+    },
+    "error": {
+      "iconContainerBg": { "value": "TODO",                "description": "TODO: Extract from Figma node 5247:380" },
+      "iconColor":        { "value": "TODO",               "description": "TODO: Extract from Figma node 5247:380" }
+    },
+    "trip": {
+      "iconContainerBg": { "value": "TODO",                "description": "TODO: Extract from Figma node 5247:358" },
+      "iconColor":        { "value": "TODO",               "description": "TODO: Extract from Figma node 5247:358" }
+    }
+  }
+}

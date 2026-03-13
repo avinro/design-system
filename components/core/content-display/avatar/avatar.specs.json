@@ -1,0 +1,77 @@
+{
+  "component": "Avatar",
+  "figmaFrameName": "Avatar",
+  "figmaNodeId": "5009:2266",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Fully circular frame sized to the chosen size token. Clips photo or placeholder to a circle. border-radius: 50%.",
+      "required": true
+    },
+    {
+      "part": "photo",
+      "description": "User profile photo, clipped to fill the circular container (object-cover). Shown when a valid image source is provided.",
+      "required": false,
+      "condition": "Shown when src is provided and valid."
+    },
+    {
+      "part": "placeholder",
+      "description": "Silhouette icon on a neutral background. Shown when no photo is available. Corresponds to 'pic1' in Figma sample data.",
+      "required": false,
+      "condition": "Shown as fallback when no src is provided, or on image load error."
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. The Figma 'avatar' prop (pic1–pic5) is sample content for documentation preview only, not product variants. pic1 is the placeholder/no-photo state.",
+
+  "sizes": [
+    { "name": "XS",      "value": 24,  "figmaNodeId": "5009:2403" },
+    { "name": "SM",      "value": 32,  "figmaNodeId": "5009:2399" },
+    { "name": "MD",      "value": 40,  "figmaNodeId": "5009:2395" },
+    { "name": "LG",      "value": 48,  "figmaNodeId": "5009:2391" },
+    { "name": "XL",      "value": 56,  "figmaNodeId": "5009:2383" },
+    { "name": "XXL",     "value": 72,  "figmaNodeId": "5009:2387" },
+    { "name": "Largest", "value": 96,  "figmaNodeId": "5009:2379" }
+  ],
+  "sizeNote": "All sizes are square and fully circular (border-radius: 50%).",
+
+  "states": [],
+  "stateNote": "No interactive states defined in Figma. Avatar is a display-only component. Visual content is either 'with photo' or 'placeholder (no photo)'.",
+
+  "dimensions": {
+    "XS":      { "width": 24,  "height": 24  },
+    "SM":      { "width": 32,  "height": 32  },
+    "MD":      { "width": 40,  "height": 40  },
+    "LG":      { "width": 48,  "height": 48  },
+    "XL":      { "width": 56,  "height": 56  },
+    "XXL":     { "width": 72,  "height": 72  },
+    "Largest": { "width": 96,  "height": 96  }
+  },
+
+  "shape": {
+    "borderRadius": "50%",
+    "note": "Always fully circular. Never square or rounded-square."
+  },
+
+  "usageContext": [
+    "Represents a user, driver, or customer in product UI.",
+    "Confirmed in Dojo Customer App (node 84:93) and Dojo Driver App (node 2007:325).",
+    "Used in profile screens, trip summaries, driver cards, ratings, and chat headers."
+  ],
+
+  "notes": [
+    "No type variants — single visual style.",
+    "7 sizes confirmed: XS (24px), SM (32px), MD (40px), LG (48px), XL (56px), XXL (72px), Largest (96px).",
+    "The Figma 'avatar' prop (pic1–pic5) is sample data for documentation — not a product variant dimension.",
+    "pic1 in Figma = placeholder silhouette (no-photo state).",
+    "No interactive states defined. Display-only component.",
+    "TODO: Confirm placeholder background color and silhouette icon tokens.",
+    "TODO: Confirm whether an online indicator dot or ring badge is part of this component.",
+    "TODO: Confirm recommended default size per use case (e.g., list vs. profile header).",
+    "TODO: Confirm loading/skeleton state behavior.",
+    "TODO: Confirm whether an initials-based fallback is planned."
+  ]
+}

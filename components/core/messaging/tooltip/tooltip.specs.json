@@ -1,0 +1,173 @@
+{
+  "component": "Tooltip",
+  "figmaNodeId": "5276:108",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "description": "A contextual, non-blocking dark overlay that surfaces a brief message near a UI element. Five arrow positions. No interactive states on the container.",
+
+  "anatomy": {
+    "arrowVariants": [
+      {
+        "part": "container",
+        "description": "Dark rounded background. Carries padding, border-radius, and gap between text and close icon.",
+        "required": true
+      },
+      {
+        "part": "messageText",
+        "description": "Single body string. 14px Manrope Medium, line-height 1.4, max-width 240px.",
+        "required": true
+      },
+      {
+        "part": "closeIcon",
+        "description": "24×24px Customer-Icon/x-close-delete. Allows user to dismiss the tooltip.",
+        "required": true
+      },
+      {
+        "part": "arrow",
+        "description": "24×12px directional polygon. Rotated to point in the configured direction. Color matches container background.",
+        "required": true
+      }
+    ],
+    "noArrowVariant": [
+      {
+        "part": "container",
+        "description": "Dark rounded background. Same background and border-radius as arrow variants.",
+        "required": true
+      },
+      {
+        "part": "title",
+        "description": "14px Manrope Bold, line-height 1.2. Short label summarising the content.",
+        "required": true
+      },
+      {
+        "part": "bodyText",
+        "description": "14px Manrope Regular, line-height 1.2. Explanatory body text.",
+        "required": true
+      }
+    ]
+  },
+
+  "variants": [
+    {
+      "arrowPosition": "right",
+      "figmaNodeId": "5110:664",
+      "layout": "row",
+      "arrowRotation": "90deg",
+      "totalWidth": 316,
+      "totalHeight": 56,
+      "hasCloseIcon": true,
+      "hasTitle": false,
+      "description": "Arrow points right. Tooltip is to the left of its target element."
+    },
+    {
+      "arrowPosition": "left",
+      "figmaNodeId": "5276:121",
+      "layout": "row",
+      "arrowRotation": "270deg",
+      "totalWidth": 316,
+      "totalHeight": 56,
+      "hasCloseIcon": true,
+      "hasTitle": false,
+      "description": "Arrow points left. Tooltip is to the right of its target element."
+    },
+    {
+      "arrowPosition": "bottom",
+      "figmaNodeId": "5276:109",
+      "layout": "column",
+      "arrowRotation": "180deg",
+      "totalWidth": 305,
+      "totalHeight": 68,
+      "hasCloseIcon": true,
+      "hasTitle": false,
+      "description": "Arrow points down. Tooltip is above its target element."
+    },
+    {
+      "arrowPosition": "top",
+      "figmaNodeId": "5276:127",
+      "layout": "column",
+      "arrowRotation": "0deg",
+      "totalWidth": 305,
+      "totalHeight": 68,
+      "hasCloseIcon": true,
+      "hasTitle": false,
+      "description": "Arrow points up. Tooltip is below its target element."
+    },
+    {
+      "arrowPosition": "no_arrow",
+      "figmaNodeId": "5307:699",
+      "layout": "column",
+      "arrowRotation": null,
+      "totalWidth": 304,
+      "totalHeight": 69,
+      "hasCloseIcon": false,
+      "hasTitle": true,
+      "description": "No arrow. Two-level text structure: bold title + regular body. No dismiss icon — dismissal is programmatic."
+    }
+  ],
+
+  "arrow": {
+    "width": 24,
+    "height": 12,
+    "color": "#1d1d23",
+    "note": "Polygon asset. Color matches container background. Rotation applied per variant."
+  },
+
+  "states": [
+    {
+      "name": "Visible",
+      "description": "Mounted and displayed near its target element."
+    },
+    {
+      "name": "Dismissed",
+      "description": "Unmounted or hidden. Arrow variants: triggered by close icon. no_arrow: programmatic."
+    }
+  ],
+
+  "behavior": {
+    "blocking": false,
+    "requiresResponse": false,
+    "autoDismiss": "TODO: Confirm",
+    "autoDismissDurationMs": "TODO: Confirm",
+    "dismissMethods": {
+      "arrowVariants": "Close icon press",
+      "noArrow": "Programmatic (timeout or trigger deactivation)"
+    },
+    "triggerMechanism": "TODO: Confirm (programmatic, tap, hover)"
+  },
+
+  "subComponents": [
+    {
+      "name": "Button/only icon",
+      "role": "Close icon (arrow variants only)",
+      "path": "components/core/actions/button-icon/index"
+    }
+  ],
+
+  "relatedComponents": [
+    {
+      "name": "Alert Dialog",
+      "path": "components/core/messaging/alert-dialog/index",
+      "when": "Decisions and high-stakes interruptions."
+    },
+    {
+      "name": "Toast",
+      "path": "components/core/messaging/toast/index",
+      "when": "Passive success or informational confirmations."
+    },
+    {
+      "name": "Snackbar",
+      "path": "components/core/messaging/snackbar/index",
+      "when": "Recoverable issues with a quick action."
+    }
+  ],
+
+  "notes": [
+    "Confirmed real-world usage: arrow_position=right — 'Sharing live location with your driver to help them find you' — Customer App home screen during active ride. Node 763:5077.",
+    "Customer App uses token --surface/neutral/bg-invert; DS Core uses --surface/neutral/invert. Same value (#1d1d23), different token name — needs alignment.",
+    "The no_arrow variant is structurally distinct: bold title + regular body, no close icon, no arrow.",
+    "Arrow is a polygon image asset, not a CSS triangle. Rotation is applied per direction.",
+    "TODO: Confirm auto-dismiss timeout.",
+    "TODO: Confirm keyboard trigger and dismiss behavior.",
+    "TODO: Confirm touch/tap trigger mechanism for mobile."
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "component": "Calendar Plan Page",
+  "figmaFrameName": "Calendar - Plan Page",
+  "figmaNodeId": "5015:1669",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "subComponents": [
+    {
+      "name": "DayItemSimpleCalendar",
+      "description": "Individual day cell. 40×40px. Shared with Calendar Simple. Appearance determined by state + type + today combination.",
+      "sharedWithComponent": "calendar-simple",
+      "instances": {
+        "Available / No-plan / today=false": "2033:6105",
+        "Disable / No-plan / today=false": "2033:6108",
+        "Available / Planned / today=false": "5007:2739",
+        "Selected / No-plan / today=false": "5007:2766",
+        "Available / No-plan / today=true": "5007:2786"
+      }
+    }
+  ],
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer panel surface. 390px wide. Bottom corners rounded (--rounded-16, 16px). Top corners flat. Background: --surface/neutral/default (#f1f2f4). Padding H: --spacing-16 (16px). Padding bottom: --spacing-4 (4px). Padding top: --spacing-0 (0px).",
+      "required": true
+    },
+    {
+      "part": "weekdayHeader",
+      "description": "Row of 7 abbreviated day labels: SUN, MON, TUE, WED, THU, FRI, SAT. 40px height (full states), 36px height (small state). Equally distributed. Manrope Regular 11px. Color: --text/placeholder (#636377).",
+      "required": true
+    },
+    {
+      "part": "dayGrid",
+      "description": "5 rows of 7 DayItemSimpleCalendar cells. In full states, all rows are visible. In small state, only the current week row is visible (overflow clipped).",
+      "required": true
+    },
+    {
+      "part": "DayItemSimpleCalendar",
+      "description": "Individual 40×40px day cell. Props: date (string), state (Available|Disable|Selected), type (No-plan|Planned), today (boolean).",
+      "required": true
+    },
+    {
+      "part": "handle",
+      "description": "32×4px rounded bar at the bottom of the container. Indicates bottom-sheet drag affordance. Background: --button/secondary/bg-default (rgba(29,29,35,0.05)).",
+      "required": true
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Default",
+      "figmaNodeId": "5015:1670",
+      "description": "Full month view. No date selected. No today highlight. No planned indicators (except example days 3, 7, 10, 21, 22, 23, 30 shown as Planned in Figma)."
+    },
+    {
+      "name": "Today",
+      "figmaNodeId": "5015:1715",
+      "description": "Full month view. Today's date (day 9) is shown as Selected (dark circle). Planned indicators visible."
+    },
+    {
+      "name": "Active",
+      "figmaNodeId": "5015:1760",
+      "description": "Full month view. A non-today date (day 6) is selected. Today (day 9) shows a lighter circle highlight (today=true, state=Available)."
+    },
+    {
+      "name": "small",
+      "figmaNodeId": "5015:2289",
+      "description": "Collapsed view. Only the current week row (days 5–11) is visible. Overflow clipped. Day 6 is Selected, day 9 has today=true. Total height: 96px."
+    }
+  ],
+
+  "dayItemCombinations": [
+    {
+      "state": "Available",
+      "type": "No-plan",
+      "today": false,
+      "description": "Standard selectable day. Plain date number.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "background": "none"
+    },
+    {
+      "state": "Available",
+      "type": "No-plan",
+      "today": true,
+      "description": "Today's date, not yet selected. Lighter filled circle background. Plain date number.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "background": "36×36px lighter filled circle, centered",
+      "backgroundColorToken": "TODO: Confirm today-highlight token"
+    },
+    {
+      "state": "Disable",
+      "type": "No-plan",
+      "today": false,
+      "description": "Out-of-month overflow day. Greyed date number. Not selectable.",
+      "textToken": "--day-item/text-disabled",
+      "textValue": "#636377",
+      "background": "none",
+      "borderRadius": "24px"
+    },
+    {
+      "state": "Available",
+      "type": "Planned",
+      "today": false,
+      "description": "Day with a scheduled activity. Date number + 6×6px orange dot indicator below.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "indicatorColorToken": "--day-item/indicator-planned",
+      "indicatorValue": "#ff6b26",
+      "indicatorSize": "6×6px",
+      "indicatorPositionFromTop": "29px",
+      "borderRadius": "24px"
+    },
+    {
+      "state": "Selected",
+      "type": "No-plan",
+      "today": false,
+      "description": "Currently selected day. Dark filled circle background. Inverted date text.",
+      "textToken": "--day-item/text-selected",
+      "textValue": "#f1f2f4",
+      "background": "36×36px dark filled circle, centered",
+      "backgroundColorToken": "--day-item/bg-selected",
+      "backgroundValue": "#1d1d23"
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. Single visual style.",
+
+  "sizes": [
+    {
+      "name": "full",
+      "states": ["Default", "Today", "Active"],
+      "dimensions": {
+        "width": 390,
+        "height": 252
+      }
+    },
+    {
+      "name": "small",
+      "states": ["small"],
+      "dimensions": {
+        "width": 390,
+        "height": 96
+      },
+      "note": "Overflow clipped. Only current week row visible."
+    }
+  ],
+
+  "dimensions": {
+    "container": {
+      "width": 390,
+      "borderRadius": "0px 0px 16px 16px (bottom corners only)",
+      "paddingHorizontal": "16px",
+      "paddingTop": "0px",
+      "paddingBottom": "4px",
+      "gap": "4px"
+    },
+    "weekdayCell": {
+      "height": 40,
+      "heightSmall": 36,
+      "padding": "8px",
+      "distribution": "flex-1 (equal width)"
+    },
+    "dayCell": {
+      "size": 40,
+      "selectedCircleSize": 36,
+      "indicatorSize": 6,
+      "indicatorPositionFromTop": 29
+    },
+    "handle": {
+      "width": 32,
+      "height": 4,
+      "borderRadius": 10
+    }
+  },
+
+  "typography": {
+    "weekdayLabel": {
+      "textStyle": "Body 2xs/Regular",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/regular, 400)",
+      "fontSize": "var(--size/2xs, 11px)",
+      "lineHeight": 1.2,
+      "color": "var(--text/placeholder, #636377)"
+    },
+    "dayNumber": {
+      "textStyle": "Body md/SemiBold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/semibold, 600)",
+      "fontSize": "var(--size/lg, 16px)",
+      "lineHeight": 1.4,
+      "colors": {
+        "available": "var(--day-item/text-default, #1d1d23)",
+        "disabled": "var(--day-item/text-disabled, #636377)",
+        "selected": "var(--day-item/text-selected, #f1f2f4)"
+      }
+    }
+  },
+
+  "weekdayOrder": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+  "weekdayOrderNote": "Confirmed from Figma. Week starts on Sunday.",
+
+  "usageContext": [
+    "Embedded in the Plan page of Dojo apps (Customer and Driver).",
+    "Displayed as a bottom-sheet or drawer panel.",
+    "Used to communicate scheduled jobs or deliveries per day.",
+    "Collapses to the small state to show only the current week when space is limited."
+  ],
+
+  "notes": [
+    "This component does not include a month navigation header (no CalendarTitle sub-component).",
+    "The handle at the bottom indicates bottom-sheet draggability — it is not interactive in the current Figma design.",
+    "DayItemSimpleCalendar is shared with the Calendar Simple component.",
+    "The today highlight (lighter circle) and planned indicator dot are image assets in Figma.",
+    "Confirmed indicator token: --day-item/indicator-planned (#ff6b26, orange).",
+    "TODO: Confirm today highlight color token (separate from --day-item/bg-selected).",
+    "TODO: Confirm collapse/expand animation for small ↔ full transition.",
+    "TODO: Confirm whether Planned + Selected states can coexist on the same day cell.",
+    "TODO: Confirm usage details from Dojo Customer App (node 1498:20616) and Dojo Driver App (node 2883:4722)."
+  ]
+}

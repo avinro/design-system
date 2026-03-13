@@ -1,0 +1,131 @@
+---
+title: "Button Floating"
+description: "A circular icon button that floats above a content surface using a white background and elevation shadow. Used for a single, contextual action tied to the surface below it."
+---
+
+# Button Floating
+
+## Overview
+
+Button Floating is a circular icon button that appears elevated above a content surface — such as a map, image, or layered view. It uses a white neutral background and a drop shadow (`elevation/light/01`) to create the visual impression of floating above the content beneath it.
+
+Unlike [Button Icon](/components/button-icon), it has no type variants and no visible label. It is reserved for a single, contextual action directly related to the surface it floats over.
+
+Because it has no visible label, an `aria-label` is required on every instance.
+
+## Anatomy
+
+The Button Floating is composed of two parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Square wrapper with equal width and height. `rounded-full` border-radius renders it as a perfect circle. White neutral background (`--surface/neutral/sunken`). Drop shadow (`elevation/light/01`) creates the floating appearance. |
+| **Icon** | Yes | A single centered icon (24×24px for `md`). The only visible content. No label. |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button Floating anatomy](./anatomy.png) */}
+
+## Variants
+
+Button Floating has a **single visual style**. There are no type variants.
+
+The white neutral surface with elevation shadow is the defining visual characteristic. This distinguishes it from [Button Icon](/components/button-icon), which supports six types with different fill colors and hierarchies.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Button Floating variants](./variants.png) */}
+
+## States
+
+Button Floating supports four states. There is no hover state — this component is designed primarily for touch and mobile contexts.
+
+| State | Trigger |
+|---|---|
+| `Default` | Resting state, no interaction. |
+| `Pressed` | Button is actively tapped or clicked. |
+| `Disabled` | Action is unavailable. Non-interactive. |
+| `Focus` | Button receives keyboard focus. |
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button Floating states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Single visual style — no type variants.
+
+### Supported sizes
+
+| Size | Width | Height | Icon size | Padding X | Default use |
+|---|---|---|---|---|---|
+| `lg` | 54px | 54px | TODO | TODO | Default. Use in most product views, primarily on map surfaces. |
+| `md` | 44px | 44px | 24px | 12px | Secondary. Use for less important actions or reduced-presence contexts. |
+
+> Note: The `lg` size is 54×54px — not 56px as in Button and Button Icon.
+
+### Supported states
+
+- `Default`
+- `Pressed`
+- `Disabled`
+- `Focus`
+
+> There is no `Hover` state. This component is touch/mobile-first.
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--surface/neutral/sunken` | `white` | Container background fill |
+| `--button/secondary/border-active` | `rgba(29, 29, 35, 0)` | Container border (transparent at rest) |
+| `--rounded-full` | `120px` | Container border-radius |
+| `--width-1` | `1px` | Border width |
+| `--spacing-12` | `12px` | Horizontal padding (md) |
+| `elevation/light/01` | `0px 2px 4px 0px rgba(0,0,0,0.1)` | Drop shadow — the "floating" elevation |
+
+> TODO: Extract token values for Pressed, Disabled, and Focus states. See Figma node IDs in `button-floating.tokens.json`.
+
+## Usage guidelines
+
+- Use Button Floating only for a **single, contextual action** directly related to the surface it floats above — for example, re-centering a map or locking a GPS position.
+- Place only **one floating button per surface**. Avoid stacking multiple floating buttons in the same area.
+- Position the button at a **consistent, predictable location** within the surface — typically a fixed corner. TODO: Confirm the canonical corner position within the DoJo product.
+- Do not use Button Floating for primary navigation or app-level actions. Use the labeled [Button](/components/button) for those.
+- Do not use Button Floating when space allows for a labeled button. Labels always improve clarity.
+- Provide a tooltip matching the `aria-label` to aid discoverability for sighted users.
+
+## Accessibility
+
+- `aria-label` is **required** on every instance. The button has no visible label. Without it, the button has no accessible name.
+- The icon element should be `aria-hidden="true"` so screen readers rely on the button's `aria-label`.
+- The `Focus` state is designed and present. Do not suppress or override the focus ring.
+- Implement `disabled` or `aria-disabled="true"` for disabled instances. Visual state alone is not sufficient.
+- Provide a tooltip that matches the `aria-label` text for sighted users who may not recognize the icon.
+- TODO: Confirm minimum contrast ratio of the white surface against the content backgrounds it floats over.
+- TODO: Confirm keyboard interaction spec (Enter and Space activate the button; Tab moves focus).
+
+## Do / Don't
+
+**Do:**
+- Always provide an `aria-label` that describes the action (e.g., `aria-label="Center map"`).
+- Use for a single, surface-specific contextual action.
+- Position consistently and predictably within the content surface.
+- Provide a tooltip to expose the action's purpose on hover and focus.
+
+**Don't:**
+- Don't place more than one floating button on the same surface without a clear hierarchy reason.
+- Don't use Button Floating without an `aria-label`.
+- Don't use it for global app-level actions — it is surface-specific.
+- Don't remove the elevation shadow — it is part of the component's visual identity.
+- Don't use it when a labeled button fits in the available layout.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button Floating do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button Floating component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5180-273&t=EYB79TeCN87zLrnT-4)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325&p=f&t=DvP9tEEMgY8sBTJ8-0)
+- Code: `./button-floating.tsx`
+- Specs: `./button-floating.specs.json`
+- Tokens: `./button-floating.tokens.json`

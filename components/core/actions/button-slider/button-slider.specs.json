@@ -1,0 +1,95 @@
+{
+  "component": "Button Slider",
+  "figmaFrameName": "Button/Slider",
+  "figmaNodeId": "5227:800",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "track",
+      "description": "The outer container. Full-width pill shape (366×64px). Carries the subtle background fill. Acts as the slide rail for the thumb.",
+      "required": true
+    },
+    {
+      "part": "thumb",
+      "description": "The dark pill-shaped handle the user slides. 80×56px in the default state. Expands to fill the full inner width (358×56px) in the filled state. Contains the arrow icon.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "description": "A right-pointing arrow icon (Customer-Icon/right-forward) inside the thumb. 24×24px. Positioned at the trailing edge of the thumb in the filled state.",
+      "required": true
+    },
+    {
+      "part": "label",
+      "description": "Text label centered over the track. Uses mix-blend-difference to remain readable over both the light track and dark thumb at any slide position.",
+      "required": true
+    }
+  ],
+
+  "states": [
+    {
+      "name": "default",
+      "description": "Initial resting state. Thumb is at the start (left) of the track. Width: 80px. The action has not been triggered."
+    },
+    {
+      "name": "filled",
+      "description": "Completed state. Thumb has expanded to fill the full inner width (358×56px). The action has been confirmed."
+    }
+  ],
+
+  "stateNote": "Only two visual states are defined in Figma. Intermediate drag positions and disabled/focus states are not specified.",
+
+  "dimensions": {
+    "track": {
+      "width": 366,
+      "height": 64,
+      "padding": 4,
+      "borderRadius": "100px"
+    },
+    "thumb_default": {
+      "width": 80,
+      "height": 56,
+      "borderRadius": "100px"
+    },
+    "thumb_filled": {
+      "width": 358,
+      "height": 56,
+      "borderRadius": "100px",
+      "note": "358 = 366 (track) - 4 (padding) * 2"
+    },
+    "icon": {
+      "size": 24
+    }
+  },
+
+  "typography": {
+    "fontFamily": "var(--font-family/headings, 'Google Sans Flex', sans-serif)",
+    "fontStyle": "SemiBold",
+    "fontWeight": "var(--weight/semibold, 600)",
+    "fontSize": "var(--size/lg, 16px)",
+    "lineHeight": 1.2,
+    "letterSpacing": "var(--letter-spacing/tight, -0.4px)",
+    "color": "var(--text/invert, #f1f2f4)",
+    "blendMode": "mix-blend-difference",
+    "whitespace": "nowrap",
+    "note": "Uses the headings font family (Google Sans Flex), not the body font (Manrope). mix-blend-difference ensures readability at all thumb positions."
+  },
+
+  "usageContext": [
+    "High-stakes, intentional actions that must not be triggered accidentally.",
+    "Confirmed from Driver App: used to go online as a driver.",
+    "Intended for single confirmations per screen — not for repeated use."
+  ],
+
+  "notes": [
+    "No type variants — single visual style.",
+    "Only two states defined in Figma: default and filled. Intermediate drag states are not specified.",
+    "TODO: Define disabled state appearance.",
+    "TODO: Define interaction spec: drag behavior, snap threshold, snap-back on release before threshold.",
+    "TODO: Define animation/transition spec for thumb expansion.",
+    "TODO: Confirm whether a loading/processing state follows the filled state.",
+    "TODO: Confirm keyboard accessibility approach for the slide gesture.",
+    "TODO: Confirm maximum label length and truncation behavior (label is whitespace-nowrap)."
+  ]
+}

@@ -1,0 +1,158 @@
+---
+title: "Switch Toggle"
+description: "A binary on/off control that lets users enable or disable a setting immediately, with an optional icon, description text, and a boxed card layout."
+---
+
+# Switch Toggle
+
+## Overview
+
+Switch Toggle is a binary on/off control used to enable or disable a setting immediately, without requiring a separate confirm action. The switch indicator always sits on the right side of the row; the label, optional description, and optional icon occupy the left side.
+
+Use Switch Toggle for settings or preferences that take effect instantly when toggled. Do not use it for choices that require saving or confirmation — use a Checkbox or Button for those patterns.
+
+## Anatomy
+
+The component is composed of two base sub-components:
+
+1. **Switch indicator** (`_base-switch`) — A 44×24px pill-shaped toggle control. Contains a sliding white dot that moves between the left (off) and right (on) position. The track color reflects the current state and whether the control is enabled or disabled.
+2. **Label area** (`_base-label-checkbox`) — A text container that holds the option label and, when present, a secondary description line below it. Supports two internal configurations: basic (label only) and label + description. This sub-component is shared with the Radio Select and Checkbox components.
+
+An optional **icon** (`Icon-wrapper`) can appear on the far left of the row. It is a 24×24px container for a product icon that helps identify the setting at a glance.
+
+**Layout rule:** the switch indicator is always right-aligned. The icon (if present) and label area fill the remaining space on the left.
+
+{/* ![Switch Toggle anatomy](./anatomy.png) */}
+
+## Variants
+
+Three variants are supported, each suited to a different level of information density:
+
+| Variant | Description |
+|---------|-------------|
+| `switch-basic` | Icon (optional) + label only + switch on the right. Compact, single-line layout. |
+| `switch-description` | Icon (optional) + label + secondary description text + switch on the right. No border container. |
+| `switch-boxed` | Icon (optional) + label + description + switch on the right, enclosed in a bordered card. |
+
+{/* ![Switch Toggle variants](./variants.png) */}
+
+## States
+
+Two states are confirmed:
+
+| State | Description |
+|-------|-------------|
+| **Default** | Control is interactive. Switch track is `--selector/bg-enable` (off) or `--selector/bg-active` (on). Label uses `--text/primary`. |
+| **Disabled** | Control is non-interactive. Switch track is `--selector/bg-disabled` regardless of the checked value. Label and description text use `--text/placeholder`. In `switch-boxed`, the container border also changes to `--text/placeholder`. |
+
+The switch also has two checked values:
+
+| Checked | Description |
+|---------|-------------|
+| **Off** | Dot is at the left of the track. Track color is `--selector/bg-enable` (default) or `--selector/bg-disabled` (disabled). |
+| **On** | Dot is at the right of the track. Track color is `--selector/bg-active` (default) or `--selector/bg-disabled` (disabled). |
+
+TODO: Confirm whether a hover or focus state exists for the switch indicator.
+
+{/* ![Switch Toggle states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `switch-basic`
+- `switch-description`
+- `switch-boxed`
+
+### Supported sizes
+
+- Single size only. No size variants confirmed.
+  - Switch track: `44×22px` (rendered), within a `44×24px` container
+  - Switch dot: `~18×18px`
+  - Track border radius: `125px` (fully rounded)
+  - Icon: `24×24px`
+  - Font size: `--size/base` (`14px`)
+
+### Supported states
+
+- Default (off)
+- Default (on)
+- Disabled (off)
+- Disabled (on)
+
+TODO: Confirm hover and focus states.
+
+### Token reference
+
+| Part | Token | Value |
+|------|-------|-------|
+| **Switch track — default, off** | `--selector/bg-enable` | `#7a7b93` |
+| **Switch track — default, on** | `--selector/bg-active` | `#ff6b26` |
+| **Switch track — disabled** | `--selector/bg-disabled` | `#cccdda` |
+| **Switch dot** | — | `#ffffff` (white) |
+| **Label text — default** | `--text/primary` | `#1d1d23` |
+| **Label text — disabled** | `--text/placeholder` | `#636377` |
+| **Description text — default** | `--text/placeholder` | `#636377` |
+| **Description text — disabled** | `--text/placeholder` | `#636377` |
+| **Label font family** | `--font-family/body` | Manrope |
+| **Label font weight** | `--weight/semibold` | `600` |
+| **Description font weight** | `--weight/regular` | `400` |
+| **Font size** | `--size/base` | `14px` |
+| **Line height** | — | `1.2` |
+| **Letter spacing** | `--letter-spacing/normal` | `0px` |
+| **Label area vertical padding** | `--numbers/2` | `2px` |
+| **Label-to-description gap** | `--numbers/4` | `4px` |
+| **Row gap (icon / label / switch)** | — | `8–10px` |
+| **`switch-boxed` border — default** | `--layout/border` | `#e1e5ea` |
+| **`switch-boxed` border — disabled** | `--text/placeholder` | `#636377` |
+| **`switch-boxed` border radius** | — | `8px` |
+| **`switch-boxed` padding** | — | `12px` |
+
+## Usage guidelines
+
+- Use Switch Toggle for settings that take immediate effect when toggled — no save action required.
+- Do not use Switch Toggle for options that need to be confirmed before applying. Use a Checkbox paired with a submit Button instead.
+- Use `switch-basic` for settings that are self-explanatory from the label alone.
+- Use `switch-description` when a single additional line of context meaningfully reduces ambiguity.
+- Use `switch-boxed` when the setting warrants visual separation from surrounding content — for example, a prominent or high-impact option.
+- Always include an icon when the setting belongs to a list of items that each have icons. Omit the icon consistently within a group — do not mix rows with and without icons.
+- Use the disabled state to communicate that a setting is temporarily unavailable, not that it has been removed. Pair it with a visible explanation when the reason is non-obvious.
+- Keep the label short — one to four words. The description carries any extra context.
+
+## Accessibility
+
+- The switch must be implemented as a native `<button role="switch">` with `aria-checked="true"` or `aria-checked="false"`.
+- The label must be associated with the switch via `aria-labelledby` or a wrapping `<label>`.
+- When disabled, the switch must have `aria-disabled="true"` and must not respond to pointer or keyboard events.
+- The control must be focusable and togglable via `Space` or `Enter`.
+- The focus indicator must be visible.
+- Do not rely on track color alone to communicate state — ensure the dot position also changes.
+
+TODO: Confirm the exact ARIA pattern and focus ring styling used in the implementation.
+
+## Do / Don't
+
+**Do:**
+- Use for settings that apply immediately — dark mode, notifications, feature flags
+- Keep the label to one to four words; use the description for clarification
+- Include an icon when the surrounding list uses icons consistently
+
+**Don't:**
+- Use Switch Toggle to replace a Checkbox in a form that requires submission
+- Use more than one line of description text
+- Disable the switch without providing context on why it is unavailable
+- Mix boxed and unboxed Switch Toggle items in the same list
+
+{/* ![Switch Toggle do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Switch Toggle](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5010-1649)
+- Code: TODO
+- Specs: `./switch-toggle.specs.json`
+- Tokens: `./switch-toggle.tokens.json`
+
+### Related components
+
+- [Checkbox](/components/core/inputs/checkbox) — for multi-selection or choices requiring confirmation
+- [Radio Select](/components/core/inputs/radio-select) — for single-selection from a set of mutually exclusive options

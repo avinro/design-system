@@ -1,0 +1,215 @@
+---
+title: "Snackbar"
+description: "A lightweight, transient notification that surfaces a brief message alongside a single quick action such as Undo or Retry."
+---
+
+# Snackbar
+
+## Overview
+
+Snackbar is a lightweight, transient notification used to surface a brief message alongside a single quick action. It is non-blocking — it does not interrupt the user's flow, does not require a response, and does not trap focus.
+
+Use Snackbar when the user needs to know something happened and may want to act on it immediately with a low-effort action (Undo, Retry, View). For passive confirmations with no action, use Toast. For decisions or high-risk situations, use Alert Dialog.
+
+## Anatomy
+
+Snackbar is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Rounded card with drop shadow. Fixed width of 374px. Height depends on configuration: 58px (Short action) or 98px (Longer action). |
+| **Context icon** | No | 16×16px icon inside a 32×32px pill-shaped container. Present on all types except `neutral - no icon`. Color communicates semantic type. |
+| **Description** | Yes | Single message text. 14px Manrope Medium. Up to 2 lines. |
+| **Action button** | Yes | Ghost pill button (32px height). Triggers the quick action (e.g. Undo, Retry). |
+| **Close button** | No | 32×32px icon button (×). Optional. Recommended when the Snackbar may persist or stack. |
+
+{/* TODO: Add anatomy.png from Figma once annotation frame is available. */}
+{/* ![Snackbar anatomy](./anatomy.png) */}
+
+## Variants
+
+Snackbar has two dimensions of variation: **type** and **configuration**.
+
+### Types
+
+Five semantic types control whether a context icon is shown and its color. The card background, typography, and layout are the same across all types.
+
+| Type | Icon | Icon container color | When to use |
+|---|---|---|---|
+| `info` | `Customer-Icon/info` | `rgba(29,29,35,0.05)` | Neutral informational message with a quick action. |
+| `error` | `Customer-Icon/alert-warn-circle` | `--notification/error-bg` (`#fcdcdc`) | Recoverable error with a corrective action (e.g. Retry). |
+| `warning` | `Customer-Icon/alert-war-triangle` | `--notification/warning--bg` (`#f6e3a4`) | Non-blocking warning with an optional remediation action. |
+| `success` | `Customer-Icon/check` | `--notification/success-bg` (`#d5f4d6`) | Lightweight success confirmation with a follow-up action (e.g. Undo, View). |
+| `neutral - no icon` | None | None | Plain message with a quick action. Use when no semantic color is needed. |
+
+### Configurations
+
+Two layout configurations adapt the Snackbar to the length of the action label.
+
+| Configuration | Layout | Height | When to use |
+|---|---|---|---|
+| `Short action` | Single row — description and action button side by side | 58px | Action label is short (1–2 words): "Undo", "Retry", "View". |
+| `Longer action` | Two rows — description on top row, action button right-aligned below | 98px | Action label is longer (3+ words) and does not fit on one line with the description. |
+
+{/* ![Snackbar variants](./variants.png) */}
+
+## States
+
+Snackbar has no interactive variant states on its shell. It has two lifecycle states:
+
+| State | Description |
+|---|---|
+| `Visible` | Snackbar is mounted and displayed. Auto-dismiss timer may be running. |
+| `Dismissed` | Snackbar is unmounted or hidden. Triggered by auto-dismiss, action button press, or manual close. |
+
+The action button and close button follow the Button component state spec (default, hover, pressed, focus).
+
+{/* ![Snackbar states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+**Types:** `info`, `error`, `warning`, `success`, `neutral - no icon`
+
+**Configurations:** `Short action`, `Longer action`
+
+### Supported sizes
+
+Two heights determined by configuration:
+- `Short action`: 58px
+- `Longer action`: 98px
+
+Fixed width: 374px across all types and configurations.
+
+### Supported states
+
+- `Visible`
+- `Dismissed`
+
+### Token reference
+
+| Part | Token | Value |
+|---|---|---|
+| **Container** | | |
+| Background | `--surface/neutral/sunken` | `white` |
+| Border radius | `--rounded-16` | `16px` |
+| Padding left (with icon) | `--spacing-12` | `12px` |
+| Padding left (neutral, no icon) | `--spacing-16` | `16px` |
+| Padding right | `--spacing-8` | `8px` |
+| Padding top/bottom | `--spacing-12` | `12px` |
+| Gap (content → actions) | `--spacing-8` | `8px` |
+| Drop shadow | `elevation/dark/01` | `0px 2px 4px 0px rgba(0,0,0,0.24)` |
+| Width | — | `374px` |
+| **Context icon container** | | |
+| Padding | `--spacing-8` | `8px` |
+| Border radius | `--spacing-120` | `120px` |
+| Icon size | — | `16×16px` (rendered inside a 24×24px wrapper) |
+| Background — `info` | `--button/secondary/bg-default` | `rgba(29,29,35,0.05)` |
+| Background — `error` | `--notification/error-bg` | `#fcdcdc` |
+| Background — `warning` | `--notification/warning--bg` | `#f6e3a4` |
+| Background — `success` | `--notification/success-bg` | `#d5f4d6` |
+| **Description** | | |
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/medium` | `500` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+| Color | `--text/placeholder` | `#636377` |
+| **Action button** | | |
+| Height | — | `32px` |
+| Padding X | `--spacing-12` | `12px` |
+| Border radius | `--rounded-full` | `120px` |
+| Background | `--button/outlined/bg-active` | `rgba(29,29,35,0)` |
+| Label font weight | `--weight/semibold` | `600` |
+| Label color | `--button/outlined/text-active` | `#1d1d23` |
+| Label font size | `--size/base` | `14px` |
+| Label line height | — | `1.4` |
+| **Close button** | | |
+| Size | — | `32×32px` |
+| Background | `--button/outlined/bg-active` | `rgba(29,29,35,0)` |
+| Border radius | `--rounded-full` | `120px` |
+| Icon size | — | `16×16px` |
+
+## Usage guidelines
+
+### When to use Snackbar
+
+- **Recoverable actions** — the user performed an action and may want to immediately reverse or follow up: "Undo", "Retry", "View".
+- **Lightweight error feedback with a corrective action** — a recoverable error where a single action resolves it (e.g. "Failed to save. Retry").
+- **Low-urgency status with a follow-up** — something happened in the background and the user may want to act on it.
+
+### When NOT to use Snackbar
+
+| Situation | Use instead |
+|---|---|
+| Passive success or informational confirmation with no action needed | [Toast](/components/core/messaging/toast/index) |
+| High-risk or irreversible action requiring a decision | [Alert Dialog](/components/core/messaging/alert-dialog/index) |
+| Task requiring multiple inputs or a form | [Standard Dialog](/components/core/messaging/standard-dialog/index) |
+| Blocking error requiring immediate correction before continuing | [Alert Dialog](/components/core/messaging/alert-dialog/index) |
+| Multi-step guidance or explanations | [Standard Dialog](/components/core/messaging/standard-dialog/index) |
+
+### Choosing between Short action and Longer action
+
+- Use `Short action` when the action label is 1–2 words: "Undo", "Retry", "View", "Dismiss".
+- Use `Longer action` when the action label is 3 or more words and would not fit on the same line as the description.
+- Prefer short action labels — they are faster to read and act on.
+
+### Action button
+
+- Include exactly one action. Do not add a second action button.
+- Use concise, verb-based labels: "Undo", "Retry", "View", "Dismiss".
+- The action must be a quick, low-effort operation — not a form, a navigation flow, or a destructive step.
+- Do not use the action button for destructive operations. If the action is irreversible, use Alert Dialog.
+
+### Dismiss behavior
+
+- Snackbar may auto-dismiss after a short timeout. Provide a manual dismiss path (close button or action) when the message is important enough to re-read.
+- TODO: Confirm auto-dismiss duration used in the product.
+
+### Stacking
+
+- Do not stack more than one Snackbar at a time. Replace or queue them.
+
+## Accessibility
+
+- Use `role="status"` with `aria-live="polite"` for `info`, `success`, and `neutral` types.
+- Use `role="alert"` with `aria-live="assertive"` for `error` and `warning` types.
+- Snackbar must not trap or shift the user's focus when it appears.
+- The action button label must be self-descriptive. Avoid labels like "Click here" or "OK".
+- If a close button is present, it must have an accessible label: `aria-label="Dismiss"`.
+- TODO: Confirm keyboard interaction for the action and close buttons while the Snackbar is visible.
+- TODO: Confirm auto-dismiss duration and whether it is extended for accessibility settings.
+
+## Do / Don't
+
+**Do:**
+- Use for recoverable actions with a single immediate follow-up (Undo, Retry, View).
+- Use `Short action` for brief labels; use `Longer action` when the label does not fit inline.
+- Keep the description concise — one clear statement of what happened.
+- Use semantic types consistently: `success` for completed actions, `error` for recoverable failures, `warning` for non-blocking alerts.
+- Use `neutral - no icon` when no semantic color is needed.
+
+**Don't:**
+- Don't use Snackbar as a replacement for Toast when no action is needed.
+- Don't use Snackbar for irreversible or high-risk actions — use Alert Dialog.
+- Don't include more than one action button.
+- Don't write multi-sentence descriptions or instructions.
+- Don't stack multiple Snackbars simultaneously.
+- Don't use the action for anything that requires a form or multi-step flow.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Snackbar do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Snackbar](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7326-5679)
+- Code: `./snackbar.tsx`
+- Specs: `./snackbar.specs.json`
+- Tokens: `./snackbar.tokens.json`
+
+### Related components
+
+- [Toast](/components/core/messaging/toast/index) — for passive, non-actionable confirmations and informational updates
+- [Alert Dialog](/components/core/messaging/alert-dialog/index) — for high-risk, irreversible, or blocking interruptions requiring a decision
+- [Standard Dialog](/components/core/messaging/standard-dialog/index) — for forms, multi-input tasks, and reversible flows
