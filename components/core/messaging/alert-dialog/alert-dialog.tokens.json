@@ -1,0 +1,177 @@
+{
+  "component": "alert-dialog",
+  "tokens": {
+    "overlay": {
+      "background": {
+        "token": "--surface/neutral/overlay",
+        "value": "rgba(0, 0, 0, 0.4)"
+      },
+      "padding-horizontal": {
+        "token": "--spacing-16",
+        "value": "16px"
+      },
+      "padding-bottom": {
+        "token": "--spacing-32",
+        "value": "32px"
+      }
+    },
+    "dialog-card": {
+      "background": {
+        "token": "--notification/dialog-bg",
+        "value": "#f1f2f4",
+        "note": "Light mode value. In dark-themed app contexts this token resolves to #1d1d23."
+      },
+      "border-radius": {
+        "token": "--rounded-24",
+        "value": "24px"
+      },
+      "padding": {
+        "token": "--spacing-24",
+        "value": "24px"
+      },
+      "internal-gap": {
+        "token": "--spacing-24",
+        "value": "24px"
+      }
+    },
+    "icon-container": {
+      "size": {
+        "token": null,
+        "value": "80px"
+      },
+      "border-radius": {
+        "token": "--rounded-full",
+        "value": "120px"
+      },
+      "padding": {
+        "token": "--spacing-20",
+        "value": "20px"
+      },
+      "icon-size": {
+        "token": null,
+        "value": "40px"
+      },
+      "background-warning": {
+        "token": "--notification/warning--bg",
+        "value": "#f6e3a4",
+        "note": "Token name has a double dash: --notification/warning--bg"
+      },
+      "background-error": {
+        "token": "--notification/error-bg",
+        "value": "#fcdcdc"
+      },
+      "background-destructive": {
+        "token": "--notification/error-bg",
+        "value": "#fcdcdc"
+      },
+      "background-info": {
+        "token": "--notification/info-bg",
+        "value": "#d4e3ff"
+      }
+    },
+    "title": {
+      "color": {
+        "token": "--text/primary",
+        "value": "#1d1d23"
+      },
+      "font-family": {
+        "token": "--font-family/headings",
+        "value": "Google Sans Flex"
+      },
+      "font-weight": {
+        "token": "--weight/semibold",
+        "value": "600"
+      },
+      "font-size": {
+        "token": "--size/2xl",
+        "value": "20px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      },
+      "letter-spacing": {
+        "token": "--letter-spacing/tight",
+        "value": "-0.4px"
+      }
+    },
+    "body": {
+      "color": {
+        "token": "--text/body",
+        "value": "#34353f"
+      },
+      "font-family": {
+        "token": "--font-family/body",
+        "value": "Manrope"
+      },
+      "font-weight": {
+        "token": "--weight/medium",
+        "value": "500"
+      },
+      "font-size": {
+        "token": "--size/base",
+        "value": "14px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      }
+    },
+    "actions": {
+      "gap": {
+        "token": null,
+        "value": "8px"
+      },
+      "button-height": {
+        "token": null,
+        "value": "44px"
+      },
+      "button-border-radius": {
+        "token": "--rounded-full",
+        "value": "120px"
+      }
+    },
+    "primary-button": {
+      "background": {
+        "token": "--button/default/bg-default",
+        "value": "#1d1d23"
+      },
+      "border": {
+        "token": "--button/default/border-active",
+        "value": "rgba(29, 29, 35, 0.12)"
+      },
+      "text-color": {
+        "token": "--button/default/text-default",
+        "value": "#f1f2f4"
+      }
+    },
+    "secondary-button": {
+      "background": {
+        "token": "--button/secondary/bg-default",
+        "value": "rgba(29, 29, 35, 0.05)"
+      },
+      "border": {
+        "token": "--button/secondary/border-active",
+        "value": "rgba(29, 29, 35, 0)"
+      },
+      "text-color": {
+        "token": "--button/secondary/text-default",
+        "value": "#1d1d23"
+      }
+    },
+    "destructive-button": {
+      "background": {
+        "token": "--button/destructive/bg-default",
+        "value": "#cc2222"
+      },
+      "border": {
+        "token": "--button/destructive/border-default",
+        "value": "rgba(29, 29, 35, 0)"
+      },
+      "text-color": {
+        "token": "--button/destructive/text-default",
+        "value": "#ffffff"
+      }
+    }
+  }
+}

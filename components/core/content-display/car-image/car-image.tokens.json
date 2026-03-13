@@ -1,0 +1,21 @@
+{
+  "_note": "Car Image has no design tokens. It is a pure image/asset container with fixed dimensions. No color fills, borders, typography, or spacing tokens are defined for this component.",
+
+  "dimensions": {
+    "UI": {
+      "width":  { "value": "51.65px", "description": "Container width for Context=UI (both default and van types)" },
+      "height": { "value": "33px",    "description": "Container height for Context=UI (both default and van types)" }
+    },
+    "Map": {
+      "width":  { "value": "40px",    "description": "Container width for Context=Map (both default and van types)" },
+      "height": { "value": "41px",    "description": "Container height for Context=Map (both default and van types)" }
+    }
+  },
+
+  "imageAssets": {
+    "default_UI":  { "value": "taxi-v_diagonal 1",    "description": "Image asset for Type=default, Context=UI" },
+    "default_Map": { "value": "taxi-v_top 1",          "description": "Image asset for Type=default, Context=Map" },
+    "van_UI":      { "value": "black_van-v_diagonal 1","description": "Image asset for Type=van, Context=UI" },
+    "van_Map":     { "value": "black_van-v_top 1",     "description": "Image asset for Type=van, Context=Map" }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "component": "Tabs",
+  "figmaNodeId": "5001:2081",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "description": "A full-width underline tab bar for switching between content sections on the same screen. Tabs fill the available width equally. One tab is always active.",
+
+  "anatomy": {
+    "parts": [
+      {
+        "part": "tab bar",
+        "description": "The outer container. Full-width, carries the bottom divider line and horizontal padding. No background in DS Core; product apps may add a surface background.",
+        "required": true
+      },
+      {
+        "part": "tab item (active)",
+        "description": "The currently selected tab. Has a 2px dark bottom border as the active indicator. Text or icon is rendered in the active color.",
+        "required": true
+      },
+      {
+        "part": "tab item (inactive)",
+        "description": "Any unselected tab. No bottom border. Text or icon is rendered in the inactive muted color.",
+        "required": true
+      }
+    ]
+  },
+
+  "baseComponents": [
+    {
+      "name": "tab-items",
+      "figmaNodeId": "5001:2072",
+      "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+      "states": [
+        { "label": "icon=off, Active=on",  "figmaNodeId": "5001:2079", "description": "Text-only, active" },
+        { "label": "icon=off, Active=off", "figmaNodeId": "5001:2077", "description": "Text-only, inactive" },
+        { "label": "icon=on,  Active=on",  "figmaNodeId": "5001:2073", "description": "Icon-only, active" },
+        { "label": "icon=on,  Active=off", "figmaNodeId": "5001:2075", "description": "Icon-only, inactive" }
+      ]
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Navs-2",
+      "figmaNodeId": "5001:2082",
+      "itemCount": 2,
+      "width": 360,
+      "height": 44,
+      "description": "Two-tab variant."
+    },
+    {
+      "name": "Navs-3",
+      "figmaNodeId": "5001:2085",
+      "itemCount": 3,
+      "width": 360,
+      "height": 44,
+      "description": "Three-tab variant."
+    },
+    {
+      "name": "Navs-4",
+      "figmaNodeId": "5001:2089",
+      "itemCount": 4,
+      "width": 360,
+      "height": 44,
+      "description": "Four-tab variant."
+    }
+  ],
+
+  "itemContent": {
+    "textOnly": {
+      "description": "Tab item shows a text label only. No icon.",
+      "confirmed": true
+    },
+    "iconOnly": {
+      "description": "Tab item shows a 24×24 icon only. No text label.",
+      "confirmed": true,
+      "iconSize": "24px"
+    },
+    "iconAndText": {
+      "description": "TODO: Confirm whether a combined icon + label configuration is supported."
+    }
+  },
+
+  "states": [
+    {
+      "name": "Active",
+      "figmaNodeIds": ["5001:2079", "5001:2073"],
+      "description": "Currently selected tab. 2px bottom border indicator. Text/icon in active dark color."
+    },
+    {
+      "name": "Inactive",
+      "figmaNodeIds": ["5001:2077", "5001:2075"],
+      "description": "Unselected tab. No bottom border. Text/icon in muted color."
+    }
+  ],
+
+  "behavior": {
+    "selectionModel": "Single — exactly one tab active at all times.",
+    "tabWidth": "Equal — each tab takes flex: 1 of the bar width.",
+    "contentPanel": "Tabs control which content panel is visible. Panel rendering is managed by the parent screen.",
+    "keyboard": "TODO: Confirm arrow-key navigation between tabs."
+  },
+
+  "dimensions": {
+    "tabBar": {
+      "height": "44px",
+      "paddingLeft": "12px",
+      "paddingRight": "12px",
+      "bottomBorderWidth": "1px"
+    },
+    "tabItem": {
+      "height": "44px",
+      "flex": "1",
+      "activeBorderBottomWidth": "2px"
+    }
+  },
+
+  "realWorldUsage": [
+    {
+      "app": "Customer App",
+      "screen": "Venue detail bottom sheet",
+      "variant": "Navs-3",
+      "labels": ["Overview", "Reviews", "Photos"],
+      "figmaNodeId": "907:8507",
+      "figmaFileKey": "mqnceyvORwnapgycVXLgVE"
+    },
+    {
+      "app": "Driver App",
+      "screen": "Inbox screen",
+      "variant": "Navs-4",
+      "labels": ["All", "Messages", "Alerts", "Updates"],
+      "figmaNodeId": "2883:6618",
+      "figmaFileKey": "tdHwm5RAIg6k9WTW4FQKCX"
+    }
+  ],
+
+  "notes": [
+    "DS Core uses slash-notation tokens (--tab/border-active). Driver App uses hyphen tokens with a typo in 'inactive' (--tab-border-inative, --tab-text-inative). Alignment needed.",
+    "Inactive text color differs between DS Core (#636377) and Driver App (#9192af). Confirm intended value.",
+    "Driver App adds a surface background (--bg-surface-default / #f1f2f4) to the tab bar container; DS Core has no background. Confirm intended behavior.",
+    "Track bottom border token: DS Core uses --notification/border-default; Customer App uses --notification/border-default; Driver App uses --border-default. Same value (#e4e5ed), different token name.",
+    "Active indicator border-bottom-width uses --sds-size-stroke-focus-ring (2px). Token confirmed in Figma.",
+    "Typography: Inter Medium 500, 15px — same as Segmented Control.",
+    "TODO: Confirm whether icon + label combination per tab is supported.",
+    "TODO: Confirm keyboard navigation behavior.",
+    "TODO: Confirm disabled tab state."
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "_source": "Dojo DS — Figma file nGsiItayj12cfi3AKbP1mB, Colors page (node 7006:2717)",
+  "_note": "Aggregated index of the three-layer color token system. This file does not contain token values — it describes the architecture, maps each layer to its source file, and summarizes the groups and token counts within each layer. For actual token values, open the file listed under each layer.",
+
+  "architecture": {
+    "_note": "The color system is split into three layers that form a dependency chain: primitives → semantic → component-specific. Primitives are raw palette values. Semantic tokens assign roles and preserve light/dark mode pairs. Component-specific tokens scope colors to individual UI components and also carry light/dark mode pairs.",
+    "layers": [
+      {
+        "order": 1,
+        "name": "primitives",
+        "purpose": "Raw palette values. No semantic meaning, no mode variants. Used only as the source of truth that semantic tokens reference.",
+        "file": "tokens/colors.primitives.json"
+      },
+      {
+        "order": 2,
+        "name": "semantic",
+        "purpose": "Role-based tokens with explicit light and dark mode values. Consumed by components and surfaces — do not use primitives directly in UI.",
+        "file": "tokens/colors.semantic.json"
+      },
+      {
+        "order": 3,
+        "name": "component-specific",
+        "purpose": "Per-component color tokens with light and dark mode values. Scoped to a single component. Reference semantic tokens internally.",
+        "file": "tokens/colors.component-specific.json"
+      }
+    ]
+  },
+
+  "primitivesFile": {
+    "file": "tokens/colors.primitives.json",
+    "totalTokens": 145,
+    "groups": {
+      "static": {
+        "tokenCount": 2,
+        "description": "Absolute white and black anchors. Never invert across modes."
+      },
+      "neutral": {
+        "tokenCount": 11,
+        "description": "Gray scale from near-white (100) to near-black (950). Includes non-standard step 750."
+      },
+      "neutral-opacity": {
+        "tokenCount": 11,
+        "description": "Opacity-based overlay scale using rgba strings. Steps 0–500 use a dark base for light-mode overlays; steps 600–950 use a light base for dark-mode overlays."
+      },
+      "brand": {
+        "tokenCount": 11,
+        "description": "Orange scale (100–900). The primary brand and accent hue. Step 600 (#FF6B26) is the pure brand color."
+      },
+      "utility": {
+        "tokenCount": 44,
+        "description": "Four hues that underlie the semantic utility roles — red (error), yellow (warning), green (success), blue (info). Each hue has 11 stops.",
+        "hues": ["red", "yellow", "green", "blue"]
+      },
+      "support": {
+        "tokenCount": 66,
+        "description": "Six hues for chart series and support contexts. Not tied to functional states. Each hue has 11 stops.",
+        "hues": ["teal", "cyan", "lime", "purple", "violet", "pink"],
+        "knownIssue": "cyan-500 and cyan-600 share the same value (#61D2FE) in the Figma source."
+      }
+    }
+  },
+
+  "semanticFile": {
+    "file": "tokens/colors.semantic.json",
+    "totalTokens": 103,
+    "modesPreserved": true,
+    "modeKeys": ["light", "dark"],
+    "groups": {
+      "foreground": {
+        "tokenCount": 20,
+        "description": "Text and icon colors. Includes neutral steps, accent, white, destructive, plus utility (error/warning/success/info) and support (7 hues) sub-groups."
+      },
+      "background": {
+        "tokenCount": 44,
+        "description": "Surface fill colors. Sub-groups: primary (8 steps), secondary (5 opacity-based steps), accent (6 steps), elevation (4 levels), destructive (3 steps), utility (4 states), support (7 hues × light + base)."
+      },
+      "border": {
+        "tokenCount": 16,
+        "description": "Stroke colors. Sub-groups: primary (5 solid steps), secondary (5 opacity-based steps), accent (4 steps), utility (error + success only — info and warning border tokens are not defined in Figma)."
+      },
+      "surface": {
+        "tokenCount": 7,
+        "description": "Alias layer for elevation and accent surface backgrounds. Maps to background.elevation.* and background.accent.* tokens."
+      },
+      "text": {
+        "tokenCount": 6,
+        "description": "Alias layer for common text roles — primary, body, placeholder, help, invert, accent. References foreground.* tokens."
+      },
+      "notification": {
+        "tokenCount": 10,
+        "description": "Notification and alert colors — error, warning, success, info, each with bg and text pairs, plus border-default. warning.signal dark mode is marked TODO (orphaned Figma variable).",
+        "knownIssue": "warning.signal dark mode is TODO — references 'colors/yellow/500', an orphaned variable outside the standard color/ path in Figma."
+      }
+    }
+  },
+
+  "componentSpecificFile": {
+    "file": "tokens/colors.component-specific.json",
+    "totalTokens": 130,
+    "modesPreserved": true,
+    "modeKeys": ["light", "dark"],
+    "groups": {
+      "button": {
+        "tokenCount": 53,
+        "description": "Six variants: default, accent, secondary, outlined, destructive, link. Each covers bg, border, and text across interactive states. Includes a 'go-online' state token set.",
+        "variants": ["default", "accent", "secondary", "outlined", "destructive", "link", "go-online"],
+        "knownIssue": "button.accent has no bg.default token and only defines text.active — the default and remaining text states are not defined in Figma."
+      },
+      "input": {
+        "tokenCount": 10,
+        "description": "Text input bg, border (default/active/error/success), and text (input/label/placeholder/disabled) tokens."
+      },
+      "badge": {
+        "tokenCount": 6,
+        "description": "Two variants: default (filled) and outlined (transparent bg with border)."
+      },
+      "tab": {
+        "tokenCount": 5,
+        "description": "Tab bar item bg, border (active/inactive), and text (active/inactive). Figma spelling errors corrected."
+      },
+      "navbar": {
+        "tokenCount": 8,
+        "description": "Nav bar surface, border, and link item states (active/selected). Includes an 'askdojo' variant with a distinct muted background."
+      },
+      "selector": {
+        "tokenCount": 5,
+        "description": "Toggle/switch track (active/enabled/disabled) and thumb fg (enabled/disabled)."
+      },
+      "segmented-control": {
+        "tokenCount": 7,
+        "description": "Container bg plus item bg, border, and text across active/inactive states."
+      },
+      "handler": {
+        "tokenCount": 1,
+        "description": "Drag/resize handle. Single bg token."
+      },
+      "driving-indicator": {
+        "tokenCount": 3,
+        "description": "Driving mode indicator — bg, sub-direction-bg, and text."
+      },
+      "surface": {
+        "tokenCount": 7,
+        "description": "Surface component aliases matching colors.semantic.json surface.* tokens."
+      },
+      "chart": {
+        "tokenCount": 14,
+        "description": "Seven support hues (blue, cyan, orange, pink, purple, teal, violet), each with a bg (tinted) and text (saturated) token pair."
+      },
+      "notification": {
+        "tokenCount": 10,
+        "description": "Notification component colors. Also present in colors.semantic.json. Figma places these tokens in the component section.",
+        "knownIssue": "warning.signal dark mode is TODO — same orphaned variable issue as in colors.semantic.json."
+      },
+      "bg-inactive": {
+        "tokenCount": 1,
+        "description": "Standalone inactive background token. No component scope assigned in Figma — listed as-is from the source."
+      }
+    }
+  },
+
+  "knownIssues": [
+    {
+      "id": "warning-signal-dark",
+      "severity": "minor",
+      "description": "notification.warning.signal has no confirmed dark mode value. The Figma variable 'colors/yellow/500' is outside the standard color/ path and has no dark mode equivalent defined.",
+      "affectedFiles": ["tokens/colors.semantic.json", "tokens/colors.component-specific.json"],
+      "currentValue": "TODO"
+    },
+    {
+      "id": "button-accent-incomplete",
+      "severity": "moderate",
+      "description": "button.accent is missing a default background state and all text states except text.active. These are not defined in the Figma source.",
+      "affectedFiles": ["tokens/colors.component-specific.json"]
+    },
+    {
+      "id": "cyan-duplicate-step",
+      "severity": "low",
+      "description": "support.cyan steps 500 and 600 share the same value (#61D2FE) in the Figma source. Preserved as-is for fidelity.",
+      "affectedFiles": ["tokens/colors.primitives.json"]
+    },
+    {
+      "id": "border-utility-incomplete",
+      "severity": "low",
+      "description": "border.utility only defines error and success. No info or warning border token exists in Figma.",
+      "affectedFiles": ["tokens/colors.semantic.json"]
+    },
+    {
+      "id": "bg-inactive-unscoped",
+      "severity": "low",
+      "description": "bg-inactive has no assigned component in Figma. Its ownership is undefined.",
+      "affectedFiles": ["tokens/colors.component-specific.json"]
+    }
+  ]
+}

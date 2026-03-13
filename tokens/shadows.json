@@ -1,0 +1,64 @@
+{
+  "_source": "Figma variables — nGsiItayj12cfi3AKbP1mB",
+  "_note": "3 elevation levels defined for both light and dark mode. Values represent a single drop shadow layer. 'card-shadow' and 'Elevation 4 dp' existed as ad-hoc tokens in Figma and are excluded — they do not follow the system naming.",
+
+  "light": {
+    "01": {
+      "type": "drop-shadow",
+      "color": "#0000001A",
+      "x": 0,
+      "y": 2,
+      "blur": 4,
+      "spread": 0,
+      "css": "0px 2px 4px 0px #0000001A"
+    },
+    "02": {
+      "type": "drop-shadow",
+      "color": "#0000000D",
+      "x": 0,
+      "y": 8,
+      "blur": 12,
+      "spread": 0,
+      "css": "0px 8px 12px 0px #0000000D"
+    },
+    "03": {
+      "type": "drop-shadow",
+      "color": "#00000014",
+      "x": 0,
+      "y": 8,
+      "blur": 20,
+      "spread": 0,
+      "css": "0px 8px 20px 0px #00000014"
+    }
+  },
+
+  "dark": {
+    "01": {
+      "type": "drop-shadow",
+      "color": "#0000003D",
+      "x": 0,
+      "y": 2,
+      "blur": 4,
+      "spread": 0,
+      "css": "0px 2px 4px 0px #0000003D"
+    },
+    "02": {
+      "type": "drop-shadow",
+      "color": "#00000029",
+      "x": 0,
+      "y": 8,
+      "blur": 12,
+      "spread": 0,
+      "css": "0px 8px 12px 0px #00000029"
+    },
+    "03": {
+      "type": "drop-shadow",
+      "color": "#0000003D",
+      "x": 0,
+      "y": 8,
+      "blur": 24,
+      "spread": 0,
+      "css": "0px 8px 24px 0px #0000003D"
+    }
+  }
+}

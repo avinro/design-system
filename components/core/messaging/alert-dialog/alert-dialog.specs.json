@@ -1,0 +1,139 @@
+{
+  "component": "alert-dialog",
+  "description": "A modal interruption that stops the user and captures an explicit response. Reserved for destructive confirmations, blocking errors, critical mismatches, and high-risk warnings.",
+  "variants": [
+    {
+      "name": "Warning",
+      "description": "Prevents a mistake. User must choose between proceeding or stopping. Second button: neutral secondary.",
+      "icon": "alert-war-triangle",
+      "iconBackground": "--notification/warning--bg",
+      "secondButtonStyle": "secondary"
+    },
+    {
+      "name": "Error",
+      "description": "Signals a blocking failure that cannot be bypassed without acknowledgement. Second button: neutral secondary.",
+      "icon": "alert-warn-circle",
+      "iconBackground": "--notification/error-bg",
+      "secondButtonStyle": "secondary"
+    },
+    {
+      "name": "Destructive",
+      "description": "Confirms an irreversible or high-regret action. The safe exit is the primary button. The destructive action is the second button with red styling.",
+      "icon": "trash-delete-2",
+      "iconBackground": "--notification/error-bg",
+      "secondButtonStyle": "destructive"
+    },
+    {
+      "name": "Info",
+      "description": "Neutral interruption requiring acknowledgement. Can be shown with one or two buttons.",
+      "icon": "info-circle",
+      "iconBackground": "--notification/info-bg",
+      "secondButtonStyle": "secondary"
+    }
+  ],
+  "props": {
+    "type": {
+      "type": "enum",
+      "values": ["Warning", "Error", "Destructive", "Info"],
+      "default": "Warning"
+    },
+    "primaryAction": {
+      "type": "boolean",
+      "default": true,
+      "description": "When false, only the secondary/acknowledge button is shown. Use for acknowledge-only Info/Warning dialogs."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short, explicit heading. Prefer question format when asking for a decision."
+    },
+    "description": {
+      "type": "string",
+      "description": "Body text. 1–3 lines maximum. No paragraphs."
+    }
+  },
+  "anatomy": {
+    "overlay": {
+      "description": "Full-screen semi-transparent backdrop. Blocks interaction with content beneath. Not focusable or interactable.",
+      "token": "--surface/neutral/overlay"
+    },
+    "dialog-card": {
+      "description": "Rounded sheet anchored to the bottom of the screen. Scrollable if content overflows. Contains all dialog content.",
+      "borderRadius": "--rounded-24",
+      "padding": "--spacing-24"
+    },
+    "icon-container": {
+      "description": "80×80px circle with type-specific background color. Holds a 40×40px product icon.",
+      "size": "80px",
+      "iconSize": "40px",
+      "borderRadius": "--rounded-full"
+    },
+    "title": {
+      "description": "Short, explicit heading centre-aligned. Prefer question format for decision dialogs.",
+      "fontFamily": "--font-family/headings",
+      "fontSize": "--size/2xl",
+      "letterSpacing": "--letter-spacing/tight"
+    },
+    "body": {
+      "description": "Body text, centre-aligned. 1–3 lines maximum. No paragraphs.",
+      "fontFamily": "--font-family/body",
+      "fontWeight": "--weight/medium",
+      "fontSize": "--size/base"
+    },
+    "actions": {
+      "description": "Vertical stack of 1–2 full-width pill buttons. Primary (safe) action first, second (risky/destructive) action below.",
+      "maxButtons": 2,
+      "gap": "8px",
+      "buttonHeight": "44px",
+      "buttonBorderRadius": "--rounded-full"
+    }
+  },
+  "actionRules": {
+    "maximumActions": 2,
+    "acknowledgeOnly": "Use 1 action (primary only, showSecondaryAction=false) for Info/Warning when no real choice exists.",
+    "buttonOrder": "Safe/recommended action = primary button (top). Risky/irreversible action = second button (bottom).",
+    "destructiveStyling": "Apply destructive button style ONLY to the action that causes loss or irreversibility — never to the safe exit.",
+    "labelRequirement": "Use explicit, consequence-describing labels. Avoid: 'Yes', 'OK', 'Confirm', 'Proceed'.",
+    "goodExamples": ["Cancel booking", "Delete plan", "Remove card", "Yes, continue", "No, cancel"],
+    "badExamples": ["Yes", "OK", "Confirm", "Proceed"]
+  },
+  "dismissBehavior": {
+    "strict": "No close icon. User must choose an action. Recommended.",
+    "permissive": "Close icon allowed on Info/Warning only. Never on Destructive or Error."
+  },
+  "accessibility": {
+    "role": "alertdialog",
+    "ariaLabelledBy": "title element",
+    "ariaDescribedBy": "body text element",
+    "focusOnOpen": "First action button or dialog container",
+    "focusTrap": true,
+    "escapeKey": "Only for permissive governance on Info/Warning types"
+  },
+  "usageExamples": [
+    {
+      "type": "Warning",
+      "title": "Pickup address correct?",
+      "description": "Your current location and pickup address do not match. Do you want to order from this address?",
+      "primaryActionLabel": "Yes, continue",
+      "secondaryActionLabel": "No, cancel",
+      "context": "Critical mismatch check — triggered when the user's current GPS location does not match the selected pickup pin. Customer App."
+    }
+  ],
+  "whenNotToUse": [
+    {
+      "scenario": "Forms or multi-control tasks",
+      "useInstead": "Standard Dialog"
+    },
+    {
+      "scenario": "Routine confirmations (e.g. 'Saved!')",
+      "useInstead": "Toast"
+    },
+    {
+      "scenario": "Lightweight recoverable issues with quick actions (Undo/Retry)",
+      "useInstead": "Snackbar"
+    },
+    {
+      "scenario": "Non-urgent informational content",
+      "useInstead": "Toast or inline message"
+    }
+  ]
+}

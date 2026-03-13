@@ -1,0 +1,174 @@
+---
+title: "Button Icon"
+description: "A label-free action trigger that displays a single icon inside a circular container. Follows the same type hierarchy and size rules as the Button component."
+---
+
+# Button Icon
+
+## Overview
+
+Button Icon is a compact, label-free action trigger that renders a single icon inside a circular container. It follows the same six types, three sizes, and five states as the [Button](/components/button) component, but is used when space is too limited for a label or when the icon is universally recognizable in context.
+
+Because it has no visible label, an `aria-label` is required on every instance.
+
+## Anatomy
+
+The Button Icon is composed of two parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Square wrapper with equal width and height. `rounded-full` border-radius renders it as a perfect circle at all sizes. Carries the background fill and border. |
+| **Icon** | Yes | A single centered icon (20×20px for `md`). The only visible content. Communicates the action without a label. |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button Icon anatomy](./anatomy.png) */}
+
+## Variants
+
+Button Icon supports the same six types as the Button component, with the same semantic hierarchy.
+
+### Default
+
+The main icon action in a view. Uses a dark fill. Equivalent to Primary in the labeled Button.
+
+Use for the most important icon action at a given hierarchy level. Use at most one Default icon button per view.
+
+### Accent
+
+A highlighted icon action for specific, intentional moments — temporary promotions or high-value actions you want to push.
+
+Use sparingly with a clear reason. Must not become the visual default.
+
+### Secondary
+
+A supporting icon action. Use alongside a Default button when two relevant icon options exist.
+
+### Outlined
+
+A bordered ghost icon action for tertiary or repeatable utility actions. Can appear multiple times on a page (toolbars, filters, icon action bars).
+
+### No-fill
+
+A ghost icon action for low-emphasis actions or dense layouts where visual weight must be minimal.
+
+### Destructive
+
+For destructive or irreversible icon actions only. Always pair with a confirmation step. The icon must unambiguously signal the destructive nature of the action.
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Button Icon variants](./variants.png) */}
+
+## States
+
+All six types support the same five states.
+
+| State | Trigger |
+|---|---|
+| `Default` | Resting state, no interaction. |
+| `Hover` | Pointer enters the button area. |
+| `Pressed` | Button is actively clicked or tapped. |
+| `Disabled` | Action is unavailable. Non-interactive. |
+| `Focus` | Button receives keyboard focus. |
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button Icon states](./states.png) */}
+
+## Tokens & specs
+
+Tokens share the same `--button/{type}/{role}` namespace as the Button component. Values below are confirmed from the `Default / Default / md` instance only.
+
+### Supported variants
+
+- `Default`
+- `Accent`
+- `Secondary`
+- `Outlined`
+- `No-fill`
+- `Destructive`
+
+### Supported sizes
+
+| Size | Width | Height | Icon size | Padding |
+|---|---|---|---|---|
+| `sm` | 32px | 32px | TODO | TODO |
+| `md` | 44px | 44px | 20px | 12px |
+| `lg` | 56px | 56px | TODO | TODO |
+
+### Supported states
+
+- `Default`
+- `Hover`
+- `Pressed`
+- `Disabled`
+- `Focus`
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--button/default/bg-default` | `#1d1d23` | Default / Default background fill |
+| `--button/default/border-active` | `rgba(29, 29, 35, 0.12)` | Default / Default border color |
+| `--rounded-full` | `120px` | Container border-radius |
+| `--width-1` | `1px` | Border width |
+| `--spacing-12` | `12px` | Horizontal padding (md) |
+
+> TODO: Extract token values for Accent, Secondary, Outlined, No-fill, and Destructive types and for Hover, Pressed, Disabled, and Focus states. See Figma node IDs in `button-icon.tokens.json`.
+
+## Usage guidelines
+
+**When to use Button Icon**
+
+- Use when space is too limited for a labeled button and the icon is unambiguous in its context.
+- Prefer the labeled [Button](/components/button) whenever space allows — labels reduce cognitive load and improve accessibility.
+- Use a tooltip that matches the `aria-label` to expose the action's purpose on hover and focus.
+
+**Type rules**
+
+- Use one `Default` icon button per view as the dominant icon action.
+- Use `Secondary` alongside `Default` when two relevant icon options need to coexist.
+- Use `Outlined` for repeatable utility actions. It can appear multiple times on a page.
+- Use `Accent` only for specific, intentional moments. It must not become the visual default.
+- Use `Destructive` only for irreversible actions. Always pair with a confirmation step.
+
+**Size rules**
+
+- Use `md` in most layouts. It is the default size.
+- Use `sm` in compact or dense layouts: toolbars, list items, inline controls. Do not use `sm` for the main action unless the entire layout is compact.
+- Use `lg` for high-impact icon CTAs only. Use at most one `lg` button per view.
+
+## Accessibility
+
+- `aria-label` is **required** on every instance. The button has no visible label. Without it, the button has no accessible name.
+- The icon element should be `aria-hidden="true"` so screen readers rely on the button's `aria-label` rather than interpreting the icon.
+- The `Focus` state is designed and present. Do not suppress or override the focus ring.
+- Implement `disabled` or `aria-disabled="true"` for disabled instances. Visual state alone is not sufficient.
+- Provide a tooltip matching the `aria-label` text for sighted users who may not recognize the icon.
+- TODO: Confirm minimum contrast ratios per type and state against their intended background contexts.
+- TODO: Confirm keyboard interaction spec (Enter and Space activate the button; Tab moves focus).
+
+## Do / Don't
+
+**Do:**
+- Always provide an `aria-label` that describes the action (e.g., `aria-label="Delete account"`).
+- Use a tooltip to expose the button's purpose on hover and focus.
+- Use only icons that clearly and unambiguously communicate the action in their context.
+- Follow the same type and size hierarchy rules as the labeled Button.
+- Use `Destructive` with a confirmation step.
+
+**Don't:**
+- Don't use Button Icon without an `aria-label`.
+- Don't use an ambiguous icon without a tooltip or additional context.
+- Don't use Button Icon when a labeled Button fits in the available space.
+- Don't use `Destructive` without a confirmation step.
+- Don't use `lg` more than once per view.
+- Don't use `sm` for the main primary action unless the entire layout is compact.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button Icon do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button Icon component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5007-1640&t=EYB79TeCN87zLrnT-4)
+- Code: `./button-icon.tsx`
+- Specs: `./button-icon.specs.json`
+- Tokens: `./button-icon.tokens.json`

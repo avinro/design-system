@@ -1,0 +1,126 @@
+{
+  "_note": "All token values confirmed from Figma get_design_context on nodes 7295:67 (Default) and 7295:80 (Typing). Cross-referenced against Driver App usage node 3100:11790.",
+
+  "wrapper": {
+    "--surface/neutral/sunken": {
+      "value": "white",
+      "description": "Wrapper background color. Note: Driver App uses --surface/neutral/bg-sunken (with 'bg-') for the same value — flag for token alignment."
+    },
+    "--spacing-16": {
+      "value": "16px",
+      "description": "Horizontal padding of the wrapper"
+    },
+    "--spacing-8": {
+      "value": "8px",
+      "description": "Top padding of the wrapper and gap between input pill and send button"
+    },
+    "--spacing-16_bottom": {
+      "value": "16px",
+      "description": "Bottom padding of the wrapper"
+    }
+  },
+
+  "inputPill": {
+    "--chat-input/bg-default": {
+      "value": "rgba(29, 29, 35, 0.05)",
+      "description": "Input pill background (both states)"
+    },
+    "--chat-input/border-default": {
+      "value": "#cccdda",
+      "description": "Input pill border color in Default state"
+    },
+    "--chat-input/border-active": {
+      "value": "#1d1d23",
+      "description": "Input pill border color in Typing state"
+    },
+    "--rounded-full": {
+      "value": "120px",
+      "description": "Input pill border-radius"
+    },
+    "borderWidth": {
+      "value": "1px",
+      "description": "Input pill border width"
+    },
+    "height": {
+      "value": "44px",
+      "description": "Input pill height"
+    },
+    "paddingHorizontal": {
+      "value": "16px",
+      "description": "Input pill horizontal padding"
+    },
+    "paddingVertical": {
+      "value": "4px",
+      "description": "Input pill vertical padding"
+    }
+  },
+
+  "placeholderText": {
+    "--chat-input/text-placeholder": {
+      "value": "#636377",
+      "description": "Placeholder text color (Default state)"
+    }
+  },
+
+  "inputText": {
+    "--chat-input/text-input": {
+      "value": "#1d1d23",
+      "description": "Typed text color (Typing state)"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "value": "'Manrope', sans-serif",
+      "description": "Font family for both placeholder and input text"
+    },
+    "--weight/medium": {
+      "value": "500",
+      "description": "Font weight (Medium)"
+    },
+    "fontSize": {
+      "value": "14px",
+      "description": "Font size"
+    },
+    "whiteSpace": {
+      "value": "nowrap",
+      "description": "Text does not wrap (single-line input)"
+    }
+  },
+
+  "sendButton": {
+    "size": {
+      "value": "44px",
+      "description": "Send button width and height"
+    },
+    "borderRadius": {
+      "value": "120px",
+      "description": "Send button border-radius (--rounded-full)"
+    },
+    "default": {
+      "--button/secondary/bg-default": {
+        "value": "rgba(29, 29, 35, 0.05)",
+        "description": "Send button background in Default state (secondary / ghost style)"
+      },
+      "--button/secondary/border-active": {
+        "value": "rgba(29, 29, 35, 0)",
+        "description": "Send button border in Default state (transparent)"
+      }
+    },
+    "typing": {
+      "--button/default/bg-default": {
+        "value": "#1d1d23",
+        "description": "Send button background in Typing state (filled dark)"
+      },
+      "--button/default/border-active": {
+        "value": "rgba(29, 29, 35, 0.12)",
+        "description": "Send button border in Typing state"
+      }
+    },
+    "icon": {
+      "name": "Customer-Icon/up-top",
+      "size": "20px",
+      "description": "Up-arrow icon displayed inside the send button"
+    }
+  }
+}

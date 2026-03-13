@@ -1,0 +1,148 @@
+---
+title: "Radio Select"
+description: "A single-selection input that presents mutually exclusive options as radio buttons, with optional description text and a boxed card layout."
+---
+
+# Radio Select
+
+## Overview
+
+Radio Select is a single-selection input that lets users choose one option from a set of mutually exclusive choices. It renders a radio indicator alongside a label and optional description text. The component supports three visual variants — basic, with description, and boxed — to accommodate different layout densities and information needs.
+
+Use Radio Select when the user must make exactly one choice from a known, finite set of options that are all visible at once.
+
+## Anatomy
+
+The component is composed of two base sub-components:
+
+1. **Radio indicator** (`_base-radio`) — A 24×24px circular control that reflects the selection state. Displays as an empty ring when unchecked and a filled primary-colored circle when checked.
+2. **Label area** (`_base-label-checkbox`) — A text container that holds the option label and, when present, a secondary description line below it. Supports two internal configurations: basic (label only) and label + description.
+
+In the `radio-boxed` variant, both sub-components are wrapped in a bordered card container with a drop shadow.
+
+{/* ![Radio Select anatomy](./anatomy.png) */}
+
+## Variants
+
+Three variants are supported, each suited to a different level of information density:
+
+| Variant | Description |
+|---------|-------------|
+| `radio-basic` | Radio indicator + label only. Compact, minimal layout. |
+| `radio+description` | Radio indicator + label + secondary description text. No border container. |
+| `radio-boxed` | Radio indicator + label + description, enclosed in a bordered card with drop shadow. Border changes to primary color when checked. |
+
+{/* ![Radio Select variants](./variants.png) */}
+
+## States
+
+| State | Description |
+|-------|-------------|
+| **Unchecked** | Radio ring is empty. Container border (boxed) is `--layout/border`. |
+| **Checked** | Radio ring fills with `--main-colors/primary`. In `radio-boxed`, the container border also changes to `--main-colors/primary`. |
+
+TODO: Confirm whether hover, focus, and disabled states exist and what their visual treatments are.
+
+{/* ![Radio Select states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `radio-basic`
+- `radio+description`
+- `radio-boxed`
+
+### Supported sizes
+
+- Single size only. No size variants confirmed.
+  - Radio indicator: `24×24px`
+  - Font size: `--size/base` (`14px`)
+
+### Supported states
+
+- Unchecked (default)
+- Checked
+
+TODO: Confirm hover, focused, and disabled states.
+
+### Token reference
+
+| Part | Token | Value |
+|------|-------|-------|
+| **Radio indicator** | | |
+| Selected color | `--main-colors/primary` | `#e65912` |
+| Size | — | `24px` |
+| **Label text** | | |
+| Color | `--text/primary` | `#1d1d23` |
+| Font family | `--font-family/body` | Manrope |
+| Font weight | `--weight/semibold` | `600` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+| **Description text** | | |
+| Color | `--text/placeholder` | `#636377` |
+| Font family | `--font-family/body` | Manrope |
+| Font weight | `--weight/regular` | `400` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| **Label area** | | |
+| Vertical padding | `--numbers/2` | `2px` |
+| Label-to-description gap | `--numbers/4` | `4px` |
+| **`radio-boxed` container** | | |
+| Border — unchecked | `--layout/border` | `#e1e5ea` |
+| Border — checked | `--main-colors/primary` | `#e65912` |
+| Background — checked | `--surface/neutral/sunken` | `#ffffff` |
+| Border radius | — | `8px` |
+| Padding | — | `12px` |
+| Gap (radio to content) | `--numbers/gap-md-12` | `12px` |
+| Drop shadow | `card-shadow` | `0px 2px 4px 0px rgba(137, 137, 137, 0.12)` |
+
+## Usage guidelines
+
+- Use Radio Select when the user must select exactly one option from a visible, finite list.
+- Use `radio-basic` for short option labels that need no supplementary context.
+- Use `radio+description` when a clarifying line below the label improves comprehension without adding visual weight.
+- Use `radio-boxed` when each option represents a distinct choice that warrants visual containment — for example, plan types, delivery preferences, or payment methods.
+- Always render at least two Radio Select items in a group. A standalone radio button offers no meaningful choice.
+- Group related Radio Select items under a shared label or section heading.
+- Do not use Radio Select for binary yes/no choices — use Select Boolean instead.
+- Do not use Radio Select for multi-selection — use a Checkbox instead.
+- Do not mix `radio-boxed` with unboxed variants within the same group.
+
+## Accessibility
+
+- Wrap a group of Radio Select items using a `<fieldset>` and `<legend>`, or a container with `role="radiogroup"` and `aria-labelledby`.
+- Each item must use a native `<input type="radio">` or a custom element with `role="radio"` and `aria-checked`.
+- Arrow keys must navigate between items within the group; `Tab` must move focus out of the group.
+- The focused item must have a visible focus indicator.
+- Do not rely on color alone to convey the checked state — ensure the indicator shape also changes.
+
+TODO: Confirm the exact ARIA pattern and focus ring styling used in the implementation.
+
+## Do / Don't
+
+**Do:**
+- Write short, clear option labels — one to five words
+- Add description text when the label alone is ambiguous or insufficiently descriptive
+- Keep all options in a group visually consistent — use the same variant throughout
+
+**Don't:**
+- Use Radio Select for multi-selection — use Checkbox for that
+- Use a single Radio Select item without at least one sibling option in the group
+- Use `radio-boxed` and unboxed variants together in the same selection group
+- Use long paragraphs as description text — keep it to one concise sentence
+
+{/* ![Radio Select do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Radio Select](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5010-1611)
+- Code: TODO
+- Specs: `./radio-select.specs.json`
+- Tokens: `./radio-select.tokens.json`
+
+### Related components
+
+- [Select Boolean](/components/core/inputs/select-boolean) — for binary yes/no choices
+- [Dropdown Input](/components/core/inputs/dropdown-input) — for single selection from a collapsed list

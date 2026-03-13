@@ -1,0 +1,83 @@
+{
+  "component": "checkbox",
+  "variants": [
+    {
+      "name": "checkbox-basic",
+      "description": "Checkbox indicator on the left + label only. No description text. Most compact layout.",
+      "layout": "horizontal",
+      "indicatorPosition": "left",
+      "parts": ["checkbox-indicator", "label"]
+    },
+    {
+      "name": "check+description",
+      "description": "Checkbox indicator on the left + label + secondary description text below the label. No border container.",
+      "layout": "horizontal",
+      "indicatorPosition": "left",
+      "parts": ["checkbox-indicator", "label", "description"]
+    },
+    {
+      "name": "check-boxed",
+      "description": "Label + description on the left, checkbox indicator on the right, enclosed in a bordered card container. Border changes to primary color when checked.",
+      "layout": "horizontal",
+      "indicatorPosition": "right",
+      "parts": ["label", "description", "checkbox-indicator", "card-container"]
+    }
+  ],
+  "states": [
+    {
+      "name": "off",
+      "description": "Default state. Indicator is an empty outlined square. Container border (boxed variant) uses --layout/border."
+    },
+    {
+      "name": "on",
+      "description": "Selected state. Indicator fills with --selector/bg-active and shows a white checkmark. In check-boxed, the container border changes to --main-colors/primary."
+    },
+    {
+      "name": "intermediate",
+      "description": "Indeterminate state. Indicator fills with --selector/bg-active and shows a white horizontal dash. Available at the _base-checkbox level. Use only for 'select all' parent controls. Maps to aria-checked=mixed."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "indicatorOuter": "24px",
+      "indicatorInner": "20px",
+      "indicatorInnerRadius": "5px",
+      "fontSize": "14px",
+      "note": "Single size only. No size variants confirmed."
+    }
+  ],
+  "anatomy": {
+    "checkbox-indicator": {
+      "description": "24×24px square selection control. Based on the _base-checkbox sub-component. Renders three visual states: off (empty outline), on (filled with checkmark), intermediate (filled with dash). Positioned left in checkbox-basic and check+description; right in check-boxed.",
+      "states": ["off", "on", "intermediate"]
+    },
+    "label": {
+      "description": "Primary option text. SemiBold, 14px, --text/primary.",
+      "required": true,
+      "presentIn": ["checkbox-basic", "check+description", "check-boxed"]
+    },
+    "description": {
+      "description": "Secondary clarifying text below the label. Regular, 14px, --text/placeholder.",
+      "required": false,
+      "presentIn": ["check+description", "check-boxed"]
+    },
+    "card-container": {
+      "description": "Bordered card wrapper with drop shadow and rounded corners. Checkbox indicator is on the right inside this container. Border changes to primary when checked.",
+      "required": false,
+      "presentIn": ["check-boxed"]
+    }
+  },
+  "baseComponents": [
+    {
+      "name": "_base-checkbox",
+      "description": "The square checkbox indicator. Supports three states: on (filled, checkmark), off (empty outline), intermediate (filled, dash). The master Checkbox component exposes on/off only; intermediate is available at the base level.",
+      "figmaNodeId": "5010:1674"
+    },
+    {
+      "name": "_base-label-checkbox",
+      "description": "The text container. Supports two internal modes: basic (label only) and label+desc (label with description below). Shared with the Radio Select component.",
+      "figmaNodeId": "5010:1692"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "component": "SelectBoolean",
+  "figmaNodeId": "417:4036",
+  "figmaNodeSource": "Dojo Customer App (confirmed). DS Core node ID: TODO.",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "variants": [
+    {
+      "name": "default",
+      "description": "Single confirmed layout: question label above two equal-width pill buttons. No additional visual variants confirmed."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "height": "44px",
+      "description": "Single confirmed size. Both option buttons are always 44px tall."
+    }
+  ],
+  "states": [
+    {
+      "name": "option-a-selected",
+      "description": "The left (first) option is selected. It renders with Default button style: dark filled background, light text. The right option renders with Secondary button style: transparent background, dark text."
+    },
+    {
+      "name": "option-b-selected",
+      "description": "The right (second) option is selected. It renders with Default button style: dark filled background, light text. The left option renders with Secondary button style: transparent background, dark text."
+    }
+  ],
+  "anatomyParts": [
+    {
+      "name": "QuestionLabel",
+      "optional": false,
+      "description": "Text question displayed above the option group. Manrope Medium, 14px, --text/body color."
+    },
+    {
+      "name": "OptionGroup",
+      "optional": false,
+      "description": "Horizontal row containing two equal-width option buttons with 4px gap. Full-width within its container."
+    },
+    {
+      "name": "OptionA",
+      "optional": false,
+      "description": "Left option button. flex: 1, min-width 120px, height 44px, rounded-full. Renders as selected (filled) or unselected (transparent) depending on current value."
+    },
+    {
+      "name": "OptionB",
+      "optional": false,
+      "description": "Right option button. Same dimensions and behaviour as Option A."
+    }
+  ],
+  "baseComponents": [
+    {
+      "name": "Button — Default type",
+      "description": "Token set used by the selected option button (filled dark background, light text)."
+    },
+    {
+      "name": "Button — Secondary type",
+      "description": "Token set used by the unselected option button (transparent background, dark text)."
+    }
+  ],
+  "props": [
+    {
+      "name": "question",
+      "type": "string",
+      "required": true,
+      "description": "The question label displayed above the option buttons. Write as a full question."
+    },
+    {
+      "name": "options",
+      "type": "[SelectBooleanOption, SelectBooleanOption]",
+      "required": true,
+      "description": "Exactly two options. Each has a label (display text) and a value (data value)."
+    },
+    {
+      "name": "selectedValue",
+      "type": "string",
+      "required": true,
+      "description": "The value of the currently selected option. Must always be set — no empty/unselected state."
+    },
+    {
+      "name": "onChange",
+      "type": "function",
+      "required": false,
+      "description": "Callback fired when the user taps an option. Receives the selected value."
+    }
+  ],
+  "notes": [
+    "One option must always be selected — there is no empty state.",
+    "The component always contains exactly two options.",
+    "The selected option uses the same visual tokens as Button Default type.",
+    "The unselected option uses the same visual tokens as Button Secondary type.",
+    "Confirmed usage: Customer App 'New Plan' form — 'Do you already have accommodation?' Yes / No.",
+    "TODO: Confirm exact DS Core node ID for select_boolean.",
+    "TODO: Confirm disabled state behavior.",
+    "TODO: Confirm ARIA implementation pattern."
+  ]
+}

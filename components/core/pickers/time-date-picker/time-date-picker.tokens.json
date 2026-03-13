@@ -1,0 +1,105 @@
+{
+  "component": "Time Date Picker",
+  "figmaNodeId": "5121:1330",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "extractedFrom": "Figma variable definitions via MCP",
+
+  "tokens": {
+    "surface": {
+      "surface/neutral/default": {
+        "value": "#f1f2f4",
+        "description": "Container background color (light theme, as defined in DS Core). In the app, the container inherits the dark surface background."
+      }
+    },
+
+    "text": {
+      "text/primary": {
+        "value": "#1d1d23",
+        "description": "Color of the selected (center) item in each column."
+      },
+      "text/placeholder": {
+        "value": "#636377",
+        "description": "Color of all non-selected items in each column."
+      }
+    },
+
+    "typography": {
+      "fontFamily": {
+        "value": "Manrope",
+        "token": "font-family/body",
+        "description": "Font family for all column text."
+      },
+      "fontWeight": {
+        "value": "400",
+        "token": "weight/regular",
+        "description": "Font weight for all column text. All items use Regular weight regardless of selection state."
+      }
+    },
+
+    "fontSize": {
+      "selected": {
+        "value": "23px",
+        "description": "Font size for the selected (center) item."
+      },
+      "closeNeighbor": {
+        "value": "18px",
+        "description": "Font size for items one position above/below the selection."
+      },
+      "farNeighbor": {
+        "value": "14px",
+        "description": "Font size for items two positions above/below the selection."
+      },
+      "furthestNeighbor": {
+        "value": "12px",
+        "description": "Font size for items three positions above/below the selection (top and bottom of the visible drum)."
+      }
+    },
+
+    "opacity": {
+      "furthestNeighbor": {
+        "value": "0.4",
+        "description": "Opacity for items at position 1 (top) and 7 (bottom)."
+      },
+      "farNeighbor": {
+        "value": "0.7",
+        "description": "Opacity for items at position 2 and 6."
+      },
+      "visibleNeighbor": {
+        "value": "1.0",
+        "description": "Opacity for items at positions 3, 4 (selected), and 5."
+      },
+      "hidden": {
+        "value": "0",
+        "description": "Opacity for unused slots in the AM/PM column."
+      }
+    },
+
+    "layout": {
+      "containerWidth": {
+        "value": "375px",
+        "description": "Total width of the picker."
+      },
+      "containerHeight": {
+        "value": "212px",
+        "description": "Total height of the picker."
+      },
+      "columnGap": {
+        "value": "27px",
+        "description": "Horizontal gap between scroll columns."
+      },
+      "itemGap": {
+        "value": "5px",
+        "description": "Vertical gap between items within a column."
+      },
+      "selectionIndicatorHeight": {
+        "value": "31px",
+        "description": "Height of the selection highlight stripe."
+      }
+    }
+  },
+
+  "tokensTODO": [
+    "Confirm token for the selection indicator stripe (border color, background color, or overlay).",
+    "Confirm whether dark-theme text token values differ from DS Core (app renders on dark surface #1d1d23)."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "component": "DropdownInput",
+  "figmaNodeId": "5131:1394",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "variants": [
+    {
+      "name": "with-icon",
+      "description": "The select button includes a 16px icon to the left of the value or placeholder text. Use when the field type benefits from a visual icon cue."
+    },
+    {
+      "name": "without-icon",
+      "description": "The select button shows only the text and the chevron icon. Default usage in most form contexts."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "height": "44px",
+      "description": "Single confirmed size. The select button height is always 44px."
+    }
+  ],
+  "states": [
+    {
+      "name": "placeholder",
+      "description": "No value has been selected. Placeholder text is displayed in --text/placeholder (muted color)."
+    },
+    {
+      "name": "preselected",
+      "description": "A value has been selected. Value text is displayed in --button/secondary/text-default (full contrast body color)."
+    }
+  ],
+  "anatomyParts": [
+    {
+      "name": "Label",
+      "optional": true,
+      "description": "Short text label above the select button. Identifies the field. Styled with Manrope Medium 14px."
+    },
+    {
+      "name": "SelectButton",
+      "optional": false,
+      "figmaSubComponentName": "select_button",
+      "figmaNodeId": "5131:1331",
+      "description": "Pill-shaped tap target. Height 44px, full-radius. Contains left icon (optional), value/placeholder text, and chevron icon. Can be used independently."
+    },
+    {
+      "name": "LeftIcon",
+      "optional": true,
+      "size": "16px",
+      "description": "Contextual icon inside the select button, left-aligned. Decorative in most cases. The specific icon is provided by the consumer."
+    },
+    {
+      "name": "ValueText",
+      "optional": false,
+      "description": "Displays the selected value (preselected state) or a placeholder hint (placeholder state). Manrope SemiBold 14px."
+    },
+    {
+      "name": "ChevronIcon",
+      "optional": false,
+      "size": "24px",
+      "description": "Dropdown chevron always present on the right side of the select button. Decorative — indicates expandability."
+    },
+    {
+      "name": "Annotation",
+      "optional": true,
+      "figmaSubComponentName": "anotation",
+      "figmaNodeId": "5144:2119",
+      "description": "Helper text row below the select button. Prefixed with a 16px info icon. Manrope Medium 14px in --text/placeholder color."
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "select_button",
+      "figmaNodeId": "5131:1331",
+      "description": "The pill-shaped interactive trigger. Supports optional left icon, value or placeholder text, and chevron. Can be used independently outside of Dropdown Input."
+    },
+    {
+      "name": "anotation",
+      "figmaNodeId": "5144:2119",
+      "description": "The helper text element with a leading info icon. Can be used independently."
+    }
+  ],
+  "props": [
+    { "name": "label", "type": "boolean", "default": true, "description": "Show or hide the label" },
+    { "name": "labelText", "type": "string", "default": "Label placeholder", "description": "Label text content" },
+    { "name": "annotation", "type": "boolean", "default": true, "description": "Show or hide the annotation row" },
+    { "name": "annotationText", "type": "string", "default": "", "description": "Annotation helper text content" },
+    { "name": "leftIcon", "type": "boolean", "default": false, "description": "Show or hide the left icon in the select button" },
+    { "name": "leftIconElement", "type": "ReactNode", "default": null, "description": "Icon element rendered inside the select button (16px)" },
+    { "name": "value", "type": "string", "default": null, "description": "Selected value. When present, renders the preselected state." },
+    { "name": "placeholder", "type": "string", "default": "Select…", "description": "Placeholder text shown when no value is selected" },
+    { "name": "onPress", "type": "function", "default": null, "description": "Callback fired on tap. Use to open the associated picker or overlay." }
+  ],
+  "notes": [
+    "The component is a trigger only. It does not open or manage any picker or overlay.",
+    "The specific icon used as leftIconElement is context-dependent and provided by the consumer.",
+    "Token values differ between light and dark surfaces. See dropdown-input.tokens.json for both values.",
+    "TODO: Confirm full list of named type variants for select_button.",
+    "TODO: Confirm disabled and error states."
+  ]
+}

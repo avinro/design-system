@@ -1,0 +1,178 @@
+{
+  "component": "Snackbar",
+  "figmaNodeId": "7326:5679",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Rounded card with drop shadow. Fixed width 374px. Height varies by configuration: 58px (Short action), 98px (Longer action).",
+      "required": true
+    },
+    {
+      "part": "contextIcon",
+      "description": "16×16px icon rendered inside a 24×24px wrapper, placed inside a 32×32px pill-shaped container. Color communicates semantic type. Absent on type=neutral - no icon.",
+      "required": false
+    },
+    {
+      "part": "description",
+      "description": "Single-line or 2-line message text. 14px Manrope Medium. Color: --text/placeholder (#636377).",
+      "required": true
+    },
+    {
+      "part": "actionButton",
+      "description": "Ghost pill button, 32px height. Triggers the single quick action (Undo, Retry, View, etc.).",
+      "required": true
+    },
+    {
+      "part": "closeButton",
+      "description": "32×32px icon button (× icon). Optional. Position differs by configuration: in Actions row (Short action) or Content row (Longer action).",
+      "required": false
+    }
+  ],
+
+  "types": [
+    {
+      "name": "info",
+      "figmaNodeId": "7326:5716",
+      "icon": "Customer-Icon/info",
+      "iconContainerBg": "rgba(29,29,35,0.05)",
+      "iconContainerToken": "--button/secondary/bg-default",
+      "description": "Neutral informational message with a quick action."
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "7326:5689",
+      "icon": "Customer-Icon/alert-warn-circle",
+      "iconContainerBg": "#fcdcdc",
+      "iconContainerToken": "--notification/error-bg",
+      "description": "Recoverable error with a corrective action (e.g. Retry)."
+    },
+    {
+      "name": "warning",
+      "figmaNodeId": "7326:5698",
+      "icon": "Customer-Icon/alert-war-triangle",
+      "iconContainerBg": "#f6e3a4",
+      "iconContainerToken": "--notification/warning--bg",
+      "description": "Non-blocking warning with an optional remediation action."
+    },
+    {
+      "name": "success",
+      "figmaNodeId": "7326:5707",
+      "icon": "Customer-Icon/check",
+      "iconContainerBg": "#d5f4d6",
+      "iconContainerToken": "--notification/success-bg",
+      "description": "Lightweight success confirmation with a follow-up action (e.g. Undo, View)."
+    },
+    {
+      "name": "neutral - no icon",
+      "figmaNodeId": "7326:5680",
+      "icon": null,
+      "iconContainerBg": null,
+      "iconContainerToken": null,
+      "paddingLeftOverride": "16px",
+      "description": "Plain message with a quick action. No semantic color."
+    }
+  ],
+
+  "configurations": [
+    {
+      "name": "Short action",
+      "layout": "row",
+      "height": 58,
+      "description": "Content and action button on a single row. Use when the action label is 1–2 words.",
+      "figmaNodeIds": {
+        "info": "7326:5716",
+        "error": "7326:5689",
+        "warning": "7326:5698",
+        "success": "7326:5707",
+        "neutral": "7326:5680"
+      }
+    },
+    {
+      "name": "Longer action",
+      "layout": "column",
+      "height": 98,
+      "description": "Content on top row, action button right-aligned on second row. Use when action label is 3+ words.",
+      "figmaNodeIds": {
+        "info": "7328:6293",
+        "error": "7328:6301",
+        "warning": "7328:6309",
+        "success": "7328:6317",
+        "neutral": "7328:6325"
+      }
+    }
+  ],
+
+  "dimensions": {
+    "width": 374,
+    "heightShortAction": 58,
+    "heightLongerAction": 98
+  },
+
+  "states": [
+    {
+      "name": "Visible",
+      "description": "Mounted and displayed. Auto-dismiss timer may be running."
+    },
+    {
+      "name": "Dismissed",
+      "description": "Unmounted or hidden. Triggered by auto-dismiss, action button press, or close button."
+    }
+  ],
+
+  "behavior": {
+    "autoDismiss": "TODO: Confirm",
+    "autoDismissDurationMs": "TODO: Confirm",
+    "manualDismiss": true,
+    "stealsFocus": false,
+    "maxSimultaneous": 1,
+    "stackingBehavior": "Do not stack. Replace or queue."
+  },
+
+  "actionButton": {
+    "maxCount": 1,
+    "labelGuidance": "Verb or short verb phrase: 'Undo', 'Retry', 'View', 'Dismiss'",
+    "notFor": "Destructive operations, navigation flows, or multi-step tasks."
+  },
+
+  "subComponents": [
+    {
+      "name": "Button (ghost/outlined)",
+      "role": "Action button",
+      "path": "components/core/actions/button/index"
+    },
+    {
+      "name": "Button/only icon",
+      "role": "Close button",
+      "path": "components/core/actions/button-icon/index"
+    }
+  ],
+
+  "relatedComponents": [
+    {
+      "name": "Toast",
+      "path": "components/core/messaging/toast/index",
+      "when": "Passive confirmations or informational updates with no action needed."
+    },
+    {
+      "name": "Alert Dialog",
+      "path": "components/core/messaging/alert-dialog/index",
+      "when": "High-risk, irreversible, or blocking interruptions requiring a decision."
+    },
+    {
+      "name": "Standard Dialog",
+      "path": "components/core/messaging/standard-dialog/index",
+      "when": "Forms, multi-input tasks, and reversible flows."
+    }
+  ],
+
+  "notes": [
+    "Token name --notification/warning--bg has a double dash — exact token name confirmed in Figma.",
+    "type=neutral - no icon increases padding-left to --spacing-16 (16px) since there is no icon container.",
+    "In the Longer action configuration, the close button moves from the Actions row to the Content row.",
+    "All icon container color tokens are fully confirmed for all 5 types.",
+    "TODO: Confirm auto-dismiss duration.",
+    "TODO: Confirm whether close button is optional on all types or required on specific ones."
+  ]
+}

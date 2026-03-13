@@ -1,0 +1,103 @@
+{
+  "component": "radio-select",
+  "tokens": {
+    "radio-indicator": {
+      "color-selected": {
+        "token": "--main-colors/primary",
+        "value": "#e65912"
+      },
+      "size": {
+        "token": null,
+        "value": "24px"
+      }
+    },
+    "label": {
+      "color": {
+        "token": "--text/primary",
+        "value": "#1d1d23"
+      },
+      "font-family": {
+        "token": "--font-family/body",
+        "value": "Manrope"
+      },
+      "font-weight": {
+        "token": "--weight/semibold",
+        "value": "600"
+      },
+      "font-size": {
+        "token": "--size/base",
+        "value": "14px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      },
+      "letter-spacing": {
+        "token": "--letter-spacing/normal",
+        "value": "0px"
+      }
+    },
+    "description": {
+      "color": {
+        "token": "--text/placeholder",
+        "value": "#636377"
+      },
+      "font-family": {
+        "token": "--font-family/body",
+        "value": "Manrope"
+      },
+      "font-weight": {
+        "token": "--weight/regular",
+        "value": "400"
+      },
+      "font-size": {
+        "token": "--size/base",
+        "value": "14px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      }
+    },
+    "label-area": {
+      "padding-vertical": {
+        "token": "--numbers/2",
+        "value": "2px"
+      },
+      "gap-label-to-description": {
+        "token": "--numbers/4",
+        "value": "4px"
+      }
+    },
+    "container-boxed": {
+      "border-color-unchecked": {
+        "token": "--layout/border",
+        "value": "#e1e5ea"
+      },
+      "border-color-checked": {
+        "token": "--main-colors/primary",
+        "value": "#e65912"
+      },
+      "background-checked": {
+        "token": "--surface/neutral/sunken",
+        "value": "#ffffff"
+      },
+      "border-radius": {
+        "token": null,
+        "value": "8px"
+      },
+      "padding": {
+        "token": null,
+        "value": "12px"
+      },
+      "gap-radio-to-content": {
+        "token": "--numbers/gap-md-12",
+        "value": "12px"
+      },
+      "shadow": {
+        "token": "card-shadow",
+        "value": "0px 2px 4px 0px rgba(137, 137, 137, 0.12)"
+      }
+    }
+  }
+}

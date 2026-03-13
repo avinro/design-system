@@ -1,0 +1,306 @@
+{
+  "_source": "Figma component-specific color variables — file nGsiItayj12cfi3AKbP1mB, Colors page (node 7006:2717)",
+  "_note": "Component-level color tokens extracted from Figma. These are scoped to individual components and reference semantic tokens from colors.semantic.json. Dark mode values are derived from the semantic tokens each component token references, because the Figma canvas shows only a single resolved hex value (light mode) per component token. Structural decisions: (1) Figma slash-path names (e.g. 'default/bg-hover') are expanded into nested objects for implementation clarity; (2) opacity-based tokens use rgba strings consistent with colors.semantic.json; (3) two Figma spelling errors are corrected — 'border-inative' → 'border-inactive' and 'text-inative' → 'text-inactive'; (4) notification is included here because it appears as a component section in Figma — it is also documented in colors.semantic.json for cross-reference; (5) 'go-online' is a button-level online status indicator state documented separately from button variants.",
+
+  "button": {
+    "_note": "Button component color tokens. Six variants: default, accent, secondary, outlined, destructive, link. Each variant defines bg, border, and text roles across interactive states (default, hover, pressed, disabled). An additional 'go-online' state token set covers the online-indicator appearance on the default button.",
+
+    "default": {
+      "_note": "The primary filled button. Dark background in light mode, light background in dark mode.",
+      "bg": {
+        "default":  { "light": "#1D1D23",             "dark": "#F1F2F4" },
+        "hover":    { "light": "#34353F",             "dark": "#E4E5ED" },
+        "pressed":  { "light": "#4B4C5B",             "dark": "#CCCDDA" },
+        "disabled": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" }
+      },
+      "border": {
+        "active":  { "light": "rgba(29,29,35,0.12)", "dark": "rgba(241,242,244,0.24)" },
+        "focus":   { "light": "#1D1D23",              "dark": "#F1F2F4" },
+        "hover":   { "light": "rgba(29,29,35,0.28)", "dark": "rgba(241,242,244,0.4)" },
+        "pressed": { "light": "rgba(29,29,35,0.5)",  "dark": "rgba(241,242,244,0.56)" }
+      },
+      "text": {
+        "default":  { "light": "#F1F2F4", "dark": "#1D1D23" },
+        "disabled": { "light": "#7A7B93", "dark": "#9192AF" }
+      }
+    },
+
+    "accent": {
+      "_note": "The accent/brand button. Uses the orange brand scale. bg-active and bg-hover are tinted; the pure brand fill is on the Surface accent token, not the button.",
+      "bg": {
+        "active":   { "light": "#FFE1D4",             "dark": "#331508" },
+        "hover":    { "light": "#FFCAB1",             "dark": "#5C270E" },
+        "pressed":  { "light": "#FFB28E",             "dark": "#853814" },
+        "disabled": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" }
+      },
+      "border": {
+        "active":  { "light": "#FFE1D4", "dark": "#331508" },
+        "focus":   { "light": "#AD491A", "dark": "#FF6B26" },
+        "hover":   { "light": "#FFCAB1", "dark": "#5C270E" },
+        "pressed": { "light": "#FFB28E", "dark": "#D65A20" }
+      },
+      "text": {
+        "active": { "light": "#AD491A", "dark": "#FF6B26" }
+      }
+    },
+
+    "secondary": {
+      "_note": "Ghost-style button with no default background. Uses opacity overlays to maintain readability on any background.",
+      "bg": {
+        "default":  { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+        "hover":    { "light": "rgba(29,29,35,0.12)", "dark": "rgba(241,242,244,0.24)" },
+        "pressed":  { "light": "rgba(29,29,35,0.28)", "dark": "rgba(241,242,244,0.4)" },
+        "disabled": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" }
+      },
+      "border": {
+        "active":  { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+        "focus":   { "light": "#000000",           "dark": "#FFFFFF" },
+        "hover":   { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+        "pressed": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+      },
+      "text": {
+        "default":  { "light": "#1D1D23", "dark": "#F1F2F4" },
+        "disabled": { "light": "#7A7B93", "dark": "#9192AF" }
+      }
+    },
+
+    "outlined": {
+      "_note": "Outlined button. No fill by default; subtle opacity fill on hover and press. Border uses opacity overlays except focus which uses the solid primary border.",
+      "bg": {
+        "active":   { "light": "rgba(29,29,35,0)",    "dark": "rgba(29,29,35,0)" },
+        "hover":    { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+        "pressed":  { "light": "rgba(29,29,35,0.12)", "dark": "rgba(241,242,244,0.24)" },
+        "disabled": { "light": "rgba(29,29,35,0)",    "dark": "rgba(29,29,35,0)" }
+      },
+      "border": {
+        "active":  { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+        "focus":   { "light": "#000000",              "dark": "#FFFFFF" },
+        "hover":   { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+        "pressed": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" }
+      },
+      "text": {
+        "active":   { "light": "#1D1D23", "dark": "#F1F2F4" },
+        "disabled": { "light": "#7A7B93", "dark": "#9192AF" }
+      }
+    },
+
+    "destructive": {
+      "_note": "Destructive action button. Light mode uses dark red backgrounds; dark mode inverts to lighter red backgrounds. Text is white in light mode and very dark red in dark mode — see foreground.destructive in colors.semantic.json.",
+      "bg": {
+        "default":  { "light": "#CC2222",             "dark": "#F36C6C" },
+        "hover":    { "light": "#A43636",             "dark": "#F58888" },
+        "pressed":  { "light": "#7D2A2A",             "dark": "#F8A4A4" },
+        "disabled": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" }
+      },
+      "border": {
+        "default": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+        "focus":   { "light": "#000000",           "dark": "#FFFFFF" },
+        "hover":   { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+        "pressed": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+      },
+      "text": {
+        "default":  { "light": "#FFFFFF", "dark": "#301010" },
+        "disabled": { "light": "#7A7B93", "dark": "#9192AF" }
+      }
+    },
+
+    "link": {
+      "_note": "Link-style button. No background or border — text only. Inactive state uses the subtle neutral foreground.",
+      "text": {
+        "default":  { "light": "#1D1D23", "dark": "#F1F2F4" },
+        "inactive": { "light": "#636377", "dark": "#9192AF" }
+      }
+    },
+
+    "go-online": {
+      "_note": "Online status indicator state on the default button. Background matches the default button fill; border uses the success utility border to indicate active/online status.",
+      "bg":     { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "border": { "light": "#26A628", "dark": "#70D872" }
+    }
+  },
+
+  "input": {
+    "_note": "Text input component color tokens. Covers background, border, and text roles across default, active, error, success, and disabled states.",
+    "bg": {
+      "default":  { "light": "#E4E5ED", "dark": "#34353F" },
+      "disabled": { "light": "#F1F2F4", "dark": "#1D1D23" }
+    },
+    "border": {
+      "default": { "light": "#CCCDDA", "dark": "#4B4C5B" },
+      "active":  { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "error":   { "light": "#CC2222", "dark": "#F58888" },
+      "success": { "light": "#26A628", "dark": "#70D872" }
+    },
+    "text": {
+      "input":       { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "label":       { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "placeholder": { "light": "#636377", "dark": "#9192AF" },
+      "disabled":    { "light": "#7A7B93", "dark": "#9192AF" }
+    }
+  },
+
+  "badge": {
+    "_note": "Badge component color tokens. Two variants: default (filled with subtle background) and outlined (transparent background with visible border).",
+    "default": {
+      "bg":     { "light": "#E4E5ED",          "dark": "#34353F" },
+      "border": { "light": "#E4E5ED",          "dark": "#34353F" },
+      "text":   { "light": "#34353F",          "dark": "#CCCDDA" }
+    },
+    "outlined": {
+      "bg":     { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+      "border": { "light": "#CCCDDA",          "dark": "#4B4C5B" },
+      "text":   { "light": "#4B4C5B",          "dark": "#B4B5C9" }
+    }
+  },
+
+  "tab": {
+    "_note": "Tab bar item color tokens. Background is transparent by default. Active state uses a strong border underline; inactive state uses a transparent border. Figma source contains spelling errors ('inative') which are corrected here to 'inactive'.",
+    "bg": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+    "border": {
+      "active":   { "light": "#1D1D23",          "dark": "#F1F2F4" },
+      "inactive": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+    },
+    "text": {
+      "active":   { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "inactive": { "light": "#636377", "dark": "#9192AF" }
+    }
+  },
+
+  "navbar": {
+    "_note": "Navigation bar component color tokens. Includes the main bar surface and link item states. 'askdojo' is a specific nav item variant with a distinct muted background.",
+    "bg":         { "light": "#F1F2F4", "dark": "#1D1D23" },
+    "border":     { "light": "#CCCDDA", "dark": "#4B4C5B" },
+    "askdojo-bg": { "light": "#CCCDDA", "dark": "#4B4C5B" },
+    "link": {
+      "bg": {
+        "active":   { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" },
+        "selected": { "light": "#1D1D23",          "dark": "#F1F2F4" }
+      },
+      "border": {
+        "active": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+      },
+      "text": {
+        "active":   { "light": "#1D1D23", "dark": "#F1F2F4" },
+        "selected": { "light": "#F1F2F4", "dark": "#1D1D23" }
+      }
+    }
+  },
+
+  "selector": {
+    "_note": "Toggle/selector component color tokens. Covers the track background across active, enabled, and disabled states. 'fg' tokens are for the selector thumb.",
+    "bg": {
+      "active":   { "light": "#FF6B26", "dark": "#FF8349" },
+      "enabled":  { "light": "#7A7B93", "dark": "#9192AF" },
+      "disabled": { "light": "#CCCDDA", "dark": "#4B4C5B" }
+    },
+    "fg": {
+      "enabled":  { "light": "#FFFFFF", "dark": "#FFFFFF" },
+      "disabled": { "light": "#7A7B93", "dark": "#9192AF" }
+    }
+  },
+
+  "segmented-control": {
+    "_note": "Segmented control component color tokens. The outer container uses a subtle background; active items use the lowest-level surface background to appear lifted.",
+    "bg": { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+    "item": {
+      "bg": {
+        "active":   { "light": "#F1F2F4",          "dark": "#1D1D23" },
+        "inactive": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+      },
+      "border": {
+        "active":   { "light": "#F1F2F4",          "dark": "#1D1D23" },
+        "inactive": { "light": "rgba(29,29,35,0)", "dark": "rgba(29,29,35,0)" }
+      },
+      "text": {
+        "active":   { "light": "#1D1D23", "dark": "#F1F2F4" },
+        "inactive": { "light": "#4B4C5B", "dark": "#B4B5C9" }
+      }
+    }
+  },
+
+  "handler": {
+    "_note": "Drag handle or resize handle component. Single background token.",
+    "bg": { "light": "#E4E5ED", "dark": "#34353F" }
+  },
+
+  "driving-indicator": {
+    "_note": "Driving mode indicator component. Uses the strongest background with inverted text. 'sub-direction-bg' is a secondary surface within the indicator.",
+    "bg":               { "light": "#1D1D23", "dark": "#F1F2F4" },
+    "sub-direction-bg": { "light": "#34353F", "dark": "#E4E5ED" },
+    "text":             { "light": "#F1F2F4", "dark": "#1D1D23" }
+  },
+
+  "surface": {
+    "_note": "Surface component color tokens. These are aliases of background.elevation.* and background.accent.* semantic tokens. Provided here as a convenience reference for surface-level component backgrounds.",
+    "neutral": {
+      "sunken":  { "light": "#FFFFFF",            "dark": "#000000" },
+      "default": { "light": "#F1F2F4",            "dark": "#1D1D23" },
+      "raised":  { "light": "#E4E5ED",            "dark": "#34353F" },
+      "invert":  { "light": "#1D1D23",            "dark": "#F1F2F4" },
+      "overlay": { "light": "rgba(29,29,35,0.5)", "dark": "rgba(29,29,35,0.5)" }
+    },
+    "accent": {
+      "light": { "light": "#FFE1D4", "dark": "#331508" },
+      "pure":  { "light": "#FF6B26", "dark": "#FF8349" }
+    }
+  },
+
+  "chart": {
+    "_note": "Chart component color tokens. Each support hue provides a background (tinted, for chart area fills or legend chips) and a text/line color (saturated, for labels, lines, and markers). Values match the foreground.support.* and background.support.*.light semantic tokens.",
+    "blue": {
+      "bg":   { "light": "#D4E3FF", "dark": "#081733" },
+      "text": { "light": "#2671FD", "dark": "#6B9EFE" }
+    },
+    "cyan": {
+      "bg":   { "light": "#D9F4FF", "dark": "#0D2833" },
+      "text": { "light": "#38A9D5", "dark": "#7FDAFE" }
+    },
+    "orange": {
+      "bg":   { "light": "#FFE1D4", "dark": "#331508" },
+      "text": { "light": "#FF6B26", "dark": "#FF9A6B" }
+    },
+    "pink": {
+      "bg":   { "light": "#FFDBE8", "dark": "#330F1C" },
+      "text": { "light": "#FF498B", "dark": "#FF83B0" }
+    },
+    "purple": {
+      "bg":   { "light": "#E4DBFA", "dark": "#180F2E" },
+      "text": { "light": "#7749E4", "dark": "#A383ED" }
+    },
+    "teal": {
+      "bg":   { "light": "#CEFAEE", "dark": "#022E26" },
+      "text": { "light": "#0AC0A1", "dark": "#5AEDC6" }
+    },
+    "violet": {
+      "bg":   { "light": "#F6D9FF", "dark": "#2A0D33" },
+      "text": { "light": "#D243FE", "dark": "#E07FFE" }
+    }
+  },
+
+  "notification": {
+    "_note": "Notification and alert component color tokens. Also documented in colors.semantic.json under the 'notification' group. Included here because Figma places these tokens in the component section of the Colors page. Known issue: warning.signal references 'colors/yellow/500' in Figma — an orphaned variable outside the standard color/ path. Its dark mode value is marked TODO pending design team clarification.",
+    "border-default": { "light": "#E4E5ED", "dark": "#34353F" },
+    "error": {
+      "bg":   { "light": "#FCDCDC", "dark": "#301010" },
+      "text": { "light": "#A43636", "dark": "#F58888" }
+    },
+    "warning": {
+      "bg":     { "light": "#F6E3A4", "dark": "#2E2300" },
+      "signal": { "light": "#E9BD2A", "dark": "TODO" },
+      "text":   { "light": "#775C01", "dark": "#EDC953" }
+    },
+    "success": {
+      "bg":   { "light": "#D5F4D6", "dark": "#09280A" },
+      "text": { "light": "#176719", "dark": "#70D872" }
+    },
+    "info": {
+      "bg":   { "light": "#D4E3FF", "dark": "#081733" },
+      "text": { "light": "#1A4DAC", "dark": "#6B9EFE" }
+    }
+  },
+
+  "bg-inactive": {
+    "_note": "Standalone token for inactive background states. References color/background/primary/lowest. The Figma canvas lists this as a standalone section without a component scope — it may be a shared utility alias. Dark mode value derived from the referenced semantic token.",
+    "bg": { "light": "#F1F2F4", "dark": "#1D1D23" }
+  }
+}

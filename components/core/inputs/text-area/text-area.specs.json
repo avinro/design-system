@@ -1,0 +1,200 @@
+{
+  "component": "TextArea",
+  "figmaNodeId": "2035:12927",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "subComponents": [
+    {
+      "name": "textArea/field",
+      "figmaNodeId": "2035:12768",
+      "description": "The multiline text field. Handles all interaction states independently. Can be used standalone."
+    },
+    {
+      "name": "input/label",
+      "figmaNodeId": "5082:730",
+      "description": "The label block. Shared with TextInput. Includes label text, optional help icon, optional helper link, and optional description line.",
+      "sharedWith": "TextInput"
+    },
+    {
+      "name": "input/feedback-text",
+      "figmaNodeId": "5082:753",
+      "description": "The feedback/validation text below the field. Three types: info, error, success. Shared with TextInput.",
+      "sharedWith": "TextInput"
+    }
+  ],
+  "variants": [
+    {
+      "name": "default",
+      "description": "No structural variants — variation is controlled through props."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "height": "flexible",
+      "borderRadius": "12px",
+      "description": "Height is not fixed. The field grows with content or is constrained by the container. Border radius 12px (rectangular — not pill shaped)."
+    }
+  ],
+  "wrapperStates": [
+    {
+      "name": "Default",
+      "figmaPropValue": "Default",
+      "borderToken": "--input/border-default",
+      "borderWidth": "1px",
+      "feedbackType": "info",
+      "description": "Neutral validation state."
+    },
+    {
+      "name": "error",
+      "figmaPropValue": "error",
+      "borderToken": "--input/border-error",
+      "borderWidth": "1.5px",
+      "feedbackType": "error",
+      "description": "Validation failed. Red border and red feedback text."
+    },
+    {
+      "name": "success",
+      "figmaPropValue": "success",
+      "borderToken": "--input/border-success",
+      "borderWidth": "1px",
+      "feedbackType": "success",
+      "description": "Validation passed. Green feedback text. Note: spelled correctly as 'success', unlike TextInput's wrapper which uses 'succeded'."
+    }
+  ],
+  "fieldInteractionStates": [
+    {
+      "name": "Default",
+      "figmaPropValue": "Default",
+      "description": "Empty, not focused. Shows placeholder text.",
+      "background": "--input/bg-default",
+      "border": "--input/border-default",
+      "borderWidth": "1px",
+      "textColor": "--input/text-placeholder"
+    },
+    {
+      "name": "Focus",
+      "figmaPropValue": "Focus",
+      "description": "Focused. Cursor and text content visible. Dark border.",
+      "background": "--input/bg-default",
+      "border": "--input/border-active",
+      "borderWidth": "1.5px",
+      "textColor": "--input/text-input"
+    },
+    {
+      "name": "filled",
+      "figmaPropValue": "filled",
+      "description": "Has a value, not focused. Default border. Value text visible.",
+      "background": "--input/bg-default",
+      "border": "--input/border-default",
+      "borderWidth": "1px",
+      "textColor": "--input/text-input"
+    },
+    {
+      "name": "Error",
+      "figmaPropValue": "Error",
+      "description": "Validation error. Red border (1.5px).",
+      "background": "--input/bg-default",
+      "border": "--input/border-error",
+      "borderWidth": "1.5px",
+      "textColor": "--input/text-input"
+    },
+    {
+      "name": "blocked",
+      "figmaPropValue": "blocked",
+      "description": "Not interactive (disabled). Lighter background. Muted text. Note: named 'blocked' in Figma, not 'disable' as in TextInput.",
+      "background": "--input/bg-disabled",
+      "border": "--input/border-default",
+      "borderWidth": "1px",
+      "textColor": "--element/text-muted"
+    }
+  ],
+  "anatomyParts": [
+    {
+      "name": "Label",
+      "subComponent": "input/label",
+      "optional": true,
+      "description": "Label block containing label text, help icon, helper link, and description."
+    },
+    {
+      "name": "LabelText",
+      "parent": "input/label",
+      "optional": false,
+      "description": "Field name. Manrope Medium 14px, --text/primary."
+    },
+    {
+      "name": "HelpIcon",
+      "parent": "input/label",
+      "optional": true,
+      "size": "20px",
+      "description": "Question mark icon. Shown when labelHelpShow is true."
+    },
+    {
+      "name": "HelperLink",
+      "parent": "input/label",
+      "optional": true,
+      "description": "Right-aligned text link in the label row."
+    },
+    {
+      "name": "Description",
+      "parent": "input/label",
+      "optional": true,
+      "description": "Sub-label description line. --text/placeholder color."
+    },
+    {
+      "name": "Field",
+      "subComponent": "textArea/field",
+      "optional": false,
+      "description": "The multiline text input area. Variable height. Border-radius 12px."
+    },
+    {
+      "name": "TextContent",
+      "parent": "textArea/field",
+      "optional": false,
+      "description": "Shows placeholder or entered value text depending on state."
+    },
+    {
+      "name": "ResizeHandle",
+      "parent": "textArea/field",
+      "optional": false,
+      "description": "Visual resize affordance in the bottom-right corner of the field (4.5px decorative element)."
+    },
+    {
+      "name": "FeedbackText",
+      "subComponent": "input/feedback-text",
+      "optional": true,
+      "description": "Single-line message below the field. Color varies by type: info, error, success."
+    }
+  ],
+  "props": {
+    "TextArea": [
+      { "name": "status", "type": "'Default' | 'error' | 'success'", "default": "Default", "description": "Validation state. Controls border and feedback text style." },
+      { "name": "labelShow", "type": "boolean", "default": true, "description": "Show or hide the label block." },
+      { "name": "labelText", "type": "string", "default": "Label", "description": "Label text." },
+      { "name": "labelHelpShow", "type": "boolean", "default": false, "description": "Show help icon and helper link in the label." },
+      { "name": "labelDescription", "type": "boolean", "default": false, "description": "Show the description line in the label." },
+      { "name": "description", "type": "string", "default": "", "description": "Description text." },
+      { "name": "descriptionShow", "type": "boolean", "default": true, "description": "Show or hide the feedback text below the field." },
+      { "name": "feedbackText", "type": "string", "default": "", "description": "Feedback message content." },
+      { "name": "placeholder", "type": "string", "default": "Enter your instructions here...", "description": "Placeholder text." },
+      { "name": "value", "type": "string", "default": null, "description": "Current field value." },
+      { "name": "onChange", "type": "function", "default": null, "description": "Callback on value change." }
+    ],
+    "TextAreaField": [
+      { "name": "state", "type": "'Default' | 'Focus' | 'filled' | 'Error' | 'blocked'", "default": "Default", "description": "Interaction/validation state of the field." },
+      { "name": "placeholder", "type": "string", "default": "Enter your instructions here...", "description": "Placeholder text." },
+      { "name": "value", "type": "string", "default": null, "description": "Current value shown in filled/focus/error states." }
+    ]
+  },
+  "notes": [
+    "TextArea shares input/label (5082:730) and input/feedback-text (5082:753) sub-components with TextInput.",
+    "The textArea/field sub-component (2035:12768) is unique to TextArea.",
+    "The disabled state is named 'blocked' in Figma (not 'disable' as in TextInput's InputField).",
+    "The disabled text token is --element/text-muted (#929fb1), not --input/text-disabled.",
+    "The wrapper validation states use 'success' (correctly spelled), unlike TextInput which uses 'succeded'.",
+    "The field uses border-radius 12px (rectangular), not pill shaped.",
+    "A resize affordance is visible as a 4.5px decorative element in the bottom-right corner of the field.",
+    "TODO: Confirm whether the field height can be fixed or is always flexible.",
+    "TODO: Confirm minimum height.",
+    "TODO: Confirm focus ring style and keyboard interaction pattern."
+  ]
+}

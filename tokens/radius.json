@@ -1,0 +1,14 @@
+{
+  "_source": "Figma variables — nGsiItayj12cfi3AKbP1mB",
+  "_note": "Two naming conventions existed in Figma: radius-{T-shirt} and rounded-{number}. Unified here under T-shirt names. The value for 'full' uses 9999 (from radius-full), not 120 (from rounded-full, which appears to be a legacy value).",
+  "_unit": "px",
+
+  "none": 0,
+  "xs": 4,
+  "sm": 6,
+  "md": 8,
+  "lg": 12,
+  "xl": 16,
+  "2xl": 20,
+  "full": 9999
+}

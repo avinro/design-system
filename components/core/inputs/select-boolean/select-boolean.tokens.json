@@ -1,0 +1,100 @@
+{
+  "component": "SelectBoolean",
+  "tokens": {
+    "questionLabel": {
+      "color": {
+        "token": "var(--text/body)",
+        "value": "#34353f",
+        "description": "Question label text color"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Medium",
+      "fontWeight": "var(--weight/medium)",
+      "fontWeightValue": "500",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "var(--letter-spacing/normal)"
+    },
+    "selectedButton": {
+      "background": {
+        "token": "var(--button/default/bg-default)",
+        "value": "#1d1d23",
+        "description": "Fill of the selected option button"
+      },
+      "border": {
+        "token": "var(--button/default/border-active)",
+        "value": "rgba(29,29,35,0.12)"
+      },
+      "borderWidth": {
+        "token": "var(--stroke-1)",
+        "value": "1px"
+      },
+      "textColor": {
+        "token": "var(--button/default/text-default)",
+        "value": "#f1f2f4"
+      }
+    },
+    "unselectedButton": {
+      "background": {
+        "token": "var(--button/secondary/bg-default)",
+        "value": "rgba(29,29,35,0.05)",
+        "description": "Fill of the unselected option button"
+      },
+      "border": {
+        "token": "var(--button/secondary/border-active)",
+        "value": "rgba(29,29,35,0)",
+        "description": "Transparent border on unselected button"
+      },
+      "borderWidth": {
+        "token": "var(--stroke-1)",
+        "value": "1px"
+      },
+      "textColor": {
+        "token": "var(--button/secondary/text-default)",
+        "value": "#1d1d23"
+      }
+    },
+    "sharedButton": {
+      "height": {
+        "value": "44px",
+        "description": "Fixed height for both option buttons"
+      },
+      "borderRadius": {
+        "token": "var(--rounded-full)",
+        "value": "120px",
+        "description": "Pill shape"
+      },
+      "paddingHorizontal": {
+        "token": "var(--spacing-12)",
+        "value": "12px"
+      },
+      "minWidth": {
+        "value": "120px"
+      },
+      "width": {
+        "value": "flex: 1",
+        "description": "Both buttons share equal width, filling the container"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope SemiBold",
+      "fontWeight": "var(--weight/semibold)",
+      "fontWeightValue": "600",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "var(--letter-spacing/normal)"
+    },
+    "layout": {
+      "gapLabelToGroup": {
+        "token": "var(--spacing-4)",
+        "value": "4px",
+        "description": "Vertical gap between question label and option group"
+      },
+      "gapBetweenButtons": {
+        "value": "4px",
+        "description": "Horizontal gap between the two option buttons"
+      }
+    }
+  }
+}

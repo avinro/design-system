@@ -1,0 +1,189 @@
+---
+title: "Button"
+description: "An interactive trigger used to initiate actions. Supports six types, three sizes, and five states."
+---
+
+# Button
+
+## Overview
+
+Button is the primary interactive trigger used to initiate actions in the interface. It supports six visual types to communicate hierarchy and intent, three sizes to match layout density, and five interaction states for full coverage. The label is required; a leading icon and a trailing dropdown icon are optional slots.
+
+## Anatomy
+
+The Button is composed of four parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Pill-shaped wrapper. Carries the background fill, border color, and border-radius. |
+| **Left icon** | No | Optional 16×16px leading icon. Renders before the label. |
+| **Label** | Yes | Short, action-oriented text. Single line. No wrapping. |
+| **Right icon** | No | Optional 16×16px trailing chevron. Use only for dropdown or expandable actions. |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button anatomy](./anatomy.png) */}
+
+## Variants
+
+Button variants express visual hierarchy and the type of action being triggered. Use the right variant to communicate importance and intent clearly to the user.
+
+### Primary
+
+The main button in any view. Use it for the most important action or the key next step in a flow. There should be only one Primary button per view whenever possible.
+
+Examples: "Confirm booking", "Save changes", "Continue".
+
+### Secondary
+
+For important but non-primary actions. Usually appears next to a Primary button when two relevant options are available. Visually lighter than Primary but still clearly actionable.
+
+Examples: "Cancel" alongside "Save", "View details" alongside "Book now", "Edit" alongside "Confirm".
+
+### Outlined
+
+For tertiary or supporting actions. Use when an action must be available but should not visually compete with Primary or Secondary. Can appear multiple times on a page.
+
+Examples: "View all plans", "Manage payment methods", "Filter results".
+
+### Accent
+
+A special variant for very specific situations. Use only when you need to highlight a particular action in a specific context — for example, a temporary promotion or a high-value action you want to push. Must not become a visual default. Use sparingly and with a clear reason.
+
+Examples: "Apply upgrade" in a limited-time offer, "Redeem reward" in a loyalty context.
+
+### No-fill
+
+A ghost variant for low-emphasis actions or dense layouts where visual weight must be minimal.
+
+### Destructive
+
+For destructive or irreversible actions only. Must always make the risk of the action clear. Requires an additional confirmation step (modal or confirmation message).
+
+Examples: Permanently deleting a user account, canceling a booking with a penalty, deleting a full plan, removing a saved payment method, resetting advanced settings to defaults.
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Button variants](./variants.png) */}
+
+## States
+
+All six types support the same five states.
+
+| State | Trigger |
+|---|---|
+| `Default` | Resting state, no interaction. |
+| `Hover` | Pointer enters the button area. |
+| `Pressed` | Button is actively clicked or tapped. |
+| `Disabled` | Action is unavailable. Non-interactive. |
+| `Focus` | Button receives keyboard focus. |
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button states](./states.png) */}
+
+## Tokens & specs
+
+Tokens follow the `--button/{type}/{role}` naming convention. Values below are confirmed from the `Primary / Default / md` instance. Other type and state combinations follow the same structure and are marked as TODO.
+
+### Supported variants
+
+- `Primary`
+- `Accent`
+- `Secondary`
+- `No-fill`
+- `Outlined`
+- `Destructive`
+
+### Supported sizes
+
+| Size | Height | Min-width | Font size | Padding X | Default use |
+|---|---|---|---|---|---|
+| `sm` | 32px | TODO | TODO | TODO | Compact or dense layouts, inline controls, toolbars |
+| `md` | 44px | 120px | 14px | 12px | Standard size. Use in most layouts and flows |
+| `lg` | 56px | TODO | TODO | TODO | High-impact CTAs only. Use at most once per view |
+
+### Supported states
+
+- `Default`
+- `Hover`
+- `Pressed`
+- `Disabled`
+- `Focus`
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--button/default/bg-default` | `#f1f2f4` | Primary / Default background fill |
+| `--button/default/border-active` | `#f1f2f4` | Primary / Default border color |
+| `--button/default/text-default` | `#1d1d23` | Primary / Default label color |
+| `--font-family/body` | `'Manrope', sans-serif` | Label font family |
+| `--weight/semibold` | `600` | Label font weight |
+| `--size/base` | `14px` | Base font size (md) |
+| `--letter-spacing/normal` | `0px` | Label letter spacing |
+| `--spacing-8` | `8px` | Gap between anatomy parts |
+| `--spacing-12` | `12px` | Horizontal padding (md) |
+| `--rounded-full` | `120px` | Container border radius |
+| `--width-1` | `1px` | Border width |
+
+> TODO: Extract token values for Accent, Secondary, No-fill, Outlined, and Destructive types and for Hover, Pressed, Disabled, and Focus states. See Figma node IDs in `button.tokens.json`.
+
+## Usage guidelines
+
+**Variants**
+
+- Use `Primary` for the most important action or key next step in a flow. Use at most one Primary button per view at any hierarchy level.
+- Use `Secondary` for important but non-primary actions, typically paired with a Primary button when two relevant options are available.
+- Use `Outlined` for tertiary or supporting actions that must be present but should not compete visually with Primary or Secondary. It can appear multiple times on a page (filters, utility actions).
+- Use `Accent` only for specific, intentional moments — a limited-time promotion or a high-value action you want to push. It must not become the visual default. Always have a clear reason for using it.
+- Use `Destructive` only for irreversible or high-risk actions. Always pair it with a confirmation step (modal or confirmation message).
+- Use `No-fill` for low-emphasis actions or in dense layouts where visual weight must be minimal.
+
+**Sizes**
+
+- Use `md` in most layouts and flows. It is the standard button size for forms, cards, and detail pages.
+- Use `sm` in compact or dense layouts where vertical space is limited: list items, table rows, toolbars, tight card layouts. Do not use `sm` for the main primary action of a screen unless the entire layout is compact.
+- Use `lg` only for high-impact, prominent CTAs such as hero actions, onboarding empty states, or dedicated promotional sections. Use at most one `lg` button per view.
+
+**General**
+
+- Keep labels short, specific, and action-oriented. Prefer verb phrases such as "Save changes", "Confirm ride", or "Book now".
+- Use the left icon slot to reinforce the action with a recognizable icon.
+- Use the right icon (chevron) only when the button triggers a dropdown or expandable panel — not for decoration.
+- Do not truncate or wrap button labels. Write labels short enough to display fully at the target size.
+
+## Accessibility
+
+- The `Focus` state is designed and present. Ensure keyboard navigation reaches the button in logical DOM order. Do not suppress or override the focus ring.
+- The `Disabled` state is a visual variant in Figma. In code, implement `disabled` attribute or `aria-disabled="true"` to communicate unavailability to assistive technology.
+- TODO: Confirm minimum contrast ratios per type and state against their intended background contexts.
+- TODO: Confirm keyboard interaction spec (Enter and Space activate the button; Tab moves focus).
+- TODO: Confirm whether `aria-label` is required when using the button without a visible label (if icon-only is supported).
+- TODO: Confirm screen reader behavior for the right icon (dropdown chevron). Determine whether it should be `aria-hidden` or announced. If the button opens a dropdown, add `aria-haspopup` and `aria-expanded`.
+
+## Do / Don't
+
+**Do:**
+- Use one `Primary` button per view as the dominant action.
+- Pair `Secondary` with `Primary` when two relevant options need equal visibility.
+- Use `Outlined` for repeatable utility actions (filters, secondary navigation, etc.).
+- Use `Destructive` with a confirmation step — always make the risk of the action clear.
+- Use `Accent` only in specific, intentional moments with a clear reason.
+- Use `lg` for hero CTAs or high-impact onboarding moments. Use `sm` for compact layouts and inline controls.
+- Keep labels short and action-oriented: "Save changes", "Confirm ride", "Delete account".
+
+**Don't:**
+- Don't place two `Primary` buttons at the same hierarchy level.
+- Don't use `Accent` as a visual default or substitute for `Primary` in standard flows.
+- Don't use `lg` more than once per view — it loses emphasis if overused.
+- Don't use `sm` for the main primary action unless the entire layout is compact.
+- Don't use the right icon (chevron) unless the button opens a dropdown or expandable panel.
+- Don't use `Destructive` without a confirmation step.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=17-14613&t=EYB79TeCN87zLrnT-4)
+- Code: `./button.tsx`
+- Specs: `./button.specs.json`
+- Tokens: `./button.tokens.json`

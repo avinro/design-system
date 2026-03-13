@@ -1,0 +1,108 @@
+{
+  "component": "Button",
+  "figmaNodeId": "17:14613",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Pill-shaped wrapper that carries the background fill, border, and border-radius. Min-width confirmed at 120px for md.",
+      "required": true
+    },
+    {
+      "part": "leftIcon",
+      "description": "Optional leading icon slot. 16×16px. Renders before the label.",
+      "required": false
+    },
+    {
+      "part": "label",
+      "description": "Required text content. Manrope SemiBold, 14px base size (md). Single line, no wrapping.",
+      "required": true
+    },
+    {
+      "part": "rightIcon",
+      "description": "Optional trailing icon slot. 16×16px chevron. Signals a dropdown or expandable action.",
+      "required": false
+    }
+  ],
+
+  "variants": [
+    { "name": "Primary",     "description": "Default action. Main call to action in a view." },
+    { "name": "Accent",      "description": "Highlighted action. Draws attention to a key action." },
+    { "name": "Secondary",   "description": "Supporting action. Use alongside Primary." },
+    { "name": "No-fill",     "description": "Ghost action. Low-emphasis or dense layouts." },
+    { "name": "Outlined",    "description": "Bordered ghost. Visible boundary without a fill." },
+    { "name": "Destructive", "description": "Danger action. Use only for irreversible operations." }
+  ],
+
+  "sizes": [
+    {
+      "name": "sm",
+      "height": 32,
+      "fontSizePx": "TODO",
+      "paddingX": "TODO",
+      "minWidth": "TODO"
+    },
+    {
+      "name": "md",
+      "height": 44,
+      "fontSizePx": 14,
+      "paddingX": 12,
+      "minWidth": 120
+    },
+    {
+      "name": "lg",
+      "height": 56,
+      "fontSizePx": "TODO",
+      "paddingX": "TODO",
+      "minWidth": "TODO"
+    }
+  ],
+
+  "states": [
+    { "name": "Default",  "trigger": "Resting state, no interaction." },
+    { "name": "Hover",    "trigger": "Pointer enters the button area." },
+    { "name": "Pressed",  "trigger": "Button is actively clicked or tapped." },
+    { "name": "Disabled", "trigger": "Action is unavailable. Non-interactive." },
+    { "name": "Focus",    "trigger": "Button receives keyboard focus." }
+  ],
+
+  "iconSlots": {
+    "leftIcon": {
+      "size": 16,
+      "optional": true,
+      "position": "leading"
+    },
+    "rightIcon": {
+      "size": 16,
+      "optional": true,
+      "position": "trailing",
+      "usage": "Dropdown or expandable action indicator only."
+    }
+  },
+
+  "shape": {
+    "borderRadius": "var(--rounded-full, 120px)",
+    "borderWidth": "var(--width-1, 1px)"
+  },
+
+  "typography": {
+    "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+    "fontWeight": "var(--weight/semibold, 600)",
+    "fontSize": "var(--size/base, 14px)",
+    "lineHeight": 1.4,
+    "letterSpacing": "var(--letter-spacing/normal, 0px)"
+  },
+
+  "spacing": {
+    "gap": "var(--spacing-8, 8px)",
+    "paddingX_md": "var(--spacing-12, 12px)"
+  },
+
+  "notes": [
+    "TODO: Confirm padding and font size for sm and lg sizes.",
+    "TODO: Confirm whether an icon-only (no label) button variant is supported.",
+    "TODO: Confirm whether a loading state exists.",
+    "TODO: Extract token values for Accent, Secondary, No-fill, Outlined, Destructive types and all non-default states."
+  ]
+}

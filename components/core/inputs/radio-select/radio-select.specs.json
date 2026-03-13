@@ -1,0 +1,74 @@
+{
+  "component": "radio-select",
+  "variants": [
+    {
+      "name": "radio-basic",
+      "description": "Radio indicator with a simple label only. No description text. Most compact layout.",
+      "layout": "horizontal",
+      "parts": ["radio-indicator", "label"]
+    },
+    {
+      "name": "radio+description",
+      "description": "Radio indicator with label and a secondary description line below. No container border.",
+      "layout": "horizontal",
+      "parts": ["radio-indicator", "label", "description"]
+    },
+    {
+      "name": "radio-boxed",
+      "description": "Radio indicator with label and description, enclosed in a bordered card container. Border changes to primary color when checked.",
+      "layout": "horizontal",
+      "parts": ["radio-indicator", "label", "description", "card-container"]
+    }
+  ],
+  "states": [
+    {
+      "name": "unchecked",
+      "description": "Default state. Radio ring is empty. Container border (boxed variant) uses --layout/border."
+    },
+    {
+      "name": "checked",
+      "description": "Selected state. Radio indicator fills with --main-colors/primary. In radio-boxed, the container border also changes to --main-colors/primary."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "radioIndicator": "24px",
+      "fontSize": "14px",
+      "note": "Single size only. No size variants confirmed."
+    }
+  ],
+  "anatomy": {
+    "radio-indicator": {
+      "description": "24×24px circular selection control. Based on the _base-radio sub-component. Renders as empty ring (unchecked) or filled primary circle (checked).",
+      "states": ["unchecked", "checked"]
+    },
+    "label": {
+      "description": "Primary option text. SemiBold, 14px, --text/primary.",
+      "required": true,
+      "presentIn": ["radio-basic", "radio+description", "radio-boxed"]
+    },
+    "description": {
+      "description": "Secondary clarifying text below the label. Regular, 14px, --text/placeholder.",
+      "required": false,
+      "presentIn": ["radio+description", "radio-boxed"]
+    },
+    "card-container": {
+      "description": "Bordered card wrapper with drop shadow and rounded corners. Border changes to primary color when checked.",
+      "required": false,
+      "presentIn": ["radio-boxed"]
+    }
+  },
+  "baseComponents": [
+    {
+      "name": "_base-radio",
+      "description": "The radio circle indicator. Renders unchecked (empty ring) or checked (filled primary circle) state.",
+      "figmaNodeId": "5010:1668"
+    },
+    {
+      "name": "_base-label-checkbox",
+      "description": "The text container. Supports two internal modes: basic (label only) and label+desc (label with description below).",
+      "figmaNodeId": "5010:1692"
+    }
+  ]
+}

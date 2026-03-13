@@ -1,0 +1,121 @@
+{
+  "component": "DropdownInput",
+  "tokens": {
+    "selectButton": {
+      "background": {
+        "light": "var(--button/secondary/bg-default)",
+        "lightValue": "rgba(29,29,35,0.05)",
+        "dark": "var(--button/secondary/bg-default)",
+        "darkValue": "rgba(241,242,244,0.1)",
+        "description": "Fill of the pill-shaped select button"
+      },
+      "border": {
+        "token": "var(--button/secondary/border-active)",
+        "value": "rgba(29,29,35,0)",
+        "width": "var(--width-1)",
+        "widthValue": "1px",
+        "description": "Border of the select button (transparent by default)"
+      },
+      "height": {
+        "value": "44px",
+        "description": "Fixed height of the select button"
+      },
+      "borderRadius": {
+        "token": "var(--rounded-full)",
+        "value": "120px",
+        "description": "Pill shape"
+      },
+      "paddingLeft": {
+        "token": "var(--spacing-20)",
+        "value": "20px"
+      },
+      "paddingRight": {
+        "token": "var(--spacing-12)",
+        "value": "12px"
+      },
+      "minWidth": {
+        "value": "120px"
+      }
+    },
+    "valueText": {
+      "color": {
+        "token": "var(--button/secondary/text-default)",
+        "lightValue": "#1d1d23",
+        "darkValue": "#f1f2f4",
+        "description": "Text color when a value is selected (preselected state)"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope SemiBold",
+      "fontWeight": "var(--weight/semibold)",
+      "fontWeightValue": "600",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "var(--letter-spacing/normal)"
+    },
+    "placeholderText": {
+      "color": {
+        "token": "var(--text/placeholder)",
+        "lightValue": "#636377",
+        "darkValue": "#a3a3bc",
+        "description": "Text color when no value is selected"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope SemiBold",
+      "fontWeight": "var(--weight/semibold)",
+      "fontWeightValue": "600",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4"
+    },
+    "label": {
+      "color": {
+        "token": "var(--text/body)",
+        "lightValue": "#34353f",
+        "darkValue": "#cccdda"
+      },
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Medium",
+      "fontWeight": "var(--weight/medium)",
+      "fontWeightValue": "500",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4",
+      "letterSpacing": "var(--letter-spacing/normal)"
+    },
+    "annotation": {
+      "textColor": {
+        "token": "var(--text/placeholder)",
+        "lightValue": "#636377",
+        "darkValue": "#a3a3bc"
+      },
+      "iconSize": "16px",
+      "gap": "4px",
+      "fontFamily": "var(--font-family/body)",
+      "fontStyle": "Manrope Medium",
+      "fontWeight": "var(--weight/medium)",
+      "fontWeightValue": "500",
+      "fontSize": "var(--size/base)",
+      "fontSizeValue": "14px",
+      "lineHeight": "1.4"
+    },
+    "chevronIcon": {
+      "size": "24px"
+    },
+    "leftIcon": {
+      "size": "16px"
+    },
+    "layout": {
+      "gap": {
+        "token": "var(--spacing-4)",
+        "value": "4px",
+        "description": "Vertical gap between label, select button, and annotation"
+      },
+      "innerGap": {
+        "token": "var(--spacing-16)",
+        "value": "16px",
+        "description": "Gap between left icon and value text inside the select button"
+      }
+    }
+  }
+}

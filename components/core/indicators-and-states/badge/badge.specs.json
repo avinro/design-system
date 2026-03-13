@@ -1,0 +1,130 @@
+{
+  "component": "Badge",
+  "figmaFrameName": "Badge",
+  "figmaNodeId": "5050:816",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Pill-shaped container (border-radius: 9999px). Padding: 8px horizontal, 4px vertical. Background and border depend on type.",
+      "required": true
+    },
+    {
+      "part": "label",
+      "description": "Short text string. Manrope SemiBold, 12px, whitespace-nowrap. Color depends on type.",
+      "required": true
+    }
+  ],
+
+  "types": [
+    {
+      "name": "error",
+      "figmaNodeId": "5050:817",
+      "semantics": "Error, critical status, failed state, blocked action.",
+      "backgroundToken": "--notification/error-bg",
+      "backgroundValue": "#fcdcdc",
+      "textToken": "--notification/error-text",
+      "textValue": "#a43636",
+      "hasBorder": false
+    },
+    {
+      "name": "info",
+      "figmaNodeId": "5050:819",
+      "semantics": "Informational status, pending state, neutral system metadata.",
+      "backgroundToken": "--notification/info-bg",
+      "backgroundValue": "#d4e3ff",
+      "textToken": "--notification/info-text",
+      "textValue": "#1a4dac",
+      "hasBorder": false
+    },
+    {
+      "name": "Success",
+      "figmaNodeId": "5050:821",
+      "semantics": "Completed, confirmed, active, approved, positive state.",
+      "backgroundToken": "--notification/success-bg",
+      "backgroundValue": "#d5f4d6",
+      "textToken": "--notification/success-text",
+      "textValue": "#176719",
+      "hasBorder": false
+    },
+    {
+      "name": "Warning",
+      "figmaNodeId": "5050:823",
+      "semantics": "Cautionary state, attention required, expiring, degraded.",
+      "backgroundToken": "--notification/warning--bg",
+      "backgroundValue": "#f6e3a4",
+      "backgroundTokenNote": "Token name uses a double dash (warning--bg) — this is the confirmed Figma token name.",
+      "textToken": "--notification/warning-text",
+      "textValue": "#775c01",
+      "hasBorder": false
+    },
+    {
+      "name": "default",
+      "figmaNodeId": "5050:825",
+      "semantics": "Neutral label, category, generic metadata. No status meaning.",
+      "backgroundToken": "--badge/default/bg",
+      "backgroundValue": "#e4e5ed",
+      "textToken": "--badge/default/text",
+      "textValue": "#34353f",
+      "hasBorder": false
+    },
+    {
+      "name": "outlined",
+      "figmaNodeId": "5050:827",
+      "semantics": "Secondary, de-emphasized, or inactive label. No background fill.",
+      "backgroundToken": null,
+      "backgroundValue": "none",
+      "textToken": "--badge/default/text",
+      "textValue": "#34353f",
+      "hasBorder": true,
+      "borderToken": "--badge/outlined/border",
+      "borderValue": "#cccdda",
+      "borderWidth": "1px",
+      "borderStyle": "solid"
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. Type is the primary dimension (6 color types).",
+
+  "sizes": [],
+  "sizeNote": "Single size only. No size variants.",
+
+  "states": [],
+  "stateNote": "No interactive states defined in Figma. Badge is a display-only component.",
+
+  "dimensions": {
+    "borderRadius": "9999px (full pill)",
+    "paddingHorizontal": "8px (--spacing-8)",
+    "paddingVertical": "4px (--spacing-4)"
+  },
+
+  "typography": {
+    "textStyle": "Body xs/SemiBold",
+    "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+    "fontWeight": "var(--weight/semibold, 600)",
+    "fontSize": "var(--size/xs, 12px)",
+    "lineHeight": 1.2,
+    "letterSpacing": "var(--letter-spacing/normal, 0px)",
+    "whitespace": "nowrap",
+    "note": "All six types share the same text style. Only the color token differs per type."
+  },
+
+  "usageContext": [
+    "Status, category, or contextual metadata labels on list items, cards, and headers.",
+    "Confirmed in Dojo Customer App (node 1361:13772) and Dojo Driver App (node 2007:325)."
+  ],
+
+  "notes": [
+    "Six confirmed types: error, info, Success, Warning, default, outlined.",
+    "Note: 'Success' and 'Warning' are capitalized in the Figma prop. Other types are lowercase.",
+    "The outlined type has a 1px solid border and no background fill.",
+    "The --notification/warning--bg token has a double dash — confirmed Figma token name.",
+    "The outlined and default types share the same text token (--badge/default/text, #34353f).",
+    "No icon support, no size variants, no interactive states defined in Figma.",
+    "TODO: Confirm whether a dismissible or icon variant is planned.",
+    "TODO: Confirm WCAG contrast ratios for all six type combinations.",
+    "TODO: Confirm whether 'Success' and 'Warning' prop names should be normalized to lowercase."
+  ]
+}

@@ -1,0 +1,172 @@
+---
+title: "Button Slider"
+description: "A slide-to-confirm interaction component. The user drags a thumb across a track to trigger a high-stakes, intentional action."
+---
+
+# Button Slider
+
+## Overview
+
+Button Slider is a slide-to-confirm interaction component. The user drags a dark pill-shaped thumb from left to right across a light track to trigger an action. The sliding gesture adds deliberate friction, making it suitable for high-stakes actions that must not be triggered accidentally.
+
+In the Dojo Driver App, it is used at the bottom of the map screen to confirm going online as a driver. It also supports a **danger color variation** — a red thumb — for emergency or destructive actions where the risk must be visually reinforced, such as triggering an emergency call to 112.
+
+## Anatomy
+
+The Button Slider is composed of four parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Track** | Yes | Full-width pill container (366×64px). Subtle transparent background. Acts as the slide rail for the thumb. |
+| **Thumb** | Yes | Dark pill-shaped handle the user drags. 80×56px in the `default` state; expands to 358×56px in the `filled` state. |
+| **Icon** | Yes | A right-pointing arrow icon (24×24px) inside the thumb. Always positioned at the thumb's trailing edge. |
+| **Label** | Yes | Text centered over the track. Always visible across both states. Uses `mix-blend-difference` blend mode for readability at all thumb positions. |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button Slider anatomy](./anatomy.png) */}
+
+## Variants
+
+Button Slider has no structural variants. However, the **thumb color** can be changed to communicate the nature of the action. The track background and label styling remain unchanged in both cases.
+
+### Default color (dark)
+
+The standard appearance. Dark thumb (`#1d1d23`).
+
+Use for standard high-stakes confirmations with no danger or emergency connotation — for example, going online as a driver.
+
+### Danger color (red)
+
+A red thumb for emergency or destructive actions where the severity must be clearly communicated to the user before they confirm.
+
+Use only when the action involves a genuine emergency or irreversible real-world risk — for example, triggering an emergency call to 112. Confirmed in the Dojo Driver App 112 assistance flow.
+
+Do not use the danger color for standard confirmation flows. It must retain its meaning as a signal of serious risk.
+
+> TODO: Confirm the design token for the danger red thumb color.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Button Slider variants](./variants.png) */}
+
+## States
+
+Only two visual states are defined in Figma.
+
+| State | Description |
+|---|---|
+| `default` | Initial resting state. Thumb is at the left of the track. The action has not been triggered. |
+| `filled` | Completed state. Thumb has expanded to fill the full inner track width. The action has been confirmed. |
+
+> Note: Disabled, focus, and intermediate drag states are not defined in Figma. See TODOs in this section.
+
+- TODO: Confirm disabled state appearance and token values.
+- TODO: Confirm focus ring treatment for keyboard navigation.
+- TODO: Confirm whether a loading/processing state follows the `filled` state.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button Slider states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Single structure — no type variants. Thumb color can be **default (dark)** or **danger (red)**.
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Value |
+|---|---|
+| Track width | 366px |
+| Track height | 64px |
+| Track padding | 4px |
+| Thumb width — `default` | 80px |
+| Thumb width — `filled` | 358px (track width − padding × 2) |
+| Thumb height | 56px (track height − padding × 2) |
+| Arrow icon | 24×24px |
+
+### Supported states
+
+- `default`
+- `filled`
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--button/secondary/bg-default` | `rgba(29, 29, 35, 0.05)` | Track background |
+| `--button/default/bg-default` | `#1d1d23` | Thumb background |
+| `--text/invert` | `#f1f2f4` | Label text color (with mix-blend-difference) |
+| `--font-family/headings` | `'Google Sans Flex', sans-serif` | Label font family |
+| `--weight/semibold` | `600` | Label font weight |
+| `--size/lg` | `16px` | Label font size |
+| `--letter-spacing/tight` | `-0.4px` | Label letter spacing |
+
+> Note: The label uses `mix-blend-difference` blend mode — this is not a token but a structural requirement. It must be preserved in implementation.
+
+> Note: The label uses `--font-family/headings` (Google Sans Flex), not `--font-family/body` (Manrope). This is unique to this component.
+
+> TODO: Confirm token values for disabled and focus states.
+
+## Usage guidelines
+
+- Use Button Slider **only for high-stakes actions** that must not be triggered accidentally. The slide gesture adds intentional friction.
+- Use **one Button Slider per screen**. It represents the single primary, defining action of that context.
+- Do not use Button Slider for reversible or low-stakes actions. Reserve it for confirmations with significant consequences — going online, confirming a trip start, or accepting a high-value action.
+- Write labels that clearly describe what will happen on confirmation. Keep them short — `whitespace-nowrap` is applied and long labels will overflow.
+- The component spans the standard mobile content width (366px). It is designed to align with the standard horizontal margin of a mobile screen.
+- Do not combine with other primary action buttons on the same screen.
+
+**Choosing the thumb color:**
+- Use the **default dark color** for standard high-stakes confirmations (e.g., going online, confirming a ride).
+- Use the **danger red color** when the action involves a genuine emergency or irreversible risk that the user must recognize before confirming (e.g., calling emergency services, triggering a safety alert).
+- Do not use the danger color for standard flows — reserve it for truly emergency or destructive actions to preserve its meaning.
+
+## Interaction
+
+The slide-to-confirm gesture is the core interaction. Visual states are confirmed from Figma. Animation and threshold behavior are not yet specified.
+
+- The user drags the thumb from left to right across the track.
+- Reaching the end of the track triggers the `filled` state and calls the confirmation handler.
+- TODO: Confirm drag threshold percentage for triggering the filled state (e.g., 90% of the track).
+- TODO: Confirm snap-back behavior when the user releases before the threshold.
+- TODO: Confirm transition and animation spec for thumb expansion.
+- TODO: Confirm whether the filled state can be reset (toggle behavior vs. one-way confirmation).
+
+## Accessibility
+
+- The label text is the accessible name of the component. Ensure it clearly describes the action.
+- The `mix-blend-difference` blend mode is visual only — screen readers receive the label text directly.
+- TODO: Confirm keyboard interaction. The drag gesture has no native keyboard equivalent. A possible fallback: Enter or Space to confirm directly.
+- TODO: Confirm ARIA role — `role="button"` or `role="slider"` depending on implementation approach.
+- TODO: Confirm focus ring treatment.
+- TODO: Confirm how `aria-disabled` and disabled state styling should behave.
+
+## Do / Don't
+
+**Do:**
+- Use for a single, high-stakes confirmation per screen.
+- Write a short, action-specific label (e.g., "Slide to go online", "Swipe to call 112").
+- Use as the sole primary action on the screen.
+- Preserve the `mix-blend-difference` blend mode on the label in all implementations.
+- Use the danger (red) color when the action involves a genuine emergency or irreversible real-world risk.
+
+**Don't:**
+- Don't use for reversible or low-stakes actions.
+- Don't place more than one Button Slider on a screen.
+- Don't write labels longer than ~20 characters — `whitespace-nowrap` is applied.
+- Don't combine with other primary action buttons on the same screen.
+- Don't change the direction of the arrow icon.
+- Don't use the danger color for standard flows — reserve it for emergency or destructive actions only.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button Slider do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button Slider component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5227-800&t=EYB79TeCN87zLrnT-4)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=1-12&p=f&t=DvP9tEEMgY8sBTJ8-0)
+- Code: `./button-slider.tsx`
+- Specs: `./button-slider.specs.json`
+- Tokens: `./button-slider.tokens.json`

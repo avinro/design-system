@@ -1,0 +1,38 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction. Only Default/Default/md instance was fully sampled. All other type and state values are TODO.",
+
+  "shared": {
+    "--rounded-full":          { "value": "120px", "description": "Container border-radius (renders as circle on square container)" },
+    "--width-1":               { "value": "1px",   "description": "Border width" },
+    "--spacing-8":             { "value": "0px",   "description": "Internal gap (single-element layout, effectively 0)" },
+    "--spacing-12":            { "value": "12px",  "description": "Horizontal padding (md)" }
+  },
+
+  "types": {
+    "Default": {
+      "Default": {
+        "--button/default/bg-default":    { "value": "#1d1d23",          "description": "Background fill" },
+        "--button/default/border-active": { "value": "rgba(29,29,35,0.12)", "description": "Border color" }
+      },
+      "Hover":    { "_note": "TODO: Extract from Figma node 5007:1653" },
+      "Pressed":  { "_note": "TODO: Extract from Figma node 5007:1665" },
+      "Disabled": { "_note": "TODO: Extract from Figma node 5007:1677" },
+      "Focus":    { "_note": "TODO: Extract from Figma node 5007:1689" }
+    },
+    "Accent": {
+      "_note": "TODO: Extract from Figma nodes 5007:1701–5007:1757"
+    },
+    "Secondary": {
+      "_note": "TODO: Extract from Figma nodes 5007:1761–5007:1817"
+    },
+    "Outlined": {
+      "_note": "TODO: Extract from Figma nodes 5112:815–5112:843"
+    },
+    "No-fill": {
+      "_note": "TODO: Extract from Figma nodes 5007:1821–5007:1877"
+    },
+    "Destructive": {
+      "_note": "TODO: Extract from Figma nodes 5007:1881–5007:1937 (Figma layer named 'Ddestructive' — typo)"
+    }
+  }
+}

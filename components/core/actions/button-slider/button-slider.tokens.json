@@ -1,0 +1,69 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction for both default and filled states.",
+
+  "track": {
+    "--button/secondary/bg-default": {
+      "value": "rgba(29, 29, 35, 0.05)",
+      "description": "Track background fill. Same in both states."
+    }
+  },
+
+  "thumb": {
+    "--button/default/bg-default": {
+      "value": "#1d1d23",
+      "description": "Thumb background fill. Same in both states."
+    }
+  },
+
+  "label": {
+    "--text/invert": {
+      "value": "#f1f2f4",
+      "description": "Label text color. mix-blend-difference is applied so it inverts against the thumb and track backgrounds."
+    },
+    "--font-family/headings": {
+      "value": "'Google Sans Flex', sans-serif",
+      "description": "Label font family. NOTE: This component uses the headings font, not the body font."
+    },
+    "--weight/semibold": {
+      "value": "600",
+      "description": "Label font weight."
+    },
+    "--size/lg": {
+      "value": "16px",
+      "description": "Label font size."
+    },
+    "--letter-spacing/tight": {
+      "value": "-0.4px",
+      "description": "Label letter spacing."
+    }
+  },
+
+  "shape": {
+    "borderRadius": {
+      "value": "100px",
+      "description": "Applied to both track and thumb for full pill shape."
+    }
+  },
+
+  "spacing": {
+    "trackPadding": {
+      "value": "4px",
+      "description": "Inner padding of the track on all sides."
+    }
+  },
+
+  "states": {
+    "default": {
+      "_note": "Confirmed. Thumb width: 80px."
+    },
+    "filled": {
+      "_note": "Confirmed. Thumb width: 358px (fills full inner track area)."
+    },
+    "disabled": {
+      "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+    },
+    "focus": {
+      "_note": "TODO: Not defined in Figma. Confirm focus ring treatment."
+    }
+  }
+}

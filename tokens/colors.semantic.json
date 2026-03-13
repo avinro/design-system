@@ -1,0 +1,213 @@
+{
+  "_source": "Figma semantic color variables — file nGsiItayj12cfi3AKbP1mB, Colors page (node 7006:2717)",
+  "_note": "Semantic color tokens with explicit light and dark mode values extracted from Figma. Every token stores both modes under 'light' and 'dark' keys. Values are resolved hex strings (or rgba strings for opacity-based tokens). Structural decisions: (1) foreground, background, and border groups match Figma's color/ variable path structure directly; (2) surface and text are alias layers — their dark mode values are derived from the foreground/background/border tokens they reference, since Figma does not show a separate dark mode column for those sections; (3) notification tokens are similarly aliased from background.utility.* and foreground.utility.* — dark modes are derived accordingly; (4) notification.warning.signal references 'colors/yellow/500' in Figma, an orphaned variable outside the standard color/ path — its dark mode value is marked TODO; (5) opacity-based tokens (background.secondary.* and border.secondary.*) use rgba strings; (6) foreground.destructive is white (#FFFFFF) in light mode because it is used as text on dark red destructive surfaces, and dark red (#301010) in dark mode because dark mode destructive surfaces are lighter red.",
+
+  "foreground": {
+    "_note": "Text and icon foreground colors. Neutral steps invert between light and dark mode. All support and utility tokens also invert.",
+
+    "neutral": {
+      "strongest": { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "strong":    { "light": "#34353F", "dark": "#CCCDDA" },
+      "medium":    { "light": "#4B4C5B", "dark": "#B4B5C9" },
+      "subtle":    { "light": "#636377", "dark": "#9192AF" },
+      "lowest":    { "light": "#7A7B93", "dark": "#9192AF" },
+      "inverse":   { "light": "#F1F2F4", "dark": "#1D1D23" }
+    },
+
+    "accent":      { "light": "#AD491A", "dark": "#FF6B26" },
+    "white":       { "light": "#FFFFFF", "dark": "#FFFFFF" },
+    "destructive": { "light": "#FFFFFF", "dark": "#301010" },
+
+    "utility": {
+      "_note": "Foreground colors for error, warning, success, and info states. Light mode uses dark tones for contrast on tinted backgrounds; dark mode uses lighter tones.",
+      "error":   { "light": "#A43636", "dark": "#F58888" },
+      "warning": { "light": "#775C01", "dark": "#EDC953" },
+      "success": { "light": "#176719", "dark": "#70D872" },
+      "info":    { "light": "#1A4DAC", "dark": "#6B9EFE" }
+    },
+
+    "support": {
+      "_note": "Foreground colors for the extended support palette used in charts and support contexts. These do not map to functional states.",
+      "orange": { "light": "#FF6B26", "dark": "#FF9A6B" },
+      "purple": { "light": "#7749E4", "dark": "#A383ED" },
+      "violet": { "light": "#D243FE", "dark": "#E07FFE" },
+      "blue":   { "light": "#2671FD", "dark": "#6B9EFE" },
+      "cyan":   { "light": "#38A9D5", "dark": "#7FDAFE" },
+      "teal":   { "light": "#0AC0A1", "dark": "#5AEDC6" },
+      "pink":   { "light": "#FF498B", "dark": "#FF83B0" }
+    }
+  },
+
+  "background": {
+    "_note": "Surface fill colors. Primary steps form a lightness scale that inverts between modes. Secondary steps are opacity-based overlays.",
+
+    "primary": {
+      "_note": "Main surface backgrounds. Steps are named by visual weight, not lightness — 'lowest' is the lightest step in light mode and darkest in dark mode.",
+      "lowest":      { "light": "#F1F2F4", "dark": "#1D1D23" },
+      "subtle":      { "light": "#E4E5ED", "dark": "#34353F" },
+      "muted":       { "light": "#CCCDDA", "dark": "#4B4C5B" },
+      "semi-medium": { "light": "#7A7B93", "dark": "#9192AF" },
+      "medium":      { "light": "#4B4C5B", "dark": "#CCCDDA" },
+      "strong":      { "light": "#34353F", "dark": "#E4E5ED" },
+      "strongest":   { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "white":       { "light": "#FFFFFF", "dark": "#000000" }
+    },
+
+    "secondary": {
+      "_note": "Overlay backgrounds using opacity. Uses dark-base rgba for steps 0–400 in light mode, and light-base rgba for steps 600–950 in dark mode — referenced from the neutral-opacity primitive scale. 'null' is fully transparent in both modes.",
+      "null":      { "light": "rgba(29,29,35,0)",    "dark": "rgba(29,29,35,0)" },
+      "subtle":    { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+      "medium":    { "light": "rgba(29,29,35,0.12)", "dark": "rgba(241,242,244,0.24)" },
+      "strong":    { "light": "rgba(29,29,35,0.28)", "dark": "rgba(241,242,244,0.4)" },
+      "strongest": { "light": "rgba(29,29,35,0.5)",  "dark": "rgba(241,242,244,0.56)" }
+    },
+
+    "accent": {
+      "_note": "Backgrounds for accent/brand-colored surfaces. Primary-strong is the pure brand fill. Secondary steps are tinted backgrounds for lower-emphasis accent surfaces.",
+      "secondary-subtle":  { "light": "#FFE1D4", "dark": "#331508" },
+      "secondary-medium":  { "light": "#FFCAB1", "dark": "#5C270E" },
+      "secondary-strong":  { "light": "#FFB28E", "dark": "#853814" },
+      "primary-subtle":    { "light": "#FF9A6B", "dark": "#FFB28E" },
+      "primary-medium":    { "light": "#FF8349", "dark": "#FF9A6B" },
+      "primary-strong":    { "light": "#FF6B26", "dark": "#FF8349" }
+    },
+
+    "elevation": {
+      "_note": "Backgrounds tied to elevation level. Use sunken for recessed surfaces, base for the default page layer, raised for cards and panels, overlay for modal backdrops.",
+      "sunken":  { "light": "#FFFFFF", "dark": "#000000" },
+      "base":    { "light": "#F1F2F4", "dark": "#1D1D23" },
+      "raised":  { "light": "#E4E5ED", "dark": "#34353F" },
+      "overlay": { "light": "rgba(29,29,35,0.5)", "dark": "rgba(29,29,35,0.5)" }
+    },
+
+    "destructive": {
+      "_note": "Backgrounds for destructive actions. Light mode uses dark reds; dark mode uses lighter reds, which is why the foreground.destructive color inverts.",
+      "subtle": { "light": "#CC2222", "dark": "#F36C6C" },
+      "medium": { "light": "#A43636", "dark": "#F58888" },
+      "strong": { "light": "#7D2A2A", "dark": "#F8A4A4" }
+    },
+
+    "utility": {
+      "_note": "Tinted backgrounds for error, warning, success, and info states. Light mode uses pale tints; dark mode uses near-black tones of the same hue.",
+      "error":   { "light": "#FCDCDC", "dark": "#301010" },
+      "warning": { "light": "#F6E3A4", "dark": "#2E2300" },
+      "success": { "light": "#D5F4D6", "dark": "#09280A" },
+      "info":    { "light": "#D4E3FF", "dark": "#081733" }
+    },
+
+    "support": {
+      "_note": "Backgrounds for the extended support palette. Each hue provides a light tinted background and a saturated base. Used for chart contexts and support badge backgrounds.",
+      "orange": {
+        "light": { "light": "#FFE1D4", "dark": "#331508" },
+        "base":  { "light": "#FF6B26", "dark": "#FF9A6B" }
+      },
+      "purple": {
+        "light": { "light": "#E4DBFA", "dark": "#180F2E" },
+        "base":  { "light": "#7749E4", "dark": "#A383ED" }
+      },
+      "violet": {
+        "light": { "light": "#F6D9FF", "dark": "#2A0D33" },
+        "base":  { "light": "#D243FE", "dark": "#E07FFE" }
+      },
+      "blue": {
+        "light": { "light": "#D4E3FF", "dark": "#081733" },
+        "base":  { "light": "#2671FD", "dark": "#6B9EFE" }
+      },
+      "cyan": {
+        "light": { "light": "#D9F4FF", "dark": "#0D2833" },
+        "base":  { "light": "#38A9D5", "dark": "#7FDAFE" }
+      },
+      "teal": {
+        "light": { "light": "#CEFAEE", "dark": "#022E26" },
+        "base":  { "light": "#0AC0A1", "dark": "#5AEDC6" }
+      },
+      "pink": {
+        "light": { "light": "#FFDBE8", "dark": "#330F1C" },
+        "base":  { "light": "#FF498B", "dark": "#FF83B0" }
+      }
+    }
+  },
+
+  "border": {
+    "_note": "Stroke colors for container edges, input outlines, and dividers.",
+
+    "primary": {
+      "_note": "Solid borders on neutral surfaces. Steps invert between modes like background.primary.",
+      "lowest":    { "light": "#F1F2F4", "dark": "#1D1D23" },
+      "subtle":    { "light": "#E4E5ED", "dark": "#34353F" },
+      "medium":    { "light": "#CCCDDA", "dark": "#4B4C5B" },
+      "strong":    { "light": "#1D1D23", "dark": "#F1F2F4" },
+      "strongest": { "light": "#000000", "dark": "#FFFFFF" }
+    },
+
+    "secondary": {
+      "_note": "Opacity-based borders. Values match background.secondary steps. Use for borders that need to work on any background without a hard color edge.",
+      "null":      { "light": "rgba(29,29,35,0)",    "dark": "rgba(29,29,35,0)" },
+      "subtle":    { "light": "rgba(29,29,35,0.05)", "dark": "rgba(241,242,244,0.1)" },
+      "medium":    { "light": "rgba(29,29,35,0.12)", "dark": "rgba(241,242,244,0.24)" },
+      "strong":    { "light": "rgba(29,29,35,0.28)", "dark": "rgba(241,242,244,0.4)" },
+      "strongest": { "light": "rgba(29,29,35,0.5)",  "dark": "rgba(241,242,244,0.56)" }
+    },
+
+    "accent": {
+      "_note": "Borders for accent/brand-colored elements. 'strongest' is the brand color itself and used as a focus ring on accent surfaces.",
+      "subtle":    { "light": "#FFE1D4", "dark": "#331508" },
+      "medium":    { "light": "#FFCAB1", "dark": "#5C270E" },
+      "strong":    { "light": "#FFB28E", "dark": "#D65A20" },
+      "strongest": { "light": "#AD491A", "dark": "#FF6B26" }
+    },
+
+    "utility": {
+      "_note": "Borders for error and success states only. No info or warning border token is defined in Figma — this is a gap in the design system.",
+      "error":   { "light": "#CC2222", "dark": "#F58888" },
+      "success": { "light": "#26A628", "dark": "#70D872" }
+    }
+  },
+
+  "surface": {
+    "_note": "Alias layer for surface-level component backgrounds. These tokens are shorthand aliases that map to background.elevation.* and background.accent.* tokens. Dark mode values are derived from the referenced tokens. Use these aliases in surface-level components (cards, sheets, overlays) to simplify token lookups.",
+    "neutral": {
+      "sunken":  { "light": "#FFFFFF",            "dark": "#000000" },
+      "default": { "light": "#F1F2F4",            "dark": "#1D1D23" },
+      "raised":  { "light": "#E4E5ED",            "dark": "#34353F" },
+      "invert":  { "light": "#1D1D23",            "dark": "#F1F2F4" },
+      "overlay": { "light": "rgba(29,29,35,0.5)", "dark": "rgba(29,29,35,0.5)" }
+    },
+    "accent": {
+      "light": { "light": "#FFE1D4", "dark": "#331508" },
+      "pure":  { "light": "#FF6B26", "dark": "#FF8349" }
+    }
+  },
+
+  "text": {
+    "_note": "Alias layer for common text color roles. These reference foreground.* tokens and are provided as a convenience for text-specific usage. Dark mode values are derived from the corresponding foreground tokens. 'help' and 'placeholder' both resolve to foreground.neutral.subtle.",
+    "primary":     { "light": "#1D1D23", "dark": "#F1F2F4" },
+    "body":        { "light": "#34353F", "dark": "#CCCDDA" },
+    "placeholder": { "light": "#636377", "dark": "#9192AF" },
+    "help":        { "light": "#636377", "dark": "#9192AF" },
+    "invert":      { "light": "#F1F2F4", "dark": "#1D1D23" },
+    "accent":      { "light": "#AD491A", "dark": "#FF6B26" }
+  },
+
+  "notification": {
+    "_note": "Colors for notification and alert components. Tokens reference background.utility.* and foreground.utility.* tokens. Dark mode values are derived from the referenced tokens. Known issue: warning.signal references 'colors/yellow/500' in Figma — an orphaned variable outside the standard color/ path. Its dark mode value cannot be confirmed from the source and is marked TODO.",
+    "border-default": { "light": "#E4E5ED", "dark": "#34353F" },
+    "error": {
+      "bg":   { "light": "#FCDCDC", "dark": "#301010" },
+      "text": { "light": "#A43636", "dark": "#F58888" }
+    },
+    "warning": {
+      "bg":     { "light": "#F6E3A4", "dark": "#2E2300" },
+      "signal": { "light": "#E9BD2A", "dark": "TODO" },
+      "text":   { "light": "#775C01", "dark": "#EDC953" }
+    },
+    "success": {
+      "bg":   { "light": "#D5F4D6", "dark": "#09280A" },
+      "text": { "light": "#176719", "dark": "#70D872" }
+    },
+    "info": {
+      "bg":   { "light": "#D4E3FF", "dark": "#081733" },
+      "text": { "light": "#1A4DAC", "dark": "#6B9EFE" }
+    }
+  }
+}

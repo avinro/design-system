@@ -1,0 +1,195 @@
+---
+title: "Calendar Simple"
+description: "A monthly calendar view for single-date selection. Displays a 7-column day grid with navigation, planned day indicators, and a selected date state."
+---
+
+# Calendar Simple
+
+## Overview
+
+Calendar Simple is a monthly calendar that displays a single month at a time in a card surface. The user can navigate between months using chevron buttons and select a date by tapping a day cell. Days with planned activity are marked with a small indicator dot. The component is a composite built from two sub-components: **CalendarTitle** (navigation header) and **DayItemSimpleCalendar** (individual day cell).
+
+## Anatomy
+
+Calendar Simple is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Outer card surface. 382px wide, border-radius 16px, subtle shadow. Background: `--surface/neutral/default`. |
+| **CalendarTitle** | Yes | Navigation header: left chevron (24px) + month/year label + right chevron (24px). |
+| **Weekday header** | Yes | Row of 7 abbreviated labels (SUN–SAT), equally distributed. |
+| **Day grid** | Yes | 5–6 rows of 7 `DayItemSimpleCalendar` cells each, representing all days of the month plus overflow days from adjacent months. |
+
+### CalendarTitle sub-component
+
+| Part | Description |
+|---|---|
+| Left chevron | 24×24px icon. Navigates to the previous month. |
+| Month/year label | e.g. "February 2023". Manrope Bold, `--size/base` (14px), `--text/body`. Text style: `Body sm/140/Bold`. |
+| Right chevron | 24×24px icon. Navigates to the next month. |
+
+### DayItemSimpleCalendar sub-component
+
+Each cell is 40×40px. Its appearance is determined by a combination of `state` and `type`:
+
+| State | Type | Appearance |
+|---|---|---|
+| `Available` | `No-plan` | Plain date number. Color: `--day-item/text-default` (`#1d1d23`). |
+| `Disable` | `No-plan` | Greyed date number (out-of-month day). Color: `--day-item/text-disabled` (`#636377`). Not selectable. |
+| `Available` | `Planned` | Date number + 6×6px dot indicator below. Color: `--day-item/text-default`. |
+| `Selected` | `No-plan` | Dark 36×36px filled circle background. Color: `--day-item/text-selected` (`#f1f2f4`). |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Calendar Simple anatomy](./anatomy.png) */}
+
+## Variants
+
+Calendar Simple has no structural variants. Single visual style.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Calendar Simple variants](./variants.png) */}
+
+## States
+
+Three states are defined at the composite component level.
+
+| State | Description |
+|---|---|
+| `Default` | Standard view. No date is selected and no planned indicators are shown. |
+| `Today` | A day in the displayed month has a planned indicator dot (e.g., today has a scheduled activity). |
+| `Active` | A date has been selected (dark circle, inverted text). A planned indicator may also appear on a separate day. |
+
+> Note: these states reflect distinct documentation snapshots. In implementation the calendar is driven by `selectedDate` and `plannedDates` props rather than an explicit state enum.
+
+> TODO: Confirm whether `Today` highlights the actual current date with a distinct visual treatment (separate from `Planned`).
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Calendar Simple states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+No structural variants — single visual style.
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Token | Value |
+|---|---|---|
+| Container width | — | 382px |
+| Container border radius | `--spacing-16` | 16px |
+| Container padding (H) | `--spacing-16` | 16px |
+| Container padding (V) | `--spacing-24` | 24px |
+| Title ↔ grid gap | `--spacing-16` | 16px |
+| Day cell size | — | 40×40px |
+| Selected circle size | — | 36×36px |
+| Planned dot size | — | 6×6px |
+| Weekday cell height | — | 40px |
+| Navigation icon size | — | 24×24px |
+
+### Supported states
+
+- `Default` — no selection, no indicators
+- `Today` — planned indicator visible
+- `Active` — date selected + optional planned indicator
+
+### Token reference
+
+**Container:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Card background |
+| `elevation/light/02` | `0px 8px 12px rgba(0,0,0,0.05)` | Card shadow |
+
+**CalendarTitle:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--text/body` | `#34353f` | Month/year label color |
+| `--weight/bold` | `700` | Month/year font weight |
+| `--size/base` | `14px` | Month/year font size |
+
+**Weekday labels:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--text/placeholder` | `#636377` | Weekday abbreviation color |
+| `--weight/regular` | `400` | Weekday font weight |
+| `--size/2xs` | `11px` | Weekday font size |
+
+**Day number colors:**
+
+| Token | Value | State |
+|---|---|---|
+| `--day-item/text-default` | `#1d1d23` | Available days |
+| `--day-item/text-disabled` | `#636377` | Out-of-month (Disable) days |
+| `--day-item/text-selected` | `#f1f2f4` | Selected day (inverted) |
+
+> Note: All text uses `--font-family/body` (Manrope). Day numbers use `--weight/semibold` (600), `--size/lg` (16px). Text style: `Body md/SemiBold`.
+
+> TODO: Confirm the design token for the selected day background circle color.
+
+> TODO: Confirm the design token for the planned day indicator dot color.
+
+> TODO: Confirm `today="on"` day item appearance (distinct visual for the actual current date).
+
+## Usage guidelines
+
+- Use Calendar Simple when the user needs to browse a single month and select a date.
+- The component is fixed-width (382px). Use it inside a modal, bottom sheet, or a dedicated full-width screen section.
+- Out-of-month overflow days fill the 7-column grid and are shown in a disabled style — they are not selectable.
+- Use the `Planned` type to mark days that have an associated activity, trip, or scheduled event.
+- Do not stack multiple Calendar Simple components in the same view — show one month at a time.
+
+## Interaction
+
+- Tapping an `Available` day selects it, setting it to the `Selected` state. The previous selection is cleared.
+- Tapping the left or right chevron navigates to the previous or next month.
+- `Disable` days (out-of-month) are not interactive and cannot be selected.
+- A `Planned` day can also be selected (i.e., whether `Planned` + `Selected` states coexist).
+- TODO: Confirm swipe-to-navigate gesture support.
+- TODO: Confirm animation/transition spec for month navigation.
+
+## Accessibility
+
+- The month/year heading should be announced as a landmark or heading for screen readers.
+- Each day cell should have an accessible label with the full date (e.g., `aria-label="February 6, 2023"`), not just the number.
+- Planned days should include an additional accessible cue (e.g., `aria-label="February 9, 2023, has planned activity"`).
+- Out-of-month day cells should use `aria-disabled="true"` and not receive focus.
+- The left and right chevrons should have `aria-label="Previous month"` and `aria-label="Next month"`.
+- TODO: Confirm keyboard navigation within the grid (Arrow keys to move days, Enter to select).
+- TODO: Confirm `role` for the calendar grid — `role="grid"` with `role="gridcell"` per day is a common pattern.
+
+## Do / Don't
+
+**Do:**
+- Use for single-date selection in a monthly view.
+- Use `Disable` for out-of-month days to fill the grid visually.
+- Use `Planned` to communicate that a day has an associated activity.
+- Provide full date `aria-label` values on each day cell.
+
+**Don't:**
+- Don't use for date range selection unless a confirmed range variant is defined.
+- Don't make `Disable` days selectable.
+- Don't show more than one month in the same Calendar Simple instance.
+- Don't truncate or omit the month/year heading.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Calendar Simple do and don't](./do-dont.png) */}
+
+## Sub-components
+
+Calendar Simple is composed of two internal sub-components:
+
+- **CalendarTitle** (node `2033:6132`) — navigation header: left chevron + month/year label + right chevron. Can be referenced independently if needed.
+- **DayItemSimpleCalendar** — individual 40×40px day cell. Accepts `date`, `state` (`Available` / `Disable` / `Selected`), `type` (`No-plan` / `Planned`), and `today` (`"off"`) props. All four confirmed visual combinations are documented in the Anatomy section.
+
+## Resources
+
+- Figma: [Calendar Simple component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=2034-5802)
+- Code: `./calendar-simple.tsx`
+- Specs: `./calendar-simple.specs.json`
+- Tokens: `./calendar-simple.tokens.json`

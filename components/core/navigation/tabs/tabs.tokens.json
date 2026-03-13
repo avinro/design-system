@@ -1,0 +1,101 @@
+{
+  "_note": "All token values confirmed from Figma get_design_context on DS Core nodes 5001:2082 (Navs-2), 5001:2085 (Navs-3), 5001:2089 (Navs-4), and product app instances 907:8507 (Customer App) and 2883:6618 (Driver App).",
+
+  "tabBar": {
+    "background": {
+      "value_ds_core": "none",
+      "value_driver_app": "--bg-surface-default / #f1f2f4",
+      "description": "Tab bar background. DS Core has no background. Driver App adds a light surface. Confirm intended behavior before implementing."
+    },
+    "--notification/border-default": {
+      "value": "#e4e5ed",
+      "description": "Bottom divider line of the tab bar. DS Core and Customer App use --notification/border-default. Driver App uses --border-default for the same value. Token alignment needed.",
+      "borderWidth": "1px"
+    },
+    "--spacing-12": {
+      "value": "12px",
+      "description": "Horizontal padding of the tab bar"
+    },
+    "height": {
+      "value": "44px",
+      "description": "Tab bar height"
+    }
+  },
+
+  "tabItemActive": {
+    "--tab/border-active": {
+      "value": "#1d1d23",
+      "description": "Active tab bottom border color (the indicator line). Driver App uses --tab-border-active (no slash) for the same value.",
+      "note": "Active indicator bottom-border-width is 2px (--sds-size-stroke-focus-ring)."
+    },
+    "--sds-size-stroke-focus-ring": {
+      "value": "2px",
+      "description": "Active tab bottom border width"
+    },
+    "--tab/text-active": {
+      "value": "#1d1d23",
+      "description": "Active tab label / icon color. Driver App uses --tab-text-active (no slash) for the same value."
+    }
+  },
+
+  "tabItemInactive": {
+    "--tab/bg": {
+      "value": "rgba(29, 29, 35, 0)",
+      "description": "Inactive tab background (transparent)"
+    },
+    "--tab/border-inactive": {
+      "value": "rgba(29, 29, 35, 0)",
+      "description": "Inactive tab bottom border (transparent — no visible indicator). DS Core token name: --tab/border-inactive. Driver App uses --tab-border-inative (sic, typo). Alignment needed."
+    },
+    "--tab/text-inactive": {
+      "value_ds_core_customer_app": "#636377",
+      "value_driver_app": "#9192af",
+      "description": "Inactive tab label / icon color. Values differ between DS Core (#636377) and Driver App (#9192af). Confirm intended value. DS Core token name: --tab/text-inactive. Driver App uses --tab-text-inative (sic, typo with missing 'c')."
+    },
+    "borderBottomWidth": {
+      "value": "1px",
+      "description": "Inactive tab has a 1px transparent bottom border to maintain layout alignment with active tab's 2px border"
+    }
+  },
+
+  "tabItemDimensions": {
+    "height": {
+      "value": "44px",
+      "description": "Tab item height"
+    },
+    "flex": {
+      "value": "1",
+      "description": "Each tab item fills equal width within the bar"
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "value": "'Inter', sans-serif",
+      "description": "Label font family. Note: Inter, same as Segmented Control — not Manrope."
+    },
+    "fontWeight": {
+      "value": "500",
+      "description": "Font weight (Medium)"
+    },
+    "fontSize": {
+      "value": "15px",
+      "description": "Font size"
+    },
+    "textAlign": {
+      "value": "center",
+      "description": "Label text alignment"
+    },
+    "whiteSpace": {
+      "value": "nowrap",
+      "description": "Labels do not wrap"
+    }
+  },
+
+  "icon": {
+    "size": {
+      "value": "24px",
+      "description": "Icon size for icon-only tab items"
+    }
+  }
+}

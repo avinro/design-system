@@ -1,0 +1,69 @@
+{
+  "_note": "All token values confirmed from Figma get_design_context on all 5 types (nodes 7326:5716, 7326:5689, 7326:5698, 7326:5707, 7326:5680).",
+
+  "container": {
+    "--surface/neutral/sunken":  { "value": "white",                           "description": "Card background color" },
+    "--rounded-16":              { "value": "16px",                            "description": "Card border radius" },
+    "--spacing-12":              { "value": "12px",                            "description": "Padding left (types with icon), padding top/bottom" },
+    "--spacing-16":              { "value": "16px",                            "description": "Padding left override for type=neutral - no icon" },
+    "--spacing-8":               { "value": "8px",                             "description": "Padding right; gap between content and actions" },
+    "elevation/dark/01":         { "value": "0px 2px 4px 0px rgba(0,0,0,0.24)", "description": "Drop shadow" },
+    "width":                     { "value": "374px",                           "description": "Fixed card width, all types and configurations" },
+    "heightShortAction":         { "value": "58px",                            "description": "Card height — Short action configuration" },
+    "heightLongerAction":        { "value": "98px",                            "description": "Card height — Longer action configuration" }
+  },
+
+  "contextIconContainer": {
+    "--spacing-8":               { "value": "8px",                             "description": "Icon container padding" },
+    "--spacing-120":             { "value": "120px",                           "description": "Icon container border radius (pill)" },
+    "iconWrapperSize":           { "value": "16px",                            "description": "Icon wrapper size (inner)" },
+    "iconSourceSize":            { "value": "24px",                            "description": "Icon source asset size (aspect ratio 24/24, clipped to 16px)" }
+  },
+
+  "iconContainerColors": {
+    "info": {
+      "--button/secondary/bg-default": { "value": "rgba(29,29,35,0.05)", "description": "Icon container background — type=info" }
+    },
+    "error": {
+      "--notification/error-bg":       { "value": "#fcdcdc",             "description": "Icon container background — type=error" }
+    },
+    "warning": {
+      "--notification/warning--bg":    { "value": "#f6e3a4",             "description": "Icon container background — type=warning (note: double dash in token name)" }
+    },
+    "success": {
+      "--notification/success-bg":     { "value": "#d5f4d6",             "description": "Icon container background — type=success" }
+    },
+    "neutral": {
+      "_note": "type=neutral - no icon has no icon container."
+    }
+  },
+
+  "description": {
+    "--font-family/body":        { "value": "'Manrope', sans-serif",            "description": "Description font family" },
+    "--weight/medium":           { "value": "500",                             "description": "Description font weight" },
+    "--size/base":               { "value": "14px",                            "description": "Description font size" },
+    "lineHeight":                { "value": "1.2",                             "description": "Description line height" },
+    "--letter-spacing/normal":   { "value": "0px",                             "description": "Description letter spacing" },
+    "--text/placeholder":        { "value": "#636377",                         "description": "Description text color" }
+  },
+
+  "actionButton": {
+    "height":                    { "value": "32px",                            "description": "Action button height" },
+    "--spacing-12":              { "value": "12px",                            "description": "Action button horizontal padding" },
+    "--spacing-4":               { "value": "4px",                             "description": "Gap inside action button" },
+    "--rounded-full":            { "value": "120px",                           "description": "Action button border radius" },
+    "--button/outlined/bg-active": { "value": "rgba(29,29,35,0)",              "description": "Action button background (transparent)" },
+    "--button/outlined/text-active": { "value": "#1d1d23",                     "description": "Action button label color" },
+    "--weight/semibold":         { "value": "600",                             "description": "Action button label font weight" },
+    "--size/base":               { "value": "14px",                            "description": "Action button label font size" },
+    "labelLineHeight":           { "value": "1.4",                             "description": "Action button label line height" }
+  },
+
+  "closeButton": {
+    "size":                      { "value": "32px",                            "description": "Close button width and height" },
+    "--button/outlined/bg-active": { "value": "rgba(29,29,35,0)",              "description": "Close button background (transparent)" },
+    "--rounded-full":            { "value": "120px",                           "description": "Close button border radius" },
+    "iconSize":                  { "value": "16px",                            "description": "Close icon (x-close-delete) size" },
+    "--spacing-8":               { "value": "8px",                             "description": "Close button horizontal padding" }
+  }
+}

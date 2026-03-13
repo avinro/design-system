@@ -1,0 +1,135 @@
+---
+title: "Dropdown Input"
+description: "A pill-shaped form field trigger that displays a label, a selectable value button, and optional helper text. Opens a picker, sheet, or overlay on tap."
+---
+
+# Dropdown Input
+
+## Overview
+
+Dropdown Input is a form field wrapper that combines an optional label, a tappable pill-shaped select button (`select_button`), and optional annotation text. It does not contain the picker or overlay itself — it acts as the visible trigger and label container that opens a separate selection UI (such as a date picker, number picker, or bottom sheet).
+
+It is used across the Dojo apps wherever a user must select a value from a predefined set via a picker or modal panel.
+
+## Anatomy
+
+The Dropdown Input is composed of three stacked elements:
+
+1. **Label** *(optional)* — a short text label displayed above the select button. Identifies the field.
+2. **SelectButton** — the pill-shaped interactive trigger. Contains:
+   - **Left Icon** *(optional)* — a 16px contextual icon, left-aligned inside the button
+   - **Value / Placeholder Text** — shows the selected value, or a placeholder string when empty
+   - **Chevron Icon** — a fixed 24px dropdown chevron on the right side, always visible
+3. **Annotation** *(optional)* — a helper text row below the select button, prefixed with a 16px info icon
+
+{/* ![Dropdown Input anatomy](./anatomy.png) */}
+
+## Variants
+
+The Dropdown Input itself has no visual type variants. Variation is expressed through its props:
+
+- **With left icon** — the select button includes a 16px icon to the left of the value text
+- **Without left icon** — the select button shows only the text and chevron
+
+The select button (`select_button`) internally supports multiple named types (e.g. `preselected`). Full type enumeration is defined in the base component.
+
+TODO: Confirm and list all named type variants of `select_button` from Figma.
+
+{/* ![Dropdown Input variants](./variants.png) */}
+
+## States
+
+| State | Description |
+|-------|-------------|
+| **Placeholder** | No value selected. Placeholder text is shown in `--text/placeholder` (muted color). |
+| **Preselected / Filled** | A value has been selected. Value text is shown in `--button/secondary/text-default` (body color). |
+
+The disabled state is not confirmed in the current design. See TODO in `component-rules.md`.
+
+{/* ![Dropdown Input states](./states.png) */}
+
+## Tokens & specs
+
+The following values are confirmed from the Figma component definition.
+
+### Supported variants
+
+- With left icon
+- Without left icon
+
+### Supported sizes
+
+- **Default** — select button height is fixed at `44px`. No size variants confirmed.
+
+### Supported states
+
+- Placeholder
+- Preselected / Filled
+
+### Token reference
+
+| Part | Token | Value |
+|------|-------|-------|
+| Select button background | `--button/secondary/bg-default` | `rgba(29,29,35,0.05)` (light) / `rgba(241,242,244,0.1)` (dark) |
+| Select button border | `--button/secondary/border-active` | `rgba(29,29,35,0)` |
+| Select button height | — | `44px` |
+| Select button border radius | `--rounded-full` | `120px` |
+| Select button left padding | `--spacing-20` | `20px` |
+| Select button right padding | `--spacing-12` | `12px` |
+| Value text color | `--button/secondary/text-default` | `#1d1d23` (light) / `#f1f2f4` (dark) |
+| Placeholder text color | `--text/placeholder` | `#636377` (light) / `#a3a3bc` (dark) |
+| Label text color | `--text/body` | `#34353f` (light) / `#cccdda` (dark) |
+| Label font | `--font-family/body` | Manrope Medium |
+| Label font size | `--size/base` | `14px` |
+| Label line height | — | `1.4` |
+| Gap between elements | `--spacing-4` | `4px` |
+| Annotation icon size | — | `16px` |
+| Chevron icon size | — | `24px` |
+| Left icon size | — | `16px` |
+
+## Usage guidelines
+
+- Use Dropdown Input when the user must select a value from a set that requires a separate picker UI (e.g. date, time, number, category).
+- Do not use Dropdown Input for selections that can be shown inline without an overlay — use a segmented control or radio group instead.
+- Always pair with a label when the field appears in a form. The label may be omitted only when the placeholder text alone is sufficient to identify the field.
+- Use annotation text to provide additional context, constraints, or helper guidance — not to repeat the label.
+- Place Dropdown Input fields vertically stacked in forms, full-width within their container.
+- The select button opens a picker, bottom sheet, or overlay. The Dropdown Input component itself does not manage this interaction — the parent screen or form is responsible for handling the tap event and opening the appropriate UI.
+
+## Accessibility
+
+- The select button must have an accessible label derived from the visible label text or the placeholder.
+- The chevron icon is decorative and should be hidden from assistive technology (`aria-hidden`).
+- The left icon is decorative in most cases. If it carries semantic meaning, provide an `aria-label` or visually hidden text.
+- When a value is selected, the accessible name of the button should reflect the current value, not the placeholder.
+- The annotation text should be associated with the select button via `aria-describedby`.
+
+TODO: Confirm keyboard interaction and focus management behavior.
+
+## Do / Don't
+
+**Do:**
+- Use a clear, short label (2–4 words) that describes what the user is selecting
+- Show a meaningful placeholder that hints at the expected value (e.g. "Select dates…", "Select vehicle type")
+- Use annotation text to provide constraints or examples relevant to the field
+
+**Don't:**
+- Use Dropdown Input for free-form text input — use a text input field instead
+- Stack left icons inconsistently across fields in the same form
+- Use the annotation slot for error messages — error states require a dedicated pattern
+
+{/* ![Dropdown Input do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — dropdown\_input](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5131-1394)
+- Code: TODO
+- Specs: `./dropdown-input.specs.json`
+- Tokens: `./dropdown-input.tokens.json`
+
+### Related components
+
+- [Time Date Picker](/components/core/pickers/time-date-picker) — commonly triggered by this component in date/time selection flows
+- [Calendar Range](/components/core/pickers/calendar-range) — used with Dropdown Input for date range selection
+- [Number Picker](/components/core/pickers/number-picker) — used with Dropdown Input for numeric value selection
+- [Age Range Picker](/components/core/pickers/age-range-picker) — another picker triggered via this component

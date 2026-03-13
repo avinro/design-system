@@ -1,0 +1,34 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction. Only Default/md was fully sampled. Pressed, Disabled, and Focus state values are TODO.",
+
+  "shared": {
+    "--surface/neutral/sunken":           { "value": "white",                  "description": "Container background. White neutral surface." },
+    "--button/secondary/border-active":   { "value": "rgba(29, 29, 35, 0)",    "description": "Container border color. Transparent at rest." },
+    "--rounded-full":                     { "value": "120px",                  "description": "Container border-radius (renders as circle)" },
+    "--width-1":                          { "value": "1px",                    "description": "Border width" },
+    "--spacing-12":                       { "value": "12px",                   "description": "Horizontal padding (md)" },
+    "--spacing-8":                        { "value": "0px",                    "description": "Internal gap (single-element layout)" }
+  },
+
+  "elevation": {
+    "elevation/light/01": {
+      "value": "0px 2px 4px 0px rgba(0, 0, 0, 0.1)",
+      "description": "Drop shadow applied to all states except Disabled. Creates the floating appearance."
+    }
+  },
+
+  "states": {
+    "Default": {
+      "_note": "Confirmed. See shared tokens above."
+    },
+    "Pressed": {
+      "_note": "TODO: Extract from Figma nodes 5180:348 (md) and 5180:350 (lg)."
+    },
+    "Disabled": {
+      "_note": "TODO: Extract from Figma nodes 5180:354 (md) and 5180:356 (lg)."
+    },
+    "Focus": {
+      "_note": "TODO: Extract from Figma nodes 5180:360 (md) and 5180:362 (lg)."
+    }
+  }
+}

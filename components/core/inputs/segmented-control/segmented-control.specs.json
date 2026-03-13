@@ -1,0 +1,104 @@
+{
+  "component": "Segmented Control",
+  "figmaNodeId": "5001:2009",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "description": "A horizontal tab-strip that lets the user switch between a fixed set of mutually exclusive views or filters. Exactly one item is active at all times.",
+
+  "anatomy": {
+    "parts": [
+      {
+        "part": "track",
+        "description": "Full-width rounded container that holds all segmented items. Carries the background color, border-radius, padding, and gap.",
+        "required": true
+      },
+      {
+        "part": "item (active)",
+        "description": "The currently selected tab. Has a light background, border, drop shadow, and dark text.",
+        "required": true
+      },
+      {
+        "part": "item (inactive)",
+        "description": "Any unselected tab. No background, no border, no shadow. Text is muted.",
+        "required": true
+      }
+    ]
+  },
+
+  "baseComponents": [
+    {
+      "name": "segmented-items",
+      "figmaNodeId": "5001:2002",
+      "states": [
+        { "state": "Active",   "figmaNodeId": "5001:2006" },
+        { "state": "Inactive", "figmaNodeId": "5001:2003" }
+      ]
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Navs-2",
+      "figmaNodeId": "5001:2010",
+      "itemCount": 2,
+      "trackWidth": 328,
+      "trackHeight": 40,
+      "description": "Two-item variant."
+    },
+    {
+      "name": "Navs-3",
+      "figmaNodeId": "5001:2013",
+      "itemCount": 3,
+      "trackWidth": 328,
+      "trackHeight": 40,
+      "description": "Three-item variant."
+    },
+    {
+      "name": "Navs-4",
+      "figmaNodeId": "5001:2017",
+      "itemCount": 4,
+      "trackWidth": 328,
+      "trackHeight": 40,
+      "description": "Four-item variant."
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Active",
+      "description": "The selected item. Has background, border, and shadow.",
+      "figmaNodeId": "5001:2006"
+    },
+    {
+      "name": "Inactive",
+      "description": "Any unselected item. No background, no border, no shadow.",
+      "figmaNodeId": "5001:2003"
+    }
+  ],
+
+  "behavior": {
+    "selectionModel": "single — exactly one item active at all times",
+    "onChange": "Controlled via onValueChange callback. Value is the index or label of the newly selected item.",
+    "defaultSelected": "First item unless a default value is provided.",
+    "keyboard": "TODO: Confirm arrow-key navigation between items."
+  },
+
+  "realWorldUsage": [
+    {
+      "app": "Customer App",
+      "screen": "Home — date scheduling panel",
+      "figmaNodeId": "3073:7545",
+      "figmaFileKey": "mqnceyvORwnapgycVXLgVE",
+      "description": "Navs-2 variant used to switch between 'Pickup at' and 'Drop-off by' scheduling modes alongside a date/time picker. Track background is light (rgba(29,29,35,0.05)) in this context — differs from the dark DS Core track background."
+    }
+  ],
+
+  "notes": [
+    "DS Core track background is dark (#1d1d23). Customer App uses a light semi-transparent track (rgba(29,29,35,0.05)). Token name alignment needed.",
+    "Items are equal-width and fill the track via flex: 1.",
+    "Typography is Inter Medium 500 15px — distinct from Manrope used in other Core components.",
+    "TODO: Confirm whether item labels support icons in addition to text.",
+    "TODO: Confirm keyboard arrow-key navigation behavior.",
+    "TODO: Confirm disabled state spec."
+  ]
+}

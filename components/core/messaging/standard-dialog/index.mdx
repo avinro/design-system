@@ -1,0 +1,184 @@
+---
+title: "Standard Dialog"
+description: "A modal overlay for forms, multi-input tasks, and content that requires more space or structure than an Alert Dialog can provide."
+---
+
+# Standard Dialog
+
+## Overview
+
+Standard Dialog is a modal overlay used when a task or interaction requires dedicated space, multiple inputs, or more than a simple confirmation. It renders an overlay that blocks the background UI and presents a self-contained panel with a header, scrollable content area, and a footer with up to two actions.
+
+Use Standard Dialog for tasks that belong to a focused flow but do not rise to the level of a destructive or blocking interruption. For high-risk, irreversible actions, use Alert Dialog instead.
+
+## Anatomy
+
+The Standard Dialog is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Overlay** | Yes | Semi-transparent full-screen backdrop. Blocks interaction with content behind. |
+| **Dialog panel** | Yes | Rounded container that holds all content. Anchored or centered depending on type. |
+| **Header** | Yes | Contains the dialog title and an optional close icon. |
+| **Content area** | Yes | Scrollable region for forms, instructions, or any structured content. |
+| **Footer / Actions** | Yes | Horizontal or vertical action row. Holds one or two buttons. |
+
+{/* TODO: Add anatomy.png from Figma once annotation frame is available. */}
+{/* ![Standard Dialog anatomy](./anatomy.png) */}
+
+## Variants
+
+Standard Dialog supports two layout types:
+
+### Compact
+
+A panel that occupies a portion of the screen. Used for short forms, single-field inputs, confirmations that require a text field, or lightweight tasks. Does not scroll unless content overflows.
+
+### Full page
+
+A panel that fills most or all of the visible screen area. Used for multi-step flows, longer forms, or tasks where the user needs access to more content or controls without navigating away.
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Standard Dialog variants](./variants.png) */}
+
+## States
+
+Standard Dialog itself has two states: open and closed. There are no variant-level interactive states on the dialog shell. Button states (hover, pressed, disabled, focus) follow the core [Button](/components/core/actions/button/index) component specification.
+
+| State | Description |
+|---|---|
+| `Open` | Dialog panel and overlay are mounted and visible. |
+| `Closed` | Dialog panel and overlay are unmounted or hidden. |
+
+{/* TODO: Confirm whether a loading or transitioning state is defined for the dialog panel itself. */}
+
+{/* ![Standard Dialog states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `Compact`
+- `Full page`
+
+### Supported sizes
+
+- TODO: Confirm whether fixed width/height values are defined per type, or whether the panel dimensions are driven entirely by content.
+
+### Supported states
+
+- `Open`
+- `Closed`
+
+### Token reference
+
+| Part | Token | Value |
+|---|---|---|
+| **Overlay** | | |
+| Background | `--surface/neutral/overlay` | TODO: Confirm value |
+| **Dialog panel** | | |
+| Background | TODO | TODO |
+| Border radius | TODO | TODO |
+| Padding | TODO | TODO |
+| **Header** | | |
+| Title font family | `--font-family/headings` | TODO |
+| Title font weight | `--weight/semibold` | `600` |
+| Title font size | TODO | TODO |
+| **Content area** | | |
+| Gap / padding | TODO | TODO |
+| **Footer** | | |
+| Button height | TODO | TODO |
+| Gap between buttons | TODO | TODO |
+
+> TODO: Extract full token values from Figma nodes 7314:624 (Compact) and 7314:634 (Full page).
+
+## Usage guidelines
+
+### When to use Standard Dialog
+
+- **Forms with multiple inputs** — two or more fields that belong together in a single focused task (e.g. editing profile details, setting a time window, adding a destination).
+- **Tasks requiring dedicated space** — content that cannot fit inline or in a sheet without losing clarity.
+- **Flows that are reversible** — the user can cancel without consequence. If the action is irreversible, use Alert Dialog.
+- **Lightweight confirmations with input** — e.g. a rename or note field where the user must type before confirming.
+
+### When NOT to use Standard Dialog
+
+| Situation | Use instead |
+|---|---|
+| High-risk or irreversible action requiring an explicit choice | Alert Dialog |
+| Routine success or non-blocking confirmation ("Saved!") | Toast |
+| Lightweight recoverable issue with a quick action (Undo / Retry) | Snackbar |
+| Very short, single-action acknowledgement with no input | Alert Dialog (`Info` type) |
+
+### Choosing between Compact and Full page
+
+- Use `Compact` when the task fits in a short form — a single field, a date picker, a toggle-based choice, or a simple confirmation that needs a text input.
+- Use `Full page` for multi-step flows, longer forms, or tasks where the user needs to see more context or controls at once.
+- Do not use `Full page` for tasks that naturally fit in `Compact`. Reserve it for tasks where the extra space is genuinely necessary.
+
+### Actions
+
+- Use **1 action** for tasks with no meaningful cancel option (rare — prefer to always offer a way out).
+- Use **2 actions** for the standard confirm / cancel pattern.
+- Place the **primary action** (e.g. "Save", "Confirm", "Apply") as the prominent button.
+- Place the **cancel or dismiss action** as the secondary button.
+- Never add more than two actions to the footer.
+
+### Dismiss behavior
+
+- Always provide a way to dismiss the dialog without completing the action: a close icon in the header, a cancel button in the footer, or both.
+- Tapping the overlay to dismiss is optional. Apply this behavior consistently if used.
+- TODO: Confirm the dismiss interaction pattern used in the product (overlay tap, Escape key, close icon only, or combination).
+
+### Content rules
+
+- **Title:** short and specific. Describe the task, not the component. Example: "Edit pickup address", "Add stop", "Set schedule".
+- **Body / form area:** include only the fields and information needed to complete the task. Do not overload the panel.
+- **Button labels:** use explicit, action-oriented labels. Prefer "Save changes", "Apply", "Add stop" over "OK" or "Submit".
+
+## Accessibility
+
+- The dialog panel must have `role="dialog"`.
+- `aria-labelledby` must point to the dialog title element.
+- `aria-describedby` should point to any introductory body text if present.
+- On open, focus must move to the first interactive element inside the dialog (first field, close button, or primary action).
+- Focus must be trapped within the dialog while it is open.
+- The overlay must not be focusable or interactable by keyboard or assistive technology.
+- `Escape` key should dismiss the dialog when a safe dismiss path exists. Do not suppress it without a clear reason.
+- All button labels must be self-descriptive without requiring surrounding context.
+
+TODO: Confirm focus trap implementation and Escape key handling used in the product.
+TODO: Confirm whether the dialog uses `aria-modal="true"`.
+
+## Do / Don't
+
+**Do:**
+- Use Standard Dialog for forms, multi-input tasks, and reversible flows that need dedicated space.
+- Provide a clear way to dismiss (close icon, cancel button, or both).
+- Write the title as a short task label: "Edit profile", "Add payment method".
+- Limit actions to two — one primary, one secondary.
+- Use `Full page` only when the task genuinely requires the extra space.
+
+**Don't:**
+- Don't use Standard Dialog for high-risk or irreversible actions — use Alert Dialog.
+- Don't use it for simple success messages — use Toast.
+- Don't use it for quick, recoverable issues — use Snackbar.
+- Don't overload the content area with unrelated fields or content.
+- Don't use generic button labels like "OK", "Submit", or "Yes/No".
+- Don't remove the dismiss path for a Standard Dialog (unlike Alert Dialog, Standard Dialog tasks are always reversible).
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Standard Dialog do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Standard Dialog](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7314-623)
+- Code: `./standard-dialog.tsx`
+- Specs: `./standard-dialog.specs.json`
+- Tokens: `./standard-dialog.tokens.json`
+
+### Related components
+
+- [Alert Dialog](/components/core/messaging/alert-dialog/index) — for high-risk, irreversible, or blocking interruptions
+- Toast — for routine, non-blocking confirmations and success messages (TODO: link when documented)
+- Snackbar — for lightweight, recoverable issues with quick actions (TODO: link when documented)

@@ -1,0 +1,201 @@
+---
+title: "Age Range Picker"
+description: "A drum-style scroll picker for selecting an age range. Displays two independent age columns — separated by 'from' and 'to' labels — inside a bottom-sheet popup, allowing users to specify the age range of a group."
+---
+
+# Age Range Picker
+
+## Overview
+
+Age Range Picker is a drum-style (slot-machine/iOS-style) scroll picker for selecting an age range. It displays two independent vertically scrolling columns — a "from" age and a "to" age — separated by static "from" and "to" labels. It uses the same scroll depth visual system as [Time Picker](/components/time-picker), [Time Date Picker](/components/time-date-picker), [Month Year Picker](/components/month-year-picker), and [Number Picker](/components/number-picker).
+
+It is used inside bottom-sheet popups when the user needs to specify the age range of a group (e.g., for venue or restaurant reservations). The popup is triggered by a "Select age range" action in a Dojo AI chat conversation. Confirming the selection applies the chosen range.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Age Range Picker anatomy](./anatomy.png) */}
+
+## Anatomy
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | 375×212px surface. Background: `--surface/neutral/default`. No border-radius. In-app context renders on dark surface (`--bg-surface-default`). |
+| **Selection indicator** | Yes | 31px-tall horizontal stripe centred vertically, full width. Marks the active row for both columns simultaneously. Decorative — `aria-hidden`. |
+| **Column group** | Yes | Flex row of four elements: "from" label · From-age column · "to" label · To-age column. Centred horizontally (4px right offset). Gap: `27px` between all elements. |
+| **"from" label** | Yes | Static text. Manrope Medium (500), 14px, `--text/placeholder`. Aligned to the selection centre. |
+| **From-age column** | Yes | Center-aligned drum column. Positions 1–3 above the selection use `opacity: 0` (start-of-range boundary masking). |
+| **"to" label** | Yes | Static text. Same style as "from" label. |
+| **To-age column** | Yes | Center-aligned drum column. All 7 positions are populated and visible. |
+
+### Scroll depth visual system
+
+Identical to [Time Picker](/components/time-picker), [Time Date Picker](/components/time-date-picker), [Month Year Picker](/components/month-year-picker), and [Number Picker](/components/number-picker). Each column shows 7 items; the selected value is always at position 4 (centre).
+
+| Position | Role | Font size | Opacity | Text token |
+|---|---|---|---|---|
+| 1 — top | Furthest above | 12px | 40% | `--text/placeholder` |
+| 2 | Near above | 14px | 70% | `--text/placeholder` |
+| 3 | Close above | 18px | 100% | `--text/placeholder` |
+| **4 — centre** | **Selected** | **23px** | **100%** | **`--text/primary`** |
+| 5 | Close below | 18px | 100% | `--text/placeholder` |
+| 6 | Near below | 14px | 70% | `--text/placeholder` |
+| 7 — bottom | Furthest below | 12px | 40% | `--text/placeholder` |
+
+> In the from-age column, positions 1, 2, and 3 use `opacity: 0` to mask the start-of-range boundary. The to-age column always shows all 7 positions.
+
+### Label typography
+
+The "from" and "to" labels use a different font weight from the drum column items:
+
+| Property | Drum column items | "from" / "to" labels |
+|---|---|---|
+| Font family | `--font-family/body` (Manrope) | `--font-family/body` (Manrope) |
+| Font weight | `--weight/regular` (400) | `--weight/medium` (500) |
+| Font size | varies by position | `--size/base` (14px) |
+| Color | `--text/primary` or `--text/placeholder` | `--text/placeholder` |
+
+## Variants
+
+No variants. The DS Core component defines a single state:
+
+- The from-age column always shows start-of-range boundary masking (`opacity: 0` on positions 1–3).
+- The to-age column always shows mid-range behaviour (all 7 positions visible).
+
+{/* TODO: Add variants.png from Figma if additional variants are defined. */}
+{/* ![Age Range Picker variants](./variants.png) */}
+
+## States
+
+No discrete states. Visual state is entirely driven by the scroll positions of each column.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Age Range Picker states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Single variant — no named variants.
+
+### Supported sizes
+
+Single size — no size variants.
+
+| Property | Value |
+|---|---|
+| Container width | 375px |
+| Container height | 212px |
+| Column group gap | 27px |
+| Item gap (within column) | 5px |
+| Selection indicator height | 31px |
+
+### Supported states
+
+No discrete states — scroll position drives all visual changes.
+
+### Token reference
+
+**Text colors:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--text/primary` | `#1d1d23` | Selected item (position 4). Resolves to `#f1f2f4` on dark app surface. |
+| `--text/placeholder` | `#636377` | Non-selected drum items and "from"/"to" labels. Resolves to `#a3a3bc` on dark app surface. |
+
+**Surface:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background (DS Core light theme). |
+
+**Typography — drum columns:**
+
+| Property | Value |
+|---|---|
+| Font family | `--font-family/body` (Manrope) |
+| Font weight | `--weight/regular` (400) |
+| Selected font size | 23px |
+| Close-neighbor font size | 18px |
+| Far-neighbor font size | 14px |
+| Furthest-neighbor font size | 12px |
+
+**Typography — "from" / "to" labels:**
+
+| Property | Value |
+|---|---|
+| Font family | `--font-family/body` (Manrope) |
+| Font weight | `--weight/medium` (500) |
+| Font size | `--size/base` (14px) |
+| Letter spacing | `--letter-spacing/normal` (0px) |
+| Line height | 1.4 |
+
+> TODO: Confirm CSS implementation of the selection indicator stripe.
+
+## Usage guidelines
+
+- Use Age Range Picker only inside a bottom-sheet popup. Do not embed it directly in a page or form.
+- Always pair with a confirm action button. The selection must not be applied until the user explicitly confirms.
+- Always include a **close button** (×) in the popup header to allow dismissal without applying changes.
+- The "from" age must not exceed the "to" age. Validate this constraint on confirmation.
+- The from-age column has a lower boundary. The `opacity: 0` masking on positions 1–3 communicates this boundary visually.
+- TODO: Confirm the minimum and maximum age values for the available range.
+
+## Page composition
+
+Confirmed structure from Dojo Customer App (node `427:8852`, "Select age range" popup):
+
+| Layer | Component | Responsibility |
+|---|---|---|
+| 1 | Overlay | Semi-transparent backdrop (`rgba(0,0,0,0.58)`) covering the chat screen |
+| 2 | Popup container | Bottom-sheet panel, rounded top corners, dark surface (`--bg-surface-default`) |
+| 3 | Popup Header | Close (×) icon · "Select age range" title |
+| 4 | **Age Range Picker** | From-age and to-age selection |
+| 5 | Action area | "Confirm age range" primary button — applies the selection |
+
+> The popup is triggered by the "Select age range" button in a Dojo AI chat message. It appears after the user has already selected an arrival time in the same conversation. It overlays the chat screen.
+
+## Accessibility
+
+- Each drum column must have a scrollable region with `role="listbox"` and `role="option"` per item.
+- Provide accessible column labels: `aria-label="From age"` and `aria-label="To age"`.
+- The selected item in each column must carry `aria-selected="true"`.
+- The "from" and "to" text labels are presentational — consider associating them with their respective columns via `aria-labelledby` or visible label proximity.
+- The selection indicator is decorative — mark it `aria-hidden="true"`.
+- The popup must have `role="dialog"` and `aria-labelledby` pointing to the "Select age range" heading.
+- The close button must have `aria-label="Close"` or equivalent.
+- TODO: Confirm keyboard interaction (Up/Down arrows to scroll each column, Tab to move between columns).
+- TODO: Confirm focus management on popup open and close.
+- TODO: Confirm how range validation (from ≤ to) is communicated to assistive technology.
+
+## Do / Don't
+
+**Do:**
+- Always show both "from" and "to" columns with their respective labels together.
+- Pair with a confirm action button — do not apply the selection on scroll stop alone.
+- Provide a close button to allow dismissal without changes.
+- Validate that the from-age does not exceed the to-age on confirmation.
+
+**Don't:**
+- Don't use this component outside of a popup context.
+- Don't apply the selection automatically on scroll — wait for explicit confirmation.
+- Don't show age values below the minimum boundary in the from-age column.
+- Don't show the from-age and to-age columns in separate pickers or independently.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Age Range Picker do and don't](./do-dont.png) */}
+
+## Related components
+
+- **[Time Picker](/components/time-picker)** — shares the identical scroll depth visual system. Appears earlier in the same reservation chat flow.
+- **[Time Date Picker](/components/time-date-picker)** — shares the identical scroll depth visual system.
+- **[Month Year Picker](/components/month-year-picker)** — shares the identical scroll depth visual system.
+- **[Number Picker](/components/number-picker)** — shares the identical scroll depth visual system.
+
+> Any changes to the shared scroll depth system must be applied to all five components.
+
+## Resources
+
+- Figma: [Age Range Picker component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5147-2258)
+- Figma usage — Dojo Customer App: [Chat view with "Select age range" popup](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=427-8852)
+- Code: `./age-range-picker.tsx`
+- Specs: `./age-range-picker.specs.json`
+- Tokens: `./age-range-picker.tokens.json`

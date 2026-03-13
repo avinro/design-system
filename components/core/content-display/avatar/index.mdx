@@ -1,0 +1,139 @@
+---
+title: "Avatar"
+description: "A circular component that displays a user's profile photo, with a silhouette placeholder when no photo is available."
+---
+
+# Avatar
+
+## Overview
+
+Avatar is a circular display component that shows a user's profile photo. When no photo is available — or while one is loading — it falls back to a neutral silhouette placeholder. Avatar is a display-only component with no interactive states.
+
+It is used throughout the Dojo Apps to represent users and drivers in context: profile screens, trip summaries, driver cards, ratings, and chat headers.
+
+## Anatomy
+
+The Avatar is composed of up to two parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Fully circular frame sized to the chosen size. Clips the content (photo or placeholder) to a circle. |
+| **Photo** | Conditional | User's profile photo, clipped to fill the container (`object-cover`). Shown when a valid image is available. |
+| **Placeholder** | Conditional | Silhouette icon on a neutral background. Shown when no photo is provided or when the photo fails to load. |
+
+- Photo and placeholder are mutually exclusive — exactly one is visible at all times.
+- The container always has `border-radius: 50%`. The shape is never square or rounded-square.
+- The photo always fills the container without letterboxing — do not add internal padding.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Avatar anatomy](./anatomy.png) */}
+
+## Variants
+
+Avatar has no structural variants. The component renders either a **user photo** or a **placeholder silhouette** depending on whether a photo is provided.
+
+> Note: The Figma component includes 5 sample photos (`pic1`–`pic5`) for documentation preview. These are not product variants — they are example images used to demonstrate the component across sizes. `pic1` is the placeholder/no-photo state.
+
+{/* TODO: Add variants.png from Figma if a variants overview frame is created. */}
+{/* ![Avatar variants](./variants.png) */}
+
+## States
+
+Avatar has no interactive states. It is a display-only component.
+
+| Content state | Description |
+|---|---|
+| With photo | A valid user photo is available and displayed, clipped to a circle. |
+| Placeholder | No photo is available. A silhouette icon on a neutral background is shown. |
+
+- Always display the placeholder silhouette when no photo is provided. Never show an empty frame or broken image.
+- TODO: Confirm placeholder background color and silhouette icon token values.
+- TODO: Confirm loading/skeleton state behavior while a photo is being fetched.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Avatar states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+No structural variants — single visual style.
+
+### Supported sizes
+
+7 sizes are confirmed from Figma. All are square and fully circular.
+
+| Size | Dimensions |
+|---|---|
+| `XS` | 24×24px |
+| `SM` | 32×32px |
+| `MD` | 40×40px |
+| `LG` | 48×48px |
+| `XL` | 56×56px |
+| `XXL` | 72×72px |
+| `Largest` | 96×96px |
+
+### Supported states
+
+- With photo
+- Placeholder (no photo)
+
+### Token reference
+
+| Property | Value | Description |
+|---|---|---|
+| Shape | `border-radius: 50%` | Always fully circular |
+| Photo fit | `object-fit: cover` | Photo fills the container without letterboxing |
+| Placeholder background | TODO | Confirm design token |
+| Placeholder icon | TODO | Confirm icon token or asset |
+
+> TODO: Confirm design token values for the placeholder background and silhouette icon.
+
+## Usage guidelines
+
+- Use Avatar to represent a **specific person**: a user, a driver, or a customer.
+- Choose the **size** based on the visual hierarchy of the screen:
+  - `Largest` (96px) or `XXL` (72px) — primary profile displays or featured user headers.
+  - `XL` (56px) or `LG` (48px) — trip summaries, driver cards, and secondary user references.
+  - `MD` (40px) or `SM` (32px) — list rows, chat items, and compact contexts.
+  - `XS` (24px) — inline or dense UI where only a small visual identifier is needed.
+- Always show the **placeholder silhouette** when no photo is available. Never leave the avatar empty.
+- Do not use Avatar to represent non-person entities (e.g., brands or products) without a confirmed design decision.
+- Do not display text initials inside the avatar unless an initials variant is confirmed.
+- TODO: Confirm whether an online/offline indicator or badge overlay is part of this component.
+
+## Accessibility
+
+- Avatar is a display element. Provide a meaningful `alt` attribute on the photo image equal to the person's name (e.g., `alt="Maria García"`).
+- When the avatar is purely decorative (e.g., the name is visible in an adjacent label), use `alt=""` on the image to mark it as decorative.
+- Do not rely on the avatar alone to communicate identity — always pair it with a visible name label where the layout allows.
+- Avatar is not focusable and should not receive keyboard focus unless it is interactive in a specific context (e.g., tapping opens a profile screen). If made interactive, apply appropriate `role` and focus treatment.
+- TODO: Confirm ARIA behavior when avatar is interactive (e.g., profile navigation tap target).
+- TODO: Confirm screen reader behavior in trip card and rating contexts.
+
+## Do / Don't
+
+**Do:**
+- Use to represent a specific person (user, driver, customer).
+- Always show the placeholder silhouette when no photo is available.
+- Choose the size appropriate to the screen's visual hierarchy.
+- Provide a meaningful `alt` attribute when the image represents a named person.
+
+**Don't:**
+- Don't display an empty circle or a broken image — always fall back to the placeholder.
+- Don't change the shape — Avatar is always fully circular.
+- Don't display text initials unless an initials variant is confirmed.
+- Don't use Avatar to represent non-person entities without a confirmed design decision.
+- Don't add decorative borders or rings unless explicitly required by a specific context.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Avatar do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Avatar component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5009-2266)
+- Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=84-93)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325)
+- Code: `./avatar.tsx`
+- Specs: `./avatar.specs.json`
+- Tokens: `./avatar.tokens.json`

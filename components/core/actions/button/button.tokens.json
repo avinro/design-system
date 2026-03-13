@@ -1,0 +1,43 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction. Only Primary/Default/md instance was fully sampled. Other type and state values are TODO.",
+
+  "shared": {
+    "--font-family/body":        { "value": "'Manrope', sans-serif", "description": "Label font family" },
+    "--weight/semibold":         { "value": "600",                   "description": "Label font weight" },
+    "--size/base":               { "value": "14px",                  "description": "Base font size (md)" },
+    "--letter-spacing/normal":   { "value": "0px",                   "description": "Label letter spacing" },
+    "--rounded-full":            { "value": "120px",                  "description": "Container border radius (pill)" },
+    "--width-1":                 { "value": "1px",                   "description": "Border width" },
+    "--spacing-8":               { "value": "8px",                   "description": "Gap between anatomy parts" },
+    "--spacing-12":              { "value": "12px",                  "description": "Horizontal padding (md)" }
+  },
+
+  "types": {
+    "Primary": {
+      "Default": {
+        "--button/default/bg-default":     { "value": "#f1f2f4", "description": "Background fill" },
+        "--button/default/border-active":  { "value": "#f1f2f4", "description": "Border color" },
+        "--button/default/text-default":   { "value": "#1d1d23", "description": "Label color" }
+      },
+      "Hover":    { "_note": "TODO: Extract from Figma node 5001:2952" },
+      "Pressed":  { "_note": "TODO: Extract from Figma node 5001:3034" },
+      "Disabled": { "_note": "TODO: Extract from Figma node 5001:3108" },
+      "Focus":    { "_note": "TODO: Extract from Figma node 5003:1161" }
+    },
+    "Accent": {
+      "_note": "TODO: Extract from Figma nodes 5003:1269–5003:1325"
+    },
+    "Secondary": {
+      "_note": "TODO: Extract from Figma nodes 5003:1449–5003:1505"
+    },
+    "No-fill": {
+      "_note": "TODO: Extract from Figma nodes 5003:1639–5003:1695"
+    },
+    "Outlined": {
+      "_note": "TODO: Extract from Figma nodes 5112:602–5112:658"
+    },
+    "Destructive": {
+      "_note": "TODO: Extract from Figma nodes 5003:1829–5003:1885"
+    }
+  }
+}

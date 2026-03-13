@@ -1,0 +1,174 @@
+---
+title: "Text Input"
+description: "A single-line free-form text field with an optional label, optional inline validation feedback, and support for icons and an inline action button."
+---
+
+# Text Input
+
+## Overview
+
+Text Input is a single-line form field for free-form text entry. It is composed of three independently reusable sub-components: `input/label`, `input/field`, and `input/feedback-text`. The wrapper (`TextInput`) combines all three with a consistent 8px vertical gap and manages the overall validation state — default, error, or succeeded.
+
+The `input/field` sub-component supports a wider set of interaction states (focus, typing, filled, disabled) that are handled during live user interaction. The label and feedback text can be shown or hidden independently.
+
+## Anatomy
+
+The component stacks three elements vertically:
+
+1. **Label** (`input/label`) *(optional)* — composed of:
+   - **Label text** — the field name, Manrope Medium 14px
+   - **Help icon** *(optional)* — 20px question mark icon, right of the label text
+   - **Helper link** *(optional)* — right-aligned text link in the label row
+   - **Description** *(optional)* — a sub-label line of helper context in `--text/placeholder`
+2. **Field** (`input/field`) — the interactive text input, composed of:
+   - **Left icon** *(optional)* — 24px icon, left-aligned
+   - **Text content area** — shows placeholder, value, or cursor depending on state
+   - **Right icon** *(optional)* — 24px icon, right-aligned
+   - **Inline button** *(optional)* — a 32px pill-shaped action button inside the field, right-aligned
+3. **Feedback text** (`input/feedback-text`) *(optional)* — a single line below the field. Renders in three modes: info (neutral), error (red), or success (green).
+
+{/* ![Text Input anatomy](./anatomy.png) */}
+
+## Variants
+
+Text Input has no structural variants. Variation is expressed through props:
+
+- **With / without label** — controlled by `labelShow`
+- **With / without feedback text** — controlled by `message`
+- **With left icon** — optional icon inside the field, left side
+- **With right icon** — optional icon inside the field, right side
+- **With inline button** — a compact pill button embedded inside the field on the right
+
+TODO: Confirm whether a multiline (textarea) variant exists.
+
+{/* ![Text Input variants](./variants.png) */}
+
+## States
+
+### TextInput wrapper states (validation)
+
+| State | Border | Feedback text color |
+|-------|--------|---------------------|
+| **Default** | `--input/border-default` — 1px | `--text/placeholder` (info) |
+| **Error** | `--input/border-error` (#c22) — 1.5px | `--notification/error-text` (#a43636) |
+| **Succeeded** | `--input/border-success` (#26a628) — 1.5px | `--notification/success-text` (#176719) |
+
+### InputField interaction states
+
+| State | Background | Border | Text color |
+|-------|-----------|--------|------------|
+| **Default** | `--input/bg-default` | `--input/border-default` — 1px | placeholder: `--input/text-placeholder` |
+| **Focus** | `--input/bg-default` | `--input/border-active` (#1d1d23) — 1px | placeholder: `--text/placeholder` |
+| **Typing** | `--input/bg-default` | `--input/border-active` — 1px | value: `--input/text-input` (#1d1d23) |
+| **Filled** | `--input/bg-default` | `--input/border-default` — 1px | value: `--input/text-input` (#1d1d23) |
+| **Error** | `--input/bg-default` | `--input/border-error` — 1.5px | value: `--button/default/bg-default` |
+| **Succeeded** | `--input/bg-default` | `--input/border-success` — 1.5px | value: `--button/default/bg-default` |
+| **Disabled** | `--input/bg-disabled` (#f1f2f4) | `--input/border-default` — 1px | `--input/text-disabled` (#7a7b93) |
+
+{/* ![Text Input states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- Default, Error, Succeeded (wrapper validation states)
+- Default, Focus, Typing, Filled, Error, Succeeded, Disabled (field interaction states)
+
+### Supported sizes
+
+- **Default** — field height fixed at `44px`. No size variants confirmed.
+
+### Supported states
+
+- Default · Focus · Typing · Filled · Error · Succeeded · Disabled
+
+### Token reference
+
+| Part | Token | Light value | Dark value |
+|------|-------|-------------|------------|
+| **Field** | | | |
+| Background (default) | `--input/bg-default` | `#e4e5ed` | `#34353f` |
+| Background (disabled) | `--input/bg-disabled` | `#f1f2f4` | — |
+| Border (default) | `--input/border-default` | `#cccdda` | `#4b4c5b` |
+| Border (active/focus) | `--input/border-active` | `#1d1d23` | — |
+| Border (error) | `--input/border-error` | `#c22` | — |
+| Border (success) | `--input/border-success` | `#26a628` | — |
+| Border width (default) | — | `1px` | — |
+| Border width (error/success) | — | `1.5px` | — |
+| Height | — | `44px` | — |
+| Border radius | `--spacing-12` | `12px` | — |
+| Padding horizontal | `--spacing-12` | `12px` | — |
+| Internal gap | — | `8px` | — |
+| **Text** | | | |
+| Placeholder text | `--input/text-placeholder` | `#636377` | `#a3a3bc` |
+| Input value text | `--input/text-input` | `#1d1d23` | — |
+| Disabled text | `--input/text-disabled` | `#7a7b93` | — |
+| Font | `--font-family/body` | Manrope Regular | — |
+| Font size | `--size/base` | `14px` | — |
+| Line height | — | `1.4` | — |
+| **Label** | | | |
+| Label text color | `--text/primary` | `#1d1d23` | `#f1f2f4` |
+| Label font weight | `--weight/medium` | `500` | — |
+| Label line height | — | `1.2` | — |
+| Description text | `--text/placeholder` | `#636377` | — |
+| Help icon size | — | `20px` | — |
+| Helper link color | `--button/link/text-default` | `#1d1d23` | — |
+| **Feedback text** | | | |
+| Info color | `--text/placeholder` | `#636377` | — |
+| Error color | `--notification/error-text` | `#a43636` | — |
+| Success color | `--notification/success-text` | `#176719` | — |
+| Font weight | `--weight/medium` | `500` | — |
+| Line height | — | `1.2` | — |
+| **Layout** | | | |
+| Gap between sub-components | `--spacing-8` | `8px` | — |
+| Gap within label | — | `4px` | — |
+| **Inline button** | | | |
+| Height | — | `32px` | — |
+| Background | `--button/default/bg-default` | `#1d1d23` | — |
+| Border radius | `--rounded-full` | `120px` | — |
+| Padding horizontal | `--spacing-12` | `12px` | — |
+
+## Usage guidelines
+
+- Use Text Input for free-form single-line text entry: names, numbers, card details, addresses.
+- Always include a label when the field appears in a form. The label may be omitted only in highly constrained layouts where context makes the field purpose unambiguous.
+- Use the description line in the label when the field requires additional instruction or context beyond the label name.
+- Use the feedback text slot for helper guidance in the default state, and for validation messages in error or succeeded states. Do not use it for both at once.
+- Use the inline button variant when a short contextual action (e.g. "Clear", "Apply", "Verify") is tied directly to the field value and should remain visible at all times.
+- Use left or right icons to provide visual context (e.g. a phone icon for a phone number field), not for decoration.
+- In forms with multiple fields, stack inputs vertically with consistent spacing.
+
+## Accessibility
+
+- The input field must have an accessible label — either via a visible `<label>` element or `aria-label`/`aria-labelledby`.
+- The label's help icon must have an accessible tooltip or `aria-label` that describes its purpose.
+- When the field is in an error state, the error feedback text must be associated with the input via `aria-describedby`.
+- The disabled state must communicate its status via `aria-disabled="true"` or a native `disabled` attribute.
+- Placeholder text must not be used as a substitute for a label — it disappears on input.
+- The inline button must have its own accessible label independent of the input.
+
+TODO: Confirm focus ring style and keyboard interaction pattern.
+
+## Do / Don't
+
+**Do:**
+- Write label text as a short noun phrase (2–4 words): "Card number", "Emergency contact name"
+- Write placeholder text as a format hint when relevant: "1234 5678 9012 3456", "MM/YY"
+- Show the error feedback text immediately on failed validation — do not wait for form submission
+
+**Don't:**
+- Use placeholder text as the only label — always pair it with a visible label in forms
+- Use the description slot for error messages — use the feedback text in error state instead
+- Stack multiple icons (left + right) and an inline button in the same field simultaneously
+
+{/* ![Text Input do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Text Input](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5082-809)
+- Figma: [DS Core — input/field](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5082-663)
+- Figma: [DS Core — input/label](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5082-730)
+- Figma: [DS Core — input/feedback-text](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5082-753)
+- Code: TODO
+- Specs: `./text-input.specs.json`
+- Tokens: `./text-input.tokens.json`

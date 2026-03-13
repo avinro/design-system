@@ -1,0 +1,61 @@
+---
+title: "Elevation"
+description: "Elevation and shadow tokens for Dojo DS. Three depth levels defined for both light and dark mode."
+---
+
+## Overview
+
+Elevation tokens express depth using drop shadows. Three levels are defined — each for both light and dark mode. Higher levels produce larger, softer shadows that visually push a surface further from the base layer.
+
+---
+
+## Levels
+
+Each elevation level has a light mode and dark mode variant. Always use the matching set for the active theme.
+
+### Light mode
+
+| Token | CSS `box-shadow` | Use |
+|---|---|---|
+| `shadows.light.01` | `0px 2px 4px 0px #0000001A` | Subtle lift — cards, inputs on a white surface |
+| `shadows.light.02` | `0px 8px 12px 0px #0000000D` | Moderate elevation — dropdowns, tooltips |
+| `shadows.light.03` | `0px 8px 20px 0px #00000014` | High elevation — modals, bottom sheets |
+
+### Dark mode
+
+| Token | CSS `box-shadow` | Use |
+|---|---|---|
+| `shadows.dark.01` | `0px 2px 4px 0px #0000003D` | Subtle lift |
+| `shadows.dark.02` | `0px 8px 12px 0px #00000029` | Moderate elevation |
+| `shadows.dark.03` | `0px 8px 24px 0px #0000003D` | High elevation |
+
+<Note>
+Dark mode shadows use higher opacity values than light mode. Dark surfaces have less inherent contrast, so the shadow needs more weight to read correctly.
+</Note>
+
+---
+
+## Usage principles
+
+- Assign elevation based on the z-level of the surface, not for visual emphasis. A card on the page background uses `01`. A dropdown above the card uses `02`. A modal covering the full screen uses `03`.
+- Do not apply elevation to inline elements such as buttons, badges, or labels — use background color contrast to establish visual hierarchy instead.
+- Do not combine multiple elevation tokens on the same element.
+- Always match the theme. Do not mix `shadows.light.*` and `shadows.dark.*` tokens in the same interface.
+
+<Note>
+A `Blur/System Material` effect (background blur, radius 48) exists in Figma for system-level surfaces such as keyboards. It is not part of this elevation scale and is not a documented token in `shadows.json`.
+</Note>
+
+---
+
+## TODO
+
+- TODO: Map each elevation level to the components that use it. The Figma Elevations page shows the three levels visually but does not name specific components.
+- TODO: Define whether a component should always declare its own elevation level, or whether it can inherit from its container.
+
+---
+
+## Resources
+
+- Token file: `tokens/shadows.json`
+- Figma: [↳ Elevations](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB?node-id=5010-2560)

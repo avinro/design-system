@@ -1,0 +1,149 @@
+---
+title: "Text Area"
+description: "A multiline free-form text field for collecting extended user input."
+---
+
+# Text Area
+
+## Overview
+
+Text Area is a multiline free-form text field. It composes three sub-components: `input/label`, `textArea/field`, and `input/feedback-text`. The `input/label` and `input/feedback-text` sub-components are shared with [Text Input](/components/core/inputs/text-input). The `textArea/field` sub-component is unique to this component.
+
+The wrapper manages overall validation state (`Default`, `error`, `success`). Sub-components can also be used independently.
+
+Use Text Area when the expected input spans multiple lines. For single-line input, use [Text Input](/components/core/inputs/text-input) instead.
+
+## Anatomy
+
+Text Area is composed of three stacked sub-components:
+
+| Part | Sub-component | Optional | Description |
+|------|--------------|----------|-------------|
+| **Label** | `input/label` | Yes | Label text, optional help icon, optional helper link, and optional description line |
+| **Field** | `textArea/field` | No | The multiline text entry area |
+| **Feedback text** | `input/feedback-text` | Yes | Single-line message below the field |
+
+**textArea/field** contains:
+
+| Part | Optional | Description |
+|------|----------|-------------|
+| Text content area | No | Displays placeholder text or the entered value |
+| Resize handle | No | Visual affordance in the bottom-right corner of the field |
+
+![Text Area anatomy](./anatomy.png)
+
+## Variants
+
+No structural variants. Variation is expressed through props:
+
+- `labelShow` — show or hide the label block
+- `descriptionShow` — show or hide the feedback text below the field
+
+TODO: Confirm whether additional layout variants exist.
+
+![Text Area variants](./variants.png)
+
+## States
+
+### Wrapper validation states
+
+| State | Border | Feedback text style |
+|-------|--------|---------------------|
+| `Default` | `--input/border-default` (1px) | Info — `--text/placeholder` |
+| `error` | `--input/border-error` (1.5px, red) | Error — `--notification/error-text` |
+| `success` | `--input/border-success` (1px, green) | Success — `--notification/success-text` |
+
+### Field interaction states
+
+| State | Description | Border | Background |
+|-------|-------------|--------|------------|
+| `Default` | Empty, not focused. Placeholder visible. | `--input/border-default` (1px) | `--input/bg-default` |
+| `Focus` | Focused. Cursor and text visible. | `--input/border-active` (1.5px) | `--input/bg-default` |
+| `filled` | Has a value, not focused. | `--input/border-default` (1px) | `--input/bg-default` |
+| `Error` | Validation failed. | `--input/border-error` (1.5px) | `--input/bg-default` |
+| `blocked` | Disabled. Not interactive. Muted text. | `--input/border-default` (1px) | `--input/bg-disabled` |
+
+Note: The disabled state is named `blocked` in Figma (not `disable` as in Text Input's field).
+
+![Text Area states](./states.png)
+
+## Tokens & specs
+
+Text Area shares field background, border, and text tokens with [Text Input](/components/core/inputs/text-input). The `input/label` and `input/feedback-text` sub-components are identical.
+
+### Supported variants
+
+- Default (no structural variants)
+
+### Supported sizes
+
+- One size. Height is flexible — not fixed. Border radius is `12px` (rectangular corners, not pill shaped).
+
+### Supported states
+
+**Wrapper:** `Default`, `error`, `success`
+
+**Field:** `Default`, `Focus`, `filled`, `Error`, `blocked`
+
+### Token reference
+
+| Part | Token | Light value | Dark value |
+|------|-------|-------------|------------|
+| Field background (default) | `var(--input/bg-default)` | `#e4e5ed` | `#34353f` |
+| Field background (disabled) | `var(--input/bg-disabled)` | `#f1f2f4` | — |
+| Border (default) | `var(--input/border-default)` | `#cccdda` | `#4b4c5b` |
+| Border (focus) | `var(--input/border-active)` | `#1d1d23` | — |
+| Border (error) | `var(--input/border-error)` | `#c22` | — |
+| Border (success) | `var(--input/border-success)` | `#26a628` | — |
+| Text — placeholder | `var(--input/text-placeholder)` | `#636377` | `#a3a3bc` |
+| Text — value | `var(--input/text-input)` | `#1d1d23` | — |
+| Text — disabled | `var(--element/text-muted)` | `#929fb1` | — |
+| Label text | `var(--text/primary)` | `#1d1d23` | `#f1f2f4` |
+| Feedback text — info | `var(--text/placeholder)` | `#636377` | — |
+| Feedback text — error | `var(--notification/error-text)` | `#a43636` | — |
+| Feedback text — success | `var(--notification/success-text)` | `#176719` | — |
+| Border radius | `var(--spacing-12)` | `12px` | — |
+| Padding horizontal | `var(--spacing-12)` | `12px` | — |
+| Padding vertical | `var(--spacing-8)` | `8px` | — |
+| Sub-component gap | `var(--spacing-4)` | `4px` | — |
+
+## Usage guidelines
+
+- Use for free-form multiline text entry where the expected response spans more than one line.
+- Use [Text Input](/components/core/inputs/text-input) instead when a single line is sufficient.
+- Always include a label in forms. Only omit when surrounding copy makes the field's purpose unambiguous.
+- Use the description line for supplementary instruction — not to repeat the label.
+- Do not use placeholder text as a substitute for a label.
+- Mark optional fields clearly in the label text when most fields in the form are required.
+
+## Accessibility
+
+- The field must have an accessible label via `<label>` or `aria-labelledby`.
+- Error feedback must be associated with the field via `aria-describedby`.
+- The blocked (disabled) state must use `aria-disabled="true"` or native `disabled` on the `<textarea>` element.
+- The help icon must have an `aria-label` or be accompanied by a tooltip accessible to screen readers.
+
+TODO: Confirm focus ring style and keyboard interaction pattern.
+
+## Do / Don't
+
+**Do:**
+- Use for open-ended input such as messages, cancellation reasons, special requests, and descriptions
+- Write labels as short noun phrases in sentence case
+- Show error feedback immediately on failed validation
+- Use placeholder text as a brief prompt or format hint
+
+**Don't:**
+- Use for single-line input — use Text Input instead
+- Use placeholder text as the only field label
+- Use the description slot and feedback slot for unrelated content simultaneously
+- Use in place of a rich text editor when formatting controls are needed
+
+![Text Area do and don't](./do-dont.png)
+
+## Resources
+
+- Figma: [DS Core — TextArea](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=2035-12927)
+- Code: `./text-area.tsx`
+- Specs: `./text-area.specs.json`
+- Tokens: `./text-area.tokens.json`

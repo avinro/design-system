@@ -1,0 +1,111 @@
+---
+title: "Typography"
+description: "Type system for Dojo DS. Font families, size scale, weights, and spacing primitives."
+---
+
+## Overview
+
+The type system defines the fonts, sizes, weights, and spacing that form text styles across the UI. This page documents the **primitive token layer**. Composite text styles — such as Heading 1 or Body MD Regular — are derived from these primitives and documented in the Figma Typography page.
+
+---
+
+## Font families
+
+| Token | Value | Use |
+|---|---|---|
+| `font-family.headings` | `Google Sans Flex` | All heading levels, display text |
+| `font-family.body` | `Manrope` | Body copy, labels, captions, UI text |
+
+Use `font-family.headings` for heading elements only. Use `font-family.body` for everything else, including form inputs, buttons, and tooltips.
+
+---
+
+## Font size
+
+All values are in pixels.
+
+| Token | Value (px) |
+|---|---|
+| `font-size.2xs` | 11 |
+| `font-size.xs` | 12 |
+| `font-size.base` | 14 |
+| `font-size.lg` | 16 |
+| `font-size.xl` | 18 |
+| `font-size.2xl` | 20 |
+| `font-size.3xl` | 24 |
+| `font-size.4xl` | 32 |
+| `font-size.5xl` | 40 |
+| `font-size.6xl` | 48 |
+
+<Note>
+The scale skips `sm` and `md` steps. `base` (14px) is the default text size — the step names reflect usage role, not a strictly sequential size ladder.
+</Note>
+
+---
+
+## Font weight
+
+| Token | Value |
+|---|---|
+| `font-weight.extralight` | 200 |
+| `font-weight.light` | 300 |
+| `font-weight.regular` | 400 |
+| `font-weight.medium` | 500 |
+| `font-weight.semibold` | 600 |
+| `font-weight.bold` | 700 |
+
+<Warning>
+Not all weights are confirmed available for Manrope. Verify that `extralight` (200) and `light` (300) render correctly before using them in production.
+</Warning>
+
+---
+
+## Letter spacing
+
+| Token | Value | Use |
+|---|---|---|
+| `letter-spacing.normal` | `0` | Body text, default |
+| `letter-spacing.tight` | `-0.4px` | Headings |
+| `letter-spacing.limit` | `-2px` | Large display text only |
+
+---
+
+## Line height
+
+<Warning>
+This token group mixes two unit types. `tight` and `normal` are unitless multipliers. The remaining tokens are fixed pixel values. Check the unit column before applying any line-height token.
+</Warning>
+
+| Token | Value | Unit | Use |
+|---|---|---|---|
+| `line-height.tight` | 1.2 | × multiplier | Headings, compact UI |
+| `line-height.normal` | 1.4 | × multiplier | Body text |
+| `line-height.body-sm` | 16 | px | Small body text |
+| `line-height.body-lg` | 24 | px | Large body text |
+| `line-height.text-xl` | 30 | px | Extra large text |
+| `line-height.heading-1` | 44 | px | Heading 1 |
+| `line-height.banner-md` | 56 | px | Banner and display text |
+
+---
+
+## Usage principles
+
+- Use `font-family.headings` for headings. Use `font-family.body` for all other text.
+- Use size scale tokens — do not set arbitrary pixel values. If a required size is absent, raise it with the design team.
+- Apply `letter-spacing.tight` to all headings. Use `letter-spacing.limit` only for large display text (40px and above).
+- Do not use `font-weight.extralight` or `font-weight.light` below 16px — they reduce legibility at small sizes.
+
+---
+
+## TODO
+
+- TODO: Document the approved composite text styles (e.g., Heading 1, Body MD Regular, Label SM Semibold) as combinations of these primitives.
+- TODO: Confirm Manrope weight availability — specifically whether `extralight` (200) and `light` (300) are supported.
+- TODO: Resolve the mixed-unit situation in `line-height`. Split into `line-height.multiplier.*` and `line-height.fixed.*`, or convert all to a single unit type.
+
+---
+
+## Resources
+
+- Token file: `tokens/typography.json`
+- Figma: [↳ Typography](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB?node-id=7006-2718)

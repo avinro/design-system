@@ -1,0 +1,25 @@
+{
+  "_source": "Not available in Figma variables",
+  "_note": "No motion tokens were found in the Figma file. This file is a placeholder. All values marked TODO must be defined by the design team before use.",
+
+  "duration": {
+    "instant": "TODO",
+    "fast": "TODO",
+    "normal": "TODO",
+    "slow": "TODO",
+    "deliberate": "TODO"
+  },
+
+  "easing": {
+    "linear": "TODO",
+    "ease-in": "TODO",
+    "ease-out": "TODO",
+    "ease-in-out": "TODO",
+    "spring": "TODO"
+  },
+
+  "delay": {
+    "none": "TODO",
+    "short": "TODO"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 5009:2178). Two variants: Sheet (bottom sheet) and Popover (floating dropdown).",
+
+  "container": {
+    "--surface/neutral/default": {
+      "value": "#f1f2f4",
+      "description": "Background fill for both Sheet and Popover variants."
+    },
+    "verticalPadding": {
+      "value": "10px",
+      "description": "Top and bottom padding inside the menu container. Same for both variants."
+    }
+  },
+
+  "variants": {
+    "sheet": {
+      "width": {
+        "value": "340px",
+        "description": "Fixed width for the Sheet (bottom sheet) variant."
+      },
+      "borderRadius": {
+        "value": "12px",
+        "description": "Border radius for the Sheet variant container."
+      },
+      "shadow": {
+        "value": "none",
+        "description": "No shadow on the Sheet variant."
+      }
+    },
+    "popover": {
+      "width": {
+        "value": "180px",
+        "description": "Fixed width for the Popover variant."
+      },
+      "borderRadius": {
+        "value": "8px",
+        "description": "Border radius for the Popover variant container."
+      },
+      "shadow": {
+        "token": "elevation/dark/02",
+        "value": "0px 8px 12px 0px rgba(0, 0, 0, 0.16)",
+        "description": "Drop shadow applied to the Popover variant."
+      }
+    }
+  },
+
+  "handle": {
+    "_note": "Drag handle displayed at the top of the Sheet variant only.",
+    "--handler/bg": {
+      "value": "#e4e5ed",
+      "description": "Background color of the drag handle pill."
+    },
+    "width": {
+      "value": "32px",
+      "description": "Width of the drag handle."
+    },
+    "height": {
+      "value": "4px",
+      "description": "Height of the drag handle."
+    },
+    "borderRadius": {
+      "value": "10px",
+      "description": "Border radius of the drag handle pill."
+    }
+  },
+
+  "item": {
+    "height": {
+      "value": "44px",
+      "description": "Fixed height of each menu item."
+    },
+    "paddingHorizontal": {
+      "value": "16px",
+      "description": "Left and right padding of each menu item."
+    },
+    "paddingVertical": {
+      "value": "5px",
+      "description": "Top and bottom padding of each menu item."
+    },
+    "gap": {
+      "value": "16px",
+      "description": "Gap between the icon and the label within a menu item."
+    },
+    "icon": {
+      "size": {
+        "value": "20px",
+        "description": "Width and height of the icon within a menu item."
+      }
+    },
+    "label": {
+      "--text/primary": {
+        "value": "#1d1d23",
+        "description": "Label text color."
+      },
+      "fontFamily": {
+        "value": "Inter",
+        "description": "Label font family. Uses the body font (Inter), not the headings font."
+      },
+      "fontWeight": {
+        "value": "500 (Medium)",
+        "description": "Label font weight."
+      },
+      "fontSize": {
+        "token": "--text-base-lg",
+        "value": "16px",
+        "description": "Label font size."
+      },
+      "lineHeight": {
+        "value": "normal",
+        "description": "Label line height."
+      }
+    },
+    "states": {
+      "hover": {
+        "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+      },
+      "pressed": {
+        "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+      },
+      "disabled": {
+        "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+      },
+      "focus": {
+        "_note": "TODO: Not defined in Figma. Confirm focus ring treatment."
+      }
+    }
+  }
+}

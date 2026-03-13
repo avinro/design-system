@@ -1,0 +1,201 @@
+---
+title: "Calendar Range"
+description: "A monthly calendar that supports selecting a continuous date range. The user taps a start date and an end date; days between them are highlighted with a semi-transparent band, while the endpoints receive a solid dark circle."
+---
+
+# Calendar Range
+
+## Overview
+
+Calendar Range is a monthly calendar that displays a single month at a time in a card surface. The user selects a continuous date range by tapping a start date and then an end date. Days between the two endpoints are highlighted with a semi-transparent band; the start and end dates receive a solid dark circle with inverted text. A today indicator and planned activity dots are also supported. The component is a composite built from two sub-components: **CalendarTitle** (navigation header, shared with Calendar Simple) and **DayItemRangeCalendar** (the only day cell, used across all states).
+
+## Anatomy
+
+Calendar Range is composed of the following parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Outer card surface. 374px wide, border-radius 16px, subtle shadow. Background: `--surface/neutral/default`. |
+| **CalendarTitle** | Yes | Navigation header: left chevron (24px) + month/year label + right chevron (24px). Shared with Calendar Simple. |
+| **Weekday header** | Yes | Row of 7 abbreviated labels (SUN–SAT), equally distributed across the full width. |
+| **Day grid** | Yes | 5–6 rows of 7 `DayItemRangeCalendar` cells representing the displayed month plus overflow days from adjacent months. |
+
+### CalendarTitle sub-component
+
+Identical to CalendarTitle in Calendar Simple. See [Calendar Simple](/components/calendar-simple) for full details.
+
+| Part | Description |
+|---|---|
+| Left chevron | 24×24px icon. Navigates to the previous month. |
+| Month/year label | e.g. "July 2023". Manrope Bold, `--size/base` (14px), `--text/body`. Text style: `Body sm/140/Bold`. |
+| Right chevron | 24×24px icon. Navigates to the next month. |
+
+### DayItemRangeCalendar sub-component
+
+Each cell uses `flex: 1 0 0` width — cells fill the row equally. Height is 40px. Appearance is determined by a combination of `state`, `type`, and the `today` boolean:
+
+| State | Type | today | Appearance |
+|---|---|---|---|
+| `Available` | `No-plan` | `false` | Plain date number. Color: `--day-item/text-default`. |
+| `Disable` | `No-plan` | `false` | Greyed date number. Color: `--day-item/text-disabled`. Not selectable. |
+| `Available` | `Planned` | `false` | Date number + 6×6px dot indicator below. Color: `--day-item/text-default`. |
+| `Available` | `No-plan` | `true` | Today indicator: 36×36px circle ring outline centered in cell. Color: `--day-item/text-default`. |
+| `Selected - Start` | `No-plan` | `false` | Dark 36px circle + right half-band (center → right edge). Text: `--day-item/text-selected` (inverted). |
+| `Selected - Middle` | `No-plan` | `false` | Full-width semi-transparent band only — no circle. Text: `--day-item/text-selected-middle` (dark, **not** inverted). |
+| `Selected - End` | `No-plan` | `false` | Dark 36px circle + left half-band (left edge → center). Text: `--day-item/text-selected` (inverted). |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Calendar Range anatomy](./anatomy.png) */}
+
+## Variants
+
+Calendar Range has no structural variants. Single visual style.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Calendar Range variants](./variants.png) */}
+
+## States
+
+Three states are defined at the composite component level.
+
+| State | Description |
+|---|---|
+| `Default` | Standard view. No selection, no today indicator, no planned indicators. Uses `DayItemRangeCalendar` cells. |
+| `Today` | The current date is marked with a today indicator (circle ring outline). Planned activity indicators may appear. Uses `DayItemRangeCalendar` cells. |
+| `Range` | A date range is selected. Start and end dates show a dark circle; all days between them show a semi-transparent band. Uses `DayItemRangeCalendar` cells. |
+
+> Note: The today indicator and range selection can appear simultaneously — today may fall within a selected range.
+
+> TODO: Confirm the intermediate state when only the start date has been tapped (awaiting the second tap).
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Calendar Range states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+No structural variants — single visual style.
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Token | Value |
+|---|---|---|
+| Container width | — | 374px |
+| Container border radius | `--spacing-16` | 16px |
+| Container padding (H) | `--spacing-16` | 16px |
+| Container padding (V) | `--spacing-24` | 24px |
+| Title ↔ grid gap | `--spacing-16` | 16px |
+| Day cell width | — | flex: 1 0 0 |
+| Day cell height | — | 40px |
+| Selected / today circle size | — | 36×36px |
+| Range band height | — | 36px |
+| Planned dot size | — | 6×6px |
+| Navigation icon size | — | 24×24px |
+
+> Note: Calendar Range is 374px wide. Calendar Simple is 382px wide. They are not interchangeable at a fixed width.
+
+### Supported states
+
+- `Default` — no selection, no today indicator, no planned indicators
+- `Today` — today indicator shown on the current date
+- `Range` — date range selected (start + band + end)
+
+### Token reference
+
+**Container:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Card background |
+| `elevation/light/02` | `0px 8px 12px rgba(0,0,0,0.05)` | Card shadow |
+
+**CalendarTitle:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--text/body` | `#34353f` | Month/year label color |
+| `--weight/bold` | `700` | Month/year font weight |
+| `--size/base` | `14px` | Month/year font size |
+
+**Weekday labels:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--text/placeholder` | `#636377` | Weekday abbreviation color |
+| `--weight/regular` | `400` | Weekday font weight |
+| `--size/2xs` | `11px` | Weekday font size |
+
+**Day number colors:**
+
+| Token | Value | State |
+|---|---|---|
+| `--day-item/text-default` | `#1d1d23` | Available days and today |
+| `--day-item/text-disabled` | `#636377` | Out-of-month (Disable) days |
+| `--day-item/text-selected` | `#f1f2f4` | Selected Start and End (inverted) |
+| `--day-item/text-selected-middle` | `#1d1d23` | Selected Middle (dark — **not** inverted) |
+
+**Range band:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--day-item/bg-selected-middle` | `rgba(29, 29, 35, 0.12)` | Semi-transparent band applied to middle cells and the half-bands on start/end cells |
+
+> Note: All text uses `--font-family/body` (Manrope). Day numbers use `--weight/semibold` (600), `--size/lg` (16px). Text style: `Body md/SemiBold`.
+
+> TODO: Confirm the design token for the selected endpoint circle background color.
+
+> TODO: Confirm the design token for the today circle ring outline color.
+
+> TODO: Confirm the design token for the planned day indicator dot color.
+
+## Usage guidelines
+
+- Use Calendar Range when the user needs to select a start and end date defining a continuous period.
+- The component is confirmed for use in the Dojo Customer App for date range filtering flows.
+- The component is fixed-width (374px). Use it inside a modal, bottom sheet, or a dedicated screen section.
+- Out-of-month overflow days use the `Disable` state to fill the 7-column grid — they are not selectable.
+- Use the `Planned` type to mark days that have associated activities.
+- The today indicator (`today=true`) communicates the current calendar date independently from the selection state.
+- Do not use Calendar Range for single-date selection — use Calendar Simple instead.
+- TODO: Confirm the maximum selectable range length (e.g., whether multi-month ranges spanning multiple calendar views are supported).
+
+## Accessibility
+
+- The month/year heading should be announced as a landmark or heading for screen readers.
+- Each day cell should have an accessible label with the full date (e.g., `aria-label="July 23, 2023"`), not just the number.
+- Range-selected days should communicate their role: `"July 23, 2023, range start"`, `"July 24, 2023, in selected range"`, `"July 31, 2023, range end"`.
+- The today indicator should be reflected in the accessible label: `"July 9, 2023, today"`.
+- `Disable` days should use `aria-disabled="true"` and not receive focus.
+- The left and right chevrons should have `aria-label="Previous month"` and `aria-label="Next month"`.
+- TODO: Confirm keyboard navigation — likely Arrow keys to move focus, Enter/Space to set range start and end.
+- TODO: Confirm `role` for the calendar grid — `role="grid"` with `role="gridcell"` per day is a common pattern.
+
+## Do / Don't
+
+**Do:**
+- Use for date range selection where the user needs a start and end date.
+- Clearly differentiate the start, middle, and end states visually using circle + band + circle.
+- Show the today indicator to help the user orient within the month.
+- Use `Planned` indicators to surface relevant activity information.
+- Use `--day-item/text-selected-middle` (dark) for middle-of-range day numbers — they sit on a light band, not a dark circle.
+
+**Don't:**
+- Don't use for single-date selection — use Calendar Simple instead.
+- Don't make `Disable` days selectable.
+- Don't omit the band connecting start and end — the visual continuity is critical for communicating the range.
+- Don't apply inverted text (`--day-item/text-selected`) to middle-of-range days. Middle days use `--day-item/text-selected-middle` (#1d1d23), which is dark.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Calendar Range do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Calendar Range component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5007-2834)
+- Figma (Customer App usage): [Date range filter](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=316-1281)
+- Code: `./calendar-range.tsx`
+- Specs: `./calendar-range.specs.json`
+- Tokens: `./calendar-range.tokens.json`
+- Related: [Calendar Simple](/components/calendar-simple)

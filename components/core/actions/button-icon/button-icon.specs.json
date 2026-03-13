@@ -1,0 +1,88 @@
+{
+  "component": "Button Icon",
+  "figmaFrameName": "Button/only icon",
+  "figmaNodeId": "5007:1640",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Square wrapper with equal width and height. Uses rounded-full border-radius, rendering as a perfect circle at all sizes. Carries background fill and border.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "description": "A single centered icon. 20×20px confirmed for md. Communicates the action without a visible label.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    { "name": "Default",     "description": "Main icon action. Dark fill. Equivalent to Primary in the labeled Button." },
+    { "name": "Accent",      "description": "Highlighted icon action. Use only for specific, intentional moments." },
+    { "name": "Secondary",   "description": "Supporting icon action. Use alongside Default when two relevant options exist." },
+    { "name": "Outlined",    "description": "Bordered ghost icon action. Use for tertiary or utility actions." },
+    { "name": "No-fill",     "description": "Ghost icon action. Use for low-emphasis actions in dense layouts." },
+    { "name": "Destructive", "description": "Danger icon action. Use only for irreversible operations. Always confirm." }
+  ],
+
+  "figmaLayerNote": "The Destructive type layer is named 'Ddestructive' in Figma (typo). Normalised to 'Destructive' in documentation.",
+
+  "sizes": [
+    {
+      "name": "sm",
+      "width": 32,
+      "height": 32,
+      "iconSizePx": "TODO",
+      "padding": "TODO"
+    },
+    {
+      "name": "md",
+      "width": 44,
+      "height": 44,
+      "iconSizePx": 20,
+      "padding": "12px (confirmed from Figma)"
+    },
+    {
+      "name": "lg",
+      "width": 56,
+      "height": 56,
+      "iconSizePx": "TODO",
+      "padding": "TODO"
+    }
+  ],
+
+  "states": [
+    { "name": "Default",  "trigger": "Resting state, no interaction." },
+    { "name": "Hover",    "trigger": "Pointer enters the button area." },
+    { "name": "Pressed",  "trigger": "Button is actively clicked or tapped." },
+    { "name": "Disabled", "trigger": "Action is unavailable. Non-interactive." },
+    { "name": "Focus",    "trigger": "Button receives keyboard focus." }
+  ],
+
+  "shape": {
+    "borderRadius": "var(--rounded-full, 120px)",
+    "borderWidth": "var(--width-1, 1px)",
+    "note": "Square container + rounded-full = perfect circle at all sizes."
+  },
+
+  "spacing": {
+    "gap": "var(--spacing-8, 0px)",
+    "paddingX_md": "var(--spacing-12, 12px)"
+  },
+
+  "accessibilityRequirements": {
+    "ariaLabel": "Required on every instance. The icon does not provide a visible label.",
+    "tooltip": "Recommended for discoverability. Confirm with product/UX.",
+    "ariaHidden": "The icon element should be aria-hidden when the button carries an aria-label."
+  },
+
+  "notes": [
+    "This component has no visible label. aria-label is mandatory on every instance.",
+    "Only use icons that are universally recognizable in their context.",
+    "TODO: Confirm icon sizes for sm and lg.",
+    "TODO: Confirm padding values for sm and lg.",
+    "TODO: Extract token values for all types and states beyond Default/Default/md.",
+    "TODO: Confirm whether a tooltip is required or only recommended."
+  ]
+}

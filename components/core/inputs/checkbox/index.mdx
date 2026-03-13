@@ -1,0 +1,155 @@
+---
+title: "Checkbox"
+description: "A multi-selection input that lets users independently toggle one or more options on or off, with optional description text and a boxed card layout."
+---
+
+# Checkbox
+
+## Overview
+
+Checkbox is a multi-selection input that allows users to independently toggle options on or off. Unlike Radio Select, checkboxes are not mutually exclusive — each item operates independently, and any number of options may be selected at once.
+
+The component supports three visual variants: a compact basic layout, an extended layout with description text, and a boxed card layout. It also supports an indeterminate state at the indicator level for cases such as "select all" controls.
+
+## Anatomy
+
+The component is composed of two base sub-components:
+
+1. **Checkbox indicator** (`_base-checkbox`) — A 24×24px square control that reflects the selection state. Supports three visual states: off (empty outlined square), on (filled square with a white checkmark), and intermediate (filled square with a white dash — used for indeterminate selection).
+2. **Label area** (`_base-label-checkbox`) — A text container that holds the option label and, when present, a secondary description line below it. Supports two internal configurations: basic (label only) and label + description. This sub-component is shared with the Radio Select component.
+
+**Layout note:** In `checkbox-basic` and `check+description`, the indicator sits to the **left** of the label area. In `check-boxed`, the indicator sits to the **right**, with the label area filling the remaining space on the left.
+
+{/* ![Checkbox anatomy](./anatomy.png) */}
+
+## Variants
+
+Three variants are supported, each suited to a different level of information density:
+
+| Variant | Description |
+|---------|-------------|
+| `checkbox-basic` | Checkbox indicator on the left + label only. Compact, minimal layout. |
+| `check+description` | Checkbox indicator on the left + label + secondary description text. No border container. |
+| `check-boxed` | Label + description on the left, checkbox indicator on the right, enclosed in a bordered card with drop shadow. Border changes to primary color when checked. |
+
+{/* ![Checkbox variants](./variants.png) */}
+
+## States
+
+| State | Description |
+|-------|-------------|
+| **Off / Unchecked** | Indicator is an empty outlined square. Container border (boxed) uses `--layout/border`. |
+| **On / Checked** | Indicator fills with `--selector/bg-active` and shows a white checkmark. In `check-boxed`, the container border changes to `--main-colors/primary`. |
+| **Intermediate** | Indicator fills with `--selector/bg-active` and shows a white horizontal dash. Supported at the `_base-checkbox` level. Use for "select all" controls when a partial selection exists. |
+
+TODO: Confirm whether hover, focus, and disabled states exist and what their visual treatments are.
+
+{/* ![Checkbox states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `checkbox-basic`
+- `check+description`
+- `check-boxed`
+
+### Supported sizes
+
+- Single size only. No size variants confirmed.
+  - Indicator (outer): `24×24px`
+  - Indicator (inner square): `20×20px`, border radius `5px`
+  - Font size: `--size/base` (`14px`)
+
+### Supported states
+
+- Off (unchecked)
+- On (checked)
+- Intermediate (indeterminate — `_base-checkbox` level)
+
+TODO: Confirm hover, focused, and disabled states.
+
+### Token reference
+
+| Part | Token | Value |
+|------|-------|-------|
+| **Checkbox indicator** | | |
+| Fill — on / intermediate | `--selector/bg-active` | `#ff6b26` |
+| Icon color — on / intermediate | `--selector/fg-enable` | `#ffffff` |
+| Indicator inner radius | — | `5px` |
+| Indicator size | — | `24px` |
+| **Label text** | | |
+| Color | `--text/primary` | `#1d1d23` |
+| Font family | `--font-family/body` | Manrope |
+| Font weight | `--weight/semibold` | `600` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+| **Description text** | | |
+| Color | `--text/placeholder` | `#636377` |
+| Font family | `--font-family/body` | Manrope |
+| Font weight | `--weight/regular` | `400` |
+| Font size | `--size/base` | `14px` |
+| Line height | — | `1.2` |
+| **Label area** | | |
+| Vertical padding | `--numbers/2` | `2px` |
+| Label-to-description gap | `--numbers/4` | `4px` |
+| **`check-boxed` container** | | |
+| Border — unchecked | `--layout/border` | `#e1e5ea` |
+| Border — checked | `--main-colors/primary` | `#e65912` |
+| Background — checked | `--surface/neutral/sunken` | `#ffffff` |
+| Border radius | — | `8px` |
+| Padding | `--numbers/12` | `12px` |
+| Gap (label area to indicator) | `--numbers/8` | `8px` |
+| Drop shadow | `card-shadow` | `0px 2px 4px 0px rgba(137, 137, 137, 0.12)` |
+
+## Usage guidelines
+
+- Use Checkbox when users may independently select zero, one, or multiple options from a list.
+- Do not use Checkbox for mutually exclusive choices — use Radio Select instead.
+- Use `checkbox-basic` for short option labels that need no supplementary context.
+- Use `check+description` when a clarifying line below the label improves comprehension without adding visual weight.
+- Use `check-boxed` when each option warrants visual containment and the checkbox position on the right suits the layout — for example, settings toggles or preference lists with descriptive labels.
+- Use the intermediate state only on a "select all" or parent checkbox that controls a group of child checkboxes. Never use it for a regular toggleable option.
+- Always associate a group of checkboxes with a visible group label or section heading.
+- Do not use Checkbox to trigger immediate actions — it controls a selection state, not an event. Use a Button or Toggle for immediate actions.
+
+## Accessibility
+
+- Group related checkboxes under a `<fieldset>` and `<legend>`, or a container with `role="group"` and `aria-labelledby`.
+- Each checkbox must use a native `<input type="checkbox">` or a custom element with `role="checkbox"` and `aria-checked`.
+- The intermediate state must set `aria-checked="mixed"` on the control.
+- Each checkbox must be individually focusable and operable via `Space` to toggle.
+- The focused item must have a visible focus indicator.
+- Do not rely on color alone to convey the checked state — the indicator shape must also change.
+
+TODO: Confirm the exact ARIA pattern and focus ring styling used in the implementation.
+
+## Do / Don't
+
+**Do:**
+- Use Checkbox when any number of options can be selected simultaneously
+- Write short, clear option labels — one to five words
+- Add description text when the label alone is ambiguous or insufficient
+- Keep all options in a group visually consistent — use the same variant throughout
+- Use the intermediate state on parent "select all" checkboxes only
+
+**Don't:**
+- Use Checkbox for mutually exclusive options — use Radio Select for that
+- Use the intermediate state on a regular selectable option
+- Mix `check-boxed` with unboxed variants in the same group
+- Use long paragraphs as description text — keep it to one concise sentence
+
+{/* ![Checkbox do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Checkbox](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5010-1630)
+- Code: TODO
+- Specs: `./checkbox.specs.json`
+- Tokens: `./checkbox.tokens.json`
+
+### Related components
+
+- [Radio Select](/components/core/inputs/radio-select) — for mutually exclusive single-selection
+- [Select Boolean](/components/core/inputs/select-boolean) — for binary yes/no choices

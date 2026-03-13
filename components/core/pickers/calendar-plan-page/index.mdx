@@ -1,0 +1,188 @@
+---
+title: "Calendar Plan Page"
+description: "A collapsible monthly calendar for the Plan page. Displays a full month grid or a single current-week row, with planned activity indicators and a bottom-sheet drag handle."
+---
+
+# Calendar Plan Page
+
+## Overview
+
+Calendar Plan Page is a monthly calendar component used on the Plan page of Dojo apps. It is embedded within a top sheet or drawer panel and supports two display modes: a full month grid and a collapsed single-week row (`small` state). Days can be marked as planned using an orange dot indicator. Unlike [Calendar Simple](/components/calendar-simple), this component has no navigation controls of its own and is not a general-purpose date picker.
+
+**Calendar Plan Page always coexists with a Header component** placed directly above it. The Header is responsible for displaying the current month and year, providing back navigation, and offering controls to change the month, year, or week. The calendar is a passive display — it renders the period that the Header sets.
+
+It is built from one internal sub-component:
+- **DayItemSimpleCalendar** — individual 40×40px day cell, shared with [Calendar Simple](/components/calendar-simple).
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Calendar Plan Page anatomy](./anatomy.png) */}
+
+## Anatomy
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Outer panel surface. 390px wide. Bottom corners rounded (`--rounded-16`, 16px). Top corners flat. Background: `--surface/neutral/default` (`#f1f2f4`). |
+| **Weekday header** | Yes | Row of 7 abbreviated labels: SUN, MON, TUE, WED, THU, FRI, SAT. Equally distributed. Manrope Regular 11px. Color: `--text/placeholder`. |
+| **Day grid** | Yes | 5 rows of 7 `DayItemSimpleCalendar` cells. Out-of-month overflow days use `state=Disable`. In `small` state, only the current week row is visible. |
+| **DayItemSimpleCalendar** | Yes | Individual 40×40px day cell. See cell combination table below. |
+| **Handle** | Yes | 32×4px rounded bar at the bottom of the container. Indicates bottom-sheet drag affordance. |
+
+### DayItemSimpleCalendar — cell combinations
+
+| `state` | `type` | `today` | Appearance |
+|---|---|---|---|
+| `Available` | `No-plan` | `false` | Plain date number. Color: `--day-item/text-default` (`#1d1d23`). |
+| `Available` | `No-plan` | `true` | Date number + lighter filled circle (today highlight). |
+| `Disable` | `No-plan` | `false` | Greyed date number. Color: `--day-item/text-disabled` (`#636377`). Not interactive. |
+| `Available` | `Planned` | `false` | Date number + 6×6px orange dot below. Color: `--day-item/text-default`. |
+| `Selected` | `No-plan` | `false` | Dark 36×36px filled circle. Inverted date number. Color: `--day-item/text-selected` (`#f1f2f4`). |
+
+## Variants
+
+No structural variants. Single visual style.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Calendar Plan Page variants](./variants.png) */}
+
+## States
+
+Four states are defined at the composite component level via the `state` prop.
+
+| State | Description |
+|---|---|
+| `Default` | Full month view. No date selected. No today highlight. Planned indicators visible on applicable days. |
+| `Today` | Full month view. Today's date is selected by default (dark circle). Planned indicators visible. |
+| `Active` | Full month view. A non-today date is selected (dark circle). Today's date shows a lighter circle highlight. |
+| `small` | Collapsed view. Only the current week row is visible. Overflow clipped to 96px height. Selected and today highlights are preserved. |
+
+> The `small` state is used when the Plan page is in a compact or summary mode — for example, when the user scrolls down and the calendar collapses to the current week.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Calendar Plan Page states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+No structural variants — single visual style.
+
+### Supported sizes
+
+| Mode | States | Width | Height |
+|---|---|---|---|
+| Full | `Default`, `Today`, `Active` | 390px | 252px |
+| Small | `small` | 390px | 96px |
+
+### Supported states
+
+- `Default` — no selection, no today highlight
+- `Today` — today's date selected by default
+- `Active` — user-selected date; today has a separate lighter highlight
+- `small` — collapsed to current week row only
+
+### Token reference
+
+**Container:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background |
+| `--rounded-16` | `16px` | Bottom corner border radius |
+| `--spacing-16` | `16px` | Horizontal padding |
+| `--spacing-4` | `4px` | Bottom padding and inner gap |
+
+**Weekday labels:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--text/placeholder` | `#636377` | Weekday abbreviation color |
+| `--font-family/body` | `Manrope` | Font family |
+| `--weight/regular` | `400` | Font weight |
+| `--size/2xs` | `11px` | Font size |
+
+**Day number colors:**
+
+| Token | Value | Usage |
+|---|---|---|
+| `--day-item/text-default` | `#1d1d23` | Available days |
+| `--day-item/text-disabled` | `#636377` | Disabled (out-of-month) days |
+| `--day-item/text-selected` | `#f1f2f4` | Selected day (inverted) |
+| `--day-item/bg-selected` | `#1d1d23` | Selected day circle background |
+| `--day-item/indicator-planned` | `#ff6b26` | Planned dot indicator |
+
+> All day number text uses `--font-family/body` (Manrope), `--weight/semibold` (600), `--size/lg` (16px). Text style: `Body md/SemiBold`.
+
+> TODO: Confirm today-highlight circle color token (the lighter circle shown when `today=true`, `state=Available`).
+
+**Handle:**
+
+| Token | Value | Description |
+|---|---|---|
+| `--button/secondary/bg-default` | `rgba(29, 29, 35, 0.05)` | Handle background color |
+
+## Usage guidelines
+
+- Use Calendar Plan Page only in the Plan page context. It is not a general-purpose date picker — use [Calendar Simple](/components/calendar-simple) for standalone date selection.
+- Always render Calendar Plan Page together with a Header component placed directly above it. The Header owns all navigation: displaying the current month/year label, changing the month, week, or year, and back navigation. Do not add any navigation controls inside the calendar itself.
+- The calendar responds to the period set by the Header. When the user changes the month or year via the Header, the calendar re-renders to show the selected period.
+- Use the `small` state when the plan page is in a compact or summary mode, collapsing the calendar to the current week row.
+- Mark days with a planned job or delivery using `type="Planned"` on the relevant `DayItemSimpleCalendar` cells.
+- Out-of-month overflow days must use `state="Disable"` to maintain the 7-column grid structure. They must not be interactive.
+- The handle at the bottom is always visible. Wire it to expand/collapse behaviour between `small` and full states.
+
+## Page composition
+
+Calendar Plan Page is always used as part of a composed page layout. Confirmed structure from Dojo Customer App (Figma node `3028:4306`):
+
+| Layer | Component | Responsibility |
+|---|---|---|
+| 1 | System bar | Status bar |
+| 2 | **Header** | Back navigation · Current month/year label · Month/year change (dropdown) · Search · Add action |
+| 3 | **Calendar Plan Page** | Day grid display · Day selection · Planned indicators · Collapse/expand |
+| 4 | Content area | Bookings list or empty state |
+
+> The Header component controls what period the calendar displays. Calendar Plan Page has no awareness of or responsibility for navigation between months, weeks, or years.
+
+## Accessibility
+
+- Each day cell must have an `aria-label` with the full date, e.g., `aria-label="March 9, 2026"`.
+- Planned days must include an accessible cue in the label, e.g., `aria-label="March 9, 2026, has planned activity"`.
+- Out-of-month cells must use `aria-disabled="true"` and should not receive keyboard focus.
+- Weekday header cells are decorative — mark them `aria-hidden="true"`.
+- The handle must have an accessible label such as `aria-label="Collapse calendar"` when interactive.
+- TODO: Confirm keyboard navigation within the grid (Arrow keys to move between days, Enter to select).
+- TODO: Confirm `role` for the calendar grid — `role="grid"` with `role="gridcell"` per day is the standard pattern.
+- The month/year context is provided by the Header component above — ensure the Header's month/year label is correctly announced by screen readers (e.g., as a heading or live region), so the calendar grid is interpreted in the right temporal context.
+
+## Do / Don't
+
+**Do:**
+- Use the `small` state to collapse the calendar when the user scrolls past the plan view.
+- Use `Planned` to communicate that a job or delivery is scheduled on a specific day.
+- Preserve the selected day and today highlight when switching between `small` and full states.
+- Provide full date `aria-label` values on every day cell.
+
+**Don't:**
+- Don't use this component outside of a top sheet or drawer context.
+- Don't use it as a standalone date picker — use Calendar Simple instead.
+- Don't make `Disable` days selectable or focusable.
+- Don't add navigation controls inside this component — all period navigation belongs in the Header above.
+- Don't render Calendar Plan Page without its companion Header.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Calendar Plan Page do and don't](./do-dont.png) */}
+
+## Sub-components
+
+Calendar Plan Page is composed of one internal sub-component:
+
+- **DayItemSimpleCalendar** — individual 40×40px day cell. Accepts `date` (string), `state` (`Available` / `Disable` / `Selected`), `type` (`No-plan` / `Planned`), and `today` (boolean) props. Shared with [Calendar Simple](/components/calendar-simple) — any changes to this sub-component affect both.
+
+## Resources
+
+- Figma: [Calendar Plan Page component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5015-1669)
+- Figma usage — Dojo Customer App: [Plan page — calendar screen](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=3028-4306) · [alternate node](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1498-20616)
+- Figma usage — Dojo Driver App: [Plan page](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2883-4722)
+- Code: `./calendar-plan-page.tsx`
+- Specs: `./calendar-plan-page.specs.json`
+- Tokens: `./calendar-plan-page.tokens.json`

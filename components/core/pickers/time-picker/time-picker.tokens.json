@@ -1,0 +1,111 @@
+{
+  "component": "Time Picker",
+  "figmaNodeId": "5146:2125",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "extractedFrom": "Figma variable definitions via MCP",
+  "note": "Token set is identical to Time Date Picker, Month Year Picker, and Number Picker. All four components share the same scroll depth visual language.",
+
+  "tokens": {
+    "surface": {
+      "surface/neutral/default": {
+        "value": "#f1f2f4",
+        "description": "Container background color in DS Core light theme. In the Customer App, the picker renders on --bg-surface-default (#1d1d23, dark theme)."
+      }
+    },
+
+    "text": {
+      "text/primary": {
+        "value": "#1d1d23",
+        "description": "Color of the selected (centre) item in each column. In dark-theme app context, this token resolves to #f1f2f4."
+      },
+      "text/placeholder": {
+        "value": "#636377",
+        "description": "Color of all non-selected items in each column. In dark-theme app context, this resolves to #a3a3bc."
+      }
+    },
+
+    "typography": {
+      "fontFamily": {
+        "value": "Manrope",
+        "token": "font-family/body",
+        "description": "Font family for all column text."
+      },
+      "fontWeight": {
+        "value": "400",
+        "token": "weight/regular",
+        "description": "Font weight for all column text. All items use Regular weight regardless of selection state."
+      }
+    },
+
+    "fontSize": {
+      "selected": {
+        "value": "23px",
+        "description": "Font size for the selected (centre) item at position 4."
+      },
+      "closeNeighbor": {
+        "value": "18px",
+        "description": "Font size for items one position above/below the selection (positions 3 and 5)."
+      },
+      "farNeighbor": {
+        "value": "14px",
+        "description": "Font size for items two positions above/below the selection (positions 2 and 6)."
+      },
+      "furthestNeighbor": {
+        "value": "12px",
+        "description": "Font size for items three positions above/below the selection (positions 1 and 7)."
+      }
+    },
+
+    "opacity": {
+      "furthestNeighbor": {
+        "value": "0.4",
+        "description": "Opacity for items at positions 1 and 7."
+      },
+      "farNeighbor": {
+        "value": "0.7",
+        "description": "Opacity for items at positions 2 and 6."
+      },
+      "visibleNeighbor": {
+        "value": "1.0",
+        "description": "Opacity for items at positions 3, 4 (selected), and 5."
+      },
+      "hidden": {
+        "value": "0",
+        "description": "Opacity for unpopulated AM/PM column slots. The AM/PM column has only 2 populated slots; all others use opacity: 0."
+      }
+    },
+
+    "layout": {
+      "containerWidth": {
+        "value": "375px",
+        "description": "Total width of the picker."
+      },
+      "containerHeight": {
+        "value": "212px",
+        "description": "Total height of the picker."
+      },
+      "columnGap": {
+        "value": "27px",
+        "description": "Horizontal gap between the three scroll columns."
+      },
+      "itemGap": {
+        "value": "5px",
+        "description": "Vertical gap between items within a column."
+      },
+      "selectionIndicatorHeight": {
+        "value": "31px",
+        "description": "Height of the selection highlight stripe."
+      },
+      "columnGroupOffset": {
+        "value": "4px",
+        "description": "Horizontal right offset of the column group from the component centre (confirmed from Figma: left: calc(50% + 4px)). TODO: Confirm whether intentional."
+      }
+    }
+  },
+
+  "tokensTODO": [
+    "Confirm token for the selection indicator stripe.",
+    "Confirm dark-theme text token values — app renders on dark surface (#1d1d23); --text/primary resolves to #f1f2f4 and --text/placeholder to #a3a3bc in that context.",
+    "Confirm whether the 4px column group right offset is intentional or an artefact."
+  ]
+}

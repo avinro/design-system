@@ -1,0 +1,115 @@
+{
+  "component": "Calendar Plan Page",
+  "figmaNodeId": "5015:1669",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "extractedFrom": "Figma variable definitions via MCP",
+
+  "tokens": {
+    "surface": {
+      "surface/neutral/default": {
+        "value": "#f1f2f4",
+        "description": "Container background color."
+      }
+    },
+
+    "dayItem": {
+      "day-item/text-default": {
+        "value": "#1d1d23",
+        "description": "Date number color for Available days."
+      },
+      "day-item/text-disabled": {
+        "value": "#636377",
+        "description": "Date number color for Disable (out-of-month) days."
+      },
+      "day-item/text-selected": {
+        "value": "#f1f2f4",
+        "description": "Date number color for Selected days (inverted on dark background)."
+      },
+      "day-item/bg-selected": {
+        "value": "#1d1d23",
+        "description": "Background circle color for the Selected day cell (36×36px filled circle)."
+      },
+      "day-item/border-active": {
+        "value": "#1d1d23",
+        "description": "Border/active highlight color. TODO: Confirm exact usage in this component."
+      },
+      "day-item/indicator-planned": {
+        "value": "#ff6b26",
+        "description": "Color of the 6×6px dot indicator for days with a planned activity (type=Planned)."
+      },
+      "day-item/indicator-event": {
+        "value": "#7a7b93",
+        "description": "Alternative indicator color. TODO: Confirm when this is used vs indicator-planned."
+      }
+    },
+
+    "text": {
+      "text/placeholder": {
+        "value": "#636377",
+        "description": "Color for weekday abbreviation labels (SUN–SAT)."
+      }
+    },
+
+    "handle": {
+      "button/secondary/bg-default": {
+        "value": "rgba(29, 29, 35, 0.05)",
+        "description": "Background color of the bottom drag handle."
+      }
+    },
+
+    "typography": {
+      "font-family/body": {
+        "value": "Manrope",
+        "description": "Font family for all text in this component."
+      },
+      "weight/regular": {
+        "value": "400",
+        "description": "Font weight for weekday labels."
+      },
+      "weight/semibold": {
+        "value": "600",
+        "description": "Font weight for date numbers."
+      },
+      "size/2xs": {
+        "value": "11px",
+        "description": "Font size for weekday abbreviation labels."
+      },
+      "size/lg": {
+        "value": "16px",
+        "description": "Font size for date numbers."
+      },
+      "letter-spacing/normal": {
+        "value": "0",
+        "description": "Letter spacing for all text."
+      }
+    },
+
+    "spacing": {
+      "spacing-0": {
+        "value": "0px",
+        "description": "Container padding top."
+      },
+      "spacing-4": {
+        "value": "4px",
+        "description": "Container padding bottom and gap between calendar wrapper and handle."
+      },
+      "spacing-16": {
+        "value": "16px",
+        "description": "Container horizontal padding."
+      }
+    },
+
+    "radius": {
+      "rounded-16": {
+        "value": "16px",
+        "description": "Border radius applied to the bottom two corners of the container."
+      }
+    }
+  },
+
+  "tokensTODO": [
+    "Confirm the today-highlight circle color token (the lighter circle shown when today=true and state=Available).",
+    "Confirm exact usage of day-item/indicator-event vs day-item/indicator-planned.",
+    "Confirm day-item/border-active usage in this component."
+  ]
+}

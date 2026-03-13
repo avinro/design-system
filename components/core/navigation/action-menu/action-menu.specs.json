@@ -1,0 +1,114 @@
+{
+  "component": "Action Menu",
+  "figmaFrameName": "Action Menu",
+  "figmaNodeId": "5009:2178",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "The outer surface that holds the menu items. Background: --surface/neutral/default (#f1f2f4). Vertical padding: 10px. Shape and shadow differ by variant (see variants).",
+      "required": true
+    },
+    {
+      "part": "handle",
+      "description": "Drag handle displayed at the top of the Sheet variant only. A 32×4px pill centered horizontally. Background: --handler/bg (#e4e5ed). Indicates the sheet can be dragged to dismiss.",
+      "required": false,
+      "condition": "Sheet variant only."
+    },
+    {
+      "part": "menuItem",
+      "description": "A single action row. Fixed height: 44px. Contains an icon (20×20px) and a label (Inter Medium, 16px). Horizontal padding: 16px. Gap between icon and label: 16px.",
+      "required": true,
+      "note": "Icon and label are both required on every item."
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Sheet",
+      "figmaName": "Variant3",
+      "description": "Bottom sheet presentation. Slides up from the screen edge. Has a drag handle at the top.",
+      "width": 340,
+      "borderRadius": "12px",
+      "shadow": "none",
+      "hasHandle": true,
+      "instances": {
+        "Menu-items-3": "5009:2187",
+        "Menu-items-6": "5009:2179"
+      }
+    },
+    {
+      "name": "Popover",
+      "figmaName": "Popover-view",
+      "description": "Compact floating dropdown. Appears near the element that triggered it. Has a drop shadow.",
+      "width": 180,
+      "borderRadius": "8px",
+      "shadow": "elevation/dark/02 — 0px 8px 12px 0px rgba(0,0,0,0.16)",
+      "hasHandle": false,
+      "instances": {
+        "Menu-items-3": "5009:2192",
+        "Menu-items-6": "5009:2196"
+      }
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "Menu-items-3",
+      "itemCount": 3,
+      "approximateContentHeight": "132px (3 × 44px)"
+    },
+    {
+      "name": "Menu-items-6",
+      "itemCount": 6,
+      "approximateContentHeight": "264px (6 × 44px)"
+    }
+  ],
+
+  "states": [],
+  "stateNote": "No interactive states defined in Figma at the container or item level. TODO: Confirm hover, pressed, focus, and disabled states for individual items.",
+
+  "item": {
+    "height": 44,
+    "paddingHorizontal": 16,
+    "paddingVertical": 5,
+    "gap": 16,
+    "iconSize": 20,
+    "label": {
+      "fontFamily": "Inter",
+      "fontWeight": "500 (Medium)",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "colorToken": "--text/primary",
+      "colorValue": "#1d1d23"
+    }
+  },
+
+  "typography": {
+    "fontFamily": "Inter",
+    "fontStyle": "Medium",
+    "fontWeight": "500",
+    "fontSize": "16px",
+    "lineHeight": "normal",
+    "letterSpacing": 0,
+    "color": "var(--text/primary, #1d1d23)",
+    "note": "Uses the body font (Inter), not the headings font (Google Sans Flex)."
+  },
+
+  "usageContext": [
+    "Surfaces contextual actions relevant to the current screen or selected element.",
+    "Confirmed in Dojo Customer App (node 1361:13772) and Dojo Driver App (node 2007:325)."
+  ],
+
+  "notes": [
+    "Two variants: Sheet (340px, radius 12px, drag handle, no shadow) and Popover (180px, radius 8px, shadow, no handle).",
+    "Figma variant name 'Variant3' corresponds to the Sheet (bottom sheet) presentation.",
+    "Both variants share the same item anatomy and background token (--surface/neutral/default).",
+    "Icon sample in Figma: Customer-Icon/diamond (20×20px). Replace with the appropriate icon per action in implementation.",
+    "No interactive states defined at item level. TODO: Confirm hover, pressed, focus, and disabled states.",
+    "TODO: Confirm dismiss behavior and animation spec for the Sheet variant.",
+    "TODO: Confirm whether item count is flexible beyond 3 and 6.",
+    "TODO: Confirm whether destructive items require distinct styling."
+  ]
+}

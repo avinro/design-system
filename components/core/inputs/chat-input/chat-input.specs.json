@@ -1,0 +1,108 @@
+{
+  "component": "Chat Input",
+  "figmaNodeId": "7295:66",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "description": "A single-line text input used in chat or messaging screens. Consists of a pill-shaped text field and a circular send button. The send button changes appearance when the user begins typing.",
+
+  "anatomy": {
+    "parts": [
+      {
+        "part": "wrapper",
+        "description": "Outer container that holds the input pill and send button. Carries the surface background, padding, and gap.",
+        "required": true
+      },
+      {
+        "part": "input pill",
+        "description": "Pill-shaped text field. Shows placeholder text when empty; shows typed text and a cursor when active. Border changes color in the Typing state.",
+        "required": true
+      },
+      {
+        "part": "send button",
+        "description": "Circular button with an up-arrow icon (Customer-Icon/up-top). Appears as a secondary button in Default state; fills with dark background in Typing state.",
+        "required": true
+      }
+    ]
+  },
+
+  "variants": [],
+
+  "states": [
+    {
+      "name": "Default",
+      "figmaNodeId": "7295:67",
+      "description": "Empty input. Placeholder text visible. Input pill has a light border. Send button uses secondary (ghost) style."
+    },
+    {
+      "name": "Typing",
+      "figmaNodeId": "7295:80",
+      "description": "User is actively typing. Text and cursor visible. Input pill border turns dark. Send button fills with dark background, icon turns light."
+    }
+  ],
+
+  "dimensions": {
+    "wrapper": {
+      "height": "68px",
+      "paddingTop": "8px",
+      "paddingBottom": "16px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "gap": "8px"
+    },
+    "inputPill": {
+      "height": "44px",
+      "borderRadius": "120px",
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "paddingTop": "4px",
+      "paddingBottom": "4px",
+      "flex": "1"
+    },
+    "sendButton": {
+      "width": "44px",
+      "height": "44px",
+      "borderRadius": "120px"
+    },
+    "sendButtonIcon": {
+      "width": "20px",
+      "height": "20px",
+      "name": "Customer-Icon/up-top"
+    }
+  },
+
+  "behavior": {
+    "inputType": "single-line text",
+    "sendTrigger": "TODO: Confirm — tap send button and/or Enter key",
+    "clearOnSend": "TODO: Confirm — whether input clears after send",
+    "multiline": false,
+    "maxLength": "TODO: Confirm"
+  },
+
+  "realWorldUsage": [
+    {
+      "app": "Customer App",
+      "context": "In-ride chat screens between rider and driver.",
+      "figmaFileKey": "mqnceyvORwnapgycVXLgVE",
+      "exampleNodeId": "651:3870"
+    },
+    {
+      "app": "Driver App",
+      "context": "Chat screen for driver to message a rider. Placeholder: 'Message Jhon...'",
+      "figmaFileKey": "tdHwm5RAIg6k9WTW4FQKCX",
+      "exampleNodeId": "3100:11790"
+    }
+  ],
+
+  "notes": [
+    "The send button is a sub-component using the Button/only icon pattern from components/core/actions/button-icon.",
+    "The send button icon is Customer-Icon/up-top at 20×20px.",
+    "Wrapper surface token: --surface/neutral/sunken — confirmed same between DS Core and product apps.",
+    "Driver App token uses --surface/neutral/bg-sunken (with 'bg-') while DS Core uses --surface/neutral/sunken. Same value, different token name — flag for alignment.",
+    "The input pill layer is named 'chat imput' (sic) in Figma — intentional or typo in the DS Core file.",
+    "TODO: Confirm send trigger (button tap only, or also Enter key on desktop/web).",
+    "TODO: Confirm whether input clears after message is sent.",
+    "TODO: Confirm max character length.",
+    "TODO: Confirm disabled or read-only state spec.",
+    "TODO: Confirm error state spec."
+  ]
+}

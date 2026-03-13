@@ -1,0 +1,52 @@
+{
+  "_note": "All token values confirmed from Figma get_design_context on nodes 5110:664 (right), 5276:109 (bottom), 5307:699 (no_arrow).",
+
+  "container": {
+    "--surface/neutral/invert": { "value": "#1d1d23",  "description": "Container background color. Note: Customer App uses --surface/neutral/bg-invert for the same value — flag for token alignment." },
+    "--rounded-16":             { "value": "16px",     "description": "Container border radius" },
+    "--spacing-12":             { "value": "12px",     "description": "Container horizontal padding" },
+    "--spacing-8":              { "value": "8px",      "description": "Container vertical padding" },
+    "--spacing-16":             { "value": "16px",     "description": "Gap between message text and close icon (arrow variants)" },
+    "--spacing-2":              { "value": "2px",      "description": "Gap between title and body text (no_arrow variant)" }
+  },
+
+  "messageText": {
+    "--font-family/body":       { "value": "'Manrope', sans-serif", "description": "Font family (all text)" },
+    "--weight/medium":          { "value": "500",      "description": "Message text font weight (arrow variants)" },
+    "--size/base":              { "value": "14px",     "description": "Font size (all text)" },
+    "--letter-spacing/normal":  { "value": "0px",      "description": "Letter spacing" },
+    "--text/invert":            { "value": "#f1f2f4",  "description": "Text color (all text)" },
+    "lineHeight":               { "value": "1.4",      "description": "Line height for message text (arrow variants)" },
+    "maxWidth":                 { "value": "240px",    "description": "Max-width of message text container" }
+  },
+
+  "titleText": {
+    "--weight/bold":            { "value": "700",      "description": "Title font weight (no_arrow variant)" },
+    "--size/base":              { "value": "14px",     "description": "Title font size" },
+    "lineHeight":               { "value": "1.2",      "description": "Title line height (no_arrow variant)" }
+  },
+
+  "bodyText": {
+    "--weight/regular":         { "value": "400",      "description": "Body text font weight (no_arrow variant)" },
+    "--size/base":              { "value": "14px",     "description": "Body text font size" },
+    "lineHeight":               { "value": "1.2",      "description": "Body text line height (no_arrow variant)" }
+  },
+
+  "arrow": {
+    "width":                    { "value": "24px",     "description": "Arrow polygon width" },
+    "height":                   { "value": "12px",     "description": "Arrow polygon height" },
+    "color":                    { "value": "#1d1d23",  "description": "Arrow color — matches container background" }
+  },
+
+  "closeIcon": {
+    "size":                     { "value": "24px",     "description": "Close icon (Customer-Icon/x-close-delete) width and height" }
+  },
+
+  "dimensions": {
+    "right":    { "totalWidth": "316px", "totalHeight": "56px" },
+    "left":     { "totalWidth": "316px", "totalHeight": "56px" },
+    "bottom":   { "totalWidth": "305px", "totalHeight": "68px" },
+    "top":      { "totalWidth": "305px", "totalHeight": "68px" },
+    "no_arrow": { "totalWidth": "304px", "totalHeight": "69px" }
+  }
+}

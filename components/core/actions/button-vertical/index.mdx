@@ -1,0 +1,153 @@
+---
+title: "Button Vertical"
+description: "A stacked action button used in action grids inside bottom sheets. Displays a colored icon-form shape with an icon above a text label."
+---
+
+# Button Vertical
+
+## Overview
+
+Button Vertical is a stacked action button used in contextual action grids inside bottom sheets. It displays a colored shape (diamond or circle) with an icon overlaid, and a text label below. It is used when multiple related actions need to be presented as a visual grid — for example, map reporting options or categorized contextual shortcuts in the Dojo Driver App.
+
+Unlike other button components in this system, it is not a standalone trigger — it is always used as part of a multi-item action grid.
+
+## Anatomy
+
+The Button Vertical is composed of four parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Rounded-square tile (~120px wide, 96px tall). Gray neutral surface background. Vertical flex layout with centered alignment. |
+| **Icon-form shape** | Yes | A colored background shape (diamond or circle) that sits behind the icon. Communicates the action category through color. |
+| **Icon** | Yes | A 32×32px action icon centered on and overlaid over the icon-form shape. |
+| **Label** | Yes | Text label below the icon stack. Manrope Medium 16px, center-aligned. Can wrap to two lines. |
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button Vertical anatomy](./anatomy.png) */}
+
+## Variants
+
+The configurable property is **Icon-Form** — the shape of the background element behind the icon.
+
+### Icon-Form: diamond
+
+A rotated square (diamond) shape. 54×54px. The diamond is color-coded to communicate the category of the action.
+
+Use for actions that belong to a category identifiable by color — for example, incident types in a map report grid.
+
+### Icon-Form: circle
+
+A circular ellipse shape. 48×48px. Slightly smaller than the diamond form.
+
+Use for actions that do not require category color-coding or that belong to a more neutral, uncategorized context.
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Button Vertical variants](./variants.png) */}
+
+## States
+
+Button Vertical supports four states. There is no hover state — this component is designed for touch and mobile contexts.
+
+| State | Trigger |
+|---|---|
+| `active` | Resting state. The button is available and not interacted with. |
+| `pressed` | Button is actively tapped or clicked. |
+| `disable` | Action is unavailable. Non-interactive. |
+| `focus` | Button receives keyboard focus. |
+
+> Note: The resting state is named `active` in Figma (not `default`).
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button Vertical states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+- `Icon-Form: diamond`
+- `Icon-Form: circle`
+
+### Supported sizes
+
+Single size only. No size variants.
+
+| Property | Value |
+|---|---|
+| Container height | 96px |
+| Container width | ~120px (content-driven) |
+| Diamond icon-form | 54×54px |
+| Circle icon-form | 48×48px |
+| Icon (both forms) | 32×32px |
+
+### Supported states
+
+- `active` (resting)
+- `pressed`
+- `disable`
+- `focus`
+
+> There is no `hover` state. This component is touch/mobile-first.
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--surface/neutral/default` | `#f1f2f4` | Container background fill (active state) |
+| `--rounded-24` | `24px` | Container border-radius |
+| `--spacing-8` | `8px` | Container horizontal padding |
+| `--spacing-12` | `12px` | Container vertical padding |
+| `--spacing-2` | `2px` | Gap between icon-wrapper and label |
+| `--font-family/body` | `'Manrope', sans-serif` | Label font family |
+| `--weight/medium` | `500` | Label font weight |
+| `--size/lg` | `16px` | Label font size |
+| `--letter-spacing/normal` | `0px` | Label letter spacing |
+| `--text/primary` | `#1d1d23` | Label text color (active state) |
+
+> TODO: Extract token values for pressed, disable, and focus states. See Figma node IDs in `button-vertical.tokens.json`.
+
+> Note: The icon-form shape color is set by the icon asset, not a component token.
+
+## Usage guidelines
+
+- Use Button Vertical **only in action grids inside bottom sheets**. Do not use it as a standalone button in regular layouts.
+- Arrange instances in a **2-column grid** as the default layout. TODO: Confirm grid column count and item spacing.
+- Use the `diamond` form for actions that are color-coded by category (e.g., incident type, hazard level).
+- Use the `circle` form for neutral or uncategorized actions.
+- Use consistent icon-form types within the same grid. Avoid mixing diamond and circle forms in the same action sheet without a clear reason.
+- Keep labels concise. One word is preferred. Two short words are acceptable. Avoid labels that require three or more lines.
+- Do not use this component for primary navigation or persistent UI actions.
+
+## Accessibility
+
+- The component has a visible label. `aria-label` is not required unless the label alone is ambiguous in context.
+- The icon-form shape and icon should be `aria-hidden="true"` — the label carries the accessible name of the button.
+- The `focus` state is designed and present. Do not suppress the focus ring.
+- Implement `disabled` or `aria-disabled="true"` for disabled instances. Visual state alone is not sufficient.
+- TODO: Confirm keyboard interaction spec (Enter and Space activate the button; Tab moves focus).
+- TODO: Confirm whether arrow key grid navigation is expected within an action grid.
+
+## Do / Don't
+
+**Do:**
+- Use in action grids inside bottom sheets.
+- Arrange in a 2-column grid.
+- Use the diamond form for color-coded category actions.
+- Keep labels short — one word preferred, two if necessary.
+- Use consistent icon-form types within the same grid.
+
+**Don't:**
+- Don't use as a standalone button outside of a grid context.
+- Don't mix diamond and circle forms in the same action grid without a clear reason.
+- Don't write labels that require more than two lines.
+- Don't use this component for primary navigation or persistent UI controls.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button Vertical do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button Vertical component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5184-4242&t=EYB79TeCN87zLrnT-4)
+- Usage context: [Dojo Driver App — Home canvas](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=1-12&t=DvP9tEEMgY8sBTJ8-1)
+- Code: `./button-vertical.tsx`
+- Specs: `./button-vertical.specs.json`
+- Tokens: `./button-vertical.tokens.json`

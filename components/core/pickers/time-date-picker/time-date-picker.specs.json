@@ -1,0 +1,168 @@
+{
+  "component": "Time Date Picker",
+  "figmaFrameName": "Time_Date_Picker",
+  "figmaNodeId": "5121:1330",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "subComponents": [],
+  "subComponentsNote": "No dedicated sub-components. The picker is a self-contained composite of scroll columns.",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer surface. 375px wide, 212px tall. Background: --surface/neutral/default. No border, no border-radius.",
+      "required": true
+    },
+    {
+      "part": "selectionIndicator",
+      "description": "Horizontal stripe centered vertically, spanning the full width. 31px tall. Marks the active selection row. Rendered as an image asset in Figma.",
+      "required": true,
+      "accessibility": "aria-hidden=true (decorative)"
+    },
+    {
+      "part": "columnGroup",
+      "description": "Flex row containing all four columns. Centered horizontally and vertically. Gap between columns: 27px. Uses Manrope Regular.",
+      "required": true
+    },
+    {
+      "part": "dateColumn",
+      "description": "Rightmost-left column. Displays abbreviated date labels (e.g., 'Sat Feb 12', 'Today'). Right-aligned text. 7 visible items.",
+      "required": true
+    },
+    {
+      "part": "hourColumn",
+      "description": "Second column. Displays hours (1–12). Center-aligned text. 7 visible items.",
+      "required": true
+    },
+    {
+      "part": "minuteColumn",
+      "description": "Third column. Displays minutes (00–59). Center-aligned text. 7 visible items.",
+      "required": true
+    },
+    {
+      "part": "amPmColumn",
+      "description": "Fourth column. Displays AM and PM only. Center-aligned. Only 2 of 7 slots are populated; others are opacity-0. Controlled by amOrPm variant.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "AM selected",
+      "figmaValue": "AM or PM=Yes",
+      "figmaNodeId": "5121:1331",
+      "description": "AM is centered (selected). PM is visible one position below at 18px.",
+      "amPmLayout": {
+        "pos1": { "value": null, "opacity": 0 },
+        "pos2": { "value": null, "opacity": 0 },
+        "pos3": { "value": null, "opacity": 0 },
+        "pos4": { "value": "AM", "opacity": 1, "fontSize": 23, "color": "--text/primary", "selected": true },
+        "pos5": { "value": "PM", "opacity": 1, "fontSize": 18, "color": "--text/placeholder" },
+        "pos6": { "value": null, "opacity": 0 },
+        "pos7": { "value": null, "opacity": 0 }
+      }
+    },
+    {
+      "name": "PM selected",
+      "figmaValue": "AM or PM=AM or PM2",
+      "figmaNodeId": "5121:1697",
+      "description": "PM is centered (selected). AM is visible one position above at 18px.",
+      "amPmLayout": {
+        "pos1": { "value": null, "opacity": 0 },
+        "pos2": { "value": null, "opacity": 0 },
+        "pos3": { "value": "AM", "opacity": 1, "fontSize": 18, "color": "--text/placeholder" },
+        "pos4": { "value": "PM", "opacity": 1, "fontSize": 23, "color": "--text/primary", "selected": true },
+        "pos5": { "value": null, "opacity": 0 },
+        "pos6": { "value": null, "opacity": 0 },
+        "pos7": { "value": null, "opacity": 0 }
+      }
+    }
+  ],
+
+  "scrollDepthSystem": {
+    "description": "Each column shows 7 items. The selected item is always at position 4 (center). Size and opacity decrease progressively toward the edges.",
+    "positions": [
+      { "position": 1, "role": "furthest-above", "fontSize": 12, "opacity": 0.4, "color": "--text/placeholder" },
+      { "position": 2, "role": "near-above", "fontSize": 14, "opacity": 0.7, "color": "--text/placeholder" },
+      { "position": 3, "role": "close-above", "fontSize": 18, "opacity": 1.0, "color": "--text/placeholder" },
+      { "position": 4, "role": "selected", "fontSize": 23, "opacity": 1.0, "color": "--text/primary" },
+      { "position": 5, "role": "close-below", "fontSize": 18, "opacity": 1.0, "color": "--text/placeholder" },
+      { "position": 6, "role": "near-below", "fontSize": 14, "opacity": 0.7, "color": "--text/placeholder" },
+      { "position": 7, "role": "furthest-below", "fontSize": 12, "opacity": 0.4, "color": "--text/placeholder" }
+    ]
+  },
+
+  "dimensions": {
+    "container": {
+      "width": 375,
+      "height": 212
+    },
+    "selectionIndicator": {
+      "height": 31,
+      "width": "100%",
+      "verticalPosition": "centered"
+    },
+    "columnGroup": {
+      "gap": 27,
+      "alignment": "center"
+    },
+    "itemGap": 5
+  },
+
+  "columns": {
+    "date": {
+      "alignment": "right",
+      "format": "Abbreviated day + month + date number (e.g., 'Sat Feb 12'). 'Today' for the current date.",
+      "itemCount": 7
+    },
+    "hour": {
+      "alignment": "center",
+      "range": "1–12 (12-hour format)",
+      "itemCount": 7,
+      "note": "TODO: Confirm whether hours loop infinitely."
+    },
+    "minute": {
+      "alignment": "center",
+      "range": "00–59",
+      "itemCount": 7,
+      "note": "TODO: Confirm minute step increment (1-min vs 5-min vs 15-min steps)."
+    },
+    "amPm": {
+      "alignment": "center",
+      "values": ["AM", "PM"],
+      "itemCount": 2,
+      "totalSlots": 7,
+      "hiddenSlots": 5,
+      "note": "Only 2 of 7 slots are visible. All others use opacity-0."
+    }
+  },
+
+  "typography": {
+    "fontFamily": "Manrope",
+    "fontWeight": "400 (Regular)",
+    "sizes": {
+      "selected": "23px",
+      "closeNeighbor": "18px",
+      "farNeighbor": "14px",
+      "furthestNeighbor": "12px"
+    }
+  },
+
+  "usageContext": [
+    "Used in the Dojo Customer App on the 'Choose a time' screen.",
+    "Placed below a Segmented Control switching between 'Pickup at' and 'Drop-off by' modes.",
+    "A time summary text (selected time + estimated travel time) is displayed below the picker.",
+    "A primary 'Next' action button appears below the summary."
+  ],
+
+  "notes": [
+    "The selection indicator is an image asset in Figma — implementation should use a CSS equivalent (e.g., top/bottom borders or a background overlay).",
+    "The AM/PM column uses opacity-0 for all unused slots to maintain consistent column height.",
+    "Figma prop naming ('Yes' / 'AM or PM2') is non-semantic — replace with 'AM' / 'PM' in implementation.",
+    "TODO: Confirm scroll looping behavior for hour and minute columns.",
+    "TODO: Confirm minute step increment.",
+    "TODO: Confirm date range (how far past/future).",
+    "TODO: Confirm 24-hour clock variant (without AM/PM column).",
+    "TODO: Confirm whether leading zeros are used for minutes."
+  ]
+}

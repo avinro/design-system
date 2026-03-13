@@ -1,0 +1,223 @@
+{
+  "component": "TextInput",
+  "figmaNodeId": "5082:809",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "subComponents": [
+    {
+      "name": "input/field",
+      "figmaNodeId": "5082:663",
+      "description": "The interactive text field. Handles all interaction states independently. Can be used standalone."
+    },
+    {
+      "name": "input/label",
+      "figmaNodeId": "5082:730",
+      "description": "The label block. Includes label text, optional help icon, optional helper link, and optional description line. Can be used standalone."
+    },
+    {
+      "name": "input/feedback-text",
+      "figmaNodeId": "5082:753",
+      "description": "The feedback/validation text below the field. Three types: info, error, success. Can be used standalone."
+    }
+  ],
+  "variants": [
+    {
+      "name": "default",
+      "description": "No variant — variation is controlled through props."
+    }
+  ],
+  "sizes": [
+    {
+      "name": "default",
+      "fieldHeight": "44px",
+      "borderRadius": "12px",
+      "description": "Single confirmed size. Rectangular corners (not pill)."
+    }
+  ],
+  "wrapperStates": [
+    {
+      "name": "default",
+      "figmaPropValue": "default",
+      "borderToken": "--input/border-default",
+      "borderWidth": "1px",
+      "feedbackType": "info",
+      "description": "Neutral validation state."
+    },
+    {
+      "name": "error",
+      "figmaPropValue": "error",
+      "borderToken": "--input/border-error",
+      "borderWidth": "1.5px",
+      "feedbackType": "error",
+      "description": "Validation failed. Red border and red feedback text."
+    },
+    {
+      "name": "succeeded",
+      "figmaPropValue": "succeded",
+      "figmaPropNote": "Figma uses 'succeded' (one d). Documentation uses the correct spelling 'succeeded'.",
+      "borderToken": "--input/border-success",
+      "borderWidth": "1.5px",
+      "feedbackType": "success",
+      "description": "Validation passed. Green border and green feedback text."
+    }
+  ],
+  "fieldInteractionStates": [
+    {
+      "name": "Default",
+      "figmaPropValue": "Default",
+      "description": "Empty, not focused. Shows placeholder text.",
+      "background": "--input/bg-default",
+      "border": "--input/border-default",
+      "textColor": "--input/text-placeholder"
+    },
+    {
+      "name": "Focus",
+      "figmaPropValue": "focus",
+      "description": "Focused but no input yet. Darker border. Placeholder still visible.",
+      "background": "--input/bg-default",
+      "border": "--input/border-active",
+      "textColor": "--text/placeholder"
+    },
+    {
+      "name": "Typing",
+      "figmaPropValue": "typing",
+      "description": "User is actively typing. Dark border. Value text and cursor visible.",
+      "background": "--input/bg-default",
+      "border": "--input/border-active",
+      "textColor": "--input/text-input"
+    },
+    {
+      "name": "Filled",
+      "figmaPropValue": "filled",
+      "description": "Has a value, not focused. Default border. Value text visible.",
+      "background": "--input/bg-default",
+      "border": "--input/border-default",
+      "textColor": "--input/text-input"
+    },
+    {
+      "name": "Error",
+      "figmaPropValue": "error",
+      "description": "Validation error. Red border (1.5px).",
+      "background": "--input/bg-default",
+      "border": "--input/border-error",
+      "borderWidth": "1.5px"
+    },
+    {
+      "name": "Succeeded",
+      "figmaPropValue": "succeded",
+      "description": "Validation passed. Green border (1.5px).",
+      "background": "--input/bg-default",
+      "border": "--input/border-success",
+      "borderWidth": "1.5px"
+    },
+    {
+      "name": "Disabled",
+      "figmaPropValue": "disable",
+      "description": "Not interactive. Lighter background. Muted text.",
+      "background": "--input/bg-disabled",
+      "border": "--input/border-default",
+      "textColor": "--input/text-disabled"
+    }
+  ],
+  "anatomyParts": [
+    {
+      "name": "Label",
+      "subComponent": "input/label",
+      "optional": true,
+      "description": "Label block containing label text, help icon, helper link, and description."
+    },
+    {
+      "name": "LabelText",
+      "parent": "input/label",
+      "optional": false,
+      "description": "Field name. Manrope Medium 14px, --text/primary."
+    },
+    {
+      "name": "HelpIcon",
+      "parent": "input/label",
+      "optional": true,
+      "size": "20px",
+      "description": "Question mark icon. Shown when labelHelpShow is true."
+    },
+    {
+      "name": "HelperLink",
+      "parent": "input/label",
+      "optional": true,
+      "description": "Right-aligned text link in the label row."
+    },
+    {
+      "name": "Description",
+      "parent": "input/label",
+      "optional": true,
+      "description": "Sub-label description line. --text/placeholder color."
+    },
+    {
+      "name": "Field",
+      "subComponent": "input/field",
+      "optional": false,
+      "description": "The interactive input area. Height 44px, border-radius 12px."
+    },
+    {
+      "name": "LeftIcon",
+      "parent": "input/field",
+      "optional": true,
+      "size": "24px",
+      "description": "Contextual icon on the left side of the field."
+    },
+    {
+      "name": "TextContent",
+      "parent": "input/field",
+      "optional": false,
+      "description": "Shows placeholder, value, or value + cursor depending on state."
+    },
+    {
+      "name": "RightIcon",
+      "parent": "input/field",
+      "optional": true,
+      "size": "24px",
+      "description": "Contextual icon on the right side of the field."
+    },
+    {
+      "name": "InlineButton",
+      "parent": "input/field",
+      "optional": true,
+      "height": "32px",
+      "description": "Compact pill action button inside the field, right-aligned."
+    },
+    {
+      "name": "FeedbackText",
+      "subComponent": "input/feedback-text",
+      "optional": true,
+      "description": "Single-line message below the field. Color varies by type: info, error, success."
+    }
+  ],
+  "props": {
+    "TextInput": [
+      { "name": "type", "type": "'default' | 'error' | 'succeded'", "default": "default", "description": "Validation state. Controls border and feedback text style." },
+      { "name": "labelShow", "type": "boolean", "default": true, "description": "Show or hide the label block." },
+      { "name": "labelText", "type": "string", "default": "Label", "description": "Label text." },
+      { "name": "labelHelpShow", "type": "boolean", "default": false, "description": "Show help icon and helper link in the label." },
+      { "name": "labelDescription", "type": "boolean", "default": false, "description": "Show the description line in the label." },
+      { "name": "description", "type": "string", "default": "", "description": "Description text." },
+      { "name": "message", "type": "boolean", "default": true, "description": "Show or hide the feedback text." },
+      { "name": "feedbackText", "type": "string", "default": "", "description": "Feedback message content." },
+      { "name": "leftIcon", "type": "boolean", "default": false, "description": "Show left icon in the field." },
+      { "name": "leftIconElement", "type": "ReactNode", "default": null, "description": "Left icon element (24px)." },
+      { "name": "rightIcon", "type": "boolean", "default": false, "description": "Show right icon in the field." },
+      { "name": "rightIconElement", "type": "ReactNode", "default": null, "description": "Right icon element (24px)." },
+      { "name": "button", "type": "boolean", "default": false, "description": "Show inline action button inside the field." },
+      { "name": "buttonLabel", "type": "string", "default": "", "description": "Inline button label text." },
+      { "name": "onButtonPress", "type": "function", "default": null, "description": "Callback for inline button press." },
+      { "name": "placeholder", "type": "string", "default": "Enter your placeholder", "description": "Placeholder text." },
+      { "name": "value", "type": "string", "default": null, "description": "Current field value." },
+      { "name": "onChange", "type": "function", "default": null, "description": "Callback on value change." }
+    ]
+  },
+  "notes": [
+    "The 'succeded' prop value is spelled with one 'd' in Figma. Use 'succeeded' in all documentation.",
+    "The field uses border-radius 12px (rectangular), not the pill shape used by dropdown-input and select-boolean.",
+    "Token values differ between light and dark surfaces. See text-input.tokens.json.",
+    "The phone prefix pattern in the Driver App uses input/field standalone with a dropdown chevron — this is a product-level composition, not a variant of TextInput.",
+    "TODO: Confirm focus ring and keyboard interaction pattern.",
+    "TODO: Confirm whether a multiline/textarea variant exists."
+  ]
+}

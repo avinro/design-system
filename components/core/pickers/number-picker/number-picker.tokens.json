@@ -1,0 +1,104 @@
+{
+  "component": "Number Picker",
+  "figmaNodeId": "5132:396",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+  "extractedFrom": "Figma variable definitions via MCP",
+  "note": "Token set is identical to Time Date Picker and Month Year Picker. All three components share the same scroll depth visual language.",
+
+  "tokens": {
+    "surface": {
+      "surface/neutral/default": {
+        "value": "#f1f2f4",
+        "description": "Container background color (light theme, DS Core)."
+      }
+    },
+
+    "text": {
+      "text/primary": {
+        "value": "#1d1d23",
+        "description": "Color of the selected (centre) item in the column."
+      },
+      "text/placeholder": {
+        "value": "#636377",
+        "description": "Color of all non-selected items in the column."
+      }
+    },
+
+    "typography": {
+      "fontFamily": {
+        "value": "Manrope",
+        "token": "font-family/body",
+        "description": "Font family for all column text."
+      },
+      "fontWeight": {
+        "value": "400",
+        "token": "weight/regular",
+        "description": "Font weight for all column text. All items use Regular weight regardless of selection state."
+      }
+    },
+
+    "fontSize": {
+      "selected": {
+        "value": "23px",
+        "description": "Font size for the selected (centre) item at position 4."
+      },
+      "closeNeighbor": {
+        "value": "18px",
+        "description": "Font size for items one position above/below the selection (positions 3 and 5)."
+      },
+      "farNeighbor": {
+        "value": "14px",
+        "description": "Font size for items two positions above/below the selection (positions 2 and 6)."
+      },
+      "furthestNeighbor": {
+        "value": "12px",
+        "description": "Font size for items three positions above/below the selection (positions 1 and 7)."
+      }
+    },
+
+    "opacity": {
+      "furthestNeighbor": {
+        "value": "0.4",
+        "token": "opacity-40",
+        "description": "Opacity for items at positions 1 and 7."
+      },
+      "farNeighbor": {
+        "value": "0.7",
+        "description": "Opacity for items at positions 2 and 6."
+      },
+      "visibleNeighbor": {
+        "value": "1.0",
+        "description": "Opacity for items at positions 3, 4 (selected), and 5."
+      },
+      "boundaryMask": {
+        "value": "text-[transparent]",
+        "description": "Boundary masking for start-of-range slots in type=end and type=travelers (positions 1–3). Uses transparent text color rather than opacity-0 — values remain in DOM but are invisible."
+      }
+    },
+
+    "layout": {
+      "containerWidth": {
+        "value": "375px",
+        "description": "Total width of the picker."
+      },
+      "containerHeight": {
+        "value": "212px",
+        "description": "Total height of the picker."
+      },
+      "itemGap": {
+        "value": "5px",
+        "description": "Vertical gap between items within the column."
+      },
+      "selectionIndicatorHeight": {
+        "value": "31px",
+        "description": "Height of the selection highlight stripe."
+      }
+    }
+  },
+
+  "tokensTODO": [
+    "Confirm token for the selection indicator stripe.",
+    "Confirm whether text-[transparent] is a design token or a Tailwind utility class applied at the implementation level.",
+    "Confirm dark-theme text token values if the component is used on a dark popup surface."
+  ]
+}

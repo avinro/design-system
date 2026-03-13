@@ -1,0 +1,130 @@
+{
+  "component": "switch-toggle",
+  "tokens": {
+    "switch-track": {
+      "color-off": {
+        "token": "--selector/bg-enable",
+        "value": "#7a7b93",
+        "appliesTo": "default state, unchecked"
+      },
+      "color-on": {
+        "token": "--selector/bg-active",
+        "value": "#ff6b26",
+        "appliesTo": "default state, checked"
+      },
+      "color-disabled": {
+        "token": "--selector/bg-disabled",
+        "value": "#cccdda",
+        "appliesTo": "disabled state, any checked value"
+      },
+      "width": {
+        "token": null,
+        "value": "44px"
+      },
+      "height": {
+        "token": null,
+        "value": "22px"
+      },
+      "border-radius": {
+        "token": null,
+        "value": "125px"
+      }
+    },
+    "switch-dot": {
+      "color": {
+        "token": null,
+        "value": "#ffffff"
+      },
+      "size": {
+        "token": null,
+        "value": "~18px"
+      }
+    },
+    "label": {
+      "color-default": {
+        "token": "--text/primary",
+        "value": "#1d1d23"
+      },
+      "color-disabled": {
+        "token": "--text/placeholder",
+        "value": "#636377"
+      },
+      "font-family": {
+        "token": "--font-family/body",
+        "value": "Manrope"
+      },
+      "font-weight": {
+        "token": "--weight/semibold",
+        "value": "600"
+      },
+      "font-size": {
+        "token": "--size/base",
+        "value": "14px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      },
+      "letter-spacing": {
+        "token": "--letter-spacing/normal",
+        "value": "0px"
+      }
+    },
+    "description": {
+      "color": {
+        "token": "--text/placeholder",
+        "value": "#636377"
+      },
+      "font-family": {
+        "token": "--font-family/body",
+        "value": "Manrope"
+      },
+      "font-weight": {
+        "token": "--weight/regular",
+        "value": "400"
+      },
+      "font-size": {
+        "token": "--size/base",
+        "value": "14px"
+      },
+      "line-height": {
+        "token": null,
+        "value": "1.2"
+      }
+    },
+    "label-area": {
+      "padding-vertical": {
+        "token": "--numbers/2",
+        "value": "2px"
+      },
+      "gap-label-to-description": {
+        "token": "--numbers/4",
+        "value": "4px"
+      }
+    },
+    "icon": {
+      "size": {
+        "token": null,
+        "value": "24px"
+      }
+    },
+    "container-boxed": {
+      "border-color-default": {
+        "token": "--layout/border",
+        "value": "#e1e5ea"
+      },
+      "border-color-disabled": {
+        "token": "--text/placeholder",
+        "value": "#636377"
+      },
+      "border-radius": {
+        "token": null,
+        "value": "8px"
+      },
+      "padding": {
+        "token": null,
+        "value": "12px"
+      }
+    }
+  }
+}

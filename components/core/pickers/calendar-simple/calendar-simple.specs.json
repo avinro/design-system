@@ -1,0 +1,187 @@
+{
+  "component": "Calendar Simple",
+  "figmaFrameName": "Calendar - Simple",
+  "figmaNodeId": "2034:5802",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "subComponents": [
+    {
+      "name": "CalendarTitle",
+      "figmaNodeId": "2033:6132",
+      "description": "Navigation header with left chevron, month/year label, and right chevron."
+    },
+    {
+      "name": "DayItemSimpleCalendar",
+      "description": "Individual day cell. 40×40px. Appearance determined by state + type combination.",
+      "instances": {
+        "Available / No-plan": "2033:6105",
+        "Disable / No-plan": "2033:6108",
+        "Available / Planned": "5007:2739",
+        "Selected / No-plan": "5007:2766"
+      }
+    }
+  ],
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer card surface. 382px wide, border-radius 16px, elevation/light/02 shadow. Background: --surface/neutral/default.",
+      "required": true
+    },
+    {
+      "part": "CalendarTitle",
+      "description": "Header row: left chevron (24px) + month/year label (Manrope Bold 14px) + right chevron (24px). Full width, space-between.",
+      "required": true
+    },
+    {
+      "part": "weekdayHeader",
+      "description": "Row of 7 abbreviated day labels (SUM–SAT). 40px height per cell, equally distributed. Manrope Regular 11px, --text/placeholder.",
+      "required": true
+    },
+    {
+      "part": "dayGrid",
+      "description": "5–6 rows of 7 DayItemSimpleCalendar cells each, representing all days of the displayed month plus overflow days from adjacent months.",
+      "required": true
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Default",
+      "figmaNodeId": "2034:5799",
+      "description": "Standard view. No date selected. No today or planned indicator visible."
+    },
+    {
+      "name": "Today",
+      "figmaNodeId": "2034:5800",
+      "description": "A day has a planned indicator dot (type=Planned). Represents today or a day with a scheduled activity."
+    },
+    {
+      "name": "Active",
+      "figmaNodeId": "2034:5798",
+      "description": "A date is selected (dark circle background, inverted text). A planned indicator may also be visible on a different day."
+    }
+  ],
+
+  "dayItemStates": [
+    {
+      "state": "Available",
+      "type": "No-plan",
+      "description": "Standard selectable day. Plain date number.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "background": "none"
+    },
+    {
+      "state": "Disable",
+      "type": "No-plan",
+      "description": "Out-of-month day (previous or next month overflow). Not selectable.",
+      "textToken": "--day-item/text-disabled",
+      "textValue": "#636377",
+      "background": "none",
+      "borderRadius": "24px"
+    },
+    {
+      "state": "Available",
+      "type": "Planned",
+      "description": "Day with a planned event. Date number + 6×6px dot indicator below.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "indicator": "6×6px dot at ~29px from top, centered",
+      "indicatorColorToken": "TODO: Confirm token",
+      "borderRadius": "24px"
+    },
+    {
+      "state": "Selected",
+      "type": "No-plan",
+      "description": "Currently selected day. Dark 36×36px filled circle background, inverted date text.",
+      "textToken": "--day-item/text-selected",
+      "textValue": "#f1f2f4",
+      "background": "36×36px filled circle, centered",
+      "backgroundColorToken": "TODO: Confirm token"
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. Single visual style.",
+
+  "sizes": [],
+  "sizeNote": "Single size. Container: 382px wide. Day cell: 40×40px.",
+
+  "dimensions": {
+    "container": {
+      "width": 382,
+      "borderRadius": "16px",
+      "paddingHorizontal": "16px",
+      "paddingVertical": "24px",
+      "gap": "16px"
+    },
+    "calendarTitle": {
+      "chevronSize": 24
+    },
+    "weekdayCell": {
+      "height": 40,
+      "padding": "8px"
+    },
+    "dayCell": {
+      "size": 40,
+      "selectedCircleSize": 36,
+      "indicatorSize": 6,
+      "indicatorPositionFromTop": 29
+    }
+  },
+
+  "typography": {
+    "monthYear": {
+      "textStyle": "Body sm/140/Bold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/bold, 700)",
+      "fontSize": "var(--size/base, 14px)",
+      "lineHeight": 1.4,
+      "color": "var(--text/body, #34353f)"
+    },
+    "weekdayLabel": {
+      "textStyle": "Body 2xs/Regular",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/regular, 400)",
+      "fontSize": "var(--size/2xs, 11px)",
+      "lineHeight": 1.2,
+      "color": "var(--text/placeholder, #636377)"
+    },
+    "dayNumber": {
+      "textStyle": "Body md/SemiBold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/semibold, 600)",
+      "fontSize": "var(--size/lg, 16px)",
+      "lineHeight": 1.4,
+      "colors": {
+        "available": "var(--day-item/text-default, #1d1d23)",
+        "disabled": "var(--day-item/text-disabled, #636377)",
+        "selected": "var(--day-item/text-selected, #f1f2f4)"
+      }
+    }
+  },
+
+  "weekdayOrder": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+  "weekdayOrderNote": "Confirmed from Figma. Week starts on Sunday.",
+
+  "usageContext": [
+    "Single-date selection in a monthly calendar view.",
+    "Displaying planned activity indicators on specific days.",
+    "Used in scheduling, trip planning, and date-picker contexts."
+  ],
+
+  "notes": [
+    "Composite component: CalendarSimple wraps CalendarTitle + weekday header row + DayItemSimpleCalendar grid.",
+    "Week starts on Sunday — confirmed from Figma.",
+    "Out-of-month overflow days use state=Disable to fill the 7-column grid.",
+    "The indicator dot (Planned days) and selected background circle are image assets in Figma — exact color tokens not confirmed.",
+    "The 'today' prop on DayItemSimpleCalendar has only 'off' confirmed. 'on' value presumably marks today's date.",
+    "TODO: Confirm indicator dot color token.",
+    "TODO: Confirm selected background circle color token.",
+    "TODO: Confirm today='on' appearance.",
+    "TODO: Confirm whether Planned + Selected states can coexist on the same day.",
+    "TODO: Confirm range selection support.",
+    "TODO: Confirm keyboard navigation pattern."
+  ]
+}

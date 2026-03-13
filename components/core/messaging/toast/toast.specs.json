@@ -1,0 +1,158 @@
+{
+  "component": "Toast",
+  "figmaNodeId": "5247:192",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Rounded card with drop shadow. Fixed 374×80px. Carries background fill, border-radius, and layout.",
+      "required": true
+    },
+    {
+      "part": "contextIcon",
+      "description": "24×24px utility icon inside a 40×40px pill-shaped container. Icon and container color communicate semantic type.",
+      "required": true
+    },
+    {
+      "part": "content",
+      "description": "Vertical stack of title and optional description. Flex-grows to fill available width.",
+      "required": true
+    },
+    {
+      "part": "title",
+      "description": "Short summary of what happened. 18px Manrope SemiBold. Single line, truncates on overflow.",
+      "required": true
+    },
+    {
+      "part": "description",
+      "description": "Supporting detail. 14px Manrope Medium. Up to 2 lines. Optional.",
+      "required": false
+    },
+    {
+      "part": "closeButton",
+      "description": "32×32px icon button (× icon). Dismisses the Toast manually. Recommended when toasts may stack.",
+      "required": false
+    },
+    {
+      "part": "counter",
+      "description": "Thin progress bar at the bottom edge of the card. Reflects the auto-dismiss timer.",
+      "required": true,
+      "figmaNodeId": "5247:508"
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "info",
+      "figmaNodeId": "5247:369",
+      "description": "Neutral informational update. No action required.",
+      "icon": "Customer-Icon/info",
+      "iconColor": "TODO: Extract from Figma",
+      "iconContainerColor": "var(--button/secondary/bg-default, rgba(29,29,35,0.05))"
+    },
+    {
+      "name": "error",
+      "figmaNodeId": "5247:380",
+      "description": "Lightweight recoverable error feedback. Not for blocking errors.",
+      "icon": "TODO: Confirm icon name",
+      "iconColor": "TODO: Extract from Figma",
+      "iconContainerColor": "TODO: Extract from Figma"
+    },
+    {
+      "name": "warning",
+      "figmaNodeId": "5247:391",
+      "description": "Non-blocking awareness message.",
+      "icon": "TODO: Confirm icon name",
+      "iconColor": "TODO: Extract from Figma",
+      "iconContainerColor": "TODO: Extract from Figma"
+    },
+    {
+      "name": "success",
+      "figmaNodeId": "5247:402",
+      "description": "Completion confirmation after a completed action.",
+      "icon": "TODO: Confirm icon name",
+      "iconColor": "TODO: Extract from Figma",
+      "iconContainerColor": "TODO: Extract from Figma"
+    },
+    {
+      "name": "trip",
+      "figmaNodeId": "5247:358",
+      "description": "Product-specific type for background trip-related events. Driver App context only.",
+      "icon": "TODO: Confirm icon name",
+      "iconColor": "TODO: Extract from Figma",
+      "iconContainerColor": "TODO: Extract from Figma"
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "default",
+      "width": 374,
+      "height": 80,
+      "note": "Single fixed size across all types."
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Visible",
+      "description": "Toast is mounted and displayed. Auto-dismiss timer running."
+    },
+    {
+      "name": "Dismissed",
+      "description": "Toast is unmounted or hidden. Triggered by auto-dismiss timeout or manual close."
+    }
+  ],
+
+  "behavior": {
+    "autoDismiss": true,
+    "autoDismissDurationMs": "TODO: Confirm",
+    "manualDismiss": true,
+    "stealsFocus": false,
+    "maxSimultaneous": "2–3 recommended",
+    "stackingBehavior": "Stack with controlled spacing. Avoid flooding."
+  },
+
+  "placement": {
+    "default": "Top of screen",
+    "confirmedInProduct": "Driver App — top of screen at 61px from top edge",
+    "note": "Must not cover primary actions or navigation controls when possible."
+  },
+
+  "subComponents": [
+    {
+      "name": "Button/only icon",
+      "role": "Close button",
+      "path": "components/core/actions/button-icon/index"
+    }
+  ],
+
+  "relatedComponents": [
+    {
+      "name": "Alert Dialog",
+      "path": "components/core/messaging/alert-dialog/index",
+      "when": "High-risk, irreversible, or blocking interruptions requiring a decision."
+    },
+    {
+      "name": "Standard Dialog",
+      "path": "components/core/messaging/standard-dialog/index",
+      "when": "Forms, multi-input tasks, and reversible flows."
+    },
+    {
+      "name": "Snackbar",
+      "path": "TODO",
+      "when": "Lightweight recoverable issues with quick actions (Undo / Retry)."
+    }
+  ],
+
+  "notes": [
+    "Confirmed real-world usage: type=info — 'Passkey name changed' — Driver App, Account > Personal Information screen, node 2581:7098.",
+    "The 'trip' type is product-specific to the Dojo Driver context. Not a generic semantic type.",
+    "The Counter sub-component (5247:508) is always present. It represents the auto-dismiss timer.",
+    "Token values confirmed from get_design_context on node 5247:369 (type=info). Other type icon/color values are TODO.",
+    "TODO: Confirm auto-dismiss duration.",
+    "TODO: Extract icon and icon container color tokens for error, warning, success, and trip types.",
+    "TODO: Confirm whether Counter is always visible or only when auto-dismiss is active."
+  ]
+}

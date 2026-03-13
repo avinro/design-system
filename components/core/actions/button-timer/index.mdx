@@ -1,0 +1,149 @@
+---
+title: "Button Timer"
+description: "A countdown-timer button that visualizes remaining time through a progressive fill overlay growing left to right across the button surface."
+---
+
+# Button Timer
+
+## Overview
+
+Button Timer is a pill-shaped dark button that communicates urgency through a countdown visualization. A dark fill overlay grows from left to right over the button surface as time expires, progressively darkening it to signal that the available window is closing.
+
+In the Dojo Driver App, it is used in the **"Finding a trip → New trip flow"** — shown when a new trip is offered to the driver -, and **"Adding Accident report to the map"** — shown when adding a map report - with a countdown to accept. As the countdown progresses, the button darkens, reinforcing the need to act quickly.
+
+## Anatomy
+
+The Button Timer is composed of three parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Dark pill-shaped button (303×56px, border-radius 120px). Background: `--button/default/bg-default` (`#1d1d23`). |
+| **Fill overlay** | Yes | Absolutely positioned dark layer that grows from left to right. Uses `mix-blend-multiply` to progressively darken the button as the countdown progresses. |
+| **Label** | Yes | Text centered over the button. Uses `mix-blend-difference` to remain readable over both unfilled and filled areas at all animation positions. |
+
+- All three parts are required. The fill overlay is integral to the countdown visualization — do not omit it.
+- Do not replace the fill overlay with a border, progress bar, or ring indicator. The full-surface fill is the confirmed visual mechanic.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Button Timer anatomy](./anatomy.png) */}
+
+## Variants
+
+Button Timer has no structural variants. Single visual style.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Button Timer variants](./variants.png) */}
+
+## States
+
+Three visual states are defined in Figma, representing snapshots of the countdown fill animation.
+
+| State | Fill overlay width | Description |
+|---|---|---|
+| `full` | 0px | Timer just started. No fill overlay visible. Full time remaining. |
+| `middle` | ~147px (~48.5%) | Timer approximately halfway. Left half of button is darkened. |
+| `state3` | 303px (full width) | Timer nearly expired. Entire button is darkened. |
+
+> Note: These states are animation snapshots, not discrete interactive states. The actual fill grows continuously from `full` to `state3`. No hover, pressed, disabled, or focus states are defined in Figma.
+
+- TODO: Confirm animation spec: duration, easing, and frame rate for the fill overlay transition.
+- TODO: Confirm what happens when the timer expires without user action (auto-dismiss, disable, or hold).
+- TODO: Confirm whether the button remains tappable at all fill levels, including fully darkened.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Button Timer states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Single structure — no type variants.
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Value |
+|---|---|
+| Width | 303px |
+| Height | 56px |
+| Border radius | 120px (full pill) |
+
+### Supported states
+
+- `full` (0% fill)
+- `middle` (~48.5% fill)
+- `state3` (100% fill)
+
+### Token reference
+
+| Token | Confirmed value | Description |
+|---|---|---|
+| `--button/default/bg-default` | `#1d1d23` | Container background |
+| `--text/invert` | `#f1f2f4` | Label text color (with `mix-blend-difference`) |
+| `--font-family/headings` | `'Google Sans Flex', sans-serif` | Label font family |
+| `--size/lg` | `16px` | Label font size |
+
+> Note: The fill overlay uses `mix-blend-multiply`. The label uses `mix-blend-difference`. Both blend modes are confirmed and load-bearing — preserve in all implementations.
+
+> Note: The label uses `--font-family/headings` (Google Sans Flex) at **Regular** weight (400), not SemiBold. This differs from Button Slider.
+
+> TODO: Confirm the design token for the fill overlay background color.
+
+> TODO: Confirm token values for disabled and focus states.
+
+## Usage guidelines
+
+- Use Button Timer **only for timed action prompts** where the user must act within a limited countdown window. The fill animation must correspond to real elapsed time.
+- Use a **single Button Timer per screen**. It represents the primary timed action of that context.
+- Do not use Button Timer for untimed confirmations — use Button or Button Slider instead.
+- Write a short, clear label that names the action: "Accept", "Confirm", "Start". Avoid vague labels.
+- The component has a fixed width of 303px. Do not stretch it to fill the screen width.
+- Drive the fill overlay width in real-time from the countdown timer — do not animate it independently.
+
+## Interaction
+
+The Button Timer is a timed prompt component, not a repeating interactive control.
+
+- The fill overlay grows continuously from 0px to 303px as the countdown progresses.
+- The user taps the button to accept the action before the timer expires.
+- TODO: Confirm the total countdown duration and how it maps to fill overlay width.
+- TODO: Confirm what happens when the timer reaches `state3` without user action.
+- TODO: Confirm whether the button accepts taps when fully darkened.
+- TODO: Confirm animation easing and frame rate for the fill transition.
+
+## Accessibility
+
+- The label is the accessible name of the component ("Accept" in the Driver App). Ensure it clearly describes the action.
+- `mix-blend-difference` on the label is visual only — screen readers receive the text directly.
+- The countdown state is not communicated through ARIA in the current Figma spec. See TODOs.
+- TODO: Confirm whether a live region or `aria-valuenow` should communicate countdown progress to screen readers.
+- TODO: Confirm whether `role="button"` or `role="timer"` is more appropriate.
+- TODO: Confirm keyboard activation — Enter or Space as equivalent to tap.
+- TODO: Confirm focus ring treatment.
+
+## Do / Don't
+
+**Do:**
+- Use for a single, timed acceptance prompt per screen.
+- Write a short, action-specific label ("Accept", "Confirm").
+- Drive the fill overlay width from a real countdown timer.
+- Preserve `mix-blend-multiply` on the fill overlay and `mix-blend-difference` on the label in all implementations.
+
+**Don't:**
+- Don't use without an actual countdown — the fill must correspond to real elapsed time.
+- Don't place more than one Button Timer on a screen.
+- Don't reverse the fill direction (left to right is the confirmed direction).
+- Don't replace the fill overlay with a separate progress bar or ring indicator.
+- Don't use for actions without a time limit.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Button Timer do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Button Timer component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5223-3789)
+- Usage context: [Dojo Driver App — New Ride flow](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-8976)
+- Code: `./button-timer.tsx`
+- Specs: `./button-timer.specs.json`
+- Tokens: `./button-timer.tokens.json`

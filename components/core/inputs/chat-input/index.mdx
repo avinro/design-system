@@ -1,0 +1,145 @@
+---
+title: "Chat Input"
+description: "A single-line text input for chat and messaging screens, with a contextual send button."
+---
+
+# Chat Input
+
+## Overview
+
+The Chat Input is a single-line text entry field used in chat and messaging screens. It is composed of a pill-shaped input field and a circular send button. The send button is visually passive when the field is empty and changes to a filled, prominent style once the user begins typing — providing a clear affordance for sending.
+
+It is used in both the Customer App and Driver App for in-ride messaging between riders and drivers.
+
+## Anatomy
+
+The Chat Input has three parts:
+
+- **Wrapper** — the outer container. Carries the surface background color and the layout spacing between the input pill and the send button.
+- **Input pill** — the pill-shaped text field. Displays placeholder text when empty and typed text when active. The border color changes between states.
+- **Send button** — a circular button with the `Customer-Icon/up-top` icon. Changes appearance based on whether the user has typed text. Uses the Button/only icon pattern from `components/core/actions/button-icon`.
+
+{/* TODO: Add anatomy.png */}
+
+## Variants
+
+The Chat Input has no named variants. Appearance is driven entirely by state.
+
+{/* TODO: Add variants.png */}
+
+## States
+
+| State | Description |
+|---|---|
+| Default | Input is empty. Placeholder text is visible. Input pill has a light border (`#cccdda`). Send button is styled as a secondary/ghost button. |
+| Typing | User has entered text. Text and a cursor are visible. Input pill border turns dark (`#1d1d23`). Send button fills with a dark background (`#1d1d23`). |
+
+TODO: Confirm whether a disabled or read-only state exists.
+TODO: Confirm whether an error state exists (e.g. message failed to send).
+
+{/* TODO: Add states.png */}
+
+## Tokens & specs
+
+### Supported variants
+
+None — appearance is state-driven.
+
+### Supported sizes
+
+One size. Wrapper height is 68px; input pill height is 44px; send button is 44×44px.
+
+### Supported states
+
+- Default
+- Typing
+
+### Token reference
+
+#### Wrapper
+
+| Token | Value | Description |
+|---|---|---|
+| `--surface/neutral/sunken` | `white` | Wrapper background. Note: Driver App uses `--surface/neutral/bg-sunken` — same value, different token name. Alignment needed. |
+| padding-top | `8px` | Wrapper top padding |
+| padding-bottom | `16px` | Wrapper bottom padding |
+| padding-left / padding-right | `16px` | Wrapper horizontal padding |
+| gap | `8px` | Gap between input pill and send button |
+
+#### Input pill
+
+| Token | Value | Description |
+|---|---|---|
+| `--chat-input/bg-default` | `rgba(29, 29, 35, 0.05)` | Input pill background (both states) |
+| `--chat-input/border-default` | `#cccdda` | Border color in Default state |
+| `--chat-input/border-active` | `#1d1d23` | Border color in Typing state |
+| `--rounded-full` | `120px` | Input pill border-radius |
+| border-width | `1px` | Input pill border width |
+| height | `44px` | Input pill height |
+| padding-left / padding-right | `16px` | Input pill horizontal padding |
+| padding-top / padding-bottom | `4px` | Input pill vertical padding |
+
+#### Text
+
+| Token | Value | Description |
+|---|---|---|
+| `--chat-input/text-placeholder` | `#636377` | Placeholder text color |
+| `--chat-input/text-input` | `#1d1d23` | Typed text color |
+| font-family | `'Manrope', sans-serif` | Font family |
+| font-weight | `500` (Medium) | Font weight |
+| font-size | `14px` | Font size |
+
+#### Send button
+
+| State | Token | Value | Description |
+|---|---|---|---|
+| Default | `--button/secondary/bg-default` | `rgba(29, 29, 35, 0.05)` | Send button background |
+| Default | `--button/secondary/border-active` | `rgba(29, 29, 35, 0)` | Send button border (transparent) |
+| Typing | `--button/default/bg-default` | `#1d1d23` | Send button background |
+| Typing | `--button/default/border-active` | `rgba(29, 29, 35, 0.12)` | Send button border |
+| Both | size | `44×44px` | Send button dimensions |
+| Both | border-radius | `120px` | Send button shape |
+| Both | icon | `Customer-Icon/up-top` | Icon, 20×20px |
+
+## Usage guidelines
+
+**Use in chat screens only.** The Chat Input is designed for real-time messaging between two parties. Do not use it for search, form inputs, or multi-line content.
+
+**Personalise the placeholder.** When the recipient is known, use "Message [Name]..." as the placeholder to make the context clear. Avoid generic placeholder text.
+
+**Do not modify the wrapper padding.** The bottom padding (16px) is intentionally larger than the top — this accounts for device safe areas and thumb reach zones on mobile. Do not reduce it.
+
+**The send button is always visible.** It is not hidden or removed when the input is empty. In the Default state it uses a passive ghost style; in the Typing state it becomes a primary dark button. This pattern communicates sendability without hiding the affordance.
+
+**Single-line input.** The Chat Input is not a multi-line component. For notes or longer text, use Text Area.
+
+## Accessibility
+
+- TODO: Confirm ARIA role — likely a native `<input type="text">` element.
+- TODO: Confirm ARIA label for the send button — the label should describe the action (e.g. "Send message"), not just "button" or "up arrow".
+- TODO: Confirm keyboard send trigger — whether pressing Enter in the input field also triggers send (especially relevant for web/desktop).
+- TODO: Confirm screen reader announcement when a message is sent successfully or fails.
+- Placeholder text color (`#636377`) must meet minimum contrast requirements against the input background (`rgba(29,29,35,0.05)`). Verify in both light and dark surface contexts.
+
+## Do / Don't
+
+**Do**
+- Use in one-to-one chat screens where a user sends messages to a specific recipient.
+- Show the recipient's name in the placeholder text when it is known.
+- Keep the full wrapper padding, including the 16px bottom value.
+
+**Don't**
+- Don't use for search inputs — use a dedicated search component.
+- Don't use for multi-line text — use Text Area.
+- Don't remove or resize the send button.
+- Don't change the border-radius of the input pill or the send button.
+
+{/* TODO: Add do-dont.png */}
+
+## Resources
+
+- Figma (DS Core): [Chat Input](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7295-66)
+- Figma (Customer App usage): [Chat screen — Chat Input instance](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=651-3870)
+- Figma (Driver App usage): [Chat screen — Chat Input instance](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=3100-11790)
+- Specs: `./chat-input.specs.json`
+- Tokens: `./chat-input.tokens.json`

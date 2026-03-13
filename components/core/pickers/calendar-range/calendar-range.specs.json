@@ -1,0 +1,247 @@
+{
+  "component": "Calendar Range",
+  "figmaFrameName": "Calendar - Range",
+  "figmaNodeId": "5007:2834",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "subComponents": [
+    {
+      "name": "CalendarTitle",
+      "figmaNodeId": "2033:6132",
+      "description": "Navigation header with left chevron, month/year label, and right chevron. Shared with Calendar Simple.",
+      "shared": true
+    },
+    {
+      "name": "DayItemRangeCalendar",
+      "figmaNodeId": "5009:1403",
+      "description": "Range-capable day cell. Width is flexible (flex: 1 0 0) — fills row equally. Height 40px. Supports 5 selection states, today indicator, and Planned type.",
+      "shared": false,
+      "note": "Named 'DayItemRagneCalendar' in Figma (typo). Documented here as DayItemRangeCalendar.",
+      "instances": {
+        "Available / No-plan / today=false": "5009:1403",
+        "Disable / No-plan / today=false": "5009:1406",
+        "Available / Planned / today=false": "5009:1413",
+        "Available / No-plan / today=true": "5009:1435",
+        "Selected - Start / No-plan / today=false": "5007:2823",
+        "Selected - Middle / No-plan / today=false": "5007:2831",
+        "Selected - End / No-plan / today=false": "5007:2827"
+      }
+    },
+  ],
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Outer card surface. 374px wide, border-radius 16px, elevation/light/02 shadow. Background: --surface/neutral/default (#f1f2f4).",
+      "required": true
+    },
+    {
+      "part": "CalendarTitle",
+      "description": "Header row: left chevron (24px) + month/year label (Manrope Bold 14px --text/body) + right chevron (24px). Full width, space-between.",
+      "required": true
+    },
+    {
+      "part": "weekdayHeader",
+      "description": "Row of 7 abbreviated labels (SUN–SAT). 40px height per cell, equally distributed. Manrope Regular 11px --text/placeholder.",
+      "required": true
+    },
+    {
+      "part": "dayGrid",
+      "description": "5–6 rows of 7 DayItemRangeCalendar cells representing the displayed month plus overflow days.",
+      "required": true
+    }
+  ],
+
+  "states": [
+    {
+      "name": "Default",
+      "figmaNodeId": "5007:2835",
+      "description": "Standard view. No selection, no today indicator, no planned indicators. Uses DayItemRangeCalendar cells."
+    },
+    {
+      "name": "Today",
+      "figmaNodeId": "5007:2880",
+      "description": "The current date is marked with a today indicator (circle ring outline). Planned activity indicators may appear on certain days. Uses DayItemRangeCalendar cells."
+    },
+    {
+      "name": "Range",
+      "figmaNodeId": "5007:2970",
+      "description": "A date range is selected. Start and end dates have a dark 36px circle; all days between them have a semi-transparent band (--day-item/bg-selected-middle). The today indicator may also appear simultaneously. Uses DayItemRangeCalendar cells."
+    }
+  ],
+
+  "dayItemStates": [
+    {
+      "state": "Available",
+      "type": "No-plan",
+      "today": false,
+      "description": "Standard selectable day. Plain date number.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "background": "none"
+    },
+    {
+      "state": "Disable",
+      "type": "No-plan",
+      "today": false,
+      "description": "Out-of-month day. Not selectable.",
+      "textToken": "--day-item/text-disabled",
+      "textValue": "#636377",
+      "background": "none"
+    },
+    {
+      "state": "Available",
+      "type": "Planned",
+      "today": false,
+      "description": "Day with a planned event. Date number + 6×6px dot indicator below.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "indicator": "6×6px dot, centered, below date number",
+      "indicatorColorToken": "TODO: Confirm token"
+    },
+    {
+      "state": "Available",
+      "type": "No-plan",
+      "today": true,
+      "description": "Current date. Circle ring outline (36×36px) centered in cell.",
+      "textToken": "--day-item/text-default",
+      "textValue": "#1d1d23",
+      "todayIndicator": "36×36px circle ring outline (image asset in Figma)",
+      "todayColorToken": "TODO: Confirm token"
+    },
+    {
+      "state": "Selected - Start",
+      "type": "No-plan",
+      "today": false,
+      "description": "Range start date. Dark 36px filled circle + right half-band from center to right edge.",
+      "textToken": "--day-item/text-selected",
+      "textValue": "#f1f2f4",
+      "circleSize": "36×36px filled",
+      "circleColorToken": "TODO: Confirm token",
+      "band": "right half: from center to right edge, 36px height",
+      "bandToken": "--day-item/bg-selected-middle",
+      "bandValue": "rgba(29, 29, 35, 0.12)"
+    },
+    {
+      "state": "Selected - Middle",
+      "type": "No-plan",
+      "today": false,
+      "description": "Days between start and end. Full-width semi-transparent band only — no circle. Text is dark (NOT inverted).",
+      "textToken": "--day-item/text-selected-middle",
+      "textValue": "#1d1d23",
+      "band": "full width, 36px height",
+      "bandToken": "--day-item/bg-selected-middle",
+      "bandValue": "rgba(29, 29, 35, 0.12)",
+      "note": "Text is NOT inverted — uses dark --day-item/text-selected-middle, not light --day-item/text-selected."
+    },
+    {
+      "state": "Selected - End",
+      "type": "No-plan",
+      "today": false,
+      "description": "Range end date. Dark 36px filled circle + left half-band from left edge to center.",
+      "textToken": "--day-item/text-selected",
+      "textValue": "#f1f2f4",
+      "circleSize": "36×36px filled",
+      "circleColorToken": "TODO: Confirm token",
+      "band": "left half: from left edge to center, 36px height",
+      "bandToken": "--day-item/bg-selected-middle",
+      "bandValue": "rgba(29, 29, 35, 0.12)"
+    }
+  ],
+
+  "rangeBand": {
+    "token": "--day-item/bg-selected-middle",
+    "value": "rgba(29, 29, 35, 0.12)",
+    "height": 36,
+    "description": "The semi-transparent band that visually connects the start and end dates across cells and row breaks.",
+    "startCell": "half-band from center to right edge + dark circle on top",
+    "middleCell": "full-width band, no circle",
+    "endCell": "half-band from left edge to center + dark circle on top"
+  },
+
+  "variants": [],
+  "variantNote": "No structural variants. Single visual style.",
+
+  "sizes": [],
+  "sizeNote": "Single size. Container: 374px wide. Day cells: flex width (flex: 1 0 0), 40px height.",
+
+  "dimensions": {
+    "container": {
+      "width": 374,
+      "borderRadius": "16px",
+      "paddingHorizontal": "16px",
+      "paddingVertical": "24px",
+      "gap": "16px"
+    },
+    "calendarTitle": {
+      "chevronSize": 24
+    },
+    "weekdayCell": {
+      "height": 40,
+      "padding": "8px"
+    },
+    "dayCell": {
+      "width": "flex: 1 0 0",
+      "height": 40,
+      "selectedCircleSize": 36,
+      "bandHeight": 36,
+      "plannedDotSize": 6
+    }
+  },
+
+  "typography": {
+    "monthYear": {
+      "textStyle": "Body sm/140/Bold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/bold, 700)",
+      "fontSize": "var(--size/base, 14px)",
+      "lineHeight": 1.4,
+      "color": "var(--text/body, #34353f)"
+    },
+    "weekdayLabel": {
+      "textStyle": "Body 2xs/Regular",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/regular, 400)",
+      "fontSize": "var(--size/2xs, 11px)",
+      "lineHeight": 1.2,
+      "color": "var(--text/placeholder, #636377)"
+    },
+    "dayNumber": {
+      "textStyle": "Body md/SemiBold",
+      "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+      "fontWeight": "var(--weight/semibold, 600)",
+      "fontSize": "var(--size/lg, 16px)",
+      "lineHeight": 1.4,
+      "colors": {
+        "available": "var(--day-item/text-default, #1d1d23)",
+        "disabled": "var(--day-item/text-disabled, #636377)",
+        "selectedStartEnd": "var(--day-item/text-selected, #f1f2f4)",
+        "selectedMiddle": "var(--day-item/text-selected-middle, #1d1d23)"
+      }
+    }
+  },
+
+  "weekdayOrder": ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+  "weekdayOrderNote": "Week starts on Sunday — confirmed from Figma.",
+
+  "usageContext": [
+    "Date range selection in monthly calendar views.",
+    "Confirmed use in Dojo Customer App for date range filtering (node 316:1281)."
+  ],
+
+  "notes": [
+    "Composite component: CalendarRange wraps CalendarTitle + weekday header + DayItemRangeCalendar grid.",
+    "All three states (Default, Today, Range) use DayItemRangeCalendar for every day cell.",
+    "Day cells use flex: 1 0 0 width — not a fixed 40px square.",
+    "Width is 374px — 8px narrower than Calendar Simple (382px). They are not interchangeable at fixed widths.",
+    "Middle-of-range text is NOT inverted: uses --day-item/text-selected-middle (#1d1d23).",
+    "Start/End text IS inverted: uses --day-item/text-selected (#f1f2f4).",
+    "Figma names the sub-component 'DayItemRagneCalendar' (typo). All documentation uses 'DayItemRangeCalendar'.",
+    "TODO: Confirm today circle ring color token.",
+    "TODO: Confirm Selected circle background color token.",
+    "TODO: Confirm Planned indicator dot color token.",
+    "TODO: Confirm interaction behavior when only one date has been tapped.",
+    "TODO: Confirm behavior when user taps a second date earlier than the first.",
+    "TODO: Confirm maximum selectable range length."
+  ]
+}

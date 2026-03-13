@@ -1,0 +1,146 @@
+---
+title: "Badge"
+description: "A small pill-shaped label used to communicate status, category, or contextual metadata at a glance. Available in six semantic color types."
+---
+
+# Badge
+
+## Overview
+
+Badge is a small pill-shaped label used to communicate status, category, or contextual metadata at a glance. It displays a short text string in one of six color types, each carrying a distinct semantic meaning. Badge is a display-only component with no interactive states.
+
+It is used in the Dojo Apps to label statuses, categories, and contextual properties on list items, cards, and detail views.
+
+## Anatomy
+
+Badge is composed of two parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Pill-shaped surface (border-radius: 9999px). Background and border determined by type. Padding: 8px horizontal, 4px vertical. |
+| **Label** | Yes | Short text string. Manrope SemiBold, 12px, `whitespace-nowrap`. Color determined by type. |
+
+- The label is always required. Do not render a Badge without visible text.
+- The label must not wrap — keep it short (1–3 words).
+- No icon slot is defined in Figma.
+
+{/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
+{/* ![Badge anatomy](./anatomy.png) */}
+
+## Variants
+
+Badge has six types. Each communicates a distinct semantic meaning through color. All types share the same shape, size, and typography.
+
+| Type | Color | Semantics |
+|---|---|---|
+| `default` | Neutral gray | Generic label, category, or metadata. No status meaning. |
+| `outlined` | No fill, bordered | De-emphasized or inactive label. |
+| `error` | Red | Error, critical status, failed state, blocked action. |
+| `info` | Blue | Informational status, pending state, neutral system metadata. |
+| `Success` | Green | Completed, confirmed, active, or approved state. |
+| `Warning` | Yellow | Cautionary state, attention required, expiring or degraded. |
+
+> Choose the type based on the **semantic meaning** of the status — not its visual appearance. Do not use `error` for warnings, or `warning` for errors.
+
+{/* TODO: Add variants.png from Figma if an overview frame is created. */}
+{/* ![Badge variants](./variants.png) */}
+
+## States
+
+Badge has no interactive states. It is a display-only component.
+
+> TODO: Confirm whether a dismissible variant (with a close icon) is planned.
+> TODO: Confirm whether Badge is ever used as an interactive filter or tag.
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Badge states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Six types: `default`, `outlined`, `error`, `info`, `Success`, `Warning`.
+
+### Supported sizes
+
+Single size only — no size variants.
+
+| Property | Token | Value |
+|---|---|---|
+| Padding horizontal | `--spacing-8` | 8px |
+| Padding vertical | `--spacing-4` | 4px |
+| Border radius | — | 9999px (full pill) |
+
+### Supported states
+
+No interactive states confirmed. Display-only.
+
+### Token reference
+
+**Container tokens by type:**
+
+| Type | Background token | Background value | Text token | Text value |
+|---|---|---|---|---|
+| `default` | `--badge/default/bg` | `#e4e5ed` | `--badge/default/text` | `#34353f` |
+| `outlined` | none | — | `--badge/default/text` | `#34353f` |
+| `error` | `--notification/error-bg` | `#fcdcdc` | `--notification/error-text` | `#a43636` |
+| `info` | `--notification/info-bg` | `#d4e3ff` | `--notification/info-text` | `#1a4dac` |
+| `Success` | `--notification/success-bg` | `#d5f4d6` | `--notification/success-text` | `#176719` |
+| `Warning` | `--notification/warning--bg` | `#f6e3a4` | `--notification/warning-text` | `#775c01` |
+
+> Note: The `outlined` type adds a `1px solid` border using `--badge/outlined/border` (`#cccdda`) and has no background fill.
+
+> Note: The `--notification/warning--bg` token uses a double dash. This is the confirmed Figma token name.
+
+**Shared label tokens (all types):**
+
+| Property | Token | Value |
+|---|---|---|
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/semibold` | `600` |
+| Font size | `--size/xs` | `12px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+
+## Usage guidelines
+
+- Use Badge to communicate the **status, category, or type** of an adjacent element — not as a primary action or navigation element.
+- Place Badge near the element it describes: next to a title, alongside a list row, or within a card header.
+- Use a **single Badge per item** unless each badge communicates a genuinely distinct dimension (e.g., one for status, one for category).
+- Choose `default` or `outlined` for neutral labels with no status meaning. Reserve semantic colors (`error`, `info`, `Success`, `Warning`) for genuine status communication.
+- Do not use Badge as a notification counter. Use a dedicated counter or dot component for that pattern.
+- Keep labels short — 1–3 words. `whitespace-nowrap` is applied; longer labels will overflow.
+
+## Accessibility
+
+- Badge text is informational. Screen readers will read it as part of the surrounding content.
+- Do not rely on color alone to communicate status — the label text must be self-explanatory regardless of the type color.
+- If a Badge appears without adjacent explanatory text, consider adding a visually hidden label or `aria-label` on the parent element to provide full context.
+- TODO: Confirm WCAG contrast ratios for all six type combinations.
+
+## Do / Don't
+
+**Do:**
+- Use the type that matches the semantic meaning of the status.
+- Keep labels short (1–3 words, sentence case).
+- Use `default` or `outlined` for neutral, non-status labels.
+- Ensure the label text communicates meaning independently of color.
+
+**Don't:**
+- Don't use `error` for warnings or `warning` for errors — each color has a defined meaning.
+- Don't write long labels — `whitespace-nowrap` is applied.
+- Don't use Badge as a navigation control or interactive filter unless a confirmed interactive variant exists.
+- Don't add icons unless a confirmed icon variant is defined.
+- Don't use Badge as a notification counter.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Badge do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Badge component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816)
+- Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1361-13772)
+- Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325)
+- Code: `./badge.tsx`
+- Specs: `./badge.specs.json`
+- Tokens: `./badge.tokens.json`

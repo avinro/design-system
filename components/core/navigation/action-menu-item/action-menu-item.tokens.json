@@ -1,0 +1,141 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 5126:426). Three content types: only Title, title + description, full.",
+
+  "container": {
+    "--surface/neutral/default": {
+      "value": "#f1f2f4",
+      "description": "Container background fill. Shared with Action Menu container."
+    },
+    "--spacing-8": {
+      "value": "8px",
+      "description": "Container padding (all sides)."
+    },
+    "--spacing-12": {
+      "value": "12px",
+      "description": "Gap between left icon and text container."
+    },
+    "minHeight": {
+      "value": "56px",
+      "description": "Minimum height of the item row. Grows with content in multi-line types."
+    },
+    "width": {
+      "value": "426px",
+      "description": "Fixed width of the item."
+    }
+  },
+
+  "textContainer": {
+    "maxWidth": {
+      "value": "280px",
+      "description": "Maximum width of the text area (title, subtitle, description)."
+    },
+    "--spacing-4": {
+      "value": "4px",
+      "description": "Gap between text lines in multi-line content types (title + description, full)."
+    },
+    "lineHeight": {
+      "value": "1.2",
+      "description": "Line height applied to the text container in multi-line types."
+    },
+    "--letter-spacing/normal": {
+      "value": "0px",
+      "description": "Letter spacing applied to all text elements."
+    }
+  },
+
+  "title": {
+    "textStyle": "Body sm/120/SemiBold",
+    "--font-family/body": {
+      "value": "'Manrope', sans-serif",
+      "description": "Title font family."
+    },
+    "--weight/semibold": {
+      "value": "600",
+      "description": "Title font weight."
+    },
+    "--size/base": {
+      "value": "14px",
+      "description": "Title font size."
+    },
+    "--text/primary": {
+      "value": "#1d1d23",
+      "description": "Title text color."
+    },
+    "whitespace": {
+      "value": "nowrap",
+      "description": "Title is single-line (only Title type). May wrap in multi-line types within the text container max-width."
+    }
+  },
+
+  "description": {
+    "textStyle": "Body xs/Regular",
+    "--font-family/body": {
+      "value": "'Manrope', sans-serif",
+      "description": "Description font family."
+    },
+    "--weight/regular": {
+      "value": "400",
+      "description": "Description font weight."
+    },
+    "--size/xs": {
+      "value": "12px",
+      "description": "Description font size."
+    },
+    "--text/placeholder": {
+      "value": "#636377",
+      "description": "Description text color."
+    }
+  },
+
+  "subtitle": {
+    "_note": "Subtitle is shown in the 'full' type only. Same typographic style as description.",
+    "textStyle": "Body xs/Regular",
+    "--font-family/body": {
+      "value": "'Manrope', sans-serif",
+      "description": "Subtitle font family."
+    },
+    "--weight/regular": {
+      "value": "400",
+      "description": "Subtitle font weight."
+    },
+    "--size/xs": {
+      "value": "12px",
+      "description": "Subtitle font size."
+    },
+    "--text/placeholder": {
+      "value": "#636377",
+      "description": "Subtitle text color."
+    }
+  },
+
+  "leftIcon": {
+    "size": {
+      "value": "24px",
+      "description": "Width and height of the left icon."
+    },
+    "note": "Optional. Default: shown. Placeholder icon in Figma: Customer-Icon/phone-call."
+  },
+
+  "rightIcon": {
+    "size": {
+      "value": "22px",
+      "description": "Width and height of the right icon."
+    },
+    "note": "Optional. Default: shown (chevron-right). Can be replaced with a custom element."
+  },
+
+  "states": {
+    "hover": {
+      "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+    },
+    "pressed": {
+      "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+    },
+    "disabled": {
+      "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+    },
+    "focus": {
+      "_note": "TODO: Not defined in Figma. Confirm focus ring treatment."
+    }
+  }
+}

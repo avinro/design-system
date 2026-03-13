@@ -1,0 +1,139 @@
+---
+title: "Car Image"
+description: "A vehicle illustration component that displays a car or van image in two contexts: a diagonal UI view for selection lists, and a top-down Map view for live map overlays."
+---
+
+# Car Image
+
+## Overview
+
+Car Image is a lightweight display component that renders a vehicle illustration. It has two vehicle types (`default` for a standard car, `van` for a van) and two rendering contexts (`UI` for in-app selection lists and `Compact`, `Map` for live map overlays). The component carries no interactive states and no design tokens — it is a pure asset container whose job is to identify a vehicle category visually.
+
+## Anatomy
+
+Car Image is a single-part component: a fixed-size container that holds a vehicle illustration image.
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Fixed-dimension wrapper. Size varies by context. No background, no border. |
+| **Vehicle illustration** | Yes | Static image asset. Rendered with `object-cover`. Asset differs by type and context. |
+
+The component has no icon, text, badge, or interactive element of its own.
+
+{/* TODO: Add anatomy.png from Figma once annotation frame is available. */}
+{/* ![Car Image anatomy](./anatomy.png) */}
+
+## Variants
+
+Car Image varies along two independent dimensions: **type** and **context**.
+
+### Type
+
+Controls which vehicle is shown.
+
+| Type | Vehicle | Image asset |
+|---|---|---|
+| `default` | Standard car (sedan/taxi) | `taxi-v_diagonal` (UI), `taxi-v_top` (Map) |
+| `van` | Van | `black_van-v_diagonal` (UI), `black_van-v_top` (Map) |
+
+### Context
+
+Controls the image perspective and the component dimensions.
+
+| Context | Perspective | Dimensions | When to use |
+|---|---|---|---|
+| `UI` | Diagonal / three-quarter view | 51.65 × 33px | In-app lists, selection rows, cards. Communicates vehicle category to the user choosing a ride option. |
+| `Map` | Top-down / bird's-eye view | 40 × 41px | Live map overlays. Represents a vehicle's position and heading on the map. |
+
+{/* ![Car Image variants](./variants.png) */}
+
+## States
+
+Car Image has no interactive states. It renders in a single static state determined by its `type` and `context` props.
+
+{/* ![Car Image states](./states.png) */}
+
+## Tokens & specs
+
+Car Image has no design tokens. It contains no color fills, borders, typography, or spacing values of its own — only the fixed container dimensions and the image asset.
+
+### Supported variants
+
+**Types:** `default`, `van`
+
+**Contexts:** `UI`, `Map`
+
+### Supported sizes
+
+| Context | Width | Height | Aspect ratio |
+|---|---|---|---|
+| `UI` | 51.65px | 33px | ~232:152 (default), ~268:212 (van) |
+| `Map` | 40px | 41px | ~112:176 (default), ~116:216 (van) |
+
+### Supported states
+
+- Static only. No interactive states.
+
+### Token reference
+
+This component has no design tokens.
+
+> If the vehicle image must adapt to themes (light/dark mode) or be replaceable per product, those overrides should be handled at the asset/image-source level, not through tokens.
+
+## Usage guidelines
+
+### When to use Car Image
+
+- **Ride selection lists** — as the leading visual in a list row that lets the user choose a vehicle type (standard car vs van). Pair with the vehicle name, passenger capacity, ETA, and price.
+- **Map overlays** — as the vehicle marker on a live map, representing the car's current position. Use `Context=Map` for this case.
+
+### When NOT to use Car Image
+
+- Do not use `Context=UI` as a map marker — it is a diagonal illustration not designed for top-down orientation.
+- Do not use `Context=Map` inside list rows or cards — the top-down perspective is designed for map contexts only.
+- Do not use Car Image as a general-purpose icon. It represents a specific bookable vehicle category.
+
+### Pairing in ride selection rows
+
+In ride selection lists, Car Image (`Context=UI`) is placed as the leading element of each option row. The row also contains:
+- Vehicle type name (title text)
+- Passenger capacity and estimated time details
+- Price
+
+Always pair Car Image with its correct vehicle type. Do not show a van image for a standard car option or vice versa.
+
+### Sizing and cropping
+
+- Do not resize Car Image outside its defined dimensions. The image is positioned and cropped to fill the container precisely.
+- Do not add a background, border, or shadow to the container — the component has none by design.
+
+## Accessibility
+
+- Car Image is a decorative illustration. In most contexts the vehicle type is communicated by the accompanying label (e.g. "Standard", "Van").
+- When Car Image appears without a visible text label, provide an `alt` attribute on the image that describes the vehicle type: e.g. `alt="Standard car"` or `alt="Van"`.
+- When Car Image appears alongside a visible vehicle name label, set `alt=""` to mark it as decorative and avoid redundant screen reader announcements.
+- TODO: Confirm the product's standard for alt text on vehicle images in ride selection and map contexts.
+
+## Do / Don't
+
+**Do:**
+- Use `Context=UI` in ride selection lists and option cards.
+- Use `Context=Map` for live map vehicle markers.
+- Always match the `type` to the actual vehicle being represented (`default` for standard cars, `van` for vans).
+- Pair with a visible vehicle type label in selection contexts.
+
+**Don't:**
+- Don't swap contexts — `UI` images are not suitable for map markers, and `Map` images are not suitable for list rows.
+- Don't resize the container outside the defined dimensions.
+- Don't add background fill, border, or shadow to the container.
+- Don't use as a decorative illustration in unrelated contexts.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Car Image do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [DS Core — Car Image](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5106-639)
+- Code: `./car-image.tsx`
+- Specs: `./car-image.specs.json`
+- Tokens: `./car-image.tokens.json`

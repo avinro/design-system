@@ -1,0 +1,83 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction. Three states: full, middle, state3.",
+
+  "container": {
+    "--button/default/bg-default": {
+      "value": "#1d1d23",
+      "description": "Button background fill. Dark pill. Same across all timer states."
+    }
+  },
+
+  "fillOverlay": {
+    "_note": "TODO: Confirm the exact design token for the fill overlay background color.",
+    "blendMode": {
+      "value": "mix-blend-multiply",
+      "description": "Blend mode applied to the fill overlay layer. Progressively darkens the button as the overlay grows left to right."
+    },
+    "widths": {
+      "full": {
+        "value": "0px",
+        "description": "State: full. Timer just started. No fill visible."
+      },
+      "middle": {
+        "value": "~147px",
+        "description": "State: middle. Timer approximately halfway through. ~48.5% of button width covered."
+      },
+      "state3": {
+        "value": "303px",
+        "description": "State: state3. Timer nearly expired. Entire button width covered."
+      }
+    }
+  },
+
+  "label": {
+    "--text/invert": {
+      "value": "#f1f2f4",
+      "description": "Label text color. mix-blend-difference is applied so it inverts against both the dark background and the darkened fill overlay."
+    },
+    "--font-family/headings": {
+      "value": "'Google Sans Flex', sans-serif",
+      "description": "Label font family. NOTE: This component uses the headings font, not the body font."
+    },
+    "--size/lg": {
+      "value": "16px",
+      "description": "Label font size."
+    }
+  },
+
+  "shape": {
+    "borderRadius": {
+      "value": "120px",
+      "description": "Applied to container for full pill shape."
+    }
+  },
+
+  "dimensions": {
+    "width": {
+      "value": "303px",
+      "description": "Fixed button width."
+    },
+    "height": {
+      "value": "56px",
+      "description": "Fixed button height."
+    }
+  },
+
+  "states": {
+    "full": {
+      "_note": "Confirmed. Fill overlay width: 0px. Timer at start, full time remaining."
+    },
+    "middle": {
+      "_note": "Confirmed. Fill overlay width: ~147px (~48.5%). Timer approximately halfway."
+    },
+    "state3": {
+      "_note": "Confirmed. Fill overlay width: 303px. Timer nearly expired, full button darkened."
+    },
+    "disabled": {
+      "_note": "TODO: Not defined in Figma. Confirm appearance and token values."
+    },
+    "focus": {
+      "_note": "TODO: Not defined in Figma. Confirm focus ring treatment."
+    }
+  }
+}

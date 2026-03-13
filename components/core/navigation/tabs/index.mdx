@@ -1,0 +1,163 @@
+---
+title: "Tabs"
+description: "A full-width underline tab bar for switching between content sections on the same screen."
+---
+
+# Tabs
+
+## Overview
+
+Tabs is a full-width underline tab bar used to switch between content sections on the same screen. Each tab occupies an equal share of the bar width. The active tab is indicated by a 2px dark bottom border. Exactly one tab is active at all times.
+
+Use Tabs when a screen contains multiple parallel content views that the user should be able to switch between without navigating away.
+
+## Anatomy
+
+The Tabs component has three parts:
+
+- **Tab bar** — the outer container. Full width, with horizontal padding on both sides and a 1px bottom divider line. No background in DS Core.
+- **Tab item (active)** — the currently selected tab. A 2px dark bottom border serves as the active indicator. Text or icon renders in the active dark color.
+- **Tab item (inactive)** — any unselected tab. No visible bottom border. Text or icon renders in a muted color.
+
+The base component for each item is `tab-items` (`5001:2072`), which has four configurations: text-only active, text-only inactive, icon-only active, icon-only inactive.
+
+{/* TODO: Add anatomy.png */}
+
+## Variants
+
+Three variants are available, differing only in item count:
+
+| Variant | Items | Figma node |
+|---|---|---|
+| Navs-2 | 2 | `5001:2082` |
+| Navs-3 | 3 | `5001:2085` |
+| Navs-4 | 4 | `5001:2089` |
+
+All variants share the same tab bar height (44px) and layout rules.
+
+{/* TODO: Add variants.png */}
+
+## States
+
+Each tab item has two states:
+
+| State | Description |
+|---|---|
+| Active | Currently selected. 2px dark bottom border (`--tab/border-active`). Text/icon color: `--tab/text-active` (`#1d1d23`). |
+| Inactive | Unselected. Transparent bottom border. Text/icon color: `--tab/text-inactive` (`#636377`). |
+
+TODO: Confirm whether a disabled tab state exists.
+
+{/* TODO: Add states.png */}
+
+## Tokens & specs
+
+### Supported variants
+
+- Navs-2, Navs-3, Navs-4
+
+### Supported sizes
+
+One size. Tab bar height is 44px.
+
+### Supported states
+
+- Active (tab item)
+- Inactive (tab item)
+
+### Token reference
+
+#### Tab bar
+
+| Token | Value | Description |
+|---|---|---|
+| `--notification/border-default` | `#e4e5ed` | Bottom divider line color. DS Core and Customer App use this token name. Driver App uses `--border-default` for the same value. |
+| border-bottom-width | `1px` | Divider line width |
+| `--spacing-12` | `12px` | Horizontal padding |
+| height | `44px` | Tab bar height |
+| background | none (DS Core) | DS Core has no background. Driver App uses `--bg-surface-default` / `#f1f2f4`. Confirm before implementing. |
+
+#### Active tab item
+
+| Token | Value | Description |
+|---|---|---|
+| `--tab/border-active` | `#1d1d23` | Active indicator bottom border color |
+| `--sds-size-stroke-focus-ring` | `2px` | Active indicator border-bottom-width |
+| `--tab/text-active` | `#1d1d23` | Active tab text / icon color |
+
+#### Inactive tab item
+
+| Token | Value | Description |
+|---|---|---|
+| `--tab/bg` | `rgba(29, 29, 35, 0)` | Inactive tab background (transparent) |
+| `--tab/border-inactive` | `rgba(29, 29, 35, 0)` | Inactive tab bottom border (transparent) |
+| `--tab/text-inactive` | `#636377` | Inactive tab text / icon color (DS Core / Customer App). Driver App uses `#9192af`. Confirm intended value. |
+| border-bottom-width | `1px` | Inactive tab border-bottom (transparent, maintains layout alignment) |
+
+**Note on token naming in the Driver App:** The Driver App uses hyphen-notation tokens (`--tab-border-active`, `--tab-text-active`) and contains a typo for "inactive" (`--tab-border-inative`, `--tab-text-inative` — missing "c"). Use DS Core slash-notation token names as the source of truth.
+
+#### Tab item dimensions
+
+| Property | Value | Description |
+|---|---|---|
+| flex | `1` | Each item fills equal width |
+| height | `44px` | Tab item height |
+| icon size | `24px` | Icon size for icon-only tab items |
+
+#### Typography
+
+| Property | Value | Description |
+|---|---|---|
+| font-family | `'Inter', sans-serif` | Inter — same as Segmented Control, not Manrope |
+| font-weight | `500` (Medium) | Label weight |
+| font-size | `15px` | Label size |
+| text-align | `center` | Label alignment |
+| white-space | `nowrap` | Labels do not wrap |
+
+## Usage guidelines
+
+**Use for content-switching, not navigation.** Tabs switch between sections of content on the same screen. They are not a substitute for a bottom navigation bar or an app-level navigation pattern.
+
+**Keep item count between 2 and 4.** Fewer than 2 tabs offers no choice; more than 4 creates a crowded bar where labels may be truncated.
+
+**Labels must be short and parallel.** One-word labels are strongly preferred. All labels should follow the same grammatical form. Labels cannot wrap.
+
+**One tab is always active.** There is no unselected state. Set a default active tab before the user interacts.
+
+**Equal-width tabs.** Each tab item fills `flex: 1` of the bar. Do not set explicit widths per item.
+
+**Tab bar background.** The DS Core definition has no background on the tab bar. The Driver App adds a surface background. Align with the product team on the intended behavior for your context before deviating from DS Core.
+
+**Paired with content.** Tabs do not render content themselves — they signal which content panel should be visible. The content panel must be managed by the parent screen.
+
+## Accessibility
+
+- TODO: Confirm ARIA role — likely `role="tablist"` on the bar and `role="tab"` on each item.
+- TODO: Confirm keyboard navigation — expected: left/right arrow keys move focus between tabs; Enter or Space activates.
+- Active tab indicator (2px border, `#1d1d23`) must have sufficient contrast against the tab bar background in both DS Core (no bg) and product app contexts (light surface bg).
+- Inactive text color must meet minimum contrast against the tab bar background. Confirm whether `#636377` or `#9192af` is intended — both values should be verified.
+
+## Do / Don't
+
+**Do**
+- Use for 2–4 parallel content sections within the same screen.
+- Keep labels short, centered, and consistent.
+- Always show exactly one active tab.
+
+**Don't**
+- Don't use more than four tabs.
+- Don't use as a top-level app navigation bar.
+- Don't allow tab labels to wrap to a second line.
+- Don't set different widths for individual tab items.
+- Don't hide or remove tabs dynamically based on user state.
+
+{/* TODO: Add do-dont.png */}
+
+## Resources
+
+- Figma (DS Core): [Tabs](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5001-2081)
+- Figma (base component — tab-items): [tab-items](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5001-2072)
+- Figma (Customer App usage): [Venue detail — Tabs instance](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=907-8507)
+- Figma (Driver App usage): [Inbox — Tabs instance](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2883-6618)
+- Specs: `./tabs.specs.json`
+- Tokens: `./tabs.tokens.json`

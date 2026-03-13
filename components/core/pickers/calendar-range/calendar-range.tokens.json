@@ -1,0 +1,106 @@
+{
+  "component": "Calendar Range",
+  "figmaNodeId": "5007:2834",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "tokens": {
+    "container": {
+      "--surface/neutral/default": {
+        "value": "#f1f2f4",
+        "description": "Card background color."
+      },
+      "elevation/light/02": {
+        "value": "0px 8px 12px rgba(0, 0, 0, 0.05)",
+        "description": "Card shadow."
+      }
+    },
+
+    "calendarTitle": {
+      "--text/body": {
+        "value": "#34353f",
+        "description": "Month/year label color."
+      },
+      "--weight/bold": {
+        "value": "700",
+        "description": "Month/year label font weight."
+      },
+      "--size/base": {
+        "value": "14px",
+        "description": "Month/year label font size."
+      }
+    },
+
+    "weekdayHeader": {
+      "--text/placeholder": {
+        "value": "#636377",
+        "description": "Weekday abbreviation label color."
+      },
+      "--weight/regular": {
+        "value": "400",
+        "description": "Weekday label font weight."
+      },
+      "--size/2xs": {
+        "value": "11px",
+        "description": "Weekday label font size."
+      }
+    },
+
+    "dayItem": {
+      "--day-item/text-default": {
+        "value": "#1d1d23",
+        "description": "Day number color for Available (default) and today indicator states."
+      },
+      "--day-item/text-disabled": {
+        "value": "#636377",
+        "description": "Day number color for Disable (out-of-month) state."
+      },
+      "--day-item/text-selected": {
+        "value": "#f1f2f4",
+        "description": "Day number color for Selected - Start and Selected - End (inverted, light on dark circle)."
+      },
+      "--day-item/text-selected-middle": {
+        "value": "#1d1d23",
+        "description": "Day number color for Selected - Middle (dark text on semi-transparent band — NOT inverted)."
+      },
+      "--day-item/bg-selected-middle": {
+        "value": "rgba(29, 29, 35, 0.12)",
+        "description": "Background color for the range band applied to Selected - Middle cells and the half-bands on Start and End cells."
+      }
+    },
+
+    "typography": {
+      "--font-family/body": {
+        "value": "'Manrope', sans-serif",
+        "description": "Font family used across all text elements."
+      },
+      "--weight/semibold": {
+        "value": "600",
+        "description": "Font weight for day numbers."
+      },
+      "--size/lg": {
+        "value": "16px",
+        "description": "Font size for day numbers."
+      }
+    },
+
+    "spacing": {
+      "--spacing-16": {
+        "value": "16px",
+        "description": "Container horizontal padding and title-to-grid gap."
+      },
+      "--spacing-24": {
+        "value": "24px",
+        "description": "Container vertical padding."
+      }
+    }
+  },
+
+  "notes": [
+    "TODO: Confirm the design token for the Selected - Start / End circle background color.",
+    "TODO: Confirm the design token for the today circle ring outline color.",
+    "TODO: Confirm the design token for the Planned indicator dot color.",
+    "--day-item/bg-selected-middle is rgba(29,29,35,0.12) — confirmed from Figma.",
+    "Middle-of-range text uses --day-item/text-selected-middle (#1d1d23) — dark, NOT inverted.",
+    "Start and End text uses --day-item/text-selected (#f1f2f4) — inverted (light on dark circle)."
+  ]
+}

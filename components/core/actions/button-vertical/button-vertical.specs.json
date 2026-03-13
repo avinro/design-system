@@ -1,0 +1,109 @@
+{
+  "component": "Button Vertical",
+  "figmaFrameName": "Button/vertical",
+  "figmaNodeId": "5184:4242",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Rounded-square wrapper (~120px wide, 96px tall). Gray neutral background. Carries padding and vertical flex layout.",
+      "required": true
+    },
+    {
+      "part": "iconWrapper",
+      "description": "Stacked grid that overlays the icon on top of the icon-form shape. The icon-form (diamond or circle) acts as a colored background tile behind the icon.",
+      "required": true
+    },
+    {
+      "part": "iconForm",
+      "description": "The decorative shape behind the icon. Two forms supported: diamond (54×54px) and circle/ellipse (48×48px). Carries the category color.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "description": "The action icon overlaid on the icon-form. 32×32px for both icon-form types. Centered on the shape.",
+      "required": true
+    },
+    {
+      "part": "label",
+      "description": "Text label below the icon-wrapper. Manrope Medium 16px, center-aligned. Can wrap to two lines.",
+      "required": true
+    }
+  ],
+
+  "iconForms": [
+    {
+      "name": "diamond",
+      "description": "A rotated square (diamond) shape. 54×54px. Icon is 32×32px centered on it (offset: 11px from top-left).",
+      "iconOffset": { "x": 11, "y": 11 },
+      "shapeSizePx": 54,
+      "iconSizePx": 32
+    },
+    {
+      "name": "circle",
+      "description": "A circular ellipse shape. 48×48px. Icon is 32×32px centered on it (offset: 8px from top-left).",
+      "iconOffset": { "x": 8, "y": 8 },
+      "shapeSizePx": 48,
+      "iconSizePx": 32
+    }
+  ],
+
+  "sizes": [
+    {
+      "name": "default",
+      "containerHeight": 96,
+      "containerWidth": "~119.67px (content-driven)",
+      "note": "Single size only. No size variants."
+    }
+  ],
+
+  "states": [
+    { "name": "active",  "trigger": "Resting/default state. The button is available and not interacted with." },
+    { "name": "pressed", "trigger": "Button is actively tapped or clicked." },
+    { "name": "disable", "trigger": "Action is unavailable. Non-interactive." },
+    { "name": "focus",   "trigger": "Button receives keyboard focus." }
+  ],
+
+  "stateNote": "No hover state. Designed for touch/mobile contexts. State property is named 'active' for the resting state (not 'default').",
+
+  "container": {
+    "background": "var(--surface/neutral/default, #f1f2f4)",
+    "borderRadius": "var(--rounded-24, 24px)",
+    "paddingX": "var(--spacing-8, 8px)",
+    "paddingY": "var(--spacing-12, 12px)",
+    "gap": "var(--spacing-2, 2px)",
+    "layout": "flex-col, centered"
+  },
+
+  "typography": {
+    "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+    "fontWeight": "var(--weight/medium, 500)",
+    "fontSize": "var(--size/lg, 16px)",
+    "lineHeight": 1.4,
+    "letterSpacing": "var(--letter-spacing/normal, 0px)",
+    "color": "var(--text/primary, #1d1d23)",
+    "textAlign": "center",
+    "multiLine": true,
+    "note": "Label can wrap to two lines (e.g., 'Speed enforcement', 'Wrong directions')."
+  },
+
+  "usageContext": [
+    "Action grids inside bottom sheets.",
+    "Map reporting actions (Traffic, Accident, Closure, Speed enforcement, Wrong directions).",
+    "Contextual menus with multiple categorized options.",
+    "Typically arranged in a 2-column grid."
+  ],
+
+  "figmaPropNote": "The label prop is spelled 'lable' in the Figma component (typo). Normalised to 'label' in all documentation and code.",
+
+  "notes": [
+    "No size variants — single size only.",
+    "No hover state — touch/mobile-first component.",
+    "The icon-form shape carries the category/action color. The component itself does not own the color — it is set by the icon asset.",
+    "TODO: Confirm token values for pressed, disabled, and focus states.",
+    "TODO: Confirm whether the icon-form color is always set by the icon asset or can be overridden by a token.",
+    "TODO: Confirm whether more than two icon-form types are planned.",
+    "TODO: Define canonical grid layout rules (column count, spacing between items)."
+  ]
+}

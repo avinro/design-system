@@ -1,0 +1,59 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 5009:2266). Avatar is a display-only component with no interactive state tokens.",
+
+  "shape": {
+    "borderRadius": {
+      "value": "50%",
+      "description": "Avatar is always fully circular. Applied to both the container and image."
+    }
+  },
+
+  "sizes": {
+    "XS": {
+      "value": "24px",
+      "description": "Extra small. For inline or dense UI contexts."
+    },
+    "SM": {
+      "value": "32px",
+      "description": "Small. For compact list rows, chat items, or secondary contexts."
+    },
+    "MD": {
+      "value": "40px",
+      "description": "Medium. For list rows and compact cards."
+    },
+    "LG": {
+      "value": "48px",
+      "description": "Large. For trip summaries, ratings, and secondary cards."
+    },
+    "XL": {
+      "value": "56px",
+      "description": "Extra large. For driver/user cards and prominent secondary displays."
+    },
+    "XXL": {
+      "value": "72px",
+      "description": "Double extra large. For large driver/user cards."
+    },
+    "Largest": {
+      "value": "96px",
+      "description": "Largest. For primary profile displays and featured user headers."
+    }
+  },
+
+  "placeholder": {
+    "background": {
+      "value": "TODO: Confirm design token for placeholder background color.",
+      "description": "Background fill shown behind the silhouette icon when no photo is available."
+    },
+    "icon": {
+      "value": "TODO: Confirm icon token or asset for the silhouette placeholder.",
+      "description": "Silhouette/person icon displayed when no user photo is provided."
+    }
+  },
+
+  "photo": {
+    "objectFit": {
+      "value": "cover",
+      "description": "Photo fills the circular container without letterboxing."
+    }
+  }
+}

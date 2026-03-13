@@ -1,0 +1,158 @@
+---
+title: "Segmented Control"
+description: "A horizontal tab-strip for switching between a fixed set of mutually exclusive views or filters."
+---
+
+# Segmented Control
+
+## Overview
+
+The Segmented Control is a horizontal tab-strip that lets the user switch between a fixed set of mutually exclusive views or filters. Exactly one item is active at all times. It is suited for content-switching — not form submission, filtering with multiple selections, or binary toggles.
+
+Use it when you have between two and four parallel options that need to be presented at the same visual weight on a single line.
+
+## Anatomy
+
+The Segmented Control is composed of two elements:
+
+- **Track** — the outer rounded container. Carries the background color, border-radius (120px / fully rounded), inner padding (2px), and the gap between items.
+- **Item** — an individual tab within the track. Each item stretches equally to fill the available track width.
+
+### Item states
+
+| State | Background | Border | Shadow | Text color |
+|---|---|---|---|---|
+| Active | `#f1f2f4` | `1px solid #f1f2f4` | `0px 0px 2px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.08)` | `#1d1d23` |
+| Inactive | none | none | none | `#4b4c5b` |
+
+{/* TODO: Add anatomy.png */}
+
+## Variants
+
+Three variants are available, differing only in item count:
+
+| Variant | Items | Figma node |
+|---|---|---|
+| Navs-2 | 2 | `5001:2010` |
+| Navs-3 | 3 | `5001:2013` |
+| Navs-4 | 4 | `5001:2017` |
+
+All variants share the same track dimensions (328px wide × 40px tall) and item height (36px).
+
+{/* TODO: Add variants.png */}
+
+## States
+
+The Segmented Control itself has no interactive states (hover, focus, disabled) defined at the track level. State is carried by individual items.
+
+| Item state | Description |
+|---|---|
+| Active | The currently selected item. Always exactly one item is active. |
+| Inactive | Any unselected item. |
+
+TODO: Confirm whether a disabled state exists at the item or track level.
+
+{/* TODO: Add states.png */}
+
+## Tokens & specs
+
+### Supported variants
+
+- Navs-2, Navs-3, Navs-4
+
+### Supported sizes
+
+One size. Track height is fixed at 40px; item height is 36px.
+
+### Supported states
+
+- Active (item)
+- Inactive (item)
+
+### Token reference
+
+#### Track
+
+| Token | Value (DS Core) | Description |
+|---|---|---|
+| `--segmented-control/bg` | `#1d1d23` | Track background. See note below. |
+| `--rounded-full` | `120px` | Track border-radius |
+| padding | `2px` | Track inner padding |
+| gap | `2px` | Gap between items |
+| width | `328px` (DS Core) | Fixed in DS Core; full-width in some product contexts |
+| height | `40px` | Track height |
+
+**Note on track background:** In the DS Core component set the track background is dark (`#1d1d23`). In the Customer App home screen the same component renders with a light semi-transparent track (`rgba(29,29,35,0.05)`). These are different visual treatments. Token name alignment is needed between DS Core and product apps.
+
+#### Active item
+
+| Token | Value | Description |
+|---|---|---|
+| `--segmented-control/item/bg-active` | `#f1f2f4` | Item background |
+| `--segmented-control/item/border-active` | `#f1f2f4` | Item border color |
+| border-width | `1px` | Item border width |
+| box-shadow | `0px 0px 2px rgba(0,0,0,0.04), 0px 4px 4px rgba(0,0,0,0.08)` | Item drop shadow |
+| border-radius | `6px` | Item border-radius |
+| height | `36px` | Item height |
+| `--segmented-control/item/text-active` | `#1d1d23` | Item label text color |
+
+#### Inactive item
+
+| Token | Value | Description |
+|---|---|---|
+| background | none | No background |
+| border | none | No border |
+| box-shadow | none | No shadow |
+| `--segmented-control/item/text-inactive` | `#4b4c5b` | Item label text color |
+
+#### Typography
+
+| Property | Value | Description |
+|---|---|---|
+| font-family | `'Inter', sans-serif` | Inter — not Manrope. This is intentional for this component. |
+| font-weight | `500` (Medium) | Label weight |
+| font-size | `15px` | Label size |
+| text-align | `center` | Label alignment |
+| white-space | `nowrap` | Labels do not wrap |
+
+## Usage guidelines
+
+**Use for content switching, not actions.** The Segmented Control switches which content is visible. Do not use it to trigger operations or submit data.
+
+**Keep item count between 2 and 4.** Two items is the minimum; four is the maximum. If you need more options, consider a tab bar or a navigation pattern.
+
+**Labels must be short and parallel.** All labels should be the same grammatical form (all nouns or all verbs). Labels cannot wrap — keep them to one or two words.
+
+**One item is always active.** There is no empty or unselected state. Set a default selection before the user interacts.
+
+**Track width.** In DS Core the track is 328px wide. In product contexts it may span the full container width. Align with the product team before deviating from the DS Core fixed width.
+
+**Do not use as a form input.** For binary yes/no choices use Switch Toggle or Select Boolean. For selecting from a longer list use Dropdown Input or Radio Select.
+
+## Accessibility
+
+- TODO: Confirm ARIA role — likely `tablist` / `tab` or `radiogroup` / `radio`.
+- TODO: Confirm keyboard navigation — expected: arrow keys move focus between items; Enter or Space selects.
+- Active item must have sufficient contrast against the track background in both the dark DS Core context and any light product context.
+
+## Do / Don't
+
+**Do**
+- Use for switching between 2–4 parallel content views on the same screen.
+- Keep all labels concise and consistently worded.
+- Always show exactly one active item.
+
+**Don't**
+- Don't use more than four items.
+- Don't allow labels to wrap to a second line.
+- Don't use as a substitute for Radio Select in a form.
+- Don't change the number of items dynamically after the component has mounted.
+
+{/* TODO: Add do-dont.png */}
+
+## Resources
+
+- Figma (DS Core): [Segmented Control — Navs-2](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5001-2009)
+- Figma (Customer App usage): [Home — date scheduling panel](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=3073-7545)
+- Specs: `./segmented-control.specs.json`
+- Tokens: `./segmented-control.tokens.json`
