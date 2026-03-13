@@ -1,0 +1,77 @@
+---
+title: "Motion"
+description: "Motion and animation tokens for Dojo DS. Placeholder — values are not yet defined in Figma."
+---
+
+## Overview
+
+Motion tokens define the timing and easing curves used for transitions and animations across the UI. Consistent motion makes the interface feel cohesive and predictable.
+
+<Warning>
+Motion tokens are not yet defined in the Figma design system. This page documents the intended token structure. All values are marked TODO and must be defined by the design team before use.
+</Warning>
+
+---
+
+## Duration
+
+Controls how long a transition or animation takes to complete.
+
+| Token | Value | Intended use |
+|---|---|---|
+| `motion.duration.instant` | TODO | Micro-interactions with no perceived delay |
+| `motion.duration.fast` | TODO | Hover states, icon swaps, small toggles |
+| `motion.duration.normal` | TODO | Default — most component transitions |
+| `motion.duration.slow` | TODO | Panels, drawers, larger surface transitions |
+| `motion.duration.deliberate` | TODO | Full-screen transitions, onboarding flows |
+
+---
+
+## Easing
+
+Controls the acceleration curve of a transition.
+
+| Token | Value | Intended use |
+|---|---|---|
+| `motion.easing.linear` | TODO | Progress indicators, looping animations |
+| `motion.easing.ease-in` | TODO | Elements exiting the screen |
+| `motion.easing.ease-out` | TODO | Elements entering the screen |
+| `motion.easing.ease-in-out` | TODO | Elements repositioning within the screen |
+| `motion.easing.spring` | TODO | Playful or physics-based interactions |
+
+---
+
+## Delay
+
+Controls when an animation begins relative to its trigger event.
+
+| Token | Value | Intended use |
+|---|---|---|
+| `motion.delay.none` | TODO | Immediate response |
+| `motion.delay.short` | TODO | Staggered list entry, sequential reveals |
+
+---
+
+## Usage principles
+
+- Use short durations for inline interactions such as hover, focus, and toggle. Use longer durations only when a significant layout change is happening.
+- Pair `ease-out` with elements entering the screen and `ease-in` with elements leaving. This matches natural movement and avoids abrupt endings.
+- Animate `transform` and `opacity` — not `width`, `height`, or positional properties. Layout-affecting properties force reflows and degrade performance.
+- Always support `prefers-reduced-motion`. When this preference is active, remove or significantly reduce all non-essential animations.
+
+---
+
+## TODO
+
+- TODO: Define duration values. Suggested starting point: `instant` 50ms, `fast` 100ms, `normal` 200ms, `slow` 350ms, `deliberate` 500ms.
+- TODO: Define easing values as CSS `cubic-bezier(...)` strings.
+- TODO: Define delay values.
+- TODO: Map each token to the components or interactions that use it.
+- TODO: Add Figma motion prototype references once defined.
+
+---
+
+## Resources
+
+- Token file: `tokens/motion.json`
+- Figma: *No motion page exists in the current file.*

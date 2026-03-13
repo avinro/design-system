@@ -1,0 +1,204 @@
+{
+  "_source": "Figma color variables — file nGsiItayj12cfi3AKbP1mB, Colors page (node 7006:2717)",
+  "_note": "Primitive color tokens extracted from Figma. These are raw palette values. Do not use these directly in components or UI — consume via semantic tokens in colors.semantic.json. Structural decisions: (1) orange is mapped to 'brand' because foreground/accent and background/accent/* in the semantic layer both reference orange-xxx primitives; (2) red, yellow, green, and blue are grouped under 'utility' because they underlie the error/warning/success/info semantic roles; (3) teal, cyan, lime, purple, violet, and pink are grouped under 'support' because they are used only for chart and support foreground/background contexts; (4) neutral-opacity values use rgba strings because the underlying scale uses two base colors — neutral-950 for steps 0–500 (dark overlays, for light mode) and neutral-100 for steps 600–950 (light overlays, for dark mode); (5) static white/black are separate anchors and not part of the numbered neutral scale.",
+
+  "static": {
+    "_note": "Absolute anchors. Always white or always black regardless of theme. Used by semantic tokens that must never invert.",
+    "white": "#FFFFFF",
+    "black": "#000000"
+  },
+
+  "neutral": {
+    "_note": "Gray scale from near-white (100) to near-black (950). Step 750 exists in Figma and is used by semantic tokens — do not remove.",
+    "100": "#F1F2F4",
+    "200": "#E4E5ED",
+    "300": "#CCCDDA",
+    "400": "#B4B5C9",
+    "500": "#A3A3BC",
+    "600": "#9192AF",
+    "700": "#7A7B93",
+    "750": "#636377",
+    "800": "#4B4C5B",
+    "900": "#34353F",
+    "950": "#1D1D23"
+  },
+
+  "neutral-opacity": {
+    "_note": "Opacity-based overlay scale. Steps 0–500 use neutral-950 (#1D1D23) as the base color and are intended for dark overlays on light backgrounds (light mode). Steps 600–950 use neutral-100 (#F1F2F4) as the base color and are intended for light overlays on dark backgrounds (dark mode). Values are represented as rgba strings to correctly encode the opacity.",
+    "0":   "rgba(29,29,35,0)",
+    "100": "rgba(29,29,35,0.05)",
+    "200": "rgba(29,29,35,0.12)",
+    "300": "rgba(29,29,35,0.28)",
+    "400": "rgba(29,29,35,0.5)",
+    "500": "rgba(29,29,35,0.69)",
+    "600": "rgba(241,242,244,0.77)",
+    "700": "rgba(241,242,244,0.56)",
+    "800": "rgba(241,242,244,0.4)",
+    "900": "rgba(241,242,244,0.24)",
+    "950": "rgba(241,242,244,0.1)"
+  },
+
+  "brand": {
+    "_note": "Orange — the primary brand and accent hue. All accent semantic tokens (foreground/accent, background/accent/*, border/accent/*) reference values from this scale. Step 600 (#FF6B26) is the pure brand color.",
+    "100": "#FFE1D4",
+    "200": "#FFCAB1",
+    "300": "#FFB28E",
+    "400": "#FF9A6B",
+    "500": "#FF8349",
+    "600": "#FF6B26",
+    "700": "#D65A20",
+    "750": "#AD491A",
+    "800": "#853814",
+    "850": "#5C270E",
+    "900": "#331508"
+  },
+
+  "utility": {
+    "_note": "Hues that underlie the four semantic utility roles: error (red), warning (yellow), success (green), info (blue). Each hue has 11 stops matching the shared scale convention.",
+
+    "red": {
+      "100": "#FCDCDC",
+      "200": "#FAC0C0",
+      "300": "#F8A4A4",
+      "400": "#F58888",
+      "500": "#F36C6C",
+      "600": "#F15050",
+      "700": "#CC2222",
+      "750": "#A43636",
+      "800": "#7D2A2A",
+      "850": "#571D1D",
+      "900": "#301010"
+    },
+
+    "yellow": {
+      "100": "#FAEFCC",
+      "200": "#F6E3A4",
+      "300": "#F1D67B",
+      "400": "#EDC953",
+      "500": "#E9BD2A",
+      "600": "#E5B002",
+      "700": "#C09402",
+      "750": "#9C7801",
+      "800": "#775C01",
+      "850": "#523F01",
+      "900": "#2E2300"
+    },
+
+    "green": {
+      "100": "#D5F4D6",
+      "200": "#B3EAB4",
+      "300": "#92E193",
+      "400": "#70D872",
+      "500": "#4FCF51",
+      "600": "#2DC630",
+      "700": "#26A628",
+      "750": "#1F8721",
+      "800": "#176719",
+      "850": "#104711",
+      "900": "#09280A"
+    },
+
+    "blue": {
+      "100": "#D4E3FF",
+      "200": "#B1CCFE",
+      "300": "#8EB5FE",
+      "400": "#6B9EFE",
+      "500": "#4988FD",
+      "600": "#2671FD",
+      "700": "#205FD5",
+      "750": "#1A4DAC",
+      "800": "#143B84",
+      "850": "#0E295B",
+      "900": "#081733"
+    }
+  },
+
+  "support": {
+    "_note": "Extended palette used for chart series, support foregrounds, and support backgrounds. These hues do not map to functional states — use utility.* for error/warning/success/info. Known issue: cyan-500 and cyan-600 share the same value (#61D2FE) in Figma — this appears to be a duplication in the source file. Both are preserved here to maintain fidelity to Figma.",
+
+    "teal": {
+      "100": "#CEFAEE",
+      "200": "#A8F5E8",
+      "300": "#81F1DE",
+      "400": "#5AEDC6",
+      "500": "#33E8CA",
+      "600": "#0CE4AB",
+      "700": "#0AC0A1",
+      "750": "#089B83",
+      "800": "#067764",
+      "850": "#045245",
+      "900": "#022E26"
+    },
+
+    "cyan": {
+      "_note": "Steps 500 and 600 share the same value (#61D2FE) in the Figma source. Preserved as-is.",
+      "100": "#D9F4FF",
+      "200": "#BBECFF",
+      "300": "#9DE3FE",
+      "400": "#7FDAFE",
+      "500": "#61D2FE",
+      "600": "#61D2FE",
+      "700": "#38A9D5",
+      "750": "#2E89AD",
+      "800": "#236984",
+      "850": "#18485B",
+      "900": "#0D2833"
+    },
+
+    "lime": {
+      "100": "#EDF6D0",
+      "200": "#DFF0AB",
+      "300": "#D1E985",
+      "400": "#C3E260",
+      "500": "#B5DB3A",
+      "600": "#A7D415",
+      "700": "#8CB212",
+      "750": "#72900E",
+      "800": "#576E0B",
+      "850": "#3C4C08",
+      "900": "#212A04"
+    },
+
+    "purple": {
+      "100": "#E4DBFA",
+      "200": "#CEBDF5",
+      "300": "#B8A0F1",
+      "400": "#A383ED",
+      "500": "#8D66E8",
+      "600": "#7749E4",
+      "700": "#643DC0",
+      "750": "#51329B",
+      "800": "#3E2677",
+      "850": "#2B1A52",
+      "900": "#180F2E"
+    },
+
+    "violet": {
+      "100": "#F6D9FF",
+      "200": "#EFBBFF",
+      "300": "#E89DFE",
+      "400": "#E07FFE",
+      "500": "#D961FE",
+      "600": "#D243FE",
+      "700": "#B038D5",
+      "750": "#8F2EAD",
+      "800": "#6D2384",
+      "850": "#4C185B",
+      "900": "#2A0D33"
+    },
+
+    "pink": {
+      "100": "#FFDBE8",
+      "200": "#FFBDD5",
+      "300": "#FFA0C3",
+      "400": "#FF83B0",
+      "500": "#FF669E",
+      "600": "#FF498B",
+      "700": "#D63D75",
+      "750": "#AD325F",
+      "800": "#852648",
+      "850": "#5C1A32",
+      "900": "#330F1C"
+    }
+  }
+}

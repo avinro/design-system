@@ -1,0 +1,43 @@
+---
+title: "Radius"
+description: "Border radius tokens for Dojo DS. Controls corner rounding on surfaces, containers, and interactive elements."
+---
+
+## Overview
+
+Radius tokens control how corners are rounded across the UI. Matching the radius to the visual weight of an element keeps component hierarchy legible and the overall feel consistent.
+
+---
+
+## Scale
+
+All values are in pixels.
+
+| Token | Value (px) | Typical use |
+|---|---|---|
+| `radius.none` | 0 | Flush edges, full-bleed surfaces |
+| `radius.xs` | 4 | Badges, tags, small chips |
+| `radius.sm` | 6 | Compact inputs, inline elements |
+| `radius.md` | 8 | Buttons, inputs, form controls |
+| `radius.lg` | 12 | Cards, dropdowns, menus |
+| `radius.xl` | 16 | Large cards, bottom sheets |
+| `radius.2xl` | 20 | Prominent surfaces, dialogs |
+| `radius.full` | 9999 | Pills, circular elements |
+
+---
+
+## Usage principles
+
+- Match radius to the size of the element. Dense, small components use smaller radii; larger surfaces use larger ones.
+- Use `radius.md` (8px) as the default for interactive controls: buttons, inputs, and select fields.
+- Use `radius.lg` (12px) or `radius.xl` (16px) for floating containers: cards, dropdowns, and bottom sheets.
+- Use `radius.full` for pill-shaped buttons and circular elements such as avatar containers.
+- Do not apply different radius values to different corners of the same component unless the component spec explicitly shows it (for example, a bottom sheet with square top corners).
+- Avoid `radius.none` on interactive elements. Reserve it for structural or layout surfaces that need flush edges.
+
+---
+
+## Resources
+
+- Token file: `tokens/radius.json`
+- Figma: [❖ Dojo DS Core](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB) *(no dedicated radius page — values extracted from Figma variables)*

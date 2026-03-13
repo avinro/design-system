@@ -1,0 +1,59 @@
+---
+title: "Spacing"
+description: "The spacing scale for Dojo DS. Used for padding, gap, and layout measurements across all components."
+---
+
+## Overview
+
+Spacing tokens define all distance values used in components and layouts. Using the scale prevents arbitrary pixel values from accumulating and keeps visual rhythm consistent across the UI.
+
+---
+
+## Scale
+
+All values are in pixels. Reference tokens by their size name — for example, `spacing.md` or `spacing.xl`.
+
+| Token | Value (px) | Common use |
+|---|---|---|
+| `spacing.xxs` | 2 | Micro gaps, tight internal offsets |
+| `spacing.xs` | 4 | Icon-to-label gap, tight insets |
+| `spacing.sm` | 6 | Small insets |
+| `spacing.md` | 8 | Base unit — default gap between elements |
+| `spacing.lg` | 12 | Standard padding, item gaps |
+| `spacing.xl` | 16 | Card insets, section padding |
+| `spacing.2xl` | 20 | Larger padding |
+| `spacing.3xl` | 24 | Row padding, section gaps |
+| `spacing.4xl` | 32 | Component group separation |
+| `spacing.6xl` | 48 | Section separation |
+| `spacing.7xl` | 64 | Large layout gaps |
+| `spacing.8xl` | 80 | Page-level spacing |
+| `spacing.10xl` | 128 | Large page sections |
+| `spacing.11xl` | 160 | Extra large layout areas |
+
+<Note>
+The scale skips `5xl` (40px). This gap is present in the Figma source — no token was defined for that step.
+</Note>
+
+---
+
+## Usage principles
+
+- Use spacing tokens for all padding, gap, and layout distance values. Do not use arbitrary pixel values.
+- If the value you need is not in the scale, use the nearest step and raise the discrepancy with the design team.
+- `spacing.md` (8px) is the base unit. Most component padding will be a direct multiple of it.
+- Prefer padding over margin for component spacing. Margin creates implicit dependencies between adjacent components; padding is self-contained.
+- Reserve `spacing.4xl` (32px) and larger for separating groups, sections, or layout areas — not for spacing within a single component.
+
+---
+
+## TODO
+
+- TODO: Define which scale steps map to specific layout contexts (e.g., mobile screen edge padding, desktop content area padding).
+- TODO: Confirm whether `5xl` (40px) is permanently absent or should be added.
+
+---
+
+## Resources
+
+- Token file: `tokens/spacing.json`
+- Figma: [↳ Spacing](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB?node-id=7006-2719) *(page is currently empty in Figma — tokens were extracted from variables)*

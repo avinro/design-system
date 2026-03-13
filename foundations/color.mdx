@@ -1,0 +1,134 @@
+---
+title: "Color"
+description: "The color system for Dojo DS. Semantic tokens for consistent use across components and themes."
+---
+
+## Overview
+
+The color system is organized in two layers: a **raw palette** of named color values, and a **semantic layer** that maps those values to interface roles. Components always reference semantic tokens — never raw palette values directly.
+
+---
+
+## Semantic tokens
+
+Semantic tokens describe the role of a color, not its value. This decouples components from specific hues, making it possible to adjust the palette or support theming without touching component code.
+
+### Foreground
+
+Used for text, icons, and interactive elements rendered on top of a background.
+
+| Token | Value | Use |
+|---|---|---|
+| `foreground.neutral.strongest` | `#1d1d23` | Primary text, headings |
+| `foreground.neutral.strong` | `#34353f` | Body text |
+| `foreground.neutral.medium` | `#4b4c5b` | Secondary text |
+| `foreground.neutral.subtle` | `#636377` | Placeholder, caption |
+| `foreground.neutral.lowest` | `#7a7b93` | Disabled text |
+| `foreground.neutral.inverse` | `#f1f2f4` | Text on dark backgrounds |
+
+### Background
+
+Used for page and container fills.
+
+| Token | Value | Use |
+|---|---|---|
+| `background.primary.white` | `#ffffff` | Primary surface |
+| `background.primary.lowest` | `#f1f2f4` | App background |
+| `background.primary.subtle` | `#e4e5ed` | Secondary container |
+| `background.primary.medium` | `#4b4c5b` | Dark container |
+| `background.primary.strongest` | `#1d1d23` | Inverted UI |
+
+### Border
+
+| Token | Value | Use |
+|---|---|---|
+| `border.primary.subtle` | `#e4e5ed` | Dividers, low-emphasis borders |
+| `border.primary.medium` | `#cccdda` | Input borders, default outlines |
+| `border.utility.error` | `#cc2222` | Error state borders |
+
+### Surface
+
+Surface tokens carry depth meaning. Use them based on the z-level of the element, not for decorative color.
+
+| Token | Value | Use |
+|---|---|---|
+| `surface.neutral.bg-sunken` | `#ffffff` | Recessed areas |
+| `surface.neutral.bg-default` | `#f1f2f4` | Default surface |
+| `surface.neutral.bg-raised` | `#e4e5ed` | Elevated surface, cards |
+| `surface.neutral.bg-invert` | `#1d1d23` | Inverted surface |
+| `surface.neutral.bg-overlay` | `#00000066` | Modal and overlay scrim |
+| `surface.accent.bg-pure` | `#ff6b26` | Brand accent surface |
+
+### Text
+
+Shorthand aliases for the most common text roles.
+
+| Token | Value | Use |
+|---|---|---|
+| `text.primary` | `#1d1d23` | Default text |
+| `text.body` | `#34353f` | Body copy |
+| `text.placeholder` | `#636377` | Input placeholder |
+| `text.help` | `#636377` | Help and hint text |
+| `text.invert` | `#f1f2f4` | Text on dark backgrounds |
+| `text.accent` | `#ad491a` | Accent emphasis text |
+
+### Notification
+
+Colors for feedback messages and status indicators.
+
+| Token | Sub-token | Value | Use |
+|---|---|---|---|
+| `notification.error` | `.bg` | `#fcdcdc` | Error message background |
+| `notification.error` | `.text` | `#a43636` | Error message text |
+| `notification.success` | `.bg` | `#d5f4d6` | Success message background |
+| `notification.success` | `.text` | `#176719` | Success message text |
+| `notification.warning` | `.bg` | `#f6e3a4` | Warning message background |
+| `notification.warning` | `.text` | `#775c01` | Warning message text |
+| `notification.warning` | `.signal` | `#e9bd2a` | Warning icon or indicator color |
+| `notification.info` | `.bg` | `#d4e3ff` | Info message background |
+| `notification.info` | `.text` | `#1a4dac` | Info message text |
+| `notification.border-default` | — | `#e4e5ed` | Notification container border |
+
+### Chart
+
+| Token | Value |
+|---|---|
+| `chart.teal-primary` | `#0ac0a1` |
+| `chart.blue-primary` | `#2671fd` |
+| `chart.blue-secondary` | `#d4e3ff` |
+
+---
+
+## Raw palette
+
+Raw palette entries are the underlying, non-semantic values. Use them only to define semantic tokens — never inside components.
+
+| Group | Steps available |
+|---|---|
+| `palette.neutral` | white, black, 100, 300, 600, 900 |
+| `palette.red` | 700 |
+| `palette.blue` | 500, 700 |
+| `palette.green` | 500, 700 |
+| `palette.yellow` | 400 |
+| `palette.static` | black (`#020202`), white (`#ffffff`) |
+
+<Note>
+The palette is intentionally sparse. Color ramps are only partially defined in the current Figma file. Do not extend components to use unlisted palette steps without first adding them to the token file.
+</Note>
+
+---
+
+## Usage principles
+
+- Always reference a semantic token. Do not hardcode hex values in components.
+- Use `foreground.neutral.*` for text and icons on light backgrounds. Use `foreground.neutral.inverse` on dark backgrounds.
+- Apply `surface` tokens based on z-level. `bg-sunken` sits below the page default, `bg-raised` sits above it, `bg-overlay` covers everything.
+- Use `notification.*` tokens only for status feedback — error, success, warning, and info. Do not repurpose them for decorative color.
+- Do not reference `palette.*` tokens in components or design specs.
+
+---
+
+## Resources
+
+- Token file: `tokens/colors.json`
+- Figma: [↳ Colors](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB?node-id=7006-2717)
