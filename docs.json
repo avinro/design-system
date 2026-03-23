@@ -80,7 +80,8 @@
           {
             "group": "Indicators & States",
             "pages": [
-              "components/core/indicators-and-states/badge/index"
+              "components/core/indicators-and-states/badge/index",
+              "components/core/indicators-and-states/badge-partner/index"
             ]
           },
           {

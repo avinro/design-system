@@ -104,12 +104,14 @@ No interactive states are defined in Figma. Badge is a display-only component.
 | Part | Required | Description |
 |---|---|---|
 | Container | Yes | Pill-shaped container. Background and border depend on type. Padding: 8px horizontal, 4px vertical. |
+| Icon | Optional | Leading icon, 16px. Controlled by `iconShow` (default: `true`) and `iconType` (default: `null` → `Customer-Icon/alert-war-triangle`). Decorative — must be `aria-hidden`. Color matches the text token for the type. |
 | Label | Yes | Short text string. Manrope SemiBold, 12px, `whitespace-nowrap`. Color depends on type. |
 
 Rules:
 - The label is always required. Do not render a Badge without visible text content.
 - The label must be `whitespace-nowrap` — do not allow it to wrap. Keep labels short.
-- No icon support is defined in Figma. Do not add icons unless a separate icon variant is confirmed.
+- The icon is shown by default. Use `iconShow={false}` to suppress it, or `iconType` to pass a custom icon node.
+- The default icon is `Customer-Icon/alert-war-triangle` for all types. The icon inherits the text color of the given type.
 - The border is only applied in the `outlined` type. Do not add a border to other types.
 
 ---
@@ -180,9 +182,12 @@ All types share the same text style.
 ## Notes
 
 - Extracted from Figma file `nGsiItayj12cfi3AKbP1mB`, node `5050:816`, frame "Badge".
+- Documentation frame: node `7378:3643`.
 - Six confirmed types: `error` (5050:817), `info` (5050:819), `Success` (5050:821), `Warning` (5050:823), `default` (5050:825), `outlined` (5050:827).
 - Note: `Success` and `Warning` are capitalized in the Figma prop. All other types (`error`, `info`, `default`, `outlined`) are lowercase. Normalize casing in implementation as appropriate.
 - The `outlined` type uses a 1px solid border (`--badge/outlined/border`) and no background fill.
 - The `--notification/warning--bg` token has a double dash — this is the confirmed Figma token name.
-- No interactive states, no size variants, no icon support defined in Figma.
+- Icons ARE present in the main Badge: `iconShow` defaults to `true`, `iconType` defaults to `null` (renders `Customer-Icon/alert-war-triangle`). Confirmed from Figma MCP design context.
+- Dark mode token values confirmed from the Figma documentation frame (7378:3643).
+- No interactive states, no size variants defined in Figma.
 - Usage confirmed in Dojo Customer App (node `1361:13772`) and Dojo Driver App (node `2007:325`).

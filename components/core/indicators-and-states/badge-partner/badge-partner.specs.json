@@ -1,0 +1,120 @@
+{
+  "component": "Badge Partner",
+  "figmaFrameName": "Badge/Partner",
+  "figmaNodeId": "7477:1865",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Pill-shaped container (border-radius: 9999px). Height: 24px. Padding and background depend on type.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "description": "Leading icon, 16px. Decorative (aria-hidden). Icon name and color depend on type.",
+      "required": true
+    },
+    {
+      "part": "label",
+      "description": "Fixed text string. Manrope SemiBold, 12px, whitespace-nowrap. Color depends on type.",
+      "required": true
+    }
+  ],
+
+  "types": [
+    {
+      "name": "bookable",
+      "figmaNodeId": "7477:1866",
+      "semantics": "The venue is fully bookable — users can complete a booking directly without waiting for confirmation.",
+      "label": "Bookable",
+      "icon": {
+        "name": "Customer-Icon/check",
+        "size": "16px",
+        "color": { "token": "--chart-pair/cyan-primary", "value": "#38a9d5" },
+        "decorative": true
+      },
+      "backgroundToken": "--chart-pair/cyan-secondary",
+      "backgroundValue": "#d9f4ff",
+      "textToken": "--chart-pair/cyan-primary",
+      "textValue": "#38a9d5",
+      "padding": {
+        "left": { "token": "--spacing-8", "value": "8px" },
+        "right": { "token": "--spacing-12", "value": "12px" },
+        "top": { "token": "--spacing-4", "value": "4px" },
+        "bottom": { "token": "--spacing-4", "value": "4px" },
+        "note": "Asymmetric horizontal padding: left 8px, right 12px."
+      },
+      "gap": { "token": "--spacing-4", "value": "4px" },
+      "width": 93,
+      "height": 24
+    },
+    {
+      "name": "request only",
+      "figmaNodeId": "7477:1878",
+      "semantics": "The venue requires a booking request — users submit a request and the venue must confirm availability before the booking is complete.",
+      "label": "Request only",
+      "icon": {
+        "name": "Customer-Icon/chat-message",
+        "size": "16px",
+        "color": { "token": "--chart-pair/pink-primary", "value": "#ff498b" },
+        "decorative": true
+      },
+      "backgroundToken": "--chart-pair/pink-secondary",
+      "backgroundValue": "#ffdbe8",
+      "textToken": "--chart-pair/pink-primary",
+      "textValue": "#ff498b",
+      "padding": {
+        "horizontal": { "token": "--spacing-8", "value": "8px" },
+        "vertical": { "token": "--spacing-4", "value": "4px" },
+        "note": "Symmetric horizontal padding: 8px all sides."
+      },
+      "gap": { "token": "--spacing-4", "value": "4px" },
+      "width": 112,
+      "height": 24
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No structural variants. Type is the only dimension (2 types).",
+
+  "sizes": [],
+  "sizeNote": "Single size only — height 24px. No size variants.",
+
+  "states": [],
+  "stateNote": "No interactive states. Display-only component.",
+
+  "dimensions": {
+    "height": "24px",
+    "borderRadius": "9999px (full pill)",
+    "iconSize": "16px",
+    "iconLabelGap": "4px (--spacing-4)"
+  },
+
+  "typography": {
+    "textStyle": "Body xs/SemiBold",
+    "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+    "fontWeight": "var(--weight/semibold, 600)",
+    "fontSize": "var(--size/xs, 12px)",
+    "lineHeight": 1.2,
+    "letterSpacing": "var(--letter-spacing/normal, 0px)",
+    "whitespace": "nowrap",
+    "note": "Both types share the same text style as the main Badge."
+  },
+
+  "usageContext": [
+    "Venue partner cards only.",
+    "Communicates booking capability: direct booking (bookable) or request-based (request only).",
+    "One badge per venue card."
+  ],
+
+  "notes": [
+    "Two confirmed types: bookable (7477:1866) and request only (7477:1878).",
+    "Both types use chart-pair tokens, not the notification tokens used by main Badge.",
+    "The bookable type has asymmetric horizontal padding: left 8px, right 12px.",
+    "The request only type has symmetric horizontal padding: 8px.",
+    "Icon and text share the same color token per type.",
+    "Icon is decorative — must have aria-hidden='true'.",
+    "Labels are fixed: 'Bookable' and 'Request only'."
+  ]
+}

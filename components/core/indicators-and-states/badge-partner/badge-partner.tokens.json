@@ -1,0 +1,114 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (get_variable_defs + get_design_context). Figma chart-pair tokens are mapped to their DS equivalents in colors.component-specific.json and colors.semantic.json.",
+
+  "types": {
+    "bookable": {
+      "background": {
+        "figmaToken": "--chart-pair/cyan-secondary",
+        "dsComponentToken": "chart.cyan.bg",
+        "dsSemanticToken": "background.support.cyan.light",
+        "value": { "light": "#D9F4FF", "dark": "#0D2833" },
+        "description": "Background fill for the bookable type."
+      },
+      "text": {
+        "figmaToken": "--chart-pair/cyan-primary",
+        "dsComponentToken": "chart.cyan.text",
+        "dsSemanticToken": "foreground.support.cyan",
+        "value": { "light": "#38A9D5", "dark": "#7FDAFE" },
+        "description": "Text color for the bookable type. Also used for the icon."
+      },
+      "icon": {
+        "name": "Customer-Icon/check",
+        "figmaToken": "--chart-pair/cyan-primary",
+        "dsComponentToken": "chart.cyan.text",
+        "dsSemanticToken": "foreground.support.cyan",
+        "value": { "light": "#38A9D5", "dark": "#7FDAFE" },
+        "description": "Checkmark icon color. Shares the text token."
+      }
+    },
+    "request-only": {
+      "background": {
+        "figmaToken": "--chart-pair/pink-secondary",
+        "dsComponentToken": "chart.pink.bg",
+        "dsSemanticToken": "background.support.pink.light",
+        "value": { "light": "#FFDBE8", "dark": "#330F1C" },
+        "description": "Background fill for the request only type."
+      },
+      "text": {
+        "figmaToken": "--chart-pair/pink-primary",
+        "dsComponentToken": "chart.pink.text",
+        "dsSemanticToken": "foreground.support.pink",
+        "value": { "light": "#FF498B", "dark": "#FF83B0" },
+        "description": "Text color for the request only type. Also used for the icon."
+      },
+      "icon": {
+        "name": "Customer-Icon/chat-message",
+        "figmaToken": "--chart-pair/pink-primary",
+        "dsComponentToken": "chart.pink.text",
+        "dsSemanticToken": "foreground.support.pink",
+        "value": { "light": "#FF498B", "dark": "#FF83B0" },
+        "description": "Chat message icon color. Shares the text token."
+      }
+    }
+  },
+
+  "container": {
+    "borderRadius": {
+      "value": "9999px",
+      "description": "Full pill shape. Applied to both types."
+    },
+    "paddingBookable": {
+      "paddingLeft":   { "figmaToken": "--spacing-8",  "dsToken": "spacing.scale.md", "value": "8px" },
+      "paddingRight":  { "figmaToken": "--spacing-12", "dsToken": "spacing.scale.lg", "value": "12px" },
+      "paddingTop":    { "figmaToken": "--spacing-4",  "dsToken": "spacing.scale.xs", "value": "4px" },
+      "paddingBottom": { "figmaToken": "--spacing-4",  "dsToken": "spacing.scale.xs", "value": "4px" },
+      "note": "Asymmetric horizontal padding for the bookable type: left 8px, right 12px."
+    },
+    "paddingRequestOnly": {
+      "paddingHorizontal": { "figmaToken": "--spacing-8", "dsToken": "spacing.scale.md", "value": "8px" },
+      "paddingVertical":   { "figmaToken": "--spacing-4", "dsToken": "spacing.scale.xs", "value": "4px" },
+      "note": "Symmetric horizontal padding for the request only type: 8px."
+    },
+    "height": {
+      "value": "24px",
+      "dsToken": "spacing.scale.3xl",
+      "description": "Fixed height for both types."
+    }
+  },
+
+  "icon": {
+    "size": {
+      "value": "16px",
+      "dsToken": "spacing.scale.xl",
+      "description": "Icon size. Applied to both types."
+    },
+    "gap": {
+      "figmaToken": "--spacing-4",
+      "dsToken": "spacing.scale.xs",
+      "value": "4px",
+      "description": "Gap between icon and label."
+    }
+  },
+
+  "label": {
+    "textStyle": "Body xs/SemiBold",
+    "fontFamily": {
+      "figmaToken": "--font-family/body",
+      "value": "'Manrope', sans-serif"
+    },
+    "fontWeight": {
+      "figmaToken": "--weight/semibold",
+      "value": "600"
+    },
+    "fontSize": {
+      "figmaToken": "--size/xs",
+      "value": "12px"
+    },
+    "lineHeight": { "value": "1.2" },
+    "letterSpacing": {
+      "figmaToken": "--letter-spacing/normal",
+      "value": "0px"
+    },
+    "whitespace": { "value": "nowrap" }
+  }
+}

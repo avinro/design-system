@@ -13,16 +13,18 @@ It is used in the Dojo Apps to label statuses, categories, and contextual proper
 
 ## Anatomy
 
-Badge is composed of two parts:
+Badge is composed of the following parts:
 
 | Part | Required | Description |
 |---|---|---|
 | **Container** | Yes | Pill-shaped surface (border-radius: 9999px). Background and border determined by type. Padding: 8px horizontal, 4px vertical. |
+| **Icon** | Optional | Leading icon, 16px. Controlled by `iconShow` (default: `true`) and `iconType` (default: alert-war-triangle). Decorative — must be `aria-hidden`. |
 | **Label** | Yes | Short text string. Manrope SemiBold, 12px, `whitespace-nowrap`. Color determined by type. |
 
 - The label is always required. Do not render a Badge without visible text.
 - The label must not wrap — keep it short (1–3 words).
-- No icon slot is defined in Figma.
+- The icon is present by default (`iconShow=true`) and uses the `Customer-Icon/alert-war-triangle` icon per type. Pass `iconShow={false}` to hide it or `iconType` to override the icon node.
+- For the dedicated partner variant on Venue cards with fixed icons and labels, see [Badge Partner](/components/core/indicators-and-states/badge-partner/index).
 
 {/* TODO: Add anatomy.png from Figma once the annotation frame is available. */}
 {/* ![Badge anatomy](./anatomy.png) */}
@@ -77,20 +79,22 @@ No interactive states confirmed. Display-only.
 
 ### Token reference
 
-**Container tokens by type:**
+**Container tokens by type — light and dark:**
 
-| Type | Background token | Background value | Text token | Text value |
-|---|---|---|---|---|
-| `default` | `--badge/default/bg` | `#e4e5ed` | `--badge/default/text` | `#34353f` |
-| `outlined` | none | — | `--badge/default/text` | `#34353f` |
-| `error` | `--notification/error-bg` | `#fcdcdc` | `--notification/error-text` | `#a43636` |
-| `info` | `--notification/info-bg` | `#d4e3ff` | `--notification/info-text` | `#1a4dac` |
-| `Success` | `--notification/success-bg` | `#d5f4d6` | `--notification/success-text` | `#176719` |
-| `Warning` | `--notification/warning--bg` | `#f6e3a4` | `--notification/warning-text` | `#775c01` |
+| Type | Background token | Light | Dark | Text token | Light | Dark |
+|---|---|---|---|---|---|---|
+| `default` | `--badge/default/bg` | `#e4e5ed` | `#34353f` | `--badge/default/text` | `#34353f` | `#cccdda` |
+| `outlined` | none | — | — | `--badge/default/text` | `#34353f` | `#cccdda` |
+| `error` | `--notification/error-bg` | `#fcdcdc` | `#301010` | `--notification/error-text` | `#a43636` | `#f58888` |
+| `info` | `--notification/info-bg` | `#d4e3ff` | `#081733` | `--notification/info-text` | `#1a4dac` | `#6b9efe` |
+| `Success` | `--notification/success-bg` | `#d5f4d6` | `#09280a` | `--notification/success-text` | `#176719` | `#70d872` |
+| `Warning` | `--notification/warning--bg` | `#f6e3a4` | `#2e2300` | `--notification/warning-text` | `#775c01` | `#edc953` |
 
-> Note: The `outlined` type adds a `1px solid` border using `--badge/outlined/border` (`#cccdda`) and has no background fill.
+> Note: The `outlined` type adds a `1px solid` border using `--badge/outlined/border` (`#cccdda` light / `#4b4c5b` dark) and has no background fill.
 
 > Note: The `--notification/warning--bg` token uses a double dash. This is the confirmed Figma token name.
+
+> Note: Dark mode values are resolved values from the Figma documentation frame (node 7378:3643). The CSS variable names are the same across both modes — the resolved value changes.
 
 **Shared label tokens (all types):**
 
@@ -139,8 +143,10 @@ No interactive states confirmed. Display-only.
 ## Resources
 
 - Figma: [Badge component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816)
+- Figma: [Badge documentation frame](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7378-3643)
 - Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1361-13772)
 - Usage context: [Dojo Driver App](https://www.figma.com/design/tdHwm5RAIg6k9WTW4FQKCX/Dojo-Driver-App-1.0?node-id=2007-325)
+- Related: [Badge Partner](/components/core/indicators-and-states/badge-partner/index) — dedicated variant for Venue partner cards with fixed icons and labels
 - Code: `./badge.tsx`
 - Specs: `./badge.specs.json`
 - Tokens: `./badge.tokens.json`

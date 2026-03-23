@@ -1,65 +1,65 @@
 {
-  "_note": "Token values confirmed from Figma MCP extraction (node 5050:816). Six types: error, info, Success, Warning, default, outlined.",
+  "_note": "Token values confirmed from Figma MCP extraction (node 5050:816 and documentation frame 7378:3643). Six types: error, info, Success, Warning, default, outlined. Dark mode resolved values extracted from the Figma documentation frame.",
 
   "types": {
     "error": {
       "background": {
         "token": "--notification/error-bg",
-        "value": "#fcdcdc",
+        "value": { "light": "#fcdcdc", "dark": "#301010" },
         "description": "Background fill for the error type."
       },
       "text": {
         "token": "--notification/error-text",
-        "value": "#a43636",
-        "description": "Text color for the error type."
+        "value": { "light": "#a43636", "dark": "#f58888" },
+        "description": "Text and icon color for the error type."
       }
     },
     "info": {
       "background": {
         "token": "--notification/info-bg",
-        "value": "#d4e3ff",
+        "value": { "light": "#d4e3ff", "dark": "#081733" },
         "description": "Background fill for the info type."
       },
       "text": {
         "token": "--notification/info-text",
-        "value": "#1a4dac",
-        "description": "Text color for the info type."
+        "value": { "light": "#1a4dac", "dark": "#6b9efe" },
+        "description": "Text and icon color for the info type."
       }
     },
     "Success": {
       "background": {
         "token": "--notification/success-bg",
-        "value": "#d5f4d6",
+        "value": { "light": "#d5f4d6", "dark": "#09280a" },
         "description": "Background fill for the Success type."
       },
       "text": {
         "token": "--notification/success-text",
-        "value": "#176719",
-        "description": "Text color for the Success type."
+        "value": { "light": "#176719", "dark": "#70d872" },
+        "description": "Text and icon color for the Success type."
       }
     },
     "Warning": {
       "background": {
         "token": "--notification/warning--bg",
-        "value": "#f6e3a4",
+        "value": { "light": "#f6e3a4", "dark": "#2e2300" },
         "description": "Background fill for the Warning type. Note: token name uses a double dash (warning--bg) — this is the confirmed Figma token name."
       },
       "text": {
         "token": "--notification/warning-text",
-        "value": "#775c01",
-        "description": "Text color for the Warning type."
+        "value": { "light": "#775c01", "dark": "#edc953" },
+        "description": "Text and icon color for the Warning type."
       }
     },
     "default": {
       "background": {
         "token": "--badge/default/bg",
-        "value": "#e4e5ed",
+        "value": { "light": "#e4e5ed", "dark": "#34353f" },
         "description": "Background fill for the default (neutral) type."
       },
       "text": {
         "token": "--badge/default/text",
-        "value": "#34353f",
-        "description": "Text color for the default type. Also used for the outlined type."
+        "value": { "light": "#34353f", "dark": "#cccdda" },
+        "description": "Text and icon color for the default type. Also used for the outlined type."
       }
     },
     "outlined": {
@@ -69,13 +69,13 @@
       },
       "border": {
         "token": "--badge/outlined/border",
-        "value": "#cccdda",
+        "value": { "light": "#cccdda", "dark": "#4b4c5b" },
         "description": "1px solid border for the outlined type."
       },
       "text": {
         "token": "--badge/default/text",
-        "value": "#34353f",
-        "description": "Text color for the outlined type. Shares the default text token."
+        "value": { "light": "#34353f", "dark": "#cccdda" },
+        "description": "Text and icon color for the outlined type. Shares the default text token."
       }
     }
   },
@@ -94,6 +94,22 @@
       "token": "--spacing-4",
       "value": "4px",
       "description": "Top and bottom padding."
+    }
+  },
+
+  "icon": {
+    "size": {
+      "value": "16px",
+      "description": "Icon size. Applies when iconShow=true."
+    },
+    "gap": {
+      "token": "--spacing-4",
+      "value": "4px",
+      "description": "Gap between icon and label."
+    },
+    "default": {
+      "name": "Customer-Icon/alert-war-triangle",
+      "description": "Default icon used by all types when iconType is null. Color matches the text token for the given type."
     }
   },
 
