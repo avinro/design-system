@@ -1,0 +1,122 @@
+---
+title: "Venue card"
+description: "The primary card used in the customer app to display partner venues. Shows venue name, category, rating, and optionally communicates booking capability via Badge Partner."
+---
+
+# Venue card
+
+## Overview
+
+Venue card is the main card component used in the customer app to display partner venues. Each card shows the venue photo, name, category, and rating. When a venue is a partner, the card also displays a [Badge Partner](/components/ds-customer/indicators-and-states/badge-partner/index) badge overlaid on the image to communicate booking capability (bookable or request only).
+
+Venue card is a display-only component. It is not interactive at the component level — tap/press behavior is handled at the container level.
+
+## Anatomy
+
+Venue card is composed of five parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Image** | Yes | Full-width venue photo at the top of the card. Displays a fallback if no image is available. |
+| **Badge Partner** | Conditional | Overlaid on the image, top-left area. Only shown when `Partner=True`. Communicates booking type (Bookable or Request only). |
+| **Venue name** | Yes | Bold text below the image. Primary identifier of the venue. |
+| **Category** | Yes | Subtitle text below the venue name. Describes the type of venue (e.g. "Beach Club & Restaurant"). |
+| **Rating row** | Yes | Star icon, numeric rating, and review count. Gives social proof at a glance. |
+
+{/* TODO: Add anatomy.png once a Figma annotation frame is available. */}
+{/* ![Venue card anatomy](./anatomy.png) */}
+
+## Variants
+
+Venue card has one prop: `Partner`.
+
+| Variant | Prop | Description |
+|---|---|---|
+| **Partner** | `Partner=True` | Shows the Badge Partner badge overlaid on the venue image. Use for partner venues. |
+| **Standard** | `Partner=False` | No badge. Use for non-partner venues or when booking capability is not applicable. |
+
+> The `Partner` prop controls the visibility of the Badge Partner badge only. All other parts of the card remain identical between variants.
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Venue card variants](./variants.png) */}
+
+## States
+
+Venue card is a display-only component at the component level.
+
+- No interactive states are defined in the component itself (hover, pressed, focused).
+- Tap/press interaction is handled by the parent container or list component.
+
+{/* TODO: Confirm with engineering whether a pressed/active state is applied at the wrapper level. */}
+
+{/* ![Venue card states](./states.png) */}
+
+## Tokens & specs
+
+### Supported variants
+
+Two variants: `Partner=True`, `Partner=False`.
+
+### Supported sizes
+
+Single size — approximately `200 × 248px`. No size variants.
+
+### Supported states
+
+No interactive states at the component level.
+
+### Token reference
+
+> Note: Values below were extracted from the Figma file in dark mode. Light mode values are TODO.
+
+| Part | Property | Dark value |
+|---|---|---|
+| Card container | Background | `#1D1D23` |
+| Card container | Border radius | ~12px (TODO: confirm token) |
+| Venue name | Text color | `#F1F2F4` |
+| Category | Text color | `#99A1AF` |
+| Badge Partner (`bookable`) bg | Background | `#0D2833` (`--chart-pair/cyan-secondary`) |
+| Badge Partner (`bookable`) text/icon | Color | `#7FDAFE` (`--chart-pair/cyan-primary`) |
+
+> For full Badge Partner token reference, see [Badge Partner tokens](/components/ds-customer/indicators-and-states/badge-partner/index#tokens--specs).
+
+## Usage guidelines
+
+- Use Venue card to display partner venues in lists, grids, or carousels in the customer app.
+- Set `Partner=True` when the venue is a partner and has a booking capability defined. The Badge Partner badge will appear automatically.
+- Set `Partner=False` for non-partner venues or when booking capability data is not available.
+- Do not display both `Bookable` and `Request only` badges on the same card simultaneously — the badge type is controlled by the Badge Partner component's `type` prop.
+- Keep venue name and category concise — the card layout does not accommodate long wrapping text.
+- Always provide a venue image. If no image is available, the `ImageWithFallback` layer handles the fallback state.
+- Do not repurpose Venue card for non-venue content (e.g. events, products) — use the appropriate card component instead.
+
+## Accessibility
+
+- Provide a descriptive `alt` text for the venue image that includes the venue name (e.g. `alt="Blue Marlin – Beach Club & Restaurant"`).
+- The Badge Partner badge icon is decorative — ensure `aria-hidden="true"` is applied to it. The badge label text ("Bookable" / "Request only") carries the meaning.
+- The rating row should be announced meaningfully — consider `aria-label="4.8 stars, 342 reviews"` on the rating element rather than reading the star icon as a character.
+- Do not rely on the badge color alone to convey booking type — the label text is always required.
+
+## Do / Don't
+
+**Do:**
+- Use `Partner=True` only for venues with a confirmed partner status and booking capability.
+- Always show venue name, category, and rating — they are all required parts.
+- Use the Badge Partner badge to communicate booking type clearly.
+
+**Don't:**
+- Don't use Venue card for non-partner venues that don't have the required metadata (name, category, rating).
+- Don't modify the fixed labels of the Badge Partner badge ("Bookable" / "Request only").
+- Don't place Venue card outside of a proper list, grid, or carousel container.
+- Don't truncate the rating row — always show the full rating and review count.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Venue card do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Venue card component](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=102-36)
+- Figma: [Venue cards page](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=15-383)
+- Related: [Badge Partner](/components/ds-customer/indicators-and-states/badge-partner/index) — badge shown on partner venue cards
+- Specs: `./venue-card.specs.json`
+- Tokens: `./venue-card.tokens.json`

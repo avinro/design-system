@@ -1,0 +1,134 @@
+---
+title: "Badge Partner"
+description: "A pill-shaped badge with the Dojo logo that marks a venue as a Dojo partner. When present, the user can make a booking or send a request. When absent, the venue is not a partner and booking is not available."
+---
+
+# Badge Partner
+
+## Overview
+
+Badge Partner is a pill-shaped label with the Dojo logo icon used on Venue cards to indicate that a venue is a Dojo partner. Its presence communicates that the user can interact with the venue (book or request). Its absence means the venue is not a partner and booking is not available at all.
+
+Badge Partner is a single, fixed badge — there are no variants or types. It is display-only with no interactive states.
+
+> **Presence = partner.** A venue either has the badge (Dojo partner, booking available) or it does not (not a partner, no booking).
+
+## Anatomy
+
+Badge Partner is composed of three parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Pill-shaped surface (border-radius: 9999px). Fixed cyan background. Padding: 8px horizontal, 4px vertical. |
+| **Icon** | Yes | Dojo logo (`Customer-Icon/dojo-logo`), 16px. Decorative — must be `aria-hidden`. Color matches label. |
+| **Label** | Yes | Fixed text: **"Dojo Partner"**. Manrope SemiBold, 12px, `whitespace-nowrap`. |
+
+- The icon always precedes the label.
+- Do not render Badge Partner without both icon and label.
+- The label is fixed. Do not substitute custom text.
+
+> **Note:** The Figma layer currently shows the label as "Dojo Parnet" — this is a typo. The correct label is **"Dojo Partner"**.
+
+{/* TODO: Add anatomy.png once a Figma annotation frame is available. */}
+{/* ![Badge Partner anatomy](./anatomy.png) */}
+
+## Variants
+
+Badge Partner has no variants. It is a single, fixed badge.
+
+| Property | Value |
+|---|---|
+| Icon | Dojo logo (`Customer-Icon/dojo-logo`) |
+| Label | "Dojo Partner" |
+| Background | Cyan (`#D9F4FF` light / `#0D2833` dark) |
+| Text & icon color | Cyan (`#38A9D5` light / `#7FDAFE` dark) |
+
+{/* TODO: Add variants.png from Figma. */}
+{/* ![Badge Partner](./variants.png) */}
+
+## States
+
+Badge Partner has no interactive states. It is display-only.
+
+## Tokens & specs
+
+### Supported variants
+
+Single badge — no variants.
+
+### Supported sizes
+
+Single size only — height 24px. No size variants.
+
+| Property | Token | Value |
+|---|---|---|
+| Height | — | 24px |
+| Padding horizontal | `--spacing-8` | 8px |
+| Padding vertical | `--spacing-4` | 4px |
+| Border radius | — | 9999px (full pill) |
+| Icon size | — | 16px |
+| Gap (icon → label) | `--spacing-4` | 4px |
+
+### Supported states
+
+No interactive states. Display-only.
+
+### Token reference
+
+| Property | Figma token | DS token | Light | Dark |
+|---|---|---|---|---|
+| Background | `--chart-pair/cyan-secondary` | `chart.cyan.bg` / `background.support.cyan.light` | `#D9F4FF` | `#0D2833` |
+| Text color | `--chart-pair/cyan-primary` | `chart.cyan.text` / `foreground.support.cyan` | `#38A9D5` | `#7FDAFE` |
+| Icon color | `--chart-pair/cyan-primary` | `chart.cyan.text` / `foreground.support.cyan` | `#38A9D5` | `#7FDAFE` |
+
+> Icon and text share the same color token. Tokens come from the `chart-pair` family — not the `notification` or `badge` tokens used by the main Badge component.
+
+**Label typography (shared with main Badge):**
+
+| Property | Token | Value |
+|---|---|---|
+| Font family | `--font-family/body` | `'Manrope', sans-serif` |
+| Font weight | `--weight/semibold` | `600` |
+| Font size | `--size/xs` | `12px` |
+| Line height | — | `1.2` |
+| Letter spacing | `--letter-spacing/normal` | `0px` |
+
+## Usage guidelines
+
+- Show Badge Partner on a [Venue card](/components/ds-customer/content-display/venue-card/index) **only when the venue is a confirmed Dojo partner**.
+- **Absence of the badge means the venue is not a partner** — the user cannot make a booking or request for that venue.
+- Display **one Badge Partner per venue card** — the badge is not repeatable.
+- Do not use Badge Partner as a general status or category label. For other status uses, use the main [Badge](/components/core/indicators-and-states/badge/index) component.
+- Do not modify the label "Dojo Partner" or substitute custom text.
+
+## Accessibility
+
+- The Dojo logo icon is decorative. Apply `aria-hidden="true"` to it.
+- The label "Dojo Partner" must be visible at all times — it carries the full meaning for screen readers.
+- Do not rely on the icon or color alone to convey partner status — the label is always required.
+- TODO: Confirm WCAG contrast ratios for the cyan combination.
+
+## Do / Don't
+
+**Do:**
+- Show Badge Partner only on verified Dojo partner venues.
+- Keep the label fixed as "Dojo Partner".
+- Ensure the badge is visible and fully readable on the venue image.
+
+**Don't:**
+- Don't show Badge Partner on non-partner venues.
+- Don't use Badge Partner to indicate booking type (bookable vs. request only) — that distinction is no longer represented at the badge level.
+- Don't modify or replace the Dojo logo icon.
+- Don't show multiple Badge Partner badges on the same card.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Badge Partner do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Badge Partner component](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=132-1167)
+- Figma: [Venue card context](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=15-383)
+- Related: [Badge](/components/core/indicators-and-states/badge/index) — main badge component for general status labeling
+- Related: [Venue card](/components/ds-customer/content-display/venue-card/index) — the card component that uses Badge Partner
+- Specs: `./badge-partner.specs.json`
+- Tokens: `./badge-partner.tokens.json`

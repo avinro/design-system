@@ -1,0 +1,87 @@
+{
+  "component": "Badge Partner",
+  "figmaFrameName": "Badge/Partner/bookable",
+  "figmaNodeId": "132:1167",
+  "figmaFileKey": "iYqpx8x8Kxdixf8YSRkiCz",
+
+  "semantics": "Marks a venue as a Dojo partner. Presence = partner (booking or request available). Absence = not a partner (no booking available).",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Pill-shaped container (border-radius: 9999px). Height: 24px. Fixed cyan background.",
+      "required": true
+    },
+    {
+      "part": "icon",
+      "layerName": "Customer-Icon/dojo-logo",
+      "description": "Dojo logo icon, 16px. Decorative (aria-hidden). Color: --chart-pair/cyan-primary.",
+      "required": true
+    },
+    {
+      "part": "label",
+      "layerName": "Dojo Parnet",
+      "description": "Fixed label text: 'Dojo Partner'. Note: Figma layer name has a typo ('Dojo Parnet') — correct label is 'Dojo Partner'. Manrope SemiBold, 12px, whitespace-nowrap.",
+      "required": true,
+      "correctLabel": "Dojo Partner",
+      "figmaTypo": "Dojo Parnet"
+    }
+  ],
+
+  "variants": [],
+  "variantNote": "No variants. Single fixed badge.",
+
+  "sizes": [],
+  "sizeNote": "Single size only — height 24px. No size variants.",
+
+  "states": [],
+  "stateNote": "No interactive states. Display-only component.",
+
+  "dimensions": {
+    "height": "24px",
+    "width": "~107px",
+    "borderRadius": "9999px (full pill)",
+    "iconSize": "16px",
+    "iconLabelGap": "4px (--spacing-4)",
+    "paddingHorizontal": "8px (--spacing-8)",
+    "paddingVertical": "4px (--spacing-4)"
+  },
+
+  "tokens": {
+    "background": {
+      "figmaToken": "--chart-pair/cyan-secondary",
+      "light": "#D9F4FF",
+      "dark": "#0D2833"
+    },
+    "textAndIcon": {
+      "figmaToken": "--chart-pair/cyan-primary",
+      "light": "#38A9D5",
+      "dark": "#7FDAFE"
+    }
+  },
+
+  "typography": {
+    "textStyle": "Body xs/SemiBold",
+    "fontFamily": "var(--font-family/body, 'Manrope', sans-serif)",
+    "fontWeight": "var(--weight/semibold, 600)",
+    "fontSize": "var(--size/xs, 12px)",
+    "lineHeight": 1.2,
+    "letterSpacing": "var(--letter-spacing/normal, 0px)",
+    "whitespace": "nowrap"
+  },
+
+  "usageContext": [
+    "Venue cards only.",
+    "Presence indicates Dojo partnership — user can book or request.",
+    "Absence indicates non-partner venue — no booking available."
+  ],
+
+  "notes": [
+    "Component updated in Customer DS: file iYqpx8x8Kxdixf8YSRkiCz, node 132:1167.",
+    "Previously two variants (bookable / request only) — now a single badge.",
+    "Icon changed from Customer-Icon/check and Customer-Icon/chat-message to Customer-Icon/dojo-logo.",
+    "Semantics changed: badge now means 'Dojo partner' not 'booking type'.",
+    "Figma layer has a typo: 'Dojo Parnet' — correct label is 'Dojo Partner'.",
+    "Uses chart-pair/cyan tokens only — pink tokens removed."
+  ]
+}

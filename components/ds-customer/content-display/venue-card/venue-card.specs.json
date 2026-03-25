@@ -1,0 +1,90 @@
+{
+  "component": "Venue card",
+  "figmaFrameName": "Venue card",
+  "figmaNodeId": "102:36",
+  "figmaFileKey": "iYqpx8x8Kxdixf8YSRkiCz",
+
+  "anatomy": [
+    {
+      "part": "image",
+      "layerName": "ImageWrapper / ImageWithFallback",
+      "description": "Full-width venue photo at the top of the card. Includes fallback display when no image is available.",
+      "required": true
+    },
+    {
+      "part": "badge-partner",
+      "layerName": "Badge/Partner",
+      "description": "Badge Partner instance overlaid on the image. Only visible when Partner=True. Communicates booking type.",
+      "required": false,
+      "condition": "Partner=True"
+    },
+    {
+      "part": "venue-name",
+      "layerName": "info / Blue Marlin.",
+      "description": "Venue name. Bold text, primary identifier.",
+      "required": true
+    },
+    {
+      "part": "category",
+      "layerName": "info / Beach Club & Restaurant.",
+      "description": "Venue category subtitle.",
+      "required": true
+    },
+    {
+      "part": "rating-row",
+      "layerName": "Extra info / Rate",
+      "description": "Star icon, numeric rating, and review count.",
+      "required": true
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "Partner",
+      "propKey": "Partner",
+      "type": "VARIANT",
+      "defaultValue": "True",
+      "values": [
+        {
+          "value": "True",
+          "figmaNodeId": "102:35",
+          "description": "Shows Badge Partner badge overlaid on the venue image.",
+          "badgeVisible": true
+        },
+        {
+          "value": "False",
+          "figmaNodeId": "102:34",
+          "description": "No badge. Standard card without booking capability indicator.",
+          "badgeVisible": false
+        }
+      ]
+    }
+  ],
+
+  "sizes": [],
+  "sizeNote": "Single size only. Approximate dimensions: 200 × 248px. No size variants.",
+
+  "states": [],
+  "stateNote": "No interactive states at the component level. Tap/press state is handled by the parent container.",
+
+  "dimensions": {
+    "width": "~200px",
+    "height": "~248px",
+    "borderRadius": "TODO: confirm token (visually ~12px)",
+    "note": "Approximate dimensions extracted from Figma. Exact values depend on responsive container."
+  },
+
+  "usageContext": [
+    "Customer app venue listing screens.",
+    "Partner venue discovery flows.",
+    "Grids, lists, and carousels of venue results."
+  ],
+
+  "notes": [
+    "Component moved to Customer DS: file iYqpx8x8Kxdixf8YSRkiCz, node 102:36.",
+    "Two confirmed variants: Partner=True (102:35) and Partner=False (102:34).",
+    "Badge Partner (node 132:1166) is used as an instance inside Partner=True variant.",
+    "Light mode token values are TODO — all extracted values are dark mode.",
+    "Page header updated from 'Product cards' to 'Venue card' in Figma (node 15:384)."
+  ]
+}

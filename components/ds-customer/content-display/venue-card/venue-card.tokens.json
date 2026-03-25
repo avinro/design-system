@@ -1,0 +1,52 @@
+{
+  "_note": "Token values extracted from Figma MCP (figma_execute + layer inspection). Dark mode values confirmed. Light mode values are TODO.",
+
+  "container": {
+    "background": {
+      "value": { "dark": "#1D1D23", "light": "TODO" },
+      "description": "Card background fill. Dark surface tone."
+    },
+    "borderRadius": {
+      "value": "TODO: confirm token (visually ~12px)",
+      "description": "Full card corner radius."
+    }
+  },
+
+  "venueName": {
+    "textColor": {
+      "value": { "dark": "#F1F2F4", "light": "TODO" },
+      "description": "Venue name text color. Near-white on dark background."
+    },
+    "fontWeight": {
+      "value": "TODO: confirm — visually bold (600 or 700)"
+    }
+  },
+
+  "category": {
+    "textColor": {
+      "value": { "dark": "#99A1AF", "light": "TODO" },
+      "description": "Category subtitle text color. Medium-contrast gray."
+    }
+  },
+
+  "ratingRow": {
+    "starColor": {
+      "value": "TODO: confirm star icon color token"
+    },
+    "textColor": {
+      "value": "TODO: confirm rating text color token"
+    }
+  },
+
+  "badgePartner": {
+    "_ref": "See badge-partner.tokens.json for full token reference.",
+    "bookable": {
+      "background": { "dark": "#0D2833", "light": "#D9F4FF" },
+      "textAndIcon": { "dark": "#7FDAFE", "light": "#38A9D5" }
+    },
+    "requestOnly": {
+      "background": { "dark": "#330F1C", "light": "#FFDBE8" },
+      "textAndIcon": { "dark": "#FF83B0", "light": "#FF498B" }
+    }
+  }
+}

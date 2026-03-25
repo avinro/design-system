@@ -1,0 +1,143 @@
+---
+title: "Header Home"
+description: "The top navigation component of the customer app Home screen. Reflects the user's current plan state in real time across four states: no plan, pickup, reservation, and active ride."
+---
+
+# Header Home
+
+## Overview
+
+Header Home is the top navigation component used exclusively on the Home screen of the customer app. It communicates the user's current plan at a glance and provides quick access to the Chats page and the Account page.
+
+The component is composed of three parts: a chat icon button on the left that navigates to the Chats page, a central event pill that reflects the current state, and a user avatar on the right that navigates to the Account page. The event pill updates in real time based on the user's active bookings or ride status.
+
+Header Home is not used on any screen other than Home.
+
+## Anatomy
+
+Header Home has three fixed parts:
+
+| Part | Required | Description |
+|---|---|---|
+| **Chat button** | Yes | Secondary icon-only button on the left (44px). Navigates to the Chats page. |
+| **Event pill** | Yes | Central pill element (44px height). Displays the current plan state with an optional icon, title, and subtitle. Tappable — navigates to the relevant plan or ride detail. |
+| **Avatar** | Yes | Circular user avatar on the right (40px, size MD). Shows the user's profile photo. Tapping navigates to the Account page. |
+
+The event pill fills the available width between the chat button and avatar. Its background and icon change depending on the active state.
+
+{/* TODO: Add anatomy.png once a Figma annotation frame is available. */}
+{/* ![Header Home anatomy](./anatomy.png) */}
+
+## States
+
+Header Home has a single `State` prop with four values. Only one state is shown at a time, determined by real-time data.
+
+| State | Pill icon | Pill background | Title | Subtitle |
+|---|---|---|---|---|
+| **Add event** | Calendar | Translucent | "No plans for today" | "Add a event →" |
+| **Pick up** | Calendar | Translucent | Event / venue name | "Pick up at [time]" |
+| **Reservation** | Calendar | Translucent | Event / venue name | "Reserve at [time]" |
+| **Ride** | Car | Solid blue | "On the way" | Destination address |
+
+> The Ride state is the only state that uses a solid blue pill background (`app-header/ride-pill/bg`). All other states use the translucent background (`app-header/event-pill/bg`).
+
+{/* TODO: Add states.png from Figma. */}
+{/* ![Header Home states](./states.png) */}
+
+## Tokens & specs
+
+### Supported states
+
+Four states: `Add event` (default), `Pick up`, `Reservation`, `Ride`.
+
+### Supported sizes
+
+Single size only — 390px wide × 60px tall. No size variants.
+
+### Token reference
+
+#### Layout
+
+| Property | Token | Value |
+|---|---|---|
+| Horizontal padding | `spacing.xl` | 16px |
+| Vertical padding | `spacing.md` | 8px |
+| Gap between parts | `spacing.lg` | 12px |
+| Pill border radius | `radius.full` | 9999px |
+| Pill height | — | 44px |
+
+#### Event pill (Add event / Pick up / Reservation)
+
+| Property | Semantic token | Primitive | Dark value |
+|---|---|---|---|
+| Background | `app-header/event-pill/bg` | `neutral-opacity.950` | `rgba(241, 242, 244, 0.1)` |
+| Title color | `app-header/event-pill/title` | `neutral.100` | `#f1f2f4` |
+| Subtitle color | `app-header/event-pill/subtitle` | `neutral.500` | `#a3a3bc` |
+
+#### Ride pill
+
+| Property | Semantic token | Primitive | Dark value |
+|---|---|---|---|
+| Background | `app-header/ride-pill/bg` | `utility.blue.600` | `#2671fd` |
+| Title color | `app-header/ride-pill/title` | `neutral.100` | `#f1f2f4` |
+| Subtitle color | `app-header/ride-pill/subtitle` | `neutral.100` | `#f1f2f4` |
+
+#### Chat button
+
+| Property | Semantic token | Primitive | Dark value |
+|---|---|---|---|
+| Background | `button/secondary/bg-default` | `neutral-opacity.950` | `rgba(241, 242, 244, 0.1)` |
+| Size | — | — | 44px |
+
+#### Typography (pill text)
+
+| Property | Token | Value |
+|---|---|---|
+| Font family | `font-family.body` | Manrope |
+| Font weight | `font-weight.semibold` | 600 |
+| Font size | `font-size.xs` | 12px |
+| Line height | — | 1.2 |
+
+> Light mode token values are TODO — values above are dark mode only.
+
+## Usage guidelines
+
+- Use Header Home only on the Home screen. It must not appear on other screens.
+- Display the correct state based on real-time data: no plan → `Add event`, event with pickup → `Pick up`, event with reservation → `Reservation`, active ride → `Ride`.
+- The Ride state must always use the blue pill background. Do not apply it to other states.
+- Keep pill text short — title and subtitle only. Do not add extra lines or truncate content.
+- The chat button always navigates to the Chats page. Do not repurpose it for other actions.
+- The avatar always navigates to the Account page. Do not repurpose it for other actions.
+- The avatar always shows the current user's profile photo. Always provide a fallback.
+- Do not reorder or hide the three parts (chat button, pill, avatar).
+
+## Accessibility
+
+- **Chat button:** provide `aria-label="Open chats"` (or equivalent localized string).
+- **Event pill:** when tappable, provide an `aria-label` that describes the full state context, e.g. `aria-label="Dinner at Amante – Pick up at 5pm"` or `aria-label="No plans for today. Add an event."`.
+- **Avatar:** provide `aria-label="Go to account"` on the tap target and `alt` text with the user's name on the image (e.g. `alt="Profile photo"`).
+- Do not rely on icon type or pill color alone to convey state — the text labels are always required.
+- The calendar and car icons inside the pill are decorative — apply `aria-hidden="true"` to them.
+
+## Do / Don't
+
+**Do:**
+- Show only one state at a time based on real-time data.
+- Use the blue pill background exclusively for the Ride state.
+- Keep all three parts visible at all times.
+- Use the fixed label text: "No plans for today" and "On the way" are not user-configurable.
+
+**Don't:**
+- Don't reuse Header Home outside the Home screen.
+- Don't apply the blue pill background to any state other than Ride.
+- Don't add extra icons, badges, or content to the header.
+- Don't change the "Add a event →" CTA label or remove the arrow.
+
+{/* TODO: Add do-dont.png from Figma. */}
+{/* ![Header Home do and don't](./do-dont.png) */}
+
+## Resources
+
+- Figma: [Header Home component](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=102-274)
+- Specs: `./header-home.specs.json`
+- Tokens: `./header-home.tokens.json`

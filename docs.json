@@ -80,8 +80,7 @@
           {
             "group": "Indicators & States",
             "pages": [
-              "components/core/indicators-and-states/badge/index",
-              "components/core/indicators-and-states/badge-partner/index"
+              "components/core/indicators-and-states/badge/index"
             ]
           },
           {
@@ -89,6 +88,29 @@
             "pages": [
               "components/core/content-display/avatar/index",
               "components/core/content-display/car-image/index"
+            ]
+          }
+        ]
+      },
+      {
+        "group": "Customer DS",
+        "pages": [
+          {
+            "group": "Indicators & States",
+            "pages": [
+              "components/ds-customer/indicators-and-states/badge-partner/index"
+            ]
+          },
+          {
+            "group": "Content Display",
+            "pages": [
+              "components/ds-customer/content-display/venue-card/index"
+            ]
+          },
+          {
+            "group": "Navigation",
+            "pages": [
+              "components/ds-customer/navigation/header-home/index"
             ]
           }
         ]

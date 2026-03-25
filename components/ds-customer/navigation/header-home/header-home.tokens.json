@@ -1,0 +1,114 @@
+{
+  "_note": "Token values resolved to ds-core primitives. Raw hex values are shown as reference only. Dark mode extracted from Figma.",
+
+  "layout": {
+    "paddingHorizontal": {
+      "token": "spacing.xl",
+      "value": "16px"
+    },
+    "paddingVertical": {
+      "token": "spacing.md",
+      "value": "8px"
+    },
+    "gapBetweenParts": {
+      "token": "spacing.lg",
+      "value": "12px"
+    }
+  },
+
+  "pill": {
+    "borderRadius": {
+      "token": "radius.full",
+      "value": "9999px",
+      "note": "Full pill shape. Figma value is 120px — maps to radius.full."
+    },
+    "height": {
+      "value": "44px"
+    }
+  },
+
+  "eventPill": {
+    "background": {
+      "token": "neutral-opacity.950",
+      "semanticToken": "app-header/event-pill/bg",
+      "value": { "dark": "rgba(241, 242, 244, 0.1)", "light": "TODO" },
+      "description": "Translucent light overlay. Used for Add event, Pick up, and Reservation states."
+    },
+    "titleColor": {
+      "token": "neutral.100",
+      "semanticToken": "app-header/event-pill/title",
+      "value": { "dark": "#f1f2f4", "light": "TODO" },
+      "description": "Primary text color inside the event pill."
+    },
+    "subtitleColor": {
+      "token": "neutral.500",
+      "semanticToken": "app-header/event-pill/subtitle",
+      "value": { "dark": "#a3a3bc", "light": "TODO" },
+      "description": "Secondary/muted text color inside the event pill."
+    }
+  },
+
+  "ridePill": {
+    "background": {
+      "token": "utility.blue.600",
+      "semanticToken": "app-header/ride-pill/bg",
+      "value": { "dark": "#2671fd", "light": "TODO" },
+      "description": "Solid blue background. Exclusive to the Ride state."
+    },
+    "titleColor": {
+      "token": "neutral.100",
+      "semanticToken": "app-header/ride-pill/title",
+      "value": { "dark": "#f1f2f4", "light": "TODO" },
+      "description": "Primary text color inside the ride pill."
+    },
+    "subtitleColor": {
+      "token": "neutral.100",
+      "semanticToken": "app-header/ride-pill/subtitle",
+      "value": { "dark": "#f1f2f4", "light": "TODO" },
+      "description": "Secondary text color inside the ride pill. Same as title (both white on blue)."
+    }
+  },
+
+  "chatButton": {
+    "background": {
+      "token": "neutral-opacity.950",
+      "semanticToken": "button/secondary/bg-default",
+      "value": { "dark": "rgba(241, 242, 244, 0.1)", "light": "TODO" },
+      "description": "Secondary icon button background. Same translucent style as the event pill."
+    },
+    "size": {
+      "value": "44px"
+    }
+  },
+
+  "icon": {
+    "size": {
+      "value": "20px"
+    }
+  },
+
+  "avatar": {
+    "size": {
+      "value": "40px",
+      "note": "Avatar MD size."
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "token": "font-family.body",
+      "value": "Manrope"
+    },
+    "fontWeight": {
+      "token": "font-weight.semibold",
+      "value": "600"
+    },
+    "fontSize": {
+      "token": "font-size.xs",
+      "value": "12px"
+    },
+    "lineHeight": {
+      "value": "1.2"
+    }
+  }
+}

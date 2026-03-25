@@ -1,0 +1,110 @@
+{
+  "component": "Header Home",
+  "figmaFrameName": "Header Home",
+  "figmaNodeId": "102:274",
+  "figmaFileKey": "iYqpx8x8Kxdixf8YSRkiCz",
+
+  "anatomy": [
+    {
+      "part": "chat-button",
+      "layerName": "Chat/Message Icon Button",
+      "description": "Secondary icon-only button on the left side. Opens the chat/messages screen.",
+      "required": true,
+      "size": "44px"
+    },
+    {
+      "part": "event-pill",
+      "layerName": "Main Content Pill",
+      "description": "Central pill element. Displays the current state of the user's plan. Contains an optional icon plus title and subtitle text.",
+      "required": true,
+      "height": "44px",
+      "subParts": [
+        {
+          "part": "pill-icon",
+          "description": "20px icon inside the pill. Calendar for event/reservation/pickup states, car for ride state."
+        },
+        {
+          "part": "pill-title",
+          "description": "Primary text label inside the pill. Shows the event name or ride status."
+        },
+        {
+          "part": "pill-subtitle",
+          "description": "Secondary text below the title. Shows time or location detail."
+        }
+      ]
+    },
+    {
+      "part": "avatar",
+      "layerName": "Avatar",
+      "description": "Circular user avatar on the right side. Fixed size MD (40px).",
+      "required": true,
+      "size": "40px"
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "State",
+      "propKey": "State",
+      "type": "VARIANT",
+      "defaultValue": "Add event",
+      "values": [
+        {
+          "value": "Add event",
+          "figmaNodeId": "102:273",
+          "description": "Empty state. No event planned. Pill shows 'No plans for today' with a CTA arrow.",
+          "pillBg": "event-pill",
+          "iconType": "calendar"
+        },
+        {
+          "value": "Pick up",
+          "figmaNodeId": "102:272",
+          "description": "Active event with pickup time. Pill shows event name and 'Pick up at [time]'.",
+          "pillBg": "event-pill",
+          "iconType": "calendar"
+        },
+        {
+          "value": "Reservation",
+          "figmaNodeId": "102:271",
+          "description": "Active event with reservation time. Pill shows event name and 'Reserve at [time]'.",
+          "pillBg": "event-pill",
+          "iconType": "calendar"
+        },
+        {
+          "value": "Ride",
+          "figmaNodeId": "161:2521",
+          "description": "Active ride in progress. Pill shows 'On the way' and the destination address. Blue pill background.",
+          "pillBg": "ride-pill",
+          "iconType": "car"
+        }
+      ]
+    }
+  ],
+
+  "sizes": [],
+  "sizeNote": "Single size only. Width: 390px (full screen width), Height: 60px. No size variants.",
+
+  "dimensions": {
+    "width": "390px",
+    "height": "60px",
+    "paddingHorizontal": "16px",
+    "paddingVertical": "8px",
+    "gapBetweenParts": "12px",
+    "pillBorderRadius": "120px (radius.full)",
+    "avatarSize": "40px",
+    "chatButtonSize": "44px"
+  },
+
+  "usageContext": [
+    "Exclusively used in the Home screen of the customer app.",
+    "Positioned at the top of the Home screen, below the status bar.",
+    "Reflects the user's current plan state in real time."
+  ],
+
+  "notes": [
+    "Component renamed from 'App Header' to 'Header Home' to reflect its exclusive use on the Home screen.",
+    "Figma file: iYqpx8x8Kxdixf8YSRkiCz, node: 102:274.",
+    "The pill background changes only for the Ride state (blue). All other states use the translucent event-pill background.",
+    "The icon inside the pill changes between calendar (event states) and car (ride state)."
+  ]
+}
