@@ -48,6 +48,8 @@
           {
             "group": "Navigation",
             "pages": [
+              "components/core/navigation/header/index",
+              "components/core/navigation/header-wrapper/index",
               "components/core/navigation/action-menu/index",
               "components/core/navigation/action-menu-item/index",
               "components/core/navigation/tabs/index"

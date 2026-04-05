@@ -94,8 +94,77 @@
     }
   ],
 
+  "componentSets": [
+    {
+      "name": "Badge/Main",
+      "figmaNodeId": "5050:816",
+      "purpose": "Semantic status and state labels.",
+      "types": ["error", "info", "Success", "Warning", "default", "outlined"]
+    },
+    {
+      "name": "Badge/Utility",
+      "figmaNodeId": "7538:204",
+      "purpose": "Non-semantic identity and category labels. Colors drawn from chart-pair token collection.",
+      "types": ["purple", "violet", "cyan", "teal", "pink"]
+    }
+  ],
+
+  "utilityTypes": [
+    {
+      "name": "purple",
+      "figmaNodeId": "7538:205",
+      "purpose": "Identity/category label. No semantic meaning.",
+      "backgroundToken": "--chart-pair/purple-secondary",
+      "backgroundValue": "#e4dbfa",
+      "textToken": "--chart-pair/purple-primary",
+      "textValue": "#7749e4",
+      "hasBorder": false,
+      "paddingNote": "Right padding is 12px (spacing-12) — inconsistent with other utility variants (8px). TODO: Confirm with design."
+    },
+    {
+      "name": "violet",
+      "figmaNodeId": "7538:208",
+      "purpose": "Identity/category label. No semantic meaning.",
+      "backgroundToken": "--chart-pair/violet-secondary",
+      "backgroundValue": "#f6d9ff",
+      "textToken": "--chart-pair/violet-primary",
+      "textValue": "#d243fe",
+      "hasBorder": false
+    },
+    {
+      "name": "cyan",
+      "figmaNodeId": "7538:211",
+      "purpose": "Identity/category label. No semantic meaning.",
+      "backgroundToken": "--chart-pair/cyan-secondary",
+      "backgroundValue": "#d9f4ff",
+      "textToken": "--chart-pair/cyan-primary",
+      "textValue": "#38a9d5",
+      "hasBorder": false
+    },
+    {
+      "name": "teal",
+      "figmaNodeId": "7538:214",
+      "purpose": "Identity/category label. No semantic meaning.",
+      "backgroundToken": "--chart-pair/teal-secondary",
+      "backgroundValue": "#cefaee",
+      "textToken": "--chart-pair/teal-primary",
+      "textValue": "#0ac0a1",
+      "hasBorder": false
+    },
+    {
+      "name": "pink",
+      "figmaNodeId": "7538:217",
+      "purpose": "Identity/category label. No semantic meaning.",
+      "backgroundToken": "--chart-pair/pink-secondary",
+      "backgroundValue": "#ffdbe8",
+      "textToken": "--chart-pair/pink-primary",
+      "textValue": "#ff498b",
+      "hasBorder": false
+    }
+  ],
+
   "variants": [],
-  "variantNote": "No structural variants. Type is the primary dimension (6 color types).",
+  "variantNote": "No structural variants. Type is the primary dimension. Badge/Main has 6 types; Badge/Utility has 5 types.",
 
   "sizes": [],
   "sizeNote": "Single size only. No size variants.",
@@ -126,14 +195,18 @@
   ],
 
   "notes": [
-    "Six confirmed types: error, info, Success, Warning, default, outlined.",
+    "Badge/Main: six confirmed types: error, info, Success, Warning, default, outlined.",
+    "Badge/Utility: five confirmed types: purple, violet, cyan, teal, pink. Extracted from Figma node 7538:204.",
     "Note: 'Success' and 'Warning' are capitalized in the Figma prop. Other types are lowercase.",
     "The outlined type has a 1px solid border and no background fill.",
     "The --notification/warning--bg token has a double dash — confirmed Figma token name.",
     "The outlined and default types share the same text token (--badge/default/text, #34353f).",
-    "No icon support, no size variants, no interactive states defined in Figma.",
-    "TODO: Confirm whether a dismissible or icon variant is planned.",
-    "TODO: Confirm WCAG contrast ratios for all six type combinations.",
+    "Utility badge tokens are from the chart-pair collection (01. component-specific_colors). Each type uses {color}-secondary for background and {color}-primary for text and icon.",
+    "No size variants, no interactive states defined in Figma for either set.",
+    "TODO: Confirm WCAG contrast ratios for all Badge/Main type combinations.",
+    "TODO: Confirm WCAG contrast ratios for all Badge/Utility type combinations.",
+    "TODO: Confirm dark mode resolved values for Badge/Utility types.",
+    "TODO: Confirm whether the purple variant's right padding (12px) is intentional or a Figma error.",
     "TODO: Confirm whether 'Success' and 'Warning' prop names should be normalized to lowercase."
   ]
 }

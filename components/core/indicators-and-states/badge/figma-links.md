@@ -1,10 +1,10 @@
 # Badge — Figma Links
 
-## Main component
+## Badge/Main component
 
-- **Badge** (node `5050:816`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816
+- **Badge/Main** (node `5050:816`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816
 
-## Type instances (confirmed from Figma)
+### Type instances — Badge/Main
 
 | Type | Node |
 |---|---|
@@ -14,6 +14,20 @@
 | `Warning` | `5050:823` |
 | `default` | `5050:825` |
 | `outlined` | `5050:827` |
+
+## Badge/Utility component
+
+- **Badge/Utility** (node `7538:204`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7538-204
+
+### Type instances — Badge/Utility
+
+| Type | Node |
+|---|---|
+| `purple` | `7538:205` |
+| `violet` | `7538:208` |
+| `cyan` | `7538:211` |
+| `teal` | `7538:214` |
+| `pink` | `7538:217` |
 
 ## Anatomy frame
 

@@ -7,13 +7,22 @@ It is used as a source of truth when generating or updating `index.mdx`.
 
 ## Overview
 
-Badge is a small pill-shaped label used to communicate status, category, or contextual metadata at a glance. It displays a short text string in one of six color types, each conveying a distinct semantic meaning. Badge is a display-only component with no interactive states.
+Badge is a small pill-shaped label used to communicate status, category, or contextual metadata at a glance. It is a display-only component with no interactive states.
+
+The Badge component exists as two distinct Figma component sets:
+
+- **Badge/Main** — six semantic color types. Use when communicating system status or state.
+- **Badge/Utility** — five non-semantic identity colors. Use when identifying categories, entity types, or contextual labels where color is decorative rather than status-driven.
+
+Both sets share the same shape, size, anatomy, and typography.
 
 ---
 
 ## Variants
 
-Six types are defined in Figma via the `type` prop. Each type has a distinct background and text color.
+### Badge/Main
+
+Six types defined in Figma via the `type` prop. Each type carries a distinct semantic meaning.
 
 ### `default`
 
@@ -75,6 +84,52 @@ Rules:
 - Use `default` or `outlined` for neutral labels that have no status meaning.
 - Do not use multiple badge types on the same item unless each communicates a genuinely distinct status dimension.
 - TODO: Confirm whether the `Success` and `Warning` type names should be normalized to lowercase (`success`, `warning`) in implementation to follow the naming convention of the other types.
+
+### Badge/Utility
+
+Five types defined in Figma via the `type` prop. Colors are drawn from the `chart-pair` token collection and carry no semantic meaning.
+
+### `purple`
+
+Soft purple. No semantic meaning.
+
+- Background: `--chart-pair/purple-secondary` (`#e4dbfa`)
+- Text/Icon: `--chart-pair/purple-primary` (`#7749e4`)
+
+### `violet`
+
+Vivid violet. No semantic meaning.
+
+- Background: `--chart-pair/violet-secondary` (`#f6d9ff`)
+- Text/Icon: `--chart-pair/violet-primary` (`#d243fe`)
+
+### `cyan`
+
+Light cyan. No semantic meaning.
+
+- Background: `--chart-pair/cyan-secondary` (`#d9f4ff`)
+- Text/Icon: `--chart-pair/cyan-primary` (`#38a9d5`)
+
+### `teal`
+
+Soft teal. No semantic meaning.
+
+- Background: `--chart-pair/teal-secondary` (`#cefaee`)
+- Text/Icon: `--chart-pair/teal-primary` (`#0ac0a1`)
+
+### `pink`
+
+Vivid pink. No semantic meaning.
+
+- Background: `--chart-pair/pink-secondary` (`#ffdbe8`)
+- Text/Icon: `--chart-pair/pink-primary` (`#ff498b`)
+
+Rules:
+- Utility badge colors are decorative. Do not use them to communicate system status or outcomes.
+- Assign colors consistently within a product context — the same type should always represent the same category or entity type on a given screen.
+- Do not mix Badge/Main and Badge/Utility on the same item to communicate the same kind of information.
+- TODO: Confirm dark mode resolved values for all five utility types.
+- TODO: Confirm whether the `purple` variant's right padding (12px vs 8px for all others) is intentional.
 
 ---
 
@@ -181,13 +236,16 @@ All types share the same text style.
 
 ## Notes
 
-- Extracted from Figma file `nGsiItayj12cfi3AKbP1mB`, node `5050:816`, frame "Badge".
+- Badge/Main extracted from Figma file `nGsiItayj12cfi3AKbP1mB`, node `5050:816`.
+- Badge/Utility extracted from Figma file `nGsiItayj12cfi3AKbP1mB`, node `7538:204`.
 - Documentation frame: node `7378:3643`.
-- Six confirmed types: `error` (5050:817), `info` (5050:819), `Success` (5050:821), `Warning` (5050:823), `default` (5050:825), `outlined` (5050:827).
-- Note: `Success` and `Warning` are capitalized in the Figma prop. All other types (`error`, `info`, `default`, `outlined`) are lowercase. Normalize casing in implementation as appropriate.
+- Badge/Main confirmed types: `error` (5050:817), `info` (5050:819), `Success` (5050:821), `Warning` (5050:823), `default` (5050:825), `outlined` (5050:827).
+- Badge/Utility confirmed types: `purple` (7538:205), `violet` (7538:208), `cyan` (7538:211), `teal` (7538:214), `pink` (7538:217).
+- Note: `Success` and `Warning` are capitalized in the Figma prop. All other types are lowercase. Normalize casing in implementation as appropriate.
 - The `outlined` type uses a 1px solid border (`--badge/outlined/border`) and no background fill.
 - The `--notification/warning--bg` token has a double dash — this is the confirmed Figma token name.
-- Icons ARE present in the main Badge: `iconShow` defaults to `true`, `iconType` defaults to `null` (renders `Customer-Icon/alert-war-triangle`). Confirmed from Figma MCP design context.
-- Dark mode token values confirmed from the Figma documentation frame (7378:3643).
-- No interactive states, no size variants defined in Figma.
+- Utility badge tokens are from the `chart-pair` collection in `01. component-specific_colors`. Each type maps `{color}-secondary` → background and `{color}-primary` → text/icon.
+- Icons are present by default in both sets: `iconShow` defaults to `true`, renders `Customer-Icon/alert-war-triangle`. Color matches the text token for the given type.
+- Dark mode token values for Badge/Main confirmed from the Figma documentation frame (7378:3643). Dark mode values for Badge/Utility are not yet confirmed.
+- No interactive states, no size variants defined in Figma for either set.
 - Usage confirmed in Dojo Customer App (node `1361:13772`) and Dojo Driver App (node `2007:325`).
