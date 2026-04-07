@@ -1,0 +1,111 @@
+---
+title: "Header Wrapper"
+description: "Rendering context for the Header component. Controls whether the header has rounded bottom corners based on the background color of the page below it."
+---
+
+# Header Wrapper
+
+## Overview
+
+Header Wrapper defines how the `Header` component renders within the visual context of a screen. It has a single `bg` prop with two values — `sunken` and `surface` — that control whether the header has rounded bottom corners.
+
+The `bg` prop describes the **background color of the page content below the header**, not the header's own color. The header's background is always `surface/neutral/default`. What changes is how the header's bottom edge meets the page beneath it.
+
+Use this wrapper whenever you place a `Header` on a screen. It ensures the correct corner treatment for the page context.
+
+The `Header` inside can be any variant from the [Header](/components/core/navigation/header) component set.
+
+## Anatomy
+
+Header Wrapper is a single-slot container:
+
+| Part | Required | Description |
+|---|---|---|
+| Header instance | Yes | Any variant of the Header component. The wrapper clips the header to the defined border-radius shape. |
+
+![Header Wrapper anatomy](./anatomy.png)
+
+## Variants
+
+### `bg=sunken`
+
+The page background below the header uses the `surface/sunken` color token — a darker, recessed background. The wrapper applies **24px rounded bottom corners** (bottom-left and bottom-right only), making the header appear to float above the lower content.
+
+Use when the screen's content area has a `surface/sunken` background directly below the navigation bar.
+
+**Examples:** Chat screen, detail screens with inset or card-style content.
+
+### `bg=surface`
+
+The page background below the header uses the `surface/default` color token — the same tone as the header itself. No rounding is applied — the header transitions seamlessly and flush into the page content.
+
+Use when the screen's content area has a `surface/default` background directly below the navigation bar.
+
+**Examples:** Earnings, Inbox, Account, Wallet screens.
+
+![Header Wrapper variants](./variants.png)
+
+## States
+
+Header Wrapper has no interactive states of its own. All states are managed by the `Header` instance inside it.
+
+## Tokens & specs
+
+### Supported variants
+
+| Variant | Page background below header | Bottom corner radius |
+|---|---|---|
+| `bg=sunken` | `surface/sunken` | 24px left + right (`radius.2xl`) |
+| `bg=surface` | `surface/default` | 0px (no rounding) |
+
+### Supported sizes
+
+Single size. Width and height match the inner `Header` instance — full screen width, 60–64px height.
+
+### Supported states
+
+None — inherited from the inner `Header`.
+
+### Token reference
+
+| Token | Variable ID | Property | Value |
+|---|---|---|---|
+| `radius.2xl` | `VariableID:5001:1944` | Bottom-left + bottom-right radius (`bg=sunken`) | 24px |
+| `radius.none` | `VariableID:5001:1953` | All corners (`bg=surface`) | 0px |
+| `notification/border-default` | `VariableID:7013:32` | Bottom stroke (both variants) | 1px |
+
+See `./header-wrapper.tokens.json` for the full token reference.
+
+## Usage guidelines
+
+- **Always use this wrapper** when placing a `Header` on a screen. Do not use the `Header` component directly without a wrapper — the corner treatment will be missing.
+- **Match `bg` to the actual background color of the page content below the header** — not based on visual preference or the content type.
+- `bg=sunken` → the page below uses `surface/sunken` background color.
+- `bg=surface` → the page below uses `surface/default` background color.
+- The `Header` instance inside can be any variant from the Header component set. The wrapper only controls corner radius — it does not change the header's internal structure, color, or props.
+
+## Accessibility
+
+No additional accessibility requirements beyond the inner `Header` component. Refer to [Header accessibility guidelines](/components/core/navigation/header#accessibility).
+
+## Do / Don't
+
+**Do:**
+- Use `bg=sunken` when the screen content area uses `surface/sunken` as its background color.
+- Use `bg=surface` when the screen content area uses `surface/default` as its background color.
+- Swap any `Header` variant inside the wrapper freely.
+
+**Don't:**
+- Don't use the `Header` component directly on screens — always wrap it.
+- Don't choose `bg` based on the content type (cards, lists) — choose it based on the actual `surface/*` color token used by the page.
+- Don't create custom corner-radius overrides — use the two defined variants.
+
+![Header Wrapper do and don't](./do-dont.png)
+
+## Resources
+
+- Figma (Core): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7511-31768
+- Related: [Header component](/components/core/navigation/header)
+- Code (user-app): `src/components/navigation/AppHeader.tsx` — `borderBottomLeftRadius: 24, borderBottomRightRadius: 24`
+- Specs: `./header-wrapper.specs.json`
+- Tokens: `./header-wrapper.tokens.json`

@@ -1,0 +1,42 @@
+{
+  "_note": "Tokens for Header Wrapper. The bg prop describes the page background BELOW the header, not the header's own color. Extracted from Figma Core (nGsiItayj12cfi3AKbP1mB), node 7511:31768.",
+
+  "shared": {
+    "stroke": {
+      "token": "notification/border-default",
+      "variableId": "VariableID:7013:32",
+      "value": { "dark": "TODO", "light": "TODO" },
+      "description": "Bottom border separating the header from page content. Always 1px, both variants."
+    }
+  },
+
+  "sunken": {
+    "_description": "Applied when the page background below is surface/sunken. Header floats above the recessed content.",
+    "bottomLeftRadius": {
+      "token": "radius.2xl",
+      "variableId": "VariableID:5001:1944",
+      "value": "24px"
+    },
+    "bottomRightRadius": {
+      "token": "radius.2xl",
+      "variableId": "VariableID:5001:1944",
+      "value": "24px"
+    },
+    "topLeftRadius": {
+      "value": "0px"
+    },
+    "topRightRadius": {
+      "value": "0px"
+    }
+  },
+
+  "surface": {
+    "_description": "Applied when the page background below is surface/default (same tone as the header). No rounding.",
+    "borderRadius": {
+      "token": "radius.none",
+      "variableId": "VariableID:5001:1953",
+      "value": "0px",
+      "note": "All four corners. The header is flush with the page content."
+    }
+  }
+}

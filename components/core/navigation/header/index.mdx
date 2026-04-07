@@ -1,0 +1,178 @@
+---
+title: "Header"
+description: "Top navigation bar for all screens. Configurable three-zone layout: left action, center content, and right actions."
+---
+
+# Header
+
+## Overview
+
+Header is the top navigation bar used across all screens in both the customer and driver apps — except the Home screen, which uses the [Header Home](/components/ds-customer/navigation/header-home) component instead.
+
+It follows a three-zone layout: a left action area, a center content area, and a right actions area. Each zone is independently configurable. The center area supports four modes — title, title with subtitle, date selector, and search — with the right side accepting icon buttons or a single accent action button.
+
+The component maps to 11 Figma variants defined in the `Header` component set (node `5009:2732`) in the Core file, plus two sub-components: `btn-header` for icon buttons and `Search` for the search bar.
+
+## Anatomy
+
+The header is composed of three zones arranged in a horizontal row:
+
+| Part | Required | Description |
+|---|---|---|
+| Left button | No | Icon button using `btn-header`. Typically a back arrow or close icon. Hidden on root screens. |
+| Center content | No | One of: title, title + subtitle, date selector, or search bar. Only one mode at a time. |
+| Right actions | No | 0–2 icon buttons (`btn-header`) or a single accent action button. Can be hidden entirely. |
+
+![Header anatomy](./anatomy.png)
+
+### Center content modes
+
+- **Title** — bold screen label, centered by default
+- **Description** — title + supporting subtitle below (e.g. "New chat" / "Jun 9 – Jun 15")
+- **Date selector** — month/year label with dropdown chevron, tapping opens a picker
+- **Search** — full-width pill input replacing the title, with customer and driver visual variants
+
+## Variants
+
+The `Header` component set exposes seven boolean variant axes:
+
+| Axis | Values | Effect |
+|---|---|---|
+| `back` | on / off | Shows or hides the left back button |
+| `Title` | on / off | Shows or hides the center title |
+| `button` | off / on | Shows an accent action button on the right (e.g. "Finish") |
+| `search` | off / on | Replaces the title with a Search bar |
+| `no icon` | off / on | Hides all right-side icon buttons |
+| `description` | off / on | Adds a subtitle below the title |
+| `date` | on / off | Replaces the title with a date/month selector |
+
+The `2nd icon` boolean component property controls whether a second icon button appears in the right area.
+
+### Common combinations
+
+| Use case | Variant config |
+|---|---|
+| Root screen with title | `Title=on` — no back, two icon slots |
+| Secondary screen | `back=on, Title=on` — back + title + icon buttons |
+| Simple detail screen | `back=on, Title=on, no icon=on` — back + title, no right actions |
+| Title + subtitle | `back=on, Title=on, description=on` |
+| Screen with primary action | `back=on, Title=on, button=on` — back + title + "Finish" button |
+| Calendar/plan view (root) | `date=on` — date selector + icon buttons, sin back |
+| Calendar/plan view (con back) | `back=on, date=on` — back + date selector + icon buttons |
+| Search mode | `back=on, search=on` — back + search bar |
+| Auth / minimal | `back=on, Title=off, no icon=on` — back only |
+
+![Header variants](./variants.png)
+
+## States
+
+The Header component has no interactive states of its own. States live inside sub-components:
+
+| Sub-component | States |
+|---|---|
+| `btn-header` | Default, Pressed (`:active`) |
+| `Search` | Default, Focused (`:focus-visible`), Writing |
+
+The Search writing state uses `button/secondary/bg-default` fill and `button/secondary/border-active` stroke to indicate active input.
+
+![Header states](./states.png)
+
+## Tokens & specs
+
+### Supported variants
+
+All 11 Figma variant combinations are supported. See the [variant table above](#variants) for the full mapping.
+
+### Supported sizes
+
+Single size only. Full screen width. Height is approximately 56px, excluding the device safe area top inset.
+
+### Supported states
+
+Via sub-components: `btn-header` has default and pressed. `Search` has default, focused, and writing.
+
+### Token reference
+
+| Token | Property | Value |
+|---|---|---|
+| `spacing.xl` | Horizontal padding | 16px |
+| `spacing.md` | Vertical padding | 8px |
+| `spacing.md` | Gap between zones | 8px |
+| `font-family.body` | Title font | Manrope |
+| `font-weight.bold` | Title weight | 700 |
+| `color/text/primary` | Title color | TODO (dark/light) |
+| `color/text/secondary` | Description color | TODO (dark/light) |
+| `color/border/default` | Bottom border | TODO (dark/light) |
+| `button/accent/bg-active` | Action button background | TODO |
+| `button/accent/text-active` | Action button label | TODO |
+| `input/bg-default` | Search default background | TODO |
+| `button/secondary/bg-default` | Search writing background | TODO |
+| `radius.full` | Search bar border radius | 9999px |
+
+See `./header.tokens.json` for the full token reference.
+
+## Usage guidelines
+
+**Left zone:**
+- Use a back arrow (`arrow-back-left`) when the user navigated forward and can go back.
+- Use a close icon (`x-close`) on modal screens or flows the user can dismiss.
+- Hide the left button entirely on root screens (e.g. drawer root pages in the driver app).
+- Do not replace the back button with a non-navigational icon.
+
+**Center zone:**
+- Always show at minimum a title or a back button — never an empty header.
+- Keep titles to one to three words.
+- Use the date selector only on calendar or plan screens. Do not use it as a generic dropdown trigger.
+- Only activate search mode when the user explicitly initiates a search action.
+- Do not combine title and search modes simultaneously.
+
+**Right zone:**
+- Use 0, 1, or 2 icon buttons. Do not exceed two.
+- When using two icons, place the more secondary action on the far right.
+- Use the action button (e.g. "Finish") only for a single confirming action. Do not show it alongside icon buttons.
+- Hide all right actions (`no icon=on`) when the screen has no contextual actions.
+
+**Safe area:**
+- Always apply the device safe area top inset (`useSafeAreaInsets()` or equivalent) to prevent the header from overlapping the system status bar.
+
+**App-specific patterns:**
+- The `Search` sub-component has a `Customer` and a `driver` visual type — use the correct one per app context.
+- Do not create new header components for patterns already covered by these variants.
+
+## Accessibility
+
+- The left button must have `aria-label` describing its action: `"Go back"`, `"Close"`, etc.
+- Each right icon button must have an `aria-label` matching its action: `"Search"`, `"Add"`, `"Share"`, etc.
+- The action button label must match its visible text.
+- The date selector must have `aria-label="Open date picker"` or a contextual equivalent.
+- Title text does not require an ARIA label — it is read as a heading naturally.
+- Do not rely on icon shape alone to convey button purpose. Always include an accessible label.
+- The search bar must support keyboard focus. The focused state maps to `:focus-visible`.
+
+## Do / Don't
+
+**Do:**
+- Show at least a title or back button on every screen.
+- Use the correct `Search` type (`Customer` vs `driver`) per app.
+- Apply safe area insets to avoid overlapping the status bar.
+- Pair the action button with a single, confirming action.
+- Use consistent icon placement: primary action left of secondary action in the right zone.
+
+**Don't:**
+- Don't use Header on the Home screen — use `header-home` (ds-customer).
+- Don't mix title and search modes at the same time.
+- Don't show the action button and icon buttons simultaneously.
+- Don't use more than two icon buttons on the right.
+- Don't use the date selector as a generic dropdown — it is specific to date/period navigation.
+
+![Header do and don't](./do-dont.png)
+
+## Resources
+
+- Figma (Core): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7510-31628
+- Figma (btn-header): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5009-2787
+- Figma (Search): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5010-403
+- Code (user-app): `src/components/navigation/AppHeader.tsx`
+- Code (driver-app): `src/components/shared/Header.tsx`
+- Specs: `./header.specs.json`
+- Tokens: `./header.tokens.json`

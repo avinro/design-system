@@ -1,0 +1,253 @@
+{
+  "component": "Header",
+  "figmaFrameName": "Header",
+  "figmaNodeId": "7510:31628",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "left-button",
+      "layerName": "btn-header (left)",
+      "description": "Icon button on the left side. Typically a back arrow or close icon. Tapping navigates back or closes the current screen. Can be hidden or replaced with a custom icon.",
+      "required": false,
+      "size": "44px",
+      "figmaComponent": "btn-header",
+      "figmaNodeId": "5009:2787"
+    },
+    {
+      "part": "center-content",
+      "layerName": "title / search / date-selector",
+      "description": "Center area of the header. Shows one of: a title (with optional subtitle), a search bar, or a date/month selector with dropdown chevron. Only one mode is active at a time.",
+      "required": false,
+      "subParts": [
+        {
+          "part": "title",
+          "description": "Primary label of the current screen. Bold, centered by default. Can be left-aligned when back button is absent."
+        },
+        {
+          "part": "description",
+          "description": "Optional supporting text shown below the title. Smaller, muted color."
+        },
+        {
+          "part": "date-selector",
+          "description": "Month/date label with a dropdown chevron. Tapping opens a date/month picker. Used on calendar or plan screens."
+        },
+        {
+          "part": "search-bar",
+          "description": "Full-width pill input for search. Replaces the title area when active. Has customer and driver visual variants."
+        }
+      ]
+    },
+    {
+      "part": "right-actions",
+      "layerName": "Actions-right",
+      "description": "Right section containing 0–2 icon buttons (btn-header) OR a single accent action button (e.g. 'Finish'). Can be hidden entirely.",
+      "required": false,
+      "subParts": [
+        {
+          "part": "icon-button",
+          "description": "Secondary icon-only button. Uses the btn-header component. Up to 2 can appear simultaneously.",
+          "figmaComponent": "btn-header",
+          "figmaNodeId": "5009:2787"
+        },
+        {
+          "part": "action-button",
+          "description": "Accent CTA button with a text label (e.g. 'Finish'). Appears instead of icon buttons when a primary action is needed."
+        }
+      ]
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "back",
+      "propKey": "back",
+      "type": "VARIANT",
+      "values": ["on", "off"],
+      "defaultValue": "off",
+      "description": "Shows or hides the back/close button on the left side."
+    },
+    {
+      "name": "Title",
+      "propKey": "Title",
+      "type": "VARIANT",
+      "values": ["on", "off"],
+      "defaultValue": "on",
+      "description": "Shows or hides the title text in the center."
+    },
+    {
+      "name": "button",
+      "propKey": "button",
+      "type": "VARIANT",
+      "values": ["off", "on"],
+      "defaultValue": "off",
+      "description": "Shows an accent action button (e.g. 'Finish') on the right side instead of icon buttons."
+    },
+    {
+      "name": "search",
+      "propKey": "search",
+      "type": "VARIANT",
+      "values": ["off", "on"],
+      "defaultValue": "off",
+      "description": "Replaces the title with a Search component in the center area."
+    },
+    {
+      "name": "no icon",
+      "propKey": "no icon",
+      "type": "VARIANT",
+      "values": ["off", "on"],
+      "defaultValue": "off",
+      "description": "Hides all right-side icon buttons. Use when no right action is needed."
+    },
+    {
+      "name": "description",
+      "propKey": "description",
+      "type": "VARIANT",
+      "values": ["off", "on"],
+      "defaultValue": "off",
+      "description": "Shows a supporting subtitle below the title."
+    },
+    {
+      "name": "date",
+      "propKey": "date",
+      "type": "VARIANT",
+      "values": ["off", "on"],
+      "defaultValue": "off",
+      "description": "Replaces the title with a date/month selector with a dropdown chevron."
+    },
+    {
+      "name": "2nd icon",
+      "propKey": "2nd icon",
+      "type": "BOOLEAN",
+      "defaultValue": true,
+      "description": "Shows or hides the second icon button in the right actions area."
+    }
+  ],
+
+  "variantCombinations": [
+    {
+      "figmaNodeId": "5009:2733",
+      "axes": { "back": "off", "Title": "on", "button": "off", "search": "off", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Default: title only, no back, two icon slots on right.",
+      "screenExamples": ["Driver: Earnings", "Driver: Inbox"]
+    },
+    {
+      "figmaNodeId": "5010:315",
+      "axes": { "back": "on", "Title": "on", "button": "off", "search": "off", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Back + title + right icons. Most common pattern for secondary screens.",
+      "screenExamples": ["User: Chat", "User: Ride Details", "Driver: Personal Information"]
+    },
+    {
+      "figmaNodeId": "5009:2761",
+      "axes": { "back": "on", "Title": "off", "button": "off", "search": "off", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Back only, no title, right icons visible.",
+      "screenExamples": ["Auth flows (login, register)"]
+    },
+    {
+      "figmaNodeId": "5009:2768",
+      "axes": { "back": "on", "Title": "off", "button": "off", "search": "on", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Back + search bar. Used when entering search mode.",
+      "screenExamples": ["User: Location selection", "Driver: Home search"]
+    },
+    {
+      "figmaNodeId": "5009:2753",
+      "axes": { "back": "on", "Title": "on", "button": "off", "search": "off", "no icon": "off", "description": "on", "date": "off" },
+      "description": "Back + title + subtitle (description). Used for screens needing context below the title.",
+      "screenExamples": ["Frame 15: 'New chat' + date range subtitle"]
+    },
+    {
+      "figmaNodeId": "5009:2749",
+      "axes": { "back": "on", "Title": "on", "button": "on", "search": "off", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Back + title + accent action button.",
+      "screenExamples": ["User: Booking flow with 'Finish' action"]
+    },
+    {
+      "figmaNodeId": "5075:1970",
+      "axes": { "back": "off", "Title": "on", "button": "on", "search": "off", "no icon": "off", "description": "off", "date": "off" },
+      "description": "Title + accent action button, no back.",
+      "screenExamples": ["User: Booking start screen"]
+    },
+    {
+      "figmaNodeId": "5193:431",
+      "axes": { "back": "on", "Title": "off", "button": "on", "search": "off", "no icon": "on", "description": "off", "date": "off" },
+      "description": "Back + accent action button only. No title, no icon buttons.",
+      "screenExamples": ["Minimal action screens"]
+    },
+    {
+      "figmaNodeId": "7510:31573",
+      "axes": { "back": "off", "Title": "on", "button": "off", "search": "off", "no icon": "off", "description": "off", "date": "on" },
+      "description": "Date/month selector with dropdown, right icons, no back.",
+      "screenExamples": ["User: Plan screen (month view)", "Rides tab with date range"]
+    },
+    {
+      "figmaNodeId": "7511:31741",
+      "axes": { "back": "on", "Title": "on", "button": "off", "search": "off", "no icon": "off", "description": "off", "date": "on" },
+      "description": "Back + date/month selector with dropdown + right icons. Used on calendar/plan screens reached via navigation.",
+      "screenExamples": ["User: Plan screen with back navigation", "Rides date range view with back"]
+    },
+    {
+      "figmaNodeId": "5030:443",
+      "axes": { "back": "on", "Title": "on", "button": "off", "search": "off", "no icon": "on", "description": "off", "date": "off" },
+      "description": "Back + title only. No right actions.",
+      "screenExamples": ["Simple detail screens"]
+    },
+    {
+      "figmaNodeId": "5236:939",
+      "axes": { "back": "off", "Title": "on", "button": "off", "search": "off", "no icon": "on", "description": "off", "date": "off" },
+      "description": "Title only, centered. No back, no right actions.",
+      "screenExamples": ["Driver: Rides tab title (centered)"]
+    }
+  ],
+
+  "sizes": [],
+  "sizeNote": "Single size. Full screen width (390px reference). Height is determined by content — typically 56–64px including safe area padding.",
+
+  "dimensions": {
+    "width": "100% (full screen width)",
+    "paddingHorizontal": "16px",
+    "paddingVertical": "8px",
+    "gapBetweenParts": "8px",
+    "buttonSize": "44px",
+    "borderRadius": "0 (header) / full pill for action button"
+  },
+
+  "subComponents": [
+    {
+      "name": "btn-header",
+      "figmaNodeId": "5009:2787",
+      "description": "Icon-only button used for left and right header actions. Has default and pressed states. Accepts any icon via INSTANCE_SWAP.",
+      "variantAxes": { "State": ["default", "Pressed"] },
+      "cssMapping": { "Pressed": ":active" },
+      "props": { "Icon": "INSTANCE_SWAP" }
+    },
+    {
+      "name": "Search",
+      "figmaNodeId": "5010:403",
+      "description": "Search input component used in header search mode. Has customer and driver visual types. States: Default, focused, writing.",
+      "variantAxes": {
+        "State": ["Default", "focused", "writting"],
+        "Type": ["Customer", "driver"]
+      },
+      "cssMapping": { "focused": ":focus-visible" },
+      "tokens": {
+        "writing": { "fill": "button/secondary/bg-default", "stroke": "button/secondary/border-active" }
+      }
+    }
+  ],
+
+  "usageContext": [
+    "Used as the top navigation bar on all screens except the Home screen (which uses header-home).",
+    "Positioned at the top of the screen below the system status bar.",
+    "Safe area inset (paddingTop) must be applied to account for device notches and status bars.",
+    "Used across both customer app (ds-customer) and driver app (ds-drivers)."
+  ],
+
+  "notes": [
+    "Figma file: nGsiItayj12cfi3AKbP1mB (Dojo_DS Core), node: 5009:2732.",
+    "Variant axis naming in Figma is inconsistent (back vs Title vs no icon) — treat all as boolean toggles.",
+    "The search mode (search=on) uses the Search sub-component, which has customer and driver variants.",
+    "The date selector mode (date=on) shows a month/year label with a dropdown chevron — it does not embed a full picker inline.",
+    "This is a core component. App-specific extended variants (e.g. header-plan, header-rides) are defined in ds-customer and ds-drivers respectively.",
+    "Do not confuse with header-home (ds-customer), which is exclusive to the Home screen and has a completely different structure (event pill, avatar, chat button)."
+  ]
+}

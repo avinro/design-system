@@ -1,0 +1,85 @@
+{
+  "component": "Header Wrapper",
+  "figmaFrameName": "header-wrapper",
+  "figmaNodeId": "7511:31768",
+  "figmaFileKey": "nGsiItayj12cfi3AKbP1mB",
+
+  "anatomy": [
+    {
+      "part": "wrapper",
+      "description": "Container that applies bottom border-radius based on the page background context. Uses clipsContent to enforce the rounded shape on the inner Header.",
+      "required": true,
+      "clipsContent": true
+    },
+    {
+      "part": "header-instance",
+      "description": "An instance of the Header component set (any variant). Fills the full width and height of the wrapper.",
+      "required": true,
+      "figmaComponent": "Header",
+      "figmaNodeId": "7510:31628"
+    }
+  ],
+
+  "variants": [
+    {
+      "name": "bg",
+      "propKey": "bg",
+      "type": "VARIANT",
+      "values": ["sunken", "surface"],
+      "defaultValue": "surface",
+      "description": "Describes the background color of the page content BELOW the header. Determines whether the header has rounded bottom corners. Does not affect the header's own background color."
+    }
+  ],
+
+  "variantCombinations": [
+    {
+      "figmaNodeId": "7511:31767",
+      "axes": { "bg": "sunken" },
+      "description": "Use when the page background below the header is surface/sunken. The wrapper applies 24px rounded bottom corners so the header visually floats above the recessed page content.",
+      "cornerRadii": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomLeft": "24px (radius.2xl, VariableID:5001:1944)",
+        "bottomRight": "24px (radius.2xl, VariableID:5001:1944)"
+      },
+      "stroke": "1px, VariableID:7013:32 (notification/border-default)",
+      "clipsContent": true,
+      "pageBackgroundContext": "surface/sunken",
+      "screenExamples": ["User: Chat screen", "User: Detail screens with inset content"]
+    },
+    {
+      "figmaNodeId": "7511:31769",
+      "axes": { "bg": "surface" },
+      "description": "Use when the page background below the header is surface/default (same tone as the header). No rounding — the header is flush with the page content.",
+      "cornerRadii": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomLeft": "0px (VariableID:5001:1953)",
+        "bottomRight": "0px (VariableID:5001:1953)"
+      },
+      "stroke": "1px, VariableID:7013:32 (notification/border-default)",
+      "clipsContent": true,
+      "pageBackgroundContext": "surface/default",
+      "screenExamples": ["Driver: Earnings", "Driver: Inbox", "Driver: Account", "User: Wallet", "User: Ride Details"]
+    }
+  ],
+
+  "sizes": [],
+  "sizeNote": "Matches the inner Header instance — full screen width, 60–64px height.",
+
+  "usageContext": [
+    "Always use this wrapper when placing a Header on a screen.",
+    "The bg prop must match the actual background color of the page content below the header.",
+    "bg=sunken → page uses surface/sunken background",
+    "bg=surface → page uses surface/default background"
+  ],
+
+  "notes": [
+    "The bg prop refers to the page background BELOW the header, not the header's own background color.",
+    "The header's own background is always surface/neutral/default regardless of the wrapper variant.",
+    "The wrapper uses clipsContent: true to enforce the border-radius clip on the inner Header.",
+    "Both variants have a 1px bottom stroke (notification/border-default) separating header from content.",
+    "Figma node: 7511:31768. Previously named heade-wrapper (typo).",
+    "App reference: borderBottomLeftRadius/borderBottomRightRadius: 24px pattern in src/components/navigation/AppHeader.tsx (user-app)"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "_note": "Tokens extracted from Figma Core file (nGsiItayj12cfi3AKbP1mB), page 'headers', node 5009:2732. Values reference ds-core primitive tokens.",
+
+  "layout": {
+    "paddingHorizontal": {
+      "token": "spacing.xl",
+      "value": "16px"
+    },
+    "paddingVertical": {
+      "token": "spacing.md",
+      "value": "8px"
+    },
+    "gap": {
+      "token": "spacing.md",
+      "value": "8px"
+    },
+    "height": {
+      "value": "56px",
+      "note": "Excludes safe area top inset. Actual rendered height = 56px + device safe area top."
+    }
+  },
+
+  "background": {
+    "default": {
+      "token": "color/bg/surface-default",
+      "semanticToken": "bg-surface-default",
+      "value": { "dark": "TODO", "light": "TODO" },
+      "note": "Header uses the screen background — no distinct header background token in core."
+    }
+  },
+
+  "border": {
+    "bottom": {
+      "token": "color/border/default",
+      "semanticToken": "badge-default-bg",
+      "value": { "dark": "TODO", "light": "TODO" },
+      "note": "Bottom border separating header from content. Used in driver-app implementation."
+    },
+    "width": {
+      "value": "1px"
+    }
+  },
+
+  "title": {
+    "fontFamily": {
+      "token": "font-family.body",
+      "value": "Manrope"
+    },
+    "fontWeight": {
+      "token": "font-weight.bold",
+      "value": "700"
+    },
+    "fontSize": {
+      "token": "font-size.2xl",
+      "value": "24px",
+      "note": "Used in driver-app. User-app uses semibold at a smaller size for centered title."
+    },
+    "color": {
+      "token": "color/text/primary",
+      "semanticToken": "text/primary",
+      "value": { "dark": "TODO", "light": "TODO" }
+    }
+  },
+
+  "description": {
+    "fontFamily": {
+      "token": "font-family.body",
+      "value": "Manrope"
+    },
+    "fontWeight": {
+      "token": "font-weight.regular",
+      "value": "400"
+    },
+    "fontSize": {
+      "token": "font-size.sm",
+      "value": "14px"
+    },
+    "color": {
+      "token": "color/text/secondary",
+      "semanticToken": "text/secondary",
+      "value": { "dark": "TODO", "light": "TODO" }
+    }
+  },
+
+  "btnHeader": {
+    "size": {
+      "value": "44px"
+    },
+    "background": {
+      "default": {
+        "token": "button/secondary/bg-default",
+        "value": { "dark": "TODO", "light": "TODO" }
+      },
+      "pressed": {
+        "token": "button/secondary/bg-active",
+        "value": { "dark": "TODO", "light": "TODO" }
+      }
+    },
+    "icon": {
+      "color": {
+        "default": {
+          "token": "color/text/primary",
+          "value": { "dark": "TODO", "light": "TODO" }
+        }
+      },
+      "size": {
+        "value": "24px"
+      }
+    }
+  },
+
+  "actionButton": {
+    "background": {
+      "token": "button/accent/bg-active",
+      "value": { "dark": "TODO", "light": "TODO" }
+    },
+    "border": {
+      "token": "button/accent/border-active",
+      "value": { "dark": "TODO", "light": "TODO" }
+    },
+    "text": {
+      "color": {
+        "token": "button/accent/text-active",
+        "value": { "dark": "TODO", "light": "TODO" }
+      },
+      "fontWeight": {
+        "token": "font-weight.semibold",
+        "value": "600"
+      }
+    },
+    "borderRadius": {
+      "token": "radius.full",
+      "value": "9999px"
+    }
+  },
+
+  "search": {
+    "default": {
+      "background": {
+        "token": "input/bg-default",
+        "value": { "dark": "TODO", "light": "TODO" }
+      },
+      "border": {
+        "token": "input/border-default",
+        "value": { "dark": "TODO", "light": "TODO" }
+      },
+      "placeholder": {
+        "color": {
+          "token": "text/placeholder",
+          "value": { "dark": "TODO", "light": "TODO" }
+        }
+      }
+    },
+    "writing": {
+      "background": {
+        "token": "button/secondary/bg-default",
+        "value": { "dark": "TODO", "light": "TODO" }
+      },
+      "border": {
+        "token": "button/secondary/border-active",
+        "value": { "dark": "TODO", "light": "TODO" }
+      }
+    },
+    "borderRadius": {
+      "token": "radius.full",
+      "value": "9999px"
+    },
+    "icon": {
+      "size": {
+        "value": "20px"
+      }
+    }
+  },
+
+  "dateSelector": {
+    "label": {
+      "fontWeight": {
+        "token": "font-weight.bold",
+        "value": "700"
+      },
+      "color": {
+        "token": "color/text/primary",
+        "value": { "dark": "TODO", "light": "TODO" }
+      }
+    },
+    "chevron": {
+      "size": {
+        "value": "20px"
+      },
+      "color": {
+        "token": "color/text/primary",
+        "value": { "dark": "TODO", "light": "TODO" }
+      }
+    }
+  }
+}
