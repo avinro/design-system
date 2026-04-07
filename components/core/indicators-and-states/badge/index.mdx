@@ -1,20 +1,15 @@
 ---
 title: "Badge"
-description: "A small pill-shaped label used to communicate status, category, or contextual metadata at a glance. Available as Badge/Main (six semantic types) and Badge/Utility (five identity colors)."
+description: "A small pill-shaped label used to communicate status, category, or contextual metadata at a glance. Available in six semantic types and five utility types."
 ---
 
 # Badge
 
 ## Overview
 
-Badge is a small pill-shaped label used to communicate status, category, or contextual metadata at a glance. It is a display-only component with no interactive states.
+Badge is a small pill-shaped label used to communicate status, category, or contextual metadata at a glance. It displays a short text string in one of six semantic color types or five utility color types. Badge is a display-only component with no interactive states.
 
-The Badge component exists in two sets:
-
-- **Badge/Main** — six semantic color types. Each type carries a distinct meaning (error, info, success, warning, default, outlined). Use when the badge communicates system status or state.
-- **Badge/Utility** — five non-semantic identity colors (purple, violet, cyan, teal, pink). Use when the badge identifies a category, entity type, or label where color is decorative rather than status-driven.
-
-Both sets share the same shape, size, typography, and anatomy. They differ only in their color tokens and intended purpose.
+It is used in the Dojo Apps to label statuses, categories, and contextual properties on list items, cards, and detail views. The utility types (purple, violet, cyan, teal, pink) use chart-pair tokens and are intended for data visualization contexts.
 
 ## Anatomy
 
@@ -22,7 +17,7 @@ Badge is composed of the following parts:
 
 | Part | Required | Description |
 |---|---|---|
-| **Container** | Yes | Pill-shaped surface (border-radius: 9999px). Background and border determined by type. Padding: 8px horizontal, 4px vertical. |
+| **Container** | Yes | Pill-shaped surface (border-radius: 9999px). Background and border determined by type. Padding: 8px horizontal, 2px vertical. Exception: `error` and `purple` types use asymmetric horizontal padding (left: 8px, right: 12px). |
 | **Icon** | Optional | Leading icon, 16px. Controlled by `iconShow` (default: `true`) and `iconType` (default: alert-war-triangle). Decorative — must be `aria-hidden`. |
 | **Label** | Yes | Short text string. Manrope SemiBold, 12px, `whitespace-nowrap`. Color determined by type. |
 
@@ -36,9 +31,9 @@ Badge is composed of the following parts:
 
 ## Variants
 
-### Badge/Main
+### Semantic types
 
-Six types for communicating system status or state. Each type carries a defined semantic meaning — do not choose types based on visual appearance.
+Badge has six semantic types. Each communicates a distinct semantic meaning through color. All types share the same shape, size, and typography.
 
 | Type | Color | Semantics |
 |---|---|---|
@@ -51,19 +46,19 @@ Six types for communicating system status or state. Each type carries a defined 
 
 > Choose the type based on the **semantic meaning** of the status — not its visual appearance. Do not use `error` for warnings, or `warning` for errors.
 
-### Badge/Utility
+### Utility types
 
-Five identity colors for labeling categories, entity types, or contextual properties where color carries no status meaning. Colors are drawn from the `chart-pair` token collection.
+Five utility types use chart-pair tokens. These are intended for data visualization contexts where categorical color differentiation is needed without semantic status meaning.
 
-| Type | Color | Use for |
+| Type | Color | Token family |
 |---|---|---|
-| `purple` | Purple | Category or entity identification. |
-| `violet` | Violet | Category or entity identification. |
-| `cyan` | Cyan | Category or entity identification. |
-| `teal` | Teal | Category or entity identification. |
-| `pink` | Pink | Category or entity identification. |
+| `purple` | Purple | `--chart-pair/purple-*` |
+| `violet` | Violet | `--chart-pair/violet-*` |
+| `cyan` | Cyan | `--chart-pair/cyan-*` |
+| `teal` | Teal | `--chart-pair/teal-*` |
+| `pink` | Pink | `--chart-pair/pink-*` |
 
-> Utility badge colors are decorative and carry no semantic meaning. Do not use them to communicate system status. Assign colors consistently within a product context — the same type should always map to the same category.
+> Use utility types to match chart or category colors in data visualization contexts. Do not use them as status indicators.
 
 {/* TODO: Add variants.png from Figma if an overview frame is created. */}
 {/* ![Badge variants](./variants.png) */}
@@ -82,8 +77,7 @@ Badge has no interactive states. It is a display-only component.
 
 ### Supported variants
 
-- **Badge/Main:** six types — `default`, `outlined`, `error`, `info`, `Success`, `Warning`
-- **Badge/Utility:** five types — `purple`, `violet`, `cyan`, `teal`, `pink`
+Eleven types total: six semantic (`default`, `outlined`, `error`, `info`, `Success`, `Warning`) and five utility (`purple`, `violet`, `cyan`, `teal`, `pink`).
 
 ### Supported sizes
 
@@ -92,16 +86,18 @@ Single size only — no size variants.
 | Property | Token | Value |
 |---|---|---|
 | Padding horizontal | `--spacing-8` | 8px |
-| Padding vertical | `--spacing-4` | 4px |
+| Padding vertical | `--spacing-2` | 2px |
 | Border radius | — | 9999px (full pill) |
+
+> Exception: `error` and `purple` types use asymmetric horizontal padding — left: `8px` (`--spacing-8`), right: `12px` (`--spacing-12`).
 
 ### Supported states
 
 No interactive states confirmed. Display-only.
 
-### Token reference — Badge/Main
+### Token reference
 
-**Container tokens by type — light and dark:**
+**Semantic types — light and dark:**
 
 | Type | Background token | Light | Dark | Text token | Light | Dark |
 |---|---|---|---|---|---|---|
@@ -116,13 +112,11 @@ No interactive states confirmed. Display-only.
 
 > Note: The `--notification/warning--bg` token uses a double dash. This is the confirmed Figma token name.
 
-> Note: Dark mode values are resolved values from the Figma documentation frame (node 7378:3643). The CSS variable names are the same across both modes — the resolved value changes.
+> Note: Dark mode values are resolved values from the Figma documentation frame (node 7378:3643).
 
-### Token reference — Badge/Utility
+**Utility types — light (dark mode TODO):**
 
-Utility badge colors are sourced from the `chart-pair` token collection (`01. component-specific_colors`). Each type uses a `-secondary` token for the background and a `-primary` token for text and icon.
-
-| Type | Background token | Background | Text/Icon token | Text/Icon |
+| Type | Background token | Light | Text token | Light |
 |---|---|---|---|---|
 | `purple` | `--chart-pair/purple-secondary` | `#e4dbfa` | `--chart-pair/purple-primary` | `#7749e4` |
 | `violet` | `--chart-pair/violet-secondary` | `#f6d9ff` | `--chart-pair/violet-primary` | `#d243fe` |
@@ -130,11 +124,9 @@ Utility badge colors are sourced from the `chart-pair` token collection (`01. co
 | `teal` | `--chart-pair/teal-secondary` | `#cefaee` | `--chart-pair/teal-primary` | `#0ac0a1` |
 | `pink` | `--chart-pair/pink-secondary` | `#ffdbe8` | `--chart-pair/pink-primary` | `#ff498b` |
 
-> Note: Dark mode values for Badge/Utility are not yet confirmed. TODO: Extract dark mode resolved values from Figma.
+> TODO: Confirm dark mode values for utility types.
 
-> Note: The `purple` variant currently has an inconsistent right padding of `12px` (`--spacing-12`) instead of `8px`. TODO: Confirm with design whether this is intentional.
-
-### Shared label tokens (all types)
+**Shared label tokens (all types):**
 
 | Property | Token | Value |
 |---|---|---|
@@ -149,19 +141,16 @@ Utility badge colors are sourced from the `chart-pair` token collection (`01. co
 - Use Badge to communicate the **status, category, or type** of an adjacent element — not as a primary action or navigation element.
 - Place Badge near the element it describes: next to a title, alongside a list row, or within a card header.
 - Use a **single Badge per item** unless each badge communicates a genuinely distinct dimension (e.g., one for status, one for category).
-- Use **Badge/Main** when the badge communicates a system state or outcome. Choose `default` or `outlined` for neutral labels; reserve `error`, `info`, `Success`, and `Warning` for genuine status meaning.
-- Use **Badge/Utility** when the badge identifies a category, entity type, or label where color is decorative. Assign colors consistently — the same type should always map to the same category within a given screen or product.
-- Do not mix Badge/Main and Badge/Utility types to communicate the same kind of information on the same item.
+- Choose `default` or `outlined` for neutral labels with no status meaning. Reserve semantic colors (`error`, `info`, `Success`, `Warning`) for genuine status communication.
 - Do not use Badge as a notification counter. Use a dedicated counter or dot component for that pattern.
 - Keep labels short — 1–3 words. `whitespace-nowrap` is applied; longer labels will overflow.
 
 ## Accessibility
 
 - Badge text is informational. Screen readers will read it as part of the surrounding content.
-- Do not rely on color alone to communicate status — the label text must be self-explanatory regardless of the type color. This is especially important for Badge/Utility, where colors carry no inherent meaning.
+- Do not rely on color alone to communicate status — the label text must be self-explanatory regardless of the type color.
 - If a Badge appears without adjacent explanatory text, consider adding a visually hidden label or `aria-label` on the parent element to provide full context.
-- TODO: Confirm WCAG contrast ratios for all Badge/Main type combinations.
-- TODO: Confirm WCAG contrast ratios for all Badge/Utility type combinations.
+- TODO: Confirm WCAG contrast ratios for all six type combinations.
 
 ## Do / Don't
 
@@ -172,9 +161,7 @@ Utility badge colors are sourced from the `chart-pair` token collection (`01. co
 - Ensure the label text communicates meaning independently of color.
 
 **Don't:**
-- Don't use `error` for warnings or `warning` for errors — each Badge/Main color has a defined meaning.
-- Don't use Badge/Utility types to communicate system status — they are for identity and category labels only.
-- Don't assign Badge/Utility colors inconsistently — the same color should always represent the same category.
+- Don't use `error` for warnings or `warning` for errors — each color has a defined meaning.
 - Don't write long labels — `whitespace-nowrap` is applied.
 - Don't use Badge as a navigation control or interactive filter unless a confirmed interactive variant exists.
 - Don't add icons unless a confirmed icon variant is defined.
@@ -185,7 +172,7 @@ Utility badge colors are sourced from the `chart-pair` token collection (`01. co
 
 ## Resources
 
-- Figma: [Badge/Main component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816)
+- Figma: [Badge component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816)
 - Figma: [Badge/Utility component](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7538-204)
 - Figma: [Badge documentation frame](https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7378-3643)
 - Usage context: [Dojo Customer App](https://www.figma.com/design/mqnceyvORwnapgycVXLgVE/Dojo-Customer-App-1.0_new-UI?node-id=1361-13772)

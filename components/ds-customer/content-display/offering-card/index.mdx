@@ -1,0 +1,165 @@
+---
+title: "Offering Card"
+description: "A card that displays a bookable venue offering with its booking method, price, guest capacity, and availability state."
+---
+
+# Offering Card
+
+## Overview
+
+Offering Card displays a single bookable offering within a venue's listing. It communicates the offering's title, description, booking method, price, guest capacity, and current availability at a glance. It is a display-only component — taps are handled by the parent list item.
+
+Used on venue detail screens and offering selection flows in the Customer App.
+
+{/* TODO: Add overview image */}
+
+## Anatomy
+
+Offering Card is composed of three areas:
+
+| Part | Required | Description |
+|---|---|---|
+| **Container** | Yes | Card surface. Background: `surface/neutral/raised`. Border radius: 24px. Padding: 16px top/bottom, 16px left, 12px right. |
+| **Image** | Optional | 128×128px venue photo. In `sold-out` state, a 40% white overlay dims the image. |
+| **Content column** | Yes | Flex column with three sub-rows: `col.top` (title + badge + description), `col.pills` (0–2 badge pills), `col.bottom` (price + guest count). |
+
+- The image is optional. When absent, the content column fills the full card width.
+- The content column always shows all three sub-rows — layout does not collapse.
+
+{/* TODO: Add anatomy.png */}
+
+## Variants
+
+Offering Card has two independent variant axes:
+
+### `booking` — booking method and payment model
+
+| Value | Booking flow | Payment model | Badge (slot 1) |
+|---|---|---|---|
+| `free-instant` | Confirmed immediately | Free | Cyan "Instant" |
+| `request-quote` | Venue must accept | Price quoted by venue | Pink "Limited" |
+| `request-min-spend` | Venue must accept | Minimum spend required | Pink "Limited" |
+| `instant-fixed` | Confirmed immediately | Fixed price | Cyan "Instant" |
+| `all-day-instant` | Confirmed immediately | Fixed price, full-day | Cyan "Instant" + Success "All day" |
+
+### `state` — current availability
+
+| Value | Meaning | Visual effect |
+|---|---|---|
+| `available` | Fully bookable | No availability overlay |
+| `limited` | Few spots remaining | Adds Warning "2 left" badge in slot 2 |
+| `sold-out` | No availability | Image dimmed, price replaced with "SOLD OUT", badge replaced with gray "Sold out" |
+
+**Total combinations:** 5 × 3 = 15. Use `booking` to match the actual booking flow, and `state` to reflect live availability data.
+
+> Note: `all-day-instant` in `limited` state shows "2 left" in slot 2 instead of "All day".
+
+{/* TODO: Add variants.png */}
+
+## States
+
+Offering Card has no interactive states of its own. Tap and press behavior is owned by the parent list row.
+
+> TODO: Confirm whether a selected/active state is needed for multi-select offering flows.
+
+## Tokens & specs
+
+### Supported variants
+
+`booking`: `free-instant` · `request-quote` · `request-min-spend` · `instant-fixed` · `all-day-instant`
+
+`state`: `available` · `limited` · `sold-out`
+
+### Supported sizes
+
+Single size. Width fills the container. Height adapts to content.
+
+| Property | Value |
+|---|---|
+| Border radius | 24px |
+| Padding left | 16px |
+| Padding right | 12px |
+| Padding vertical | 16px |
+| Image size | 128×128px |
+| Gap (image to column) | 12px |
+
+### Token reference
+
+**Container:**
+
+| Property | Token | Dark value |
+|---|---|---|
+| Background | `--surface/neutral/raised` | `#34353f` |
+
+**Typography:**
+
+| Element | Token | Value |
+|---|---|---|
+| Title color | `--text/primary` | `#f1f2f4` |
+| Title font | Google Sans Flex SemiBold | 16px, -0.4px |
+| Description color | `--text/body` | `#cccdda` |
+| Description font | Manrope Regular | 12px |
+| Price color (available/limited) | `--text/primary` | `#f1f2f4` |
+| Price color (sold-out) | `--text/placeholder` | `#a3a3bc` |
+| Price font | Manrope Bold | 18px |
+| Guest count color | `--text/body` | `#cccdda` |
+
+**Badge tokens by type:**
+
+| Badge | Background token | Dark bg | Text token | Dark text |
+|---|---|---|---|---|
+| Instant (cyan) | `--chart-pair/cyan-secondary` | `#0d2833` | `--chart-pair/cyan-primary` | `#7fdafe` |
+| Limited (pink) | `--chart-pair/pink-secondary` | `#330f1c` | `--chart-pair/pink-primary` | `#ff83b0` |
+| 2 left (warning) | `--notification/warning--bg` | `#2e2300` | `--notification/warning-text` | `#edc953` |
+| All day (success) | `--notification/success-bg` | `#09280a` | `--notification/success-text` | `#70d872` |
+| Sold out (default) | hardcoded | `#f3f4f6` | hardcoded | `#6b7280` |
+
+> Note: `--notification/warning--bg` uses a double dash — confirmed Figma token name.
+
+> TODO: Confirm light mode token values for all tokens above.
+
+> TODO: Replace hardcoded Sold out badge values with DS tokens.
+
+## Usage guidelines
+
+- Use `booking` to match the **actual booking confirmation method** of the offering — not a desired label.
+- Use `state` to reflect **live availability data** — only show `limited` when an actual count is available, only show `sold-out` when confirmed.
+- Show a maximum of one Offering Card per offering. Do not show the same offering in multiple states simultaneously.
+- Keep the title to 1–4 words. Keep the description to 1–2 lines (40–60 characters).
+- Do not use `request-*` booking values for offerings that confirm instantly.
+- Do not show a price in `request-quote` — always use the two-line "Quote / required" display.
+- Do not modify badge colors — use the exact badge types defined per booking and state combination.
+
+## Accessibility
+
+- The card is a display-only component. Interactivity belongs on the parent list item — ensure the parent has an `accessibilityRole` and an `accessibilityLabel` that includes the offering title.
+- Do not rely on badge color alone to communicate booking method or availability — the badge label text must carry the meaning independently.
+- The dimmed image in `sold-out` is decorative — ensure the "SOLD OUT" text in the price area is read by screen readers.
+- TODO: Confirm contrast ratios for all badge color combinations in dark and light mode.
+
+## Do / Don't
+
+**Do:**
+- Match `booking` to the actual booking flow the venue uses.
+- Use `state=limited` only when you have a real count to display.
+- Keep title and description concise — the card is a preview, not a detail page.
+- Ensure the parent list item handles the tap interaction with a proper accessibility label.
+
+**Don't:**
+- Don't set `booking=request-quote` for an offering that books instantly.
+- Don't show a numeric price in `request-quote` — show "Quote required" instead.
+- Don't override badge types manually — use the defined combination per booking and state.
+- Don't hide the image in `sold-out` — use the 40% overlay dimming instead.
+- Don't use this card to display non-bookable content (information-only items).
+
+{/* TODO: Add do-dont.png */}
+
+## Resources
+
+- Figma: [Offering Card component set](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=202-873)
+- Figma: [Offerings listing context](https://www.figma.com/design/iYqpx8x8Kxdixf8YSRkiCz/%E2%9D%96-Dojo_DS-Customer-app?node-id=202-405)
+- Related: [Badge](/components/core/indicators-and-states/badge/index) — badge types used within the card
+- Related: [Badge Utility](/components/ds-customer/indicators-and-states/badge-partner/index) — utility badge types (cyan, pink)
+- Code: `./offering-card.tsx`
+- Specs: `./offering-card.specs.json`
+- Tokens: `./offering-card.tokens.json`

@@ -1,0 +1,256 @@
+{
+  "component": "Offering Card",
+  "library": "ds-customer",
+  "category": "content-display",
+  "figmaFileKey": "iYqpx8x8Kxdixf8YSRkiCz",
+  "figmaNodeId": "202:873",
+
+  "anatomy": [
+    {
+      "part": "container",
+      "description": "Card surface. Background: surface/neutral/raised. Border radius: 24px. Padding: 16px top/bottom, 16px left, 12px right.",
+      "required": true
+    },
+    {
+      "part": "image",
+      "description": "128×128px venue or offering photo. Optional. In sold-out state, a 40% white overlay dims the image.",
+      "required": false
+    },
+    {
+      "part": "col",
+      "description": "Content column. Flex column, fills remaining width.",
+      "required": true,
+      "subParts": [
+        {
+          "part": "col.top",
+          "description": "Title, optional booking-method badge (Instant or Limited), and description text.",
+          "required": true
+        },
+        {
+          "part": "col.pills",
+          "description": "Row of 0–2 badge pills. Slot 1: booking type badge (Instant, Limited, All day). Slot 2: availability/duration badge (2 left, All day, Sold out).",
+          "required": false
+        },
+        {
+          "part": "col.bottom",
+          "description": "Price display (left) and guest count (right). Always shown.",
+          "required": true
+        }
+      ]
+    }
+  ],
+
+  "variantAxes": [
+    {
+      "name": "booking",
+      "type": "VARIANT",
+      "values": ["free-instant", "request-quote", "request-min-spend", "instant-fixed", "all-day-instant"],
+      "defaultValue": "free-instant",
+      "description": "Controls the booking flow and payment model displayed on the card."
+    },
+    {
+      "name": "state",
+      "type": "VARIANT",
+      "values": ["available", "limited", "sold-out"],
+      "defaultValue": "available",
+      "description": "Controls the current availability state of the offering."
+    }
+  ],
+
+  "variantCombinations": [
+    {
+      "booking": "free-instant",
+      "state": "available",
+      "figmaNodeId": "202:874",
+      "badges": [{ "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" }],
+      "priceDisplay": "FREE",
+      "screenExamples": ["Venue detail — complimentary table"]
+    },
+    {
+      "booking": "free-instant",
+      "state": "limited",
+      "figmaNodeId": "202:885",
+      "status": "visual-update-needed",
+      "badges": [
+        { "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" },
+        { "slot": 2, "type": "warning", "label": "2 left" }
+      ],
+      "priceDisplay": "price-value",
+      "note": "Visual content needs update — currently shows duplicate of free-instant/available."
+    },
+    {
+      "booking": "free-instant",
+      "state": "sold-out",
+      "figmaNodeId": "204:1011",
+      "status": "placeholder-content",
+      "badges": [{ "slot": 1, "type": "default", "label": "Sold out" }],
+      "priceDisplay": "SOLD OUT"
+    },
+    {
+      "booking": "request-quote",
+      "state": "available",
+      "figmaNodeId": "202:896",
+      "badges": [{ "slot": 1, "type": "pink", "label": "Limited", "icon": "chat-check" }],
+      "priceDisplay": "Quote required (two-line)",
+      "screenExamples": ["Venue detail — exclusive buyout"]
+    },
+    {
+      "booking": "request-quote",
+      "state": "limited",
+      "figmaNodeId": "204:1024",
+      "status": "placeholder-content",
+      "badges": [
+        { "slot": 1, "type": "pink", "label": "Limited", "icon": "chat-check" },
+        { "slot": 2, "type": "warning", "label": "2 left" }
+      ],
+      "priceDisplay": "Quote required (two-line)"
+    },
+    {
+      "booking": "request-quote",
+      "state": "sold-out",
+      "figmaNodeId": "204:1037",
+      "status": "placeholder-content",
+      "badges": [{ "slot": 1, "type": "default", "label": "Sold out" }],
+      "priceDisplay": "SOLD OUT"
+    },
+    {
+      "booking": "request-min-spend",
+      "state": "available",
+      "figmaNodeId": "202:907",
+      "badges": [{ "slot": 1, "type": "pink", "label": "Limited", "icon": "chat-check" }],
+      "priceDisplay": "price-value",
+      "screenExamples": ["Venue detail — private dinner"]
+    },
+    {
+      "booking": "request-min-spend",
+      "state": "limited",
+      "figmaNodeId": "204:1050",
+      "status": "placeholder-content",
+      "badges": [
+        { "slot": 1, "type": "pink", "label": "Limited", "icon": "chat-check" },
+        { "slot": 2, "type": "warning", "label": "2 left" }
+      ],
+      "priceDisplay": "price-value"
+    },
+    {
+      "booking": "request-min-spend",
+      "state": "sold-out",
+      "figmaNodeId": "204:1063",
+      "status": "placeholder-content",
+      "badges": [{ "slot": 1, "type": "default", "label": "Sold out" }],
+      "priceDisplay": "SOLD OUT"
+    },
+    {
+      "booking": "instant-fixed",
+      "state": "available",
+      "figmaNodeId": "202:918",
+      "status": "visual-update-needed",
+      "badges": [{ "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" }],
+      "priceDisplay": "price-value",
+      "note": "Remove '2 left' badge from this variant — it belongs only in state=limited.",
+      "screenExamples": ["Venue detail — VIP booth"]
+    },
+    {
+      "booking": "instant-fixed",
+      "state": "limited",
+      "figmaNodeId": "202:944",
+      "badges": [
+        { "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" },
+        { "slot": 2, "type": "warning", "label": "2 left" }
+      ],
+      "priceDisplay": "price-value",
+      "screenExamples": ["Venue detail — cabana, few spots left"]
+    },
+    {
+      "booking": "instant-fixed",
+      "state": "sold-out",
+      "figmaNodeId": "202:957",
+      "badges": [{ "slot": 1, "type": "default", "label": "Sold out" }],
+      "priceDisplay": "SOLD OUT",
+      "screenExamples": ["Venue detail — sold out table"]
+    },
+    {
+      "booking": "all-day-instant",
+      "state": "available",
+      "figmaNodeId": "202:931",
+      "badges": [
+        { "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" },
+        { "slot": 2, "type": "success", "label": "All day" }
+      ],
+      "priceDisplay": "price-value",
+      "screenExamples": ["Venue detail — yacht charter"]
+    },
+    {
+      "booking": "all-day-instant",
+      "state": "limited",
+      "figmaNodeId": "204:1076",
+      "status": "placeholder-content",
+      "badges": [
+        { "slot": 1, "type": "cyan", "label": "Instant", "icon": "check-boxed" },
+        { "slot": 2, "type": "warning", "label": "2 left" }
+      ],
+      "priceDisplay": "price-value"
+    },
+    {
+      "booking": "all-day-instant",
+      "state": "sold-out",
+      "figmaNodeId": "204:1089",
+      "status": "placeholder-content",
+      "badges": [{ "slot": 1, "type": "default", "label": "Sold out" }],
+      "priceDisplay": "SOLD OUT"
+    }
+  ],
+
+  "dimensions": {
+    "width": "100% (fills container)",
+    "borderRadius": "24px",
+    "paddingLeft": "16px",
+    "paddingRight": "12px",
+    "paddingVertical": "16px",
+    "imageSize": "128×128px",
+    "gap": "12px (between image and content column)"
+  },
+
+  "typography": {
+    "title": {
+      "fontFamily": "Google Sans Flex",
+      "fontWeight": "600 (SemiBold)",
+      "fontSize": "16px (--size/lg)",
+      "letterSpacing": "-0.4px",
+      "color": "--text/primary"
+    },
+    "description": {
+      "fontFamily": "Manrope",
+      "fontWeight": "400 (Regular)",
+      "fontSize": "12px (--size/xs)",
+      "color": "--text/body"
+    },
+    "price": {
+      "fontFamily": "Manrope",
+      "fontWeight": "700 (Bold)",
+      "fontSize": "18px",
+      "color": "--text/primary (available/limited), --text/placeholder (sold-out)"
+    },
+    "guestCount": {
+      "fontFamily": "Manrope",
+      "fontWeight": "400 (Regular)",
+      "fontSize": "12px (--size/xs)",
+      "color": "--text/body"
+    }
+  },
+
+  "states": [],
+  "stateNote": "No interactive states on the card itself. Tap/press interaction handled by the parent list item. Badge and price display change based on variant axes.",
+
+  "notes": [
+    "Two variant axes: booking (5 values) × state (3 values) = 15 total combinations.",
+    "8 of 15 combinations exist in Figma. 7 are TODO.",
+    "2 existing variants need visual content updates (see figma-links.md).",
+    "state=sold-out: dims image with 40% white overlay, shows gray 'Sold out' badge, replaces price with 'SOLD OUT' in placeholder color.",
+    "state=limited: adds warning '2 left' badge in slot 2.",
+    "booking=all-day-instant: slot 2 shows 'All day' success badge instead of quantity.",
+    "TODO: Confirm light mode token values for all color tokens.",
+    "TODO: Create the 7 missing Figma variants.",
+    "TODO: Fix visual content in 202:885 and 202:918."
+  ]
+}

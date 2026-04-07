@@ -1,0 +1,169 @@
+{
+  "_note": "Token values confirmed from Figma MCP extraction (node 202:873, file iYqpx8x8Kxdixf8YSRkiCz). Dark mode values only — light mode values TODO.",
+
+  "container": {
+    "background": {
+      "token": "--surface/neutral/raised",
+      "value": { "dark": "#34353f", "light": "TODO" },
+      "description": "Card background for all booking and state variants."
+    },
+    "borderRadius": {
+      "value": "24px",
+      "description": "Corner radius. Applied to all variants."
+    },
+    "paddingHorizontalLeft": {
+      "value": "16px",
+      "description": "Left padding."
+    },
+    "paddingHorizontalRight": {
+      "value": "12px",
+      "description": "Right padding."
+    },
+    "paddingVertical": {
+      "value": "16px",
+      "description": "Top and bottom padding."
+    },
+    "gap": {
+      "value": "12px",
+      "description": "Gap between image and content column."
+    }
+  },
+
+  "image": {
+    "size": {
+      "value": "128×128px",
+      "description": "Fixed image dimensions."
+    },
+    "soldOutOverlay": {
+      "value": "rgba(217, 217, 217, 0.4)",
+      "description": "White overlay applied on top of the image in sold-out state."
+    }
+  },
+
+  "title": {
+    "color": {
+      "token": "--text/primary",
+      "value": { "dark": "#f1f2f4", "light": "TODO" }
+    },
+    "fontFamily": "Google Sans Flex",
+    "fontWeight": "600 (SemiBold)",
+    "fontSize": {
+      "token": "--size/lg",
+      "value": "16px"
+    },
+    "letterSpacing": "-0.4px"
+  },
+
+  "description": {
+    "color": {
+      "token": "--text/body",
+      "value": { "dark": "#cccdda", "light": "TODO" }
+    },
+    "fontFamily": "Manrope",
+    "fontWeight": "400 (Regular)",
+    "fontSize": {
+      "token": "--size/xs",
+      "value": "12px"
+    }
+  },
+
+  "guestCount": {
+    "color": {
+      "token": "--text/body",
+      "value": { "dark": "#cccdda", "light": "TODO" }
+    },
+    "fontFamily": "Manrope",
+    "fontWeight": "400 (Regular)",
+    "fontSize": {
+      "token": "--size/xs",
+      "value": "12px"
+    }
+  },
+
+  "price": {
+    "default": {
+      "color": {
+        "token": "--text/primary",
+        "value": { "dark": "#f1f2f4", "light": "TODO" }
+      },
+      "fontFamily": "Manrope",
+      "fontWeight": "700 (Bold)",
+      "fontSize": "18px",
+      "description": "Used for fixed prices (e.g. €350, €2,500) and FREE."
+    },
+    "soldOut": {
+      "color": {
+        "token": "--text/placeholder",
+        "value": { "dark": "#a3a3bc", "light": "TODO" }
+      },
+      "description": "Color for SOLD OUT price text."
+    },
+    "quoteRequired": {
+      "color": {
+        "token": "--text/body",
+        "value": { "dark": "#cccdda", "light": "TODO" }
+      },
+      "description": "Used for two-line 'Quote / required' display."
+    }
+  },
+
+  "badges": {
+    "instant": {
+      "background": {
+        "token": "--chart-pair/cyan-secondary",
+        "value": { "dark": "#0d2833", "light": "TODO" }
+      },
+      "text": {
+        "token": "--chart-pair/cyan-primary",
+        "value": { "dark": "#7fdafe", "light": "TODO" }
+      },
+      "label": "Instant",
+      "icon": "check-boxed"
+    },
+    "limited": {
+      "background": {
+        "token": "--chart-pair/pink-secondary",
+        "value": { "dark": "#330f1c", "light": "TODO" }
+      },
+      "text": {
+        "token": "--chart-pair/pink-primary",
+        "value": { "dark": "#ff83b0", "light": "TODO" }
+      },
+      "label": "Limited",
+      "icon": "chat-check"
+    },
+    "quantityWarning": {
+      "background": {
+        "token": "--notification/warning--bg",
+        "value": { "dark": "#2e2300", "light": "TODO" }
+      },
+      "text": {
+        "token": "--notification/warning-text",
+        "value": { "dark": "#edc953", "light": "TODO" }
+      },
+      "label": "2 left",
+      "note": "Token uses double dash (warning--bg) — confirmed Figma token name."
+    },
+    "allDay": {
+      "background": {
+        "token": "--notification/success-bg",
+        "value": { "dark": "#09280a", "light": "TODO" }
+      },
+      "text": {
+        "token": "--notification/success-text",
+        "value": { "dark": "#70d872", "light": "TODO" }
+      },
+      "label": "All day"
+    },
+    "soldOut": {
+      "background": {
+        "value": { "dark": "#f3f4f6", "light": "TODO" }
+      },
+      "text": {
+        "value": { "dark": "#6b7280", "light": "TODO" }
+      },
+      "label": "Sold out",
+      "note": "TODO: Confirm if this uses a DS token or hardcoded gray."
+    }
+  }
+}

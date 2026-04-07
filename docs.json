@@ -106,7 +106,8 @@
           {
             "group": "Content Display",
             "pages": [
-              "components/ds-customer/content-display/venue-card/index"
+              "components/ds-customer/content-display/venue-card/index",
+              "components/ds-customer/content-display/offering-card/index"
             ]
           },
           {

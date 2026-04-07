@@ -1,10 +1,18 @@
 # Badge — Figma Links
 
-## Badge/Main component
+## Main component
 
-- **Badge/Main** (node `5050:816`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816
+- **Badge** (node `5050:816`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=5050-816
+- **Badge/Utility** (node `7538:204`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7538-204
 
-### Type instances — Badge/Main
+## Node IDs
+
+- `file-key`: `nGsiItayj12cfi3AKbP1mB`
+- `component-node-id`: `5050:816`
+- `utility-component-node-id`: `7538:204`
+- `doc-frame-node-id`: `7378:3643`
+
+## Type instances — Semantic (confirmed from Figma)
 
 | Type | Node |
 |---|---|
@@ -15,11 +23,7 @@
 | `default` | `5050:825` |
 | `outlined` | `5050:827` |
 
-## Badge/Utility component
-
-- **Badge/Utility** (node `7538:204`): https://www.figma.com/design/nGsiItayj12cfi3AKbP1mB/%E2%9D%96-Dojo_DS-Core?node-id=7538-204
-
-### Type instances — Badge/Utility
+## Type instances — Utility (confirmed from Figma)
 
 | Type | Node |
 |---|---|

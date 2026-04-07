@@ -1,5 +1,5 @@
 {
-  "_note": "Token values confirmed from Figma MCP extraction (node 5050:816 and documentation frame 7378:3643). Six types: error, info, Success, Warning, default, outlined. Dark mode resolved values extracted from the Figma documentation frame.",
+  "_note": "Token values confirmed from Figma MCP extraction (nodes 5050:816 and 7538:204). Eleven types: six semantic (error, info, Success, Warning, default, outlined) and five utility (purple, violet, cyan, teal, pink). Dark mode values confirmed for semantic types. Utility type dark mode values are TODO.",
 
   "types": {
     "error": {
@@ -80,6 +80,70 @@
     }
   },
 
+  "utilityTypes": {
+    "purple": {
+      "background": {
+        "token": "--chart-pair/purple-secondary",
+        "value": { "light": "#e4dbfa", "dark": "TODO" },
+        "description": "Background fill for the purple utility type."
+      },
+      "text": {
+        "token": "--chart-pair/purple-primary",
+        "value": { "light": "#7749e4", "dark": "TODO" },
+        "description": "Text and icon color for the purple utility type."
+      },
+      "paddingNote": "Asymmetric horizontal padding: left 8px (--spacing-8), right 12px (--spacing-12)."
+    },
+    "violet": {
+      "background": {
+        "token": "--chart-pair/violet-secondary",
+        "value": { "light": "#f6d9ff", "dark": "TODO" },
+        "description": "Background fill for the violet utility type."
+      },
+      "text": {
+        "token": "--chart-pair/violet-primary",
+        "value": { "light": "#d243fe", "dark": "TODO" },
+        "description": "Text and icon color for the violet utility type."
+      }
+    },
+    "cyan": {
+      "background": {
+        "token": "--chart-pair/cyan-secondary",
+        "value": { "light": "#d9f4ff", "dark": "TODO" },
+        "description": "Background fill for the cyan utility type."
+      },
+      "text": {
+        "token": "--chart-pair/cyan-primary",
+        "value": { "light": "#38a9d5", "dark": "TODO" },
+        "description": "Text and icon color for the cyan utility type."
+      }
+    },
+    "teal": {
+      "background": {
+        "token": "--chart-pair/teal-secondary",
+        "value": { "light": "#cefaee", "dark": "TODO" },
+        "description": "Background fill for the teal utility type."
+      },
+      "text": {
+        "token": "--chart-pair/teal-primary",
+        "value": { "light": "#0ac0a1", "dark": "TODO" },
+        "description": "Text and icon color for the teal utility type."
+      }
+    },
+    "pink": {
+      "background": {
+        "token": "--chart-pair/pink-secondary",
+        "value": { "light": "#ffdbe8", "dark": "TODO" },
+        "description": "Background fill for the pink utility type."
+      },
+      "text": {
+        "token": "--chart-pair/pink-primary",
+        "value": { "light": "#ff498b", "dark": "TODO" },
+        "description": "Text and icon color for the pink utility type."
+      }
+    }
+  },
+
   "container": {
     "borderRadius": {
       "value": "9999px",
@@ -88,11 +152,11 @@
     "paddingHorizontal": {
       "token": "--spacing-8",
       "value": "8px",
-      "description": "Left and right padding."
+      "description": "Left and right padding. Exception: error and purple types use asymmetric padding — left: 8px, right: 12px (--spacing-12)."
     },
     "paddingVertical": {
-      "token": "--spacing-4",
-      "value": "4px",
+      "token": "--spacing-2",
+      "value": "2px",
       "description": "Top and bottom padding."
     }
   },
